@@ -29,7 +29,11 @@ navigation (Linear project, go-to-market plan, related repos).
 
 1. Check the Drive `overview.md` for current positioning before writing new
    copy — don't invent claims not backed by that doc or Stuart directly.
-2. This is a plain static site: edit `index.html` / `css/styles.css` /
-   `js/main.js` directly, no build step, no framework.
-3. Keep it a single page for now unless Stuart asks for more — the brief is a
-   simple brochure site, not a full marketing engine.
+2. This is a plain static site: edit the `*.html` pages / `css/` / `js/main.js`
+   directly, no build step, no framework. Nav and footer are duplicated in
+   every page — keep them in sync.
+3. Five pages (Home, Approach, Services, About, Contact). Don't add pages
+   unless Stuart asks for them.
+4. Never publish invented client results, testimonials or case studies. The
+   About page's numbers are Stuart's career evidence from the Drive doc and
+   must stay labelled as pre-Neurally.

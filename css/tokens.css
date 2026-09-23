@@ -1,0 +1,231 @@
+/* Neurally design tokens — imported from the Neurally design system
+   (Claude Design project, tokens/*.css). Edit there first, then copy here. */
+
+/* ── Fonts ─────────────────────────────────────────────────────────── */
+:root {
+  --font-display: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-heading: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-body: "Instrument Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* ── Colours ───────────────────────────────────────────────────────── */
+:root {
+  --brand-ink: #1A1A1A;
+  --brand-paper: #FAF8F4;
+  --brand-blue: #A9C4D9;
+  --brand-sage: #B7C9A8;
+  --brand-coral: #E8A599;
+  --brand-yellow: #EFDBA0;
+
+  --ink-1000: #0E0E0E;
+  --ink-900: #141414;
+  --ink-850: #1A1A1A;
+  --ink-800: #202020;
+  --ink-700: #2A2A29;
+  --ink-600: #383836;
+  --ink-500: #4A4A47;
+  --ink-400: #6A6A65;
+  --ink-300: #8A8A85;
+  --ink-200: #B0ACA3;
+  --ink-100: #D6D2C9;
+  --ink-50:  #EDEAE3;
+  --ink-0:   #FAF8F4;
+
+  --blue-light: #C7DAE8;
+  --blue: #A9C4D9;
+  --blue-deep: #7FA3BF;
+  --blue-tint: #34383C;
+
+  --sage-light: #CEDBC3;
+  --sage: #B7C9A8;
+  --sage-deep: #8FA67D;
+  --sage-tint: #363933;
+
+  --coral-light: #F0C0B7;
+  --coral: #E8A599;
+  --coral-deep: #C97F71;
+  --coral-tint: #3F3331;
+
+  --yellow-light: #F5E7BE;
+  --yellow: #EFDBA0;
+  --yellow-deep: #CFB877;
+  --yellow-tint: #403D32;
+
+  /* Semantic aliases — dark is the default ground */
+  --surface-page: var(--ink-850);
+  --surface-sunken: var(--ink-900);
+  --surface-raised: var(--ink-800);
+  --surface-overlay: var(--ink-700);
+  --surface-inverse: var(--ink-0);
+
+  --text-primary: var(--ink-0);
+  --text-secondary: var(--ink-200);
+  --text-muted: var(--ink-300);
+  --text-inverse: var(--ink-850);
+  --text-accent: var(--blue);
+
+  --border-subtle: var(--ink-700);
+  --border-default: var(--ink-600);
+  --border-strong: var(--ink-500);
+  --border-accent: var(--blue);
+
+  --accent: var(--blue);
+  --accent-hover: var(--blue-light);
+  --accent-pressed: var(--blue-deep);
+  --accent-tint: var(--blue-tint);
+
+  /* Stage colours — always in this order */
+  --stage-diagnose: var(--blue);
+  --stage-redesign: var(--yellow);
+  --stage-lead: var(--sage);
+  --stage-measure: var(--coral);
+
+  --focus-ring: var(--blue);
+  --selection-bg: var(--yellow);
+  --selection-fg: var(--ink-850);
+}
+
+.on-paper {
+  --surface-page: var(--ink-0);
+  --surface-sunken: var(--ink-50);
+  --surface-raised: #FFFFFF;
+  --surface-overlay: #FFFFFF;
+  --surface-inverse: var(--ink-850);
+
+  --text-primary: var(--ink-850);
+  --text-secondary: #3D3D3A;
+  --text-muted: #6A6A65;
+  --text-inverse: var(--ink-0);
+  --text-accent: #5E85A3;
+
+  --border-subtle: #E5E1D9;
+  --border-default: var(--ink-100);
+  --border-strong: var(--ink-200);
+
+  --accent: var(--blue-deep);
+  --accent-hover: var(--blue);
+  --accent-pressed: #5E85A3;
+  --accent-tint: #EAF1F7;
+}
+
+/* ── Typography ────────────────────────────────────────────────────── */
+:root {
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+
+  --type-display-xl-size: 72px;
+  --type-display-xl-line: 1.02;
+  --type-display-xl-track: -0.04em;
+  --type-display-l-size: 56px;
+  --type-display-l-line: 1.04;
+  --type-display-l-track: -0.038em;
+  --type-display-m-size: 44px;
+  --type-display-m-line: 1.06;
+  --type-display-m-track: -0.035em;
+
+  --type-h1-size: 34px;
+  --type-h1-line: 1.1;
+  --type-h1-track: -0.03em;
+  --type-h2-size: 26px;
+  --type-h2-line: 1.15;
+  --type-h2-track: -0.025em;
+  --type-h3-size: 20px;
+  --type-h3-line: 1.25;
+  --type-h3-track: -0.02em;
+
+  --type-body-l-size: 18px;
+  --type-body-l-line: 1.6;
+  --type-body-size: 16px;
+  --type-body-line: 1.6;
+  --type-body-s-size: 14px;
+  --type-body-s-line: 1.55;
+
+  --type-label-size: 12px;
+  --type-label-line: 1.4;
+  --type-label-track: 0.14em;
+
+  --type-wordmark-weight: 500;
+  --type-wordmark-track: -0.035em;
+}
+
+/* Scale display sizes down on small screens so headlines never overflow */
+@media (max-width: 720px) {
+  :root {
+    --type-display-xl-size: 48px;
+    --type-display-l-size: 40px;
+    --type-display-m-size: 34px;
+    --type-h1-size: 28px;
+    --type-h2-size: 24px;
+  }
+}
+
+/* ── Spacing ───────────────────────────────────────────────────────── */
+:root {
+  --space-0: 0;
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 8px;
+  --space-5: 12px;
+  --space-6: 16px;
+  --space-7: 20px;
+  --space-8: 24px;
+  --space-9: 32px;
+  --space-10: 40px;
+  --space-11: 56px;
+  --space-12: 72px;
+  --space-13: 96px;
+  --space-14: 128px;
+
+  --section-pad-y: var(--space-13);
+  --section-pad-y-tight: var(--space-11);
+  --gutter: var(--space-9);
+  --measure: 62ch;
+  --measure-tight: 44ch;
+  --container: 1180px;
+  --container-narrow: 760px;
+
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  --border-width: 1px;
+  --rule-height: 3px;
+  --rule-width: 44px;
+}
+
+@media (max-width: 720px) {
+  :root {
+    --section-pad-y: var(--space-12);
+    --gutter: var(--space-6);
+  }
+}
+
+/* ── Elevation ─────────────────────────────────────────────────────── */
+:root {
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.40);
+  --shadow-md: 0 2px 6px rgba(0,0,0,0.45), 0 0 0 1px rgba(250,248,244,0.04);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,0.55), 0 0 0 1px rgba(250,248,244,0.06);
+}
+.on-paper {
+  --shadow-sm: 0 1px 2px rgba(26,26,26,0.05);
+  --shadow-md: 0 2px 8px rgba(26,26,26,0.07);
+  --shadow-lg: 0 12px 32px rgba(26,26,26,0.10);
+}
+
+/* ── Motion ────────────────────────────────────────────────────────── */
+:root {
+  --duration-instant: 90ms;
+  --duration-fast: 160ms;
+  --duration-base: 240ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --transition-control: color var(--duration-fast) var(--ease-standard),
+                        background-color var(--duration-fast) var(--ease-standard),
+                        border-color var(--duration-fast) var(--ease-standard),
+                        box-shadow var(--duration-fast) var(--ease-standard);
+}
+@media (prefers-reduced-motion: reduce) {
+  :root { --duration-instant: 0ms; --duration-fast: 0ms; --duration-base: 0ms; }
+}

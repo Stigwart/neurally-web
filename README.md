@@ -18,10 +18,25 @@ Then visit http://localhost:8000.
 
 | Path | What |
 |---|---|
-| `index.html` | The whole one-page site (hero, problem, approach, engagements, about, contact) |
-| `css/styles.css` | All styling |
-| `js/main.js` | Small bits of page behaviour (currently just the footer year) |
-| `assets/` | Images, logos, etc. (empty for now) |
+| `index.html` | Home: hero, the problem, five-stage path, why Neurally, diagnostic CTA |
+| `approach.html` | Three questions, the path, how opportunities are sized, principles, boundaries |
+| `services.html` | The four engagements, fit, common questions |
+| `about.html` | Founder, scope of expertise, career evidence (clearly marked as pre-Neurally) |
+| `contact.html` | Scoping-conversation form (opens a pre-filled email, no backend) |
+| `404.html` | GitHub Pages not-found page (uses root-relative paths) |
+| `css/tokens.css` | Design tokens from the Neurally design system (Claude Design project) |
+| `css/styles.css` | Component styles: nav, section, rule, button, tag, card, stat, stage list, forms, footer |
+| `js/main.js` | Footer year and the contact form's mailto composer |
+| `assets/` | Logo mark (warm off-white colourway, C2PA metadata stripped) |
+
+The nav and footer are repeated in each page. If you change one, change them all.
+
+## Design system
+
+Visuals come from the **Neurally design system** in Claude Design (dark Ink ground,
+Archivo + Instrument Sans, four stage colours: blue, yellow, sage, coral). Stage
+colours are semantic. On this site they map to the four engagements: Diagnostic (blue),
+Design (yellow), Leadership (sage), Advisory (coral).
 
 ## Content source of truth
 
@@ -31,6 +46,5 @@ there first, then bring copy changes back into `index.html`.
 
 ## Deploying
 
-Not yet deployed. Being static HTML/CSS/JS, it can be hosted anywhere with zero
-config — GitHub Pages, Netlify, Vercel, Cloudflare Pages all work by pointing
-at this repo root.
+GitHub Pages serves `main` from the repo root at https://www.neurally.co.uk (see
+`CNAME`). Pushing to `main` publishes.
