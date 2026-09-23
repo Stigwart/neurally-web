@@ -76,6 +76,10 @@ img, svg { display: block; max-width: 100%; }
   grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
 }
 .grid--260 { grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); }
+/* Fixed 3 → 2 → 1 columns, so six items always fill complete rows */
+.grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 960px) { .grid--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .grid--3 { grid-template-columns: 1fr; } }
 
 .actions { display: flex; gap: var(--space-5); flex-wrap: wrap; }
 
@@ -318,24 +322,49 @@ img, svg { display: block; max-width: 100%; }
   border-bottom: var(--border-width) solid var(--border-subtle);
   padding: var(--space-11) var(--gutter);
 }
+/* 1, 2 or 4 columns (never 3 + an orphan). Each stat spans three subgrid
+   rows so problem, value and label line up across every card in a row. */
 .stat-band .container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(190px, 100%), 1fr));
+  grid-template-columns: 1fr;
   gap: var(--space-10);
 }
+@media (min-width: 600px) {
+  .stat-band .container { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1100px) {
+  .stat-band .container { grid-template-columns: repeat(4, 1fr); }
+}
 .stat { display: flex; flex-direction: column; gap: var(--space-4); }
+@supports (grid-template-rows: subgrid) {
+  .stat {
+    display: grid;
+    grid-row: span 3;
+    grid-template-rows: subgrid;
+    row-gap: var(--space-4);
+    align-content: start;
+  }
+}
+.stat__problem { color: var(--text-secondary); }
 .stat__value {
   font-family: var(--font-display);
   font-weight: var(--weight-regular);
-  font-size: var(--type-display-m-size);
-  line-height: var(--type-display-m-line);
-  letter-spacing: var(--type-display-m-track);
+  font-size: var(--type-h1-size);
+  line-height: var(--type-h1-line);
+  letter-spacing: var(--type-h1-track);
+  text-wrap: balance;
+}
+@media (min-width: 1100px) and (max-width: 1279px) {
+  .stat__value {
+    font-size: var(--type-h2-size);
+    line-height: var(--type-h2-line);
+    letter-spacing: var(--type-h2-track);
+  }
 }
 .stat__label {
   font-size: var(--type-body-s-size);
   line-height: var(--type-body-s-line);
   color: var(--text-secondary);
-  max-width: 26ch;
 }
 .stat--diagnose .stat__value { color: var(--stage-diagnose); }
 .stat--redesign .stat__value { color: var(--stage-redesign); }
@@ -357,6 +386,7 @@ img, svg { display: block; max-width: 100%; }
   line-height: var(--type-body-s-line);
   color: var(--text-secondary);
 }
+.stages p.stages__offers { margin-top: auto; padding-top: var(--space-3); }
 
 /* ── Card ──────────────────────────────────────────────────────────── */
 .card {
@@ -458,6 +488,7 @@ a.card:hover .card__meta { color: var(--text-primary); }
   color: var(--text-secondary);
 }
 .marked .rule { margin-top: 13px; }
+.marked strong { color: var(--text-primary); font-weight: var(--weight-medium); }
 
 /* ── Numbered list (display numerals) ──────────────────────────────── */
 .numbered {
@@ -608,16 +639,12 @@ textarea.input { resize: vertical; }
   max-width: 30ch;
   margin-top: var(--space-5);
 }
-.footer__base {
-  margin-top: var(--space-12);
-  padding-top: var(--space-6);
-  border-top: var(--border-width) solid var(--border-subtle);
-  display: flex;
-  justify-content: space-between;
-  gap: var(--space-6);
-  flex-wrap: wrap;
-  font-size: var(--type-body-s-size);
+.footer__brand { display: flex; flex-direction: column; align-items: flex-start; }
+.footer__copyright {
+  font-size: var(--type-label-size);
   color: var(--text-muted);
+  margin-top: auto;
+  padding-top: var(--space-4);
 }
 
 /* ── Utilities ─────────────────────────────────────────────────────── */
@@ -635,15 +662,6 @@ textarea.input { resize: vertical; }
 
 .btn:disabled { opacity: 0.6; cursor: not-allowed; }
 .btn:disabled:active { transform: none; }
-
-/* ── Proof strip (career evidence, quieter than the stat band) ──────── */
-.proof-strip {
-  background: var(--surface-page);
-  border-bottom: var(--border-width) solid var(--border-subtle);
-  padding: var(--space-10) var(--gutter);
-}
-.proof-strip .kicker { margin-bottom: var(--space-6); }
-.proof-strip .marked { margin-bottom: var(--space-8); }
 
 /* ── About hero (photo + meta) ───────────────────────────────────────── */
 .about-hero {

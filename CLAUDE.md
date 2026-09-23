@@ -11,7 +11,7 @@ source of truth.
 All business documentation — the proposition, ICP, offerings, brand
 positioning, elevator pitches — is kept in Google Drive, **not** in this repo:
 
-`My Drive/Projects/ventures/neurally/` (Google Drive, linked as this venture's
+`My Drive/ventures/neurally/` (Google Drive, linked as this venture's
 docs folder)
 
 Start with `overview.md` in that folder for the full "Human Ratio" proposition

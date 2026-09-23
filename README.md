@@ -18,7 +18,7 @@ Then visit http://localhost:8000.
 
 | Path | What |
 |---|---|
-| `index.html` | Home: hero, entry-ladder stats, career proof strip, the problem, five-stage path, why Neurally, ladder recap CTA, hidden self-assessment/endorsements placeholders |
+| `index.html` | Home: hero, four problem/message pairs, why it stalls, four-stage path, why Neurally, ladder recap CTA, hidden self-assessment/endorsements placeholders |
 | `approach.html` | Three questions, the path, how opportunities are sized, governance in regulated environments, principles, boundaries |
 | `services.html` | The engagement ladder (free call, Workshop, Diagnostic, Deep Dive) plus unpriced Design/Leadership/Advisory, fit, common questions |
 | `about.html` | Founder hero (photo, LinkedIn), narrative, dated career timeline, career evidence (pre-Neurally), how I work, hidden endorsements |
@@ -26,7 +26,7 @@ Then visit http://localhost:8000.
 | `privacy.html` | Privacy notice covering the contact form, Calendly and GoatCounter |
 | `404.html` | GitHub Pages not-found page (uses root-relative paths) |
 | `css/tokens.css` | Design tokens from the Neurally design system (Claude Design project) |
-| `css/styles.css` | Component styles: nav, section, rule, button, tag, card, stat, stage list, forms, footer, plus proof-strip/timeline/about-hero/offer-group added for the Sept 2026 update |
+| `css/styles.css` | Component styles: nav, section, rule, button, tag, card, stat, stage list, forms, footer, plus timeline/about-hero/offer-group added for the Sept 2026 update |
 | `js/main.js` | Footer year and the contact form's Web3Forms submit handler |
 | `assets/` | Logo mark (warm off-white colourway, C2PA metadata stripped), founder headshot |
 
@@ -36,9 +36,12 @@ The nav and footer are repeated in each page. If you change one, change them all
 
 Visuals come from the **Neurally design system** in Claude Design (dark Ink ground,
 Archivo + Instrument Sans, four stage colours: blue, yellow, sage, coral). Stage
-colours are semantic. On Services, the free call is neutral (no stage colour); the
-Workshop, Diagnostic and Deep Dive all use blue (three depths of one "Decide" phase);
-Design is yellow, Leadership is sage, Advisory is coral.
+colours are semantic and map to the four stages of the work: Decide (blue), Design
+(yellow), Deliver (sage) and Embed (coral). The home page's four key messages use the
+same order. On Services, the free call is neutral (no stage colour); the Workshop,
+Diagnostic and Deep Dive are blue (three depths of Decide); Operating Model Design is
+yellow; Implementation Support and Leadership are sage; Training is coral; Advisory
+runs alongside any stage and uses blue.
 
 ## Third-party integrations
 
