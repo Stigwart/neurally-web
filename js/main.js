@@ -3,15 +3,40 @@ document.querySelectorAll("[data-year]").forEach(function (el) {
   el.textContent = new Date().getFullYear();
 });
 
-// Contact form: compose a pre-filled email rather than posting anywhere,
-// since the site is static and has no backend.
+// Contact form: submit via Web3Forms, with a mailto fallback if it fails.
+// Replace WEB3FORMS_ACCESS_KEY below with the real key before go-live.
 (function () {
   var form = document.getElementById("contact-form");
   if (!form) return;
-  var to = form.getAttribute("action").replace(/^mailto:/, "");
+
+  var WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+  var WEB3FORMS_ACCESS_KEY = "365c5876-bc42-4524-b242-26a0ef6928e6";
+  var fallbackHref = form.getAttribute("data-fallback") || "mailto:hello@neurally.co.uk";
+  var submitBtn = form.querySelector("button[type=submit]");
+  var statusEl = document.getElementById("form-status");
+  var honeypot = document.getElementById("botcheck");
+
+  var setStatus = function (kind, message) {
+    if (!statusEl) return;
+    statusEl.hidden = false;
+    statusEl.textContent = message;
+    statusEl.className = "field__hint form__status" + (kind ? " form__status--" + kind : "");
+  };
+
+  var addFallbackLink = function () {
+    if (!statusEl) return;
+    var link = document.createElement("a");
+    link.href = fallbackHref;
+    link.textContent = "email us directly instead";
+    statusEl.appendChild(document.createTextNode(" — "));
+    statusEl.appendChild(link);
+  };
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
+
+    if (honeypot && honeypot.value) return; // likely a bot — drop silently
+
     var valid = true;
     form.querySelectorAll("[required]").forEach(function (field) {
       var ok = field.checkValidity();
@@ -22,17 +47,31 @@ document.querySelectorAll("[data-year]").forEach(function (el) {
 
     var v = function (id) { return document.getElementById(id).value.trim(); };
     var subject = "Scoping conversation" + (v("company") ? " — " + v("company") : "");
-    var body = [
-      v("message"),
-      "",
-      "Name: " + v("name"),
-      "Email: " + v("email"),
-      v("company") ? "Company and role: " + v("company") : ""
-    ].join("\n").trim();
 
-    window.location.href = "mailto:" + to +
-      "?subject=" + encodeURIComponent(subject) +
-      "&body=" + encodeURIComponent(body);
+    var data = new FormData(form);
+    data.set("access_key", WEB3FORMS_ACCESS_KEY);
+    data.set("subject", subject);
+
+    if (submitBtn) submitBtn.disabled = true;
+    setStatus(null, "Sending…");
+
+    fetch(WEB3FORMS_ENDPOINT, {
+      method: "POST",
+      body: data,
+      headers: { Accept: "application/json" }
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (json) {
+        if (!json.success) throw new Error(json.message || "Submission failed");
+        setStatus("success", "Thanks — I'll reply personally within two working days.");
+        form.reset();
+        if (submitBtn) submitBtn.disabled = false;
+      })
+      .catch(function () {
+        setStatus("error", "Something went wrong sending this.");
+        addFallbackLink();
+        if (submitBtn) submitBtn.disabled = false;
+      });
   });
 
   form.addEventListener("input", function (e) {

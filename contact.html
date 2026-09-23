@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contact — Neurally</title>
-  <meta name="description" content="Book a scoping conversation with Neurally to set out the business problem, assess fit and agree the priority areas for a diagnostic.">
+  <meta name="description" content="Book a free discovery call or send a message to Neurally to set out the business problem, check fit, and agree whether a Workshop, Diagnostic or Deep Dive is the right next step.">
   <meta name="theme-color" content="#1A1A1A">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Neurally">
   <meta property="og:title" content="Contact — Neurally">
-  <meta property="og:description" content="Book a scoping conversation with Neurally to set out the business problem, assess fit and agree the priority areas for a diagnostic.">
+  <meta property="og:description" content="Book a free discovery call or send a message to Neurally to set out the business problem, check fit, and agree whether a Workshop, Diagnostic or Deep Dive is the right next step.">
   <meta property="og:url" content="https://www.neurally.co.uk/contact.html">
   <link rel="canonical" href="https://www.neurally.co.uk/contact.html">
   <link rel="icon" type="image/svg+xml" href="assets/logo-warm-off-white.svg">
@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Instrument+Sans:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/styles.css">
+  <script data-goatcounter="https://neurally.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -42,12 +43,25 @@
         <h1 class="display-m section__title">Book a scoping conversation</h1>
         <p class="section__intro">
           Tell us what you're trying to change. We'll use the first conversation to set out the business
-          problem, check the fit, and agree the priority areas a diagnostic would cover. If a diagnostic
-          isn't the right next step, we'll say so.
+          problem, check the fit, and agree whether a Workshop, Diagnostic or Deep Dive is the right
+          next step. If none of them are, we'll say so.
         </p>
 
+        <div class="card" style="margin-bottom: var(--space-10);">
+          <p class="kicker">Prefer to talk?</p>
+          <h2 style="font-family: var(--font-display); font-weight: var(--weight-regular); font-size: var(--type-h2-size);">Book a 30-min discovery call</h2>
+          <p>Free, no obligation. Thirty minutes to talk through what you're dealing with.</p>
+          <div class="actions">
+            <a class="btn btn--accent" href="https://calendly.com/stuartdavis/30min" target="_blank" rel="noopener">Book via Calendly</a>
+          </div>
+        </div>
+
         <div class="contact-layout">
-          <form class="form" id="contact-form" action="mailto:hello@neurally.co.uk" method="post" enctype="text/plain" novalidate>
+          <form class="form" id="contact-form" data-fallback="mailto:hello@neurally.co.uk" novalidate>
+            <div class="field full visually-hidden" aria-hidden="true">
+              <label for="botcheck">Leave this field empty</label>
+              <input class="input" id="botcheck" name="botcheck" tabindex="-1" autocomplete="off">
+            </div>
             <div class="field">
               <label for="name">Name</label>
               <input class="input" id="name" name="name" autocomplete="name" required>
@@ -66,8 +80,9 @@
               <span class="field__hint">Two or three lines is plenty.</span>
             </div>
             <div class="full">
-              <button class="btn btn--primary btn--lg" type="submit">Send via email</button>
-              <p class="field__hint" style="margin-top: var(--space-5);">This opens a pre-filled message in your email app. Nothing is stored on this site.</p>
+              <button class="btn btn--primary btn--lg" type="submit">Send message</button>
+              <p class="field__hint" style="margin-top: var(--space-5);">Sent securely via Web3Forms. See the <a href="privacy.html">privacy notice</a> for what we keep. I reply personally within two working days.</p>
+              <p id="form-status" class="field__hint" aria-live="polite" hidden></p>
             </div>
           </form>
 
@@ -75,12 +90,12 @@
             <div class="card">
               <p class="kicker">Direct</p>
               <h3><a href="mailto:hello@neurally.co.uk">hello@neurally.co.uk</a></h3>
-              <p>You'll hear back from the founder directly.</p>
+              <p>It comes straight to me.</p>
             </div>
             <div class="card">
               <p class="kicker">Before any fee</p>
               <h3>Scope comes first</h3>
-              <p>Evidence access, leadership participation, deliverables and boundaries are all confirmed before a fixed fee is agreed.</p>
+              <p>Before we agree a fee, we agree what we'll look at, who we need time with, and what you'll get.</p>
             </div>
           </aside>
         </div>
@@ -90,35 +105,36 @@
   <footer class="footer">
     <div class="container">
       <div class="footer__cols">
-        <div>
+        <div class="footer__brand">
           <a class="logo logo--stacked" href="./" aria-label="Neurally home">
             <img src="assets/logo-warm-off-white.svg" alt="">
             <span>neurally</span>
           </a>
           <p class="footer__tagline">AI &amp; business transformation advisory</p>
+          <p class="footer__copyright">© <span data-year>2026</span> Neurally</p>
+          <!-- TODO(Stuart): add company registration details (name, number, address) here once incorporated -->
         </div>
         <div class="footer__col">
           <p class="kicker">Company</p>
           <a href="approach.html">Approach</a>
           <a href="services.html">Services</a>
           <a href="about.html">About</a>
+          <a href="privacy.html">Privacy</a>
         </div>
         <div class="footer__col">
           <p class="kicker">Engagements</p>
+          <a href="https://calendly.com/stuartdavis/30min" target="_blank" rel="noopener">Free discovery call</a>
+          <a href="services.html#workshop">AI Opportunity Workshop</a>
           <a href="services.html#diagnostic">AI Advantage Diagnostic</a>
-          <a href="services.html#design">Transformation design</a>
-          <a href="services.html#leadership">Transformation leadership</a>
-          <a href="services.html#advisory">Board and investor advisory</a>
+          <a href="services.html#deep-dive">AI Transformation Deep Dive</a>
+          <a href="services.html">See all engagements →</a>
         </div>
         <div class="footer__col">
           <p class="kicker">Contact</p>
           <a href="mailto:hello@neurally.co.uk">hello@neurally.co.uk</a>
           <a href="contact.html">Book a scoping conversation</a>
+          <a href="https://www.linkedin.com/in/stuartgdavis/" target="_blank" rel="noopener">LinkedIn</a>
         </div>
-      </div>
-      <div class="footer__base">
-        <span>© <span data-year>2026</span> Neurally</span>
-        <span>neurally.co.uk</span>
       </div>
     </div>
   </footer>
