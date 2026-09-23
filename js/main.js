@@ -10,7 +10,7 @@ document.querySelectorAll("[data-year]").forEach(function (el) {
   if (!form) return;
 
   var WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
-  var WEB3FORMS_ACCESS_KEY = "WEB3FORMS_ACCESS_KEY";
+  var WEB3FORMS_ACCESS_KEY = "365c5876-bc42-4524-b242-26a0ef6928e6";
   var fallbackHref = form.getAttribute("data-fallback") || "mailto:hello@neurally.co.uk";
   var submitBtn = form.querySelector("button[type=submit]");
   var statusEl = document.getElementById("form-status");
