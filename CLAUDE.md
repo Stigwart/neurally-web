@@ -37,10 +37,9 @@ navigation (Linear project, go-to-market plan, related repos).
 4. Never publish invented client results, testimonials or case studies. The
    About page's numbers are Stuart's career evidence from the Drive doc and
    must stay labelled as pre-Neurally.
-5. The contact form posts to Web3Forms and the site carries GoatCounter
-   analytics; both use placeholder tokens (`WEB3FORMS_ACCESS_KEY`,
-   `GOATCOUNTER_CODE` in `js/main.js` and each page's `<head>`) that need
-   swapping for real values before go-live. The free discovery call links to
-   Calendly. None of this is a build step — still plain static HTML/JS.
+5. The contact form posts to Web3Forms (real access key live in `js/main.js`)
+   and the site carries GoatCounter analytics (`neurally.goatcounter.com`,
+   live in every page's `<head>`). The free discovery call links to Calendly.
+   None of this is a build step — still plain static HTML/JS.
 6. The founding-client discount (see Drive `proof-plan.md`) is private and
    network-only — never add it to this site.

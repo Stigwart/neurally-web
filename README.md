@@ -46,8 +46,8 @@ Design is yellow, Leadership is sage, Advisory is coral.
   `WEB3FORMS_ACCESS_KEY` in place of the placeholder before go-live.
 - **Calendly** — the free discovery call booking link
   (`https://calendly.com/stuartdavis/30min`), used as an external link, not embedded.
-- **GoatCounter** — cookie-free analytics, one script tag per page. Needs a real
-  `GOATCOUNTER_CODE` in place of the placeholder before go-live.
+- **GoatCounter** — cookie-free analytics, one script tag per page
+  (`neurally.goatcounter.com`).
 
 The founding-client discount mentioned in the Drive `proof-plan.md` is intentionally
 not documented here or anywhere in this repo — it's a private, network-only offer
