@@ -27,8 +27,8 @@ document.querySelectorAll("[data-year]").forEach(function (el) {
     if (!statusEl) return;
     var link = document.createElement("a");
     link.href = fallbackHref;
-    link.textContent = "email us directly instead";
-    statusEl.appendChild(document.createTextNode(" — "));
+    link.textContent = "Email us directly instead.";
+    statusEl.appendChild(document.createTextNode(" "));
     statusEl.appendChild(link);
   };
 
@@ -46,7 +46,7 @@ document.querySelectorAll("[data-year]").forEach(function (el) {
     if (!valid) return;
 
     var v = function (id) { return document.getElementById(id).value.trim(); };
-    var subject = "Scoping conversation" + (v("company") ? " — " + v("company") : "");
+    var subject = "Scoping conversation" + (v("company") ? ": " + v("company") : "");
 
     var data = new FormData(form);
     data.set("access_key", WEB3FORMS_ACCESS_KEY);
@@ -63,7 +63,7 @@ document.querySelectorAll("[data-year]").forEach(function (el) {
       .then(function (r) { return r.json(); })
       .then(function (json) {
         if (!json.success) throw new Error(json.message || "Submission failed");
-        setStatus("success", "Thanks — I'll reply personally within two working days.");
+        setStatus("success", "Thanks, I'll reply personally within two working days.");
         form.reset();
         if (submitBtn) submitBtn.disabled = false;
       })
