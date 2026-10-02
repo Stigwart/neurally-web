@@ -290,8 +290,8 @@ img, svg { display: block; max-width: 100%; }
   font-size: var(--type-display-l-size);
   line-height: var(--type-display-l-line);
   letter-spacing: var(--type-display-l-track);
-  max-width: min(20ch, 100%);
 }
+.hero__line { display: block; }
 .hero__lede {
   margin-top: var(--space-9);
   max-width: var(--measure);
