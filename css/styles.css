@@ -275,7 +275,6 @@ img, svg { display: block; max-width: 100%; }
   padding: var(--section-pad-y) var(--gutter);
 }
 .section--flush-top { padding-top: 0; }
-.section--tight-bottom { padding-bottom: var(--space-11); }
 .section > div > .rule { margin-bottom: var(--space-6); }
 .section__kicker { margin-bottom: var(--space-5); }
 .section__title { max-width: var(--measure-tight); margin-bottom: var(--space-9); }
@@ -731,6 +730,7 @@ textarea.input { resize: vertical; }
   line-height: var(--type-body-l-line);
   color: var(--text-secondary);
 }
+.about-hero__lead { color: var(--text-primary); font-weight: 600; }
 .about-hero--no-photo { grid-template-columns: 1fr; }
 @media (max-width: 640px) {
   .about-hero { grid-template-columns: minmax(0, 120px) minmax(0, 1fr); }
