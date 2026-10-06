@@ -27,9 +27,14 @@
       <img src="assets/logo-warm-off-white.svg" alt="">
       <span>neurally</span>
     </a>
-    <div class="nav__links">
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">
+      <svg class="nav__icon nav__icon--open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="nav__icon nav__icon--close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="nav__links" id="nav-links">
       <a class="nav__link" href="approach.html">Approach</a>
       <a class="nav__link" href="services.html">Services</a>
+      <a class="nav__link" href="assessment.html">Assessment</a>
       <a class="nav__link" href="about.html">About</a>
       <a class="nav__link" href="contact.html">Contact</a>
       <a class="btn btn--accent btn--sm" href="contact.html">Book a conversation</a>
@@ -61,6 +66,7 @@
         <h2 class="section__title" style="margin-top: var(--space-11);">What we collect, and why</h2>
         <ul class="marked">
           <li><span class="rule rule--redesign rule--short"></span><span><strong>Contact form:</strong> your name, work email, company/role (optional) and message, submitted through <a href="https://web3forms.com/" target="_blank" rel="noopener">Web3Forms</a>, a third-party form-delivery service, and forwarded to hello@neurally.co.uk. Web3Forms processes this data under its own privacy policy.</span></li>
+          <li><span class="rule rule--redesign rule--short"></span><span><strong>AI maturity assessment:</strong> your answers are scored in your browser and are not stored. Only if you choose to send your results does the same information as the contact form, plus your answers and score, go through Web3Forms to hello@neurally.co.uk. We count anonymous completions by result type in GoatCounter.</span></li>
           <li><span class="rule rule--redesign rule--short"></span><span><strong>Booking a call:</strong> if you book via <a href="https://calendly.com/stuartdavis/30min" target="_blank" rel="noopener">Calendly</a>, Calendly processes your name, email and chosen time under its own privacy policy.</span></li>
           <li><span class="rule rule--redesign rule--short"></span><span><strong>Analytics:</strong> this site uses <a href="https://www.goatcounter.com/" target="_blank" rel="noopener">GoatCounter</a>, a cookie-free analytics service that counts page visits in aggregate, without cookies or personal data.</span></li>
         </ul>
@@ -107,6 +113,7 @@
           <p class="kicker">Company</p>
           <a href="approach.html">Approach</a>
           <a href="services.html">Services</a>
+          <a href="assessment.html">Assessment</a>
           <a href="about.html">About</a>
           <a href="privacy.html">Privacy</a>
         </div>

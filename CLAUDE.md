@@ -32,8 +32,9 @@ navigation (Linear project, go-to-market plan, related repos).
 2. This is a plain static site: edit the `*.html` pages / `css/` / `js/main.js`
    directly, no build step, no framework. Nav and footer are duplicated in
    every page — keep them in sync.
-3. Six pages (Home, Approach, Services, About, Contact, Privacy). Don't add
-   pages unless Stuart asks for them.
+3. Six pages (Home, Approach, Services, About, Contact, Privacy) plus
+   `assessment.html` (AI maturity assessment, linked from the nav,
+   footer and home page; still `noindex`). Don't add pages unless Stuart asks for them.
 4. Never publish invented client results, testimonials or case studies. The
    About page's numbers are Stuart's career evidence from the Drive doc and
    must stay labelled as pre-Neurally.

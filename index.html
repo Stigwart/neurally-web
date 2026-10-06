@@ -27,9 +27,14 @@
       <img src="assets/logo-warm-off-white.svg" alt="">
       <span>neurally</span>
     </a>
-    <div class="nav__links">
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">
+      <svg class="nav__icon nav__icon--open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="nav__icon nav__icon--close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="nav__links" id="nav-links">
       <a class="nav__link" href="approach.html">Approach</a>
       <a class="nav__link" href="services.html">Services</a>
+      <a class="nav__link" href="assessment.html">Assessment</a>
       <a class="nav__link" href="about.html">About</a>
       <a class="nav__link" href="contact.html">Contact</a>
       <a class="btn btn--accent btn--sm" href="contact.html">Book a free discovery call</a>
@@ -162,16 +167,14 @@
       </div>
     </section>
 
-    <!-- Hidden pending the self-assessment tool, which is being built separately.
-         Remove the `hidden` attribute (and this comment) once it's ready to link. -->
-    <section class="section section--flush-top on-paper" hidden>
-      <div class="container--narrow">
+    <section class="section section--wide on-paper">
+      <div class="container">
         <span class="rule rule--diagnose"></span>
-        <p class="kicker section__kicker">Self-assessment</p>
-        <h2 class="section__title">How AI-ready is your leadership team?</h2>
-        <p class="section__intro">5-minute check. No sales call.</p>
+        <p class="kicker section__kicker">AI maturity assessment</p>
+        <h2 class="section__title">Where is your business on AI?</h2>
+        <p class="section__intro">Ten quick questions, about two minutes. See where you sit on Neurally's four-stage AI maturity model and where the biggest gap is. No sign-up.</p>
         <div class="actions">
-          <a class="btn btn--secondary" href="#">Start the check</a>
+          <a class="btn btn--secondary" href="assessment.html">Start the assessment</a>
         </div>
       </div>
     </section>
@@ -206,6 +209,7 @@
           <p class="kicker">Company</p>
           <a href="approach.html">Approach</a>
           <a href="services.html">Services</a>
+          <a href="assessment.html">Assessment</a>
           <a href="about.html">About</a>
           <a href="privacy.html">Privacy</a>
         </div>

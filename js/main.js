@@ -3,6 +3,35 @@ document.querySelectorAll("[data-year]").forEach(function (el) {
   el.textContent = new Date().getFullYear();
 });
 
+// Mobile nav: burger button toggles the link list (CSS only collapses it once .nav--js is set).
+(function () {
+  var nav = document.querySelector(".nav");
+  var toggle = nav && nav.querySelector(".nav__toggle");
+  var links = document.getElementById("nav-links");
+  if (!toggle || !links) return;
+  nav.classList.add("nav--js");
+
+  var setOpen = function (open) {
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Menu");
+    links.classList.toggle("is-open", open);
+  };
+
+  toggle.addEventListener("click", function () {
+    setOpen(toggle.getAttribute("aria-expanded") !== "true");
+  });
+  links.addEventListener("click", function (e) {
+    if (e.target.closest("a")) setOpen(false);
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
+      setOpen(false);
+      toggle.focus();
+    }
+  });
+  window.matchMedia("(min-width: 721px)").addEventListener("change", function () { setOpen(false); });
+})();
+
 // Contact form: submit via Web3Forms, with a mailto fallback if it fails.
 // Replace WEB3FORMS_ACCESS_KEY below with the real key before go-live.
 (function () {
