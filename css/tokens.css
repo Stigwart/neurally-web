@@ -178,8 +178,7 @@
   --space-13: 96px;
   --space-14: 128px;
 
-  --section-pad-y: var(--space-13);
-  --section-pad-y-tight: var(--space-11);
+  --section-pad-y: var(--space-11);
   --gutter: var(--space-9);
   --measure: 62ch;
   --measure-tight: 44ch;
@@ -198,7 +197,6 @@
 
 @media (max-width: 720px) {
   :root {
-    --section-pad-y: var(--space-12);
     --gutter: var(--space-6);
   }
 }
