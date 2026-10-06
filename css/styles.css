@@ -249,6 +249,8 @@ img, svg { display: block; max-width: 100%; }
   margin-bottom: var(--space-10);
 }
 .section__intro:last-child { margin-bottom: 0; }
+/* Wide sections: content runs the full container width from the left edge. */
+.section--wide :is(.section__title, .section__intro, .marked, .prose, .quote) { max-width: none; }
 
 .prose {
   display: flex;
@@ -478,6 +480,7 @@ a.card:hover .card__meta { color: var(--text-primary); }
   display: flex;
   flex-direction: column;
   gap: var(--space-6);
+  max-width: var(--measure);
 }
 .marked li {
   display: flex;
@@ -691,6 +694,33 @@ textarea.input { resize: vertical; }
 @media (max-width: 480px) {
   .about-hero { grid-template-columns: 1fr; }
   .about-hero__photo { max-width: 140px; }
+}
+
+/* ── Founder (home page bio) ──────────────────────────────────────── */
+.founder {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: var(--space-9);
+  align-items: start;
+}
+.founder__profile { margin: 0; display: flex; flex-direction: column; gap: var(--space-3); }
+.founder__photo {
+  width: 120px;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  background: var(--surface-raised);
+}
+.founder__name {
+  font-size: var(--type-body-s-size);
+  font-weight: var(--weight-medium);
+  color: var(--text-primary);
+}
+.founder__more { margin-top: var(--space-7); }
+@media (max-width: 720px) {
+  .founder { grid-template-columns: 1fr; gap: var(--space-6); }
 }
 
 /* ── Timeline (dated career history) ──────────────────────────────────── */

@@ -103,7 +103,7 @@
   --border-strong: var(--ink-200);
 
   --accent: var(--blue-deep);
-  --accent-hover: var(--blue);
+  --accent-hover: var(--ink-850);
   --accent-pressed: #5E85A3;
   --accent-tint: #EAF1F7;
 }
