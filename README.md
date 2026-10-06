@@ -18,16 +18,18 @@ Then visit http://localhost:8000.
 
 | Path | What |
 |---|---|
-| `index.html` | Home: hero, four problem/message pairs, why it stalls, four-stage path, why Neurally, ladder recap CTA, hidden self-assessment/endorsements placeholders |
+| `index.html` | Home: hero, four problem/message pairs, why it stalls, four-stage path, why Neurally, ladder recap CTA, AI maturity assessment promo, hidden endorsements placeholder |
 | `approach.html` | Three questions, the path, how opportunities are sized, governance in regulated environments, principles, boundaries |
 | `services.html` | The engagement ladder (free call, Workshop, Diagnostic, Deep Dive) plus unpriced Design/Leadership/Advisory, fit, common questions |
 | `about.html` | Founder hero (photo, LinkedIn), narrative, dated career timeline, career evidence (pre-Neurally), how I work, hidden endorsements |
 | `contact.html` | Calendly booking CTA plus a form that posts to Web3Forms, with a mailto fallback on failure |
+| `assessment.html` | AI maturity assessment (linked from nav, footer and home; still `noindex`): 10 one-per-screen questions, scored in the browser into four scenarios, with an optional form that emails results via Web3Forms |
 | `privacy.html` | Privacy notice covering the contact form, Calendly and GoatCounter |
 | `404.html` | GitHub Pages not-found page (uses root-relative paths) |
 | `css/tokens.css` | Design tokens from the Neurally design system (Claude Design project) |
 | `css/styles.css` | Component styles: nav, section, rule, button, tag, card, stat, stage list, forms, footer, plus timeline/about-hero/offer-group added for the Sept 2026 update |
 | `js/main.js` | Footer year and the contact form's Web3Forms submit handler |
+| `js/assessment.js` | Assessment questions, scoring, scenarios and results form (shares the Web3Forms key with `main.js`) |
 | `assets/` | Logo mark (warm off-white colourway, C2PA metadata stripped), founder headshot |
 
 The nav and footer are repeated in each page. If you change one, change them all.

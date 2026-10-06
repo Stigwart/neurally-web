@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI maturity assessment | Neurally</title>
+  <meta name="description" content="A two-minute self-assessment of where your business sits on AI maturity, with a view of how Neurally could help.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#1A1A1A">
+  <link rel="icon" type="image/svg+xml" href="assets/logo-warm-off-white.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Instrument+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script data-goatcounter="https://neurally.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <nav class="nav" aria-label="Main">
+    <a class="logo" href="./" aria-label="Neurally home">
+      <img src="assets/logo-warm-off-white.svg" alt="">
+      <span>neurally</span>
+    </a>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">
+      <svg class="nav__icon nav__icon--open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="nav__icon nav__icon--close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="nav__links" id="nav-links">
+      <a class="nav__link" href="approach.html">Approach</a>
+      <a class="nav__link" href="services.html">Services</a>
+      <a class="nav__link" href="assessment.html" aria-current="page">Assessment</a>
+      <a class="nav__link" href="about.html">About</a>
+      <a class="nav__link" href="contact.html">Contact</a>
+      <a class="btn btn--accent btn--sm" href="contact.html">Book a conversation</a>
+    </div>
+  </nav>
+    <main id="main">
+    <section class="section">
+      <div class="container container--narrow" id="assessment">
+        <noscript>
+          <p class="section__intro">This assessment needs JavaScript. You can <a href="contact.html">get in touch</a> instead and we'll talk it through.</p>
+        </noscript>
+
+        <!-- Intro -->
+        <div id="screen-intro" hidden>
+          <span class="rule rule--measure"></span>
+          <p class="kicker section__kicker">AI maturity assessment</p>
+          <h1 class="display-m section__title">Where is your business on AI?</h1>
+          <p class="section__intro">
+            Ten quick questions about how your organisation is using AI today. You'll see where you sit
+            on a four-stage scale, where the biggest gap is, and how we could help. It takes about two minutes.
+          </p>
+          <div class="actions">
+            <button class="btn btn--primary btn--lg" type="button" id="start-btn">Start the assessment</button>
+          </div>
+          <p class="field__hint assess-note">No sign-up. Your answers stay in your browser unless you choose to send them to me.</p>
+        </div>
+
+        <!-- Quiz -->
+        <div id="screen-quiz" hidden>
+          <div class="assess-progress">
+            <div class="assess-progress__track" id="progress" role="progressbar" aria-label="Assessment progress" aria-valuemin="1" aria-valuemax="10" aria-valuenow="1">
+              <div class="assess-progress__bar" id="progress-bar"></div>
+            </div>
+            <p class="kicker" id="progress-label" aria-live="polite">Question 1 of 10</p>
+          </div>
+          <fieldset class="assess-q" aria-labelledby="q-title">
+            <legend class="visually-hidden">Question</legend>
+            <h1 class="assess-q__title" id="q-title" tabindex="-1"></h1>
+            <p class="assess-q__hint field__hint" id="q-hint"></p>
+            <div id="q-options" class="assess-options"></div>
+          </fieldset>
+          <div class="assess-nav">
+            <button class="btn btn--ghost" type="button" id="q-back">← Back</button>
+            <button class="btn btn--primary" type="button" id="q-next" disabled>Next</button>
+          </div>
+          <p class="field__hint assess-note">Tip: press 1 to 4 to choose an answer.</p>
+        </div>
+
+        <!-- Result -->
+        <div id="screen-result" hidden>
+          <span class="rule rule--measure"></span>
+          <p class="kicker section__kicker">Your result <span aria-hidden="true">·</span> <span id="r-stage"></span></p>
+          <h1 class="display-m section__title" id="r-name" tabindex="-1"></h1>
+          <p class="assess-score"><span id="r-score"></span> <span class="assess-score__note">self-assessed and indicative</span></p>
+          <p class="section__intro" id="r-means"></p>
+
+          <h2 class="assess-h2">Where you stand</h2>
+          <div class="assess-bars" id="r-bars"></div>
+
+          <div class="card assess-gap" id="r-gap">
+            <p class="kicker assess-gap__title"></p>
+            <p class="assess-gap__body"></p>
+          </div>
+
+          <h2 class="assess-h2">How Neurally can help</h2>
+          <p class="prose prose--l" id="r-help"></p>
+
+          <div class="card assess-cta">
+            <p class="kicker">Next step</p>
+            <h2 id="r-cta-title"></h2>
+            <p>Free, no obligation. Book thirty minutes, or send me your results using the form below and I'll reply personally.</p>
+            <div class="actions">
+              <a class="btn btn--accent" href="https://calendly.com/stuartdavis/30min" target="_blank" rel="noopener">Book a free discovery call</a>
+            </div>
+          </div>
+
+          <form class="form assess-form" id="assess-form" novalidate>
+            <div class="field full visually-hidden" aria-hidden="true">
+              <label for="assess-botcheck">Leave this field empty</label>
+              <input class="input" id="assess-botcheck" name="botcheck" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="field">
+              <label for="assess-name">Name</label>
+              <input class="input" id="assess-name" name="name" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="assess-email">Work email</label>
+              <input class="input" id="assess-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required>
+            </div>
+            <div class="field full">
+              <label for="assess-company">Company and role</label>
+              <input class="input" id="assess-company" name="company" autocomplete="organization">
+            </div>
+            <div class="field full">
+              <label for="assess-note">Anything you'd like me to know? (optional)</label>
+              <textarea class="input" id="assess-note" name="note" rows="3"></textarea>
+            </div>
+            <div class="full">
+              <button class="btn btn--primary btn--lg" type="submit">Send my results</button>
+              <p class="field__hint" style="margin-top: var(--space-5);">Your answers and score are included in the email to me. Sent via Web3Forms; see the <a href="privacy.html">privacy notice</a>.</p>
+            </div>
+          </form>
+          <p class="assess-status form__status" id="assess-status" role="status" tabindex="-1" hidden></p>
+
+          <div class="assess-share">
+            <label class="field__hint" for="r-share">Link to this result</label>
+            <div class="assess-share__row">
+              <input class="input" id="r-share" readonly>
+              <button class="btn btn--secondary" type="button" id="copy-link">Copy link</button>
+            </div>
+            <button class="btn btn--ghost btn--sm" type="button" id="retake-btn">Retake the assessment</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__cols">
+        <div class="footer__brand">
+          <a class="logo logo--stacked" href="./" aria-label="Neurally home">
+            <img src="assets/logo-warm-off-white.svg" alt="">
+            <span>neurally</span>
+          </a>
+          <p class="footer__tagline">AI &amp; business transformation advisory</p>
+          <p class="footer__copyright">© <span data-year>2026</span> Neurally</p>
+          <!-- TODO(Stuart): add company registration details (name, number, address) here once incorporated -->
+        </div>
+        <div class="footer__col">
+          <p class="kicker">Company</p>
+          <a href="approach.html">Approach</a>
+          <a href="services.html">Services</a>
+          <a href="assessment.html">Assessment</a>
+          <a href="about.html">About</a>
+          <a href="privacy.html">Privacy</a>
+        </div>
+        <div class="footer__col">
+          <p class="kicker">Engagements</p>
+          <a href="https://calendly.com/stuartdavis/30min" target="_blank" rel="noopener">Free discovery call</a>
+          <a href="services.html#workshop">AI Opportunity Workshop</a>
+          <a href="services.html#diagnostic">AI Advantage Diagnostic</a>
+          <a href="services.html#deep-dive">AI Transformation Deep Dive</a>
+          <a href="services.html">See all engagements →</a>
+        </div>
+        <div class="footer__col">
+          <p class="kicker">Contact</p>
+          <a href="mailto:hello@neurally.co.uk">hello@neurally.co.uk</a>
+          <a href="contact.html">Book a free discovery call</a>
+          <a href="https://www.linkedin.com/in/stuartgdavis/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+  <script src="js/assessment.js"></script>
+</body>
+</html>

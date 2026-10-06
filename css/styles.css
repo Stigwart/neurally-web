@@ -137,9 +137,48 @@ img, svg { display: block; max-width: 100%; }
   border-bottom-color: var(--accent);
 }
 
-@media (max-width: 560px) {
-  .nav__links { gap: var(--space-5) var(--space-7); }
-  .nav .btn { display: none; }
+.nav__toggle { display: none; }
+
+/* Mobile and tablet: links collapse under a burger button in the top-right.
+   The collapse only applies once main.js adds .nav--js, so the links stay
+   visible if JavaScript is unavailable. */
+@media (max-width: 720px) {
+  .nav { position: relative; flex-wrap: wrap; }
+  .nav__toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin: -10px calc(-1 * var(--space-5)) -10px 0;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: var(--transition-control);
+  }
+  .nav__toggle:hover { background: var(--surface-raised); }
+  .nav__icon--close, .nav__toggle[aria-expanded="true"] .nav__icon--open { display: none; }
+  .nav__toggle[aria-expanded="true"] .nav__icon--close { display: block; }
+
+  .nav__links { flex-basis: 100%; gap: var(--space-5) var(--space-7); }
+  .nav--js .nav__links {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding-top: var(--space-4);
+  }
+  .nav--js .nav__links.is-open { display: flex; }
+  .nav--js .nav__link {
+    padding: var(--space-5) 0;
+    border-bottom: var(--border-width) solid var(--border-subtle);
+    font-size: var(--type-body-size);
+  }
+  .nav--js .nav__link[aria-current="page"] { border-bottom-color: var(--accent); }
+  .nav--js .nav__links .btn { align-self: flex-start; margin-top: var(--space-6); }
 }
 
 /* ── Logo ──────────────────────────────────────────────────────────── */
@@ -302,6 +341,11 @@ img, svg { display: block; max-width: 100%; }
   color: var(--text-secondary);
 }
 .hero .actions { margin-top: var(--space-10); }
+
+/* Keep the one-sentence lede on a single line once there's room for it */
+@media (min-width: 1100px) {
+  .hero__lede { max-width: none; white-space: nowrap; }
+}
 
 @media (max-width: 720px) {
   .hero { padding-top: var(--space-12); }
@@ -769,3 +813,149 @@ textarea.input { resize: vertical; }
 .form__status { margin-top: var(--space-5); }
 .form__status--error { color: var(--coral); }
 .form__status a { color: inherit; }
+
+/* ── Assessment (assessment.html) ──────────────────────────────────── */
+.assess-note { margin-top: var(--space-7); }
+
+.assess-progress { display: flex; flex-direction: column; gap: var(--space-5); margin-bottom: var(--space-10); }
+.assess-progress__track {
+  height: 4px;
+  background: var(--border-subtle);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.assess-progress__bar {
+  height: 100%;
+  width: 0;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.assess-q { border: 0; padding: 0; margin: 0; min-width: 0; }
+.assess-q__title {
+  font-family: var(--font-display);
+  font-weight: var(--weight-regular);
+  font-size: var(--type-headline-size, 34px);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  max-width: 24ch;
+  outline: none;
+}
+.assess-q__hint { margin-top: var(--space-5); }
+
+.assess-options {
+  --opt-accent: var(--accent);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  margin-top: var(--space-9);
+}
+.assess-options--diagnose { --opt-accent: var(--stage-diagnose); }
+.assess-options--redesign { --opt-accent: var(--stage-redesign); }
+.assess-options--lead { --opt-accent: var(--stage-lead); }
+.assess-options--measure { --opt-accent: var(--stage-measure); }
+
+.assess-option {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-6);
+  padding: var(--space-6) var(--space-7);
+  background: var(--surface-raised);
+  border: var(--border-width) solid var(--border-default);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition-control);
+}
+.assess-option:hover { border-color: var(--opt-accent); }
+.assess-option input { position: absolute; opacity: 0; pointer-events: none; }
+.assess-option:has(input:checked) {
+  border-color: var(--opt-accent);
+  background: var(--surface-overlay);
+}
+.assess-option:has(input:focus-visible) {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+.assess-option__key {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  font-size: var(--type-label-size);
+  color: var(--text-muted);
+  border: var(--border-width) solid var(--border-default);
+  border-radius: var(--radius-sm);
+  transition: var(--transition-control);
+}
+.assess-option:has(input:checked) .assess-option__key {
+  background: var(--opt-accent);
+  border-color: var(--opt-accent);
+  color: var(--text-inverse);
+}
+.assess-option__text { color: var(--text-primary); }
+
+.assess-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-5);
+  margin-top: var(--space-9);
+}
+.assess-nav .btn:only-child, .assess-nav #q-next { margin-left: auto; }
+.assess-nav [hidden] { display: none; }
+
+.assess-score { margin: calc(-1 * var(--space-4)) 0 var(--space-6); font-size: var(--type-body-l-size); color: var(--text-primary); }
+.assess-score__note { font-size: var(--type-body-s-size); color: var(--text-muted); margin-left: var(--space-4); }
+
+.assess-h2 { margin: var(--space-11) 0 var(--space-7); }
+
+.assess-bars { display: flex; flex-direction: column; gap: var(--space-7); }
+.assess-bar { --bar: var(--accent); }
+.assess-bar--diagnose { --bar: var(--stage-diagnose); }
+.assess-bar--redesign { --bar: var(--stage-redesign); }
+.assess-bar--lead { --bar: var(--stage-lead); }
+.assess-bar--measure { --bar: var(--stage-measure); }
+.assess-bar__head { display: flex; align-items: baseline; gap: var(--space-5); margin-bottom: var(--space-4); }
+.assess-bar__name { color: var(--bar); font-weight: var(--weight-medium); }
+.assess-bar__asks { color: var(--text-muted); font-size: var(--type-body-s-size); }
+.assess-bar__val { margin-left: auto; color: var(--text-secondary); font-size: var(--type-body-s-size); }
+.assess-bar__track { height: 8px; background: var(--border-subtle); border-radius: 4px; overflow: hidden; }
+.assess-bar__fill { height: 100%; background: var(--bar); border-radius: 4px; transition: width 0.5s ease; }
+
+.assess-gap { margin-top: var(--space-9); border-left: 3px solid var(--border-strong); }
+.assess-gap--diagnose { border-left-color: var(--stage-diagnose); }
+.assess-gap--redesign { border-left-color: var(--stage-redesign); }
+.assess-gap--lead { border-left-color: var(--stage-lead); }
+.assess-gap--measure { border-left-color: var(--stage-measure); }
+.assess-gap__body { font-size: var(--type-body-size); }
+
+.assess-cta { margin-top: var(--space-10); }
+.assess-form { margin-top: var(--space-10); }
+.assess-share { margin-top: var(--space-11); display: flex; flex-direction: column; gap: var(--space-4); align-items: flex-start; }
+.assess-share__row { display: flex; gap: var(--space-4); width: 100%; }
+
+@media (max-width: 560px) {
+  .assess-q__title { font-size: 26px; }
+  .assess-option { padding: var(--space-5) var(--space-6); }
+  .assess-share__row { flex-direction: column; }
+  .assess-bar__asks { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .assess-progress__bar, .assess-bar__fill, .assess-option { transition: none; }
+}
+#assessment [tabindex="-1"]:focus-visible { outline: none; }
+#assessment .rule { margin-bottom: var(--space-6); }
+.assess-status { margin-top: var(--space-6); font-size: var(--type-body-s-size); color: var(--text-muted); outline: none; }
+.assess-status.form__status--success {
+  padding: var(--space-7) var(--space-8);
+  font-size: var(--type-body-size);
+  color: var(--text-primary);
+  background: var(--surface-raised);
+  border: var(--border-width) solid var(--border-subtle);
+  border-left: 3px solid var(--stage-lead);
+  border-radius: var(--radius-md);
+}
+.form[hidden] { display: none; }
+.btn[hidden] { display: none; }
