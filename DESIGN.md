@@ -47,6 +47,12 @@ typography:
     fontWeight: 400
     lineHeight: 1.1
     letterSpacing: "-0.03em"
+  section-title:
+    fontFamily: "Archivo, Helvetica Neue, Helvetica, Arial, sans-serif"
+    fontSize: "26px"
+    fontWeight: 500
+    lineHeight: 1.15
+    letterSpacing: "-0.025em"
   title:
     fontFamily: "Archivo, Helvetica Neue, Helvetica, Arial, sans-serif"
     fontSize: "20px"
@@ -180,7 +186,8 @@ A near-monochrome warm-neutral palette with four muted pastel accents. Blue doub
 ### Hierarchy
 - **Display L** (400, 56px, 1.04, -0.038em): Home hero headline. Drops to 40px under 720px.
 - **Display M** (400, 44px, 1.06, -0.035em): Inner-page openers, capped at 22ch. 34px on small screens.
-- **Headline** (400, 34px, 1.1, -0.03em): Stat values and section titles. 28px on small screens.
+- **Headline** (400, 34px, 1.1, -0.03em): Stat values (26px between 1100 and 1279px wide). 28px on small screens.
+- **Section title** (500, 26px, 1.15, -0.025em): Section headings (`h2`). 24px on small screens.
 - **Title** (500, 20px, 1.25, -0.02em): Card and timeline headings.
 - **Body L** (400, 18px, 1.6): Hero lede and section intros, max 62ch.
 - **Body** (400, 16px, 1.6): Default text.
@@ -190,7 +197,7 @@ A near-monochrome warm-neutral palette with four muted pastel accents. Blue doub
 ### Named Rules
 **The One Caps Rule.** Uppercase is used only for the 12px tracked kicker. Headings and buttons are sentence case.
 
-**The Light Headline Rule.** Display and headline sizes use regular weight (400). Weight is not used to create emphasis at large sizes.
+**The Light Headline Rule.** Display and headline sizes use regular weight (400). Weight is not used to create emphasis at large sizes. Smaller headings (section title, title) use medium (500).
 
 ## Layout
 
@@ -263,4 +270,4 @@ Left-aligned two-line display headline on Ink, blue kicker above, 18px lede, one
 - **Don't** use all-caps outside the kicker.
 - **Don't** add pill buttons, large radii, or heavy drop shadows.
 - **Don't** show the logo mark at full opacity at large size; it is a texture, not an illustration.
-- **Don't** use bold weights for large headings.
+- **Don't** use bold weights for display-size headings.
