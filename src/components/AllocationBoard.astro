@@ -31,7 +31,7 @@ const count = (lane: Lane) => rows.filter((r) => r.lane === lane).length;
   <div class="px-5 pt-4 pb-2">
     <div class="board-grid text-faint text-label font-mono uppercase" aria-hidden="true">
       <span>Task</span>
-      <div class="grid grid-cols-3 text-center">
+      <div class="grid grid-cols-3 gap-1 text-center text-[0.625rem] sm:text-label">
         {lanes.map((l) => (
           <span>{l.short}</span>
         ))}
