@@ -321,6 +321,7 @@ if (root) {
       // Swap the form for the confirmation so it's clear the email went.
       form.reset();
       form.hidden = true;
+      submitBtn.disabled = false;
       setStatus(
         statusEl,
         "success",

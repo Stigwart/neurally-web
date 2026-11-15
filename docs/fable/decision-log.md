@@ -118,3 +118,8 @@ before merging.
 - **D31. Privacy page now names Cloudflare as host and adds a "what this site
   does not do" section.** It becomes accurate at cutover, which is why the PR
   must not merge before Cloudflare is connected.
+- **D32. Node 22 LTS** is the minimum (Astro 7 requires 22.23.4 or newer).
+  `.nvmrc` pins CI to 22; set `NODE_VERSION=22` in Cloudflare Pages.
+- **D33. `.impeccable/design.json` was left as it is.** It is the design
+  skill's cached sidecar for the old site. Run `/impeccable document` once to
+  regenerate it from the new build if you use that tool's live mode.

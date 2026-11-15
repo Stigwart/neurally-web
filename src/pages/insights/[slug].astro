@@ -6,7 +6,7 @@ import Section from "../../components/Section.astro";
 import LinkCards from "../../components/LinkCards.astro";
 import Cta from "../../components/Cta.astro";
 import { site } from "../../data/site";
-import { article } from "../../lib/schema";
+import { article, person } from "../../lib/schema";
 import { getInsights, formatDate, tagSlug, resolveRelated } from "../../lib/content";
 
 export async function getStaticPaths() {
@@ -32,6 +32,7 @@ const crumbs = [
   ogType="article"
   crumbs={crumbs}
   schema={[
+    person(),
     article({
       title: d.title,
       description: d.description,

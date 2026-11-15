@@ -5,10 +5,8 @@ interface Props {
   id?: string;
   labelledby?: string;
   class?: string;
-  /** Draw a hairline along the top edge. */
-  rule?: boolean;
 }
-const { tone, size = "md", id, labelledby, class: className, rule = false } = Astro.props;
+const { tone, size = "md", id, labelledby, class: className } = Astro.props;
 ---
 
 <section
@@ -18,9 +16,6 @@ const { tone, size = "md", id, labelledby, class: className, rule = false } = As
   class:list={[size === "md" ? "py-section" : "py-section-sm", className]}
 >
   <div class="container-page">
-    {rule && (
-      <div class="bg-line -mt-(--spacing-section-sm) mb-(--spacing-section-sm) h-px" data-reveal="rule" />
-    )}
     <slot />
   </div>
 </section>

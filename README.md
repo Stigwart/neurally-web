@@ -10,7 +10,7 @@ database. Business documentation lives in Google Drive, not here (see
 
 ## Run it locally
 
-You need Node 20 or newer.
+You need Node 22.23.4 or newer (Node 22 LTS or 24 LTS).
 
 ```bash
 npm install
