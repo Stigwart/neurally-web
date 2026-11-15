@@ -62,7 +62,13 @@ Cloudflare Pages builds and deploys automatically:
 | Production branch      | `main`                |
 | Environment variable   | `NODE_VERSION` = `22` |
 
-Every pull request gets its own preview URL. Merging to `main` publishes.
+The Cloudflare Pages project is `neurally-web`, connected to this repository.
+Every pull request gets its own preview URL (Cloudflare comments it on the PR).
+Merging to `main` publishes to `www.neurally.co.uk`.
+
+DNS is held at GoDaddy, not Cloudflare. `www` is a CNAME to
+`neurally-web.pages.dev`, and the apex `neurally.co.uk` is forwarded to
+`https://www.neurally.co.uk` with a permanent redirect.
 
 `public/_redirects` holds the 301s from the old `.html` URLs. `public/_headers`
 holds the security headers and cache rules. Both are plain text and are read by
