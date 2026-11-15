@@ -71,7 +71,7 @@ faq:
   - q: Can you act as an interim or fractional product leader?
     a: Yes, through Transformation Leadership. It is for a fixed term, typically three to six months, and a fixed outcome. It is not open-ended cover.
   - q: Do you write code or supply engineers?
-    a: No. Your teams and partners build. We specify pilots, help choose and brief partners, and work alongside product and engineering on the first releases.
+    a: Your teams and partners write the code, and we stay with them through delivery. We specify pilots, help choose and brief partners, and work alongside product and engineering on the first releases.
 related:
   - teams/product-technology-leaders
   - use-cases/ai-operating-model

@@ -143,3 +143,8 @@ before merging.
   the website disclosure rule while the footer stays as "© Neurally" at
   Stuart's request. "England and Wales" is inferred from the company number
   format and the London office; correct `src/data/site.ts` if that is wrong.
+- **D37. Delivery is framed as "with you until it is live".** Stuart's steer
+  after comparing with High Intent Labs: Neurally can and should work with a
+  client all the way through to delivery, even where others write the
+  software. Answers that opened with "No, we don't build" now open with what
+  we do through delivery, and say who writes the code second.

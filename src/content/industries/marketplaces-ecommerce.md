@@ -67,7 +67,7 @@ faq:
   - q: Have you worked in marketplaces?
     a: Yes, as an operator. Stuart led product at Gumtree, Not On The High Street and ClearScore, and worked on search at HouseTrip, a holiday-rental marketplace. Those are roles held before Neurally, not Neurally client engagements.
   - q: Do you build recommendation or search systems?
-    a: No. We do not write the software or sell tools. We help you decide what is worth building, specify pilots and acceptance criteria, and help you choose and brief the teams or partners who build.
+    a: We do not write the software ourselves, but we stay with the work until it is live. We help you decide what is worth building, specify pilots and acceptance criteria, help you choose and brief the teams or partners who build, and work alongside them on the first releases.
   - q: We are smaller than the companies you worked at. Is that a problem?
     a: Not if the business has real operational complexity and a leadership team able to act. We work with businesses of roughly 50 to 1,000 people.
   - q: What will we have at the end of a Diagnostic?

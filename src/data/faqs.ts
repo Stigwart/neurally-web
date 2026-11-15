@@ -22,8 +22,8 @@ export const homeFaq: FaqItem[] = [
     a: "Not quite. AI is usually why people call, but most of the work is on the business itself: its economics, products, customers, organisation and delivery. AI is the catalyst for that work.",
   },
   {
-    q: "Do you build or implement the AI?",
-    a: "We lead agreed transformation work and support implementation hands-on: specifying pilots, choosing and briefing build partners, and working alongside your teams on the first releases. Your teams and specialist partners write the software. We do not sell software or resell tools, so the advice is not tied to a product.",
+    q: "Do you stay through to delivery?",
+    a: "Yes. We can work with you from the first decision until the change is live and your team runs it. We lead the agreed transformation work and support implementation hands-on: specifying pilots, choosing and briefing build partners, and working alongside your teams on the first releases. Your teams or specialist partners write the software. We do not sell software or resell tools, so our advice on what to build has nothing to sell.",
   },
   {
     q: "How is this different from a large consultancy?",

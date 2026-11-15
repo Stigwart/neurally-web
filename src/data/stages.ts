@@ -49,7 +49,7 @@ export const stages: Stage[] = [
     summary:
       "Test the riskiest assumptions in small, time-boxed pilots with agreed success measures, then build and scale what works.",
     detail:
-      "Every pilot ends in one of three decisions: proceed, adapt or stop. What proceeds is built with your teams and the partners we help you choose and brief.",
+      "Every pilot ends in one of three decisions: proceed, adapt or stop. We stay through the build: your teams or the partners we help you choose write the software, and we work alongside them until it is live.",
     outputs: [
       "Pilot specifications and acceptance criteria",
       "Partner selection and briefing",
