@@ -55,11 +55,11 @@ faq:
   - q: How do you diagnose a stalled AI programme?
     a: By testing it against three gaps. Were investment decisions made, with measures? Has the business around the technology changed? Does a named person own each result? The answer is an explicit proceed, adapt or stop for each initiative.
   - q: Will you tell us to stop things?
-    a: If the evidence says so, yes. Fees are fixed in advance and Neurally sells no software, so a recommendation to stop costs Neurally nothing.
+    a: If the evidence says so, yes. Fees are fixed in advance and we sell no software, so a recommendation to stop costs us nothing.
   - q: Can you take over leadership of the programme?
     a: Yes, through Transformation Leadership. It is embedded, fractional or interim, for a fixed term of typically three to six months and a fixed outcome, ending with capability transferred to your team.
   - q: Our problem is a digital or product transformation, not specifically AI. Is that in scope?
-    a: Yes. Mobilising or recovering a product, digital or AI transformation is one of the three situations Neurally is most often asked into.
+    a: Yes. Mobilising or recovering a product, digital or AI transformation is one of the three situations we are most often asked into.
   - q: How quickly can you start?
     a: That depends on availability at the time. The free discovery call is the fastest way to find out, and to check whether a Diagnostic is the right first step.
 related:

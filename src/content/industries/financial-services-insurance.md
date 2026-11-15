@@ -26,7 +26,7 @@ decisions:
     - title: What the value really is
       body: Faster handling creates capacity. It is a cost saving only when spending falls. Boards in regulated firms tend to ask, so the business case keeps the two apart.
     - title: What to build, buy or leave alone
-      body: Neurally sells no software, so advice on vendors and partners has nothing behind it. Third-party processing and data retention are covered in scoping.
+      body: We sell no software, so advice on vendors and partners has nothing behind it. Third-party processing and data retention are covered in scoping.
 risks:
   heading: What tends to go wrong.
   items:
@@ -63,7 +63,7 @@ evidence:
       where: ClearScore
 faq:
   - q: Do you give regulatory or legal advice?
-    a: No. Neurally designs products, workflows and operating models with Consumer Duty, conduct risk, UK GDPR and the EU AI Act in view, and works alongside your compliance and legal teams. Formal regulatory and legal advice stays with them and with your counsel.
+    a: No. We design products, workflows and operating models with Consumer Duty, conduct risk, UK GDPR and the EU AI Act in view, and work alongside your compliance and legal teams. Formal regulatory and legal advice stays with them and with your counsel.
   - q: Have you done this inside a regulated firm?
     a: Stuart has, as an employee. At Compare the Market he wrote the consumer AI strategy, won board backing and launched the company's first consumer AI assistant and the first ChatGPT app for insurance, within an FCA and Consumer Duty environment. That is career experience from before Neurally, not a Neurally client result.
   - q: How do you treat Consumer Duty in practice?
@@ -82,4 +82,4 @@ A regulated firm can usually find a use for AI in a week. Getting it live takes 
 
 Most programmes satisfy them in sequence. The business case is written, then the build starts, then compliance is asked for a view. Each step reopens the one before.
 
-Neurally works on all three together. The value case, the redesigned workflow and the accountability for each decision are produced as one piece of work, so the plan that reaches your board has already met the objections it will face.
+We work on all three together. The value case, the redesigned workflow and the accountability for each decision are produced as one piece of work, so the plan that reaches your board has already met the objections it will face.

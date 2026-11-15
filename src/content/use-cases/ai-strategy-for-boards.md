@@ -60,7 +60,7 @@ faq:
   - q: How do you put a number on AI value?
     a: Each opportunity states the expected outcome, current performance where evidence exists, and the assumptions. Evidence gaps and confidence are recorded against every estimate. Time saved is treated as capacity, and becomes a cash saving only when spending is reduced or avoided.
   - q: What if the honest answer is that we should do very little?
-    a: Then that is the recommendation. Neurally sells no software and takes no payment by results, so there is no reason to recommend more than the evidence supports.
+    a: Then that is the recommendation. We sell no software and take no payment by results, so there is no reason to recommend more than the evidence supports.
 related:
   - teams/ceos-founders-boards
   - use-cases/ai-governance

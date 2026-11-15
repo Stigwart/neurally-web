@@ -55,7 +55,7 @@ faq:
   - q: Will this lead to job cuts?
     a: That is your decision, and it should be made openly. The work makes the choice visible by separating released capacity from cost savings, and by setting out what stays with people in each workflow. Many businesses use the capacity to grow or to improve service.
   - q: Do you implement contact-centre or automation platforms?
-    a: No. Neurally does not sell or implement software. It redesigns the work, specifies pilots and acceptance criteria, and helps you choose and brief the partners who implement.
+    a: No. We do not sell or implement software. We redesign the work, specify pilots and acceptance criteria, and help you choose and brief the partners who implement.
   - q: How do you measure whether it worked?
     a: Against measures agreed before the pilot starts. Revenue, cost savings, released capacity and customer outcomes are tracked separately, with a named owner for each result.
   - q: Can you train my team?
@@ -72,4 +72,4 @@ related:
 
 The most common flaw in an operational AI business case is one line: hours saved, multiplied by a salary, presented as a saving. Nothing has been saved until spending falls, or until the hours are used for something worth more.
 
-Released capacity can still justify the investment through shorter queues, better service or room to grow without hiring. But it has to be named for what it is, or the operations leader ends up owning a target that was never real. Neurally keeps the four kinds of value in separate columns from the first estimate, and records how confident anyone should be in each.
+Released capacity can still justify the investment through shorter queues, better service or room to grow without hiring. But it has to be named for what it is, or the operations leader ends up owning a target that was never real. We keep the four kinds of value in separate columns from the first estimate, and records how confident anyone should be in each.

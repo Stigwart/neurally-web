@@ -10,7 +10,7 @@ export const timeline = [
     years: "2023–2025",
     employer: "Fresha",
     role: "Head of Product (Banking & Payments)",
-    body: "Led payments, banking, insights and payroll at a global platform serving businesses and their customers, heading 46 people across London, Warsaw and Kosovo with profit-and-loss accountability. Launched a machine-learning and AI subscription data product, which taught me to judge AI by the revenue it earns or the cost it removes, not by the demo.",
+    body: "Led payments, banking, insights and payroll at a global platform serving businesses and their customers, heading 46 people across London, Warsaw and Kosovo with profit-and-loss accountability. Launched a machine-learning and AI subscription data product, which taught him to judge AI by the revenue it earns or the cost it removes, not by the demo.",
   },
   {
     years: "2021–2023",
@@ -40,13 +40,13 @@ export const timeline = [
     years: "2010–2013",
     employer: "Bloomberg",
     role: "Product manager",
-    body: "Built for professional users who won't tolerate inaccuracy. It still shapes how I think about trust in AI products.",
+    body: "Built for professional users who won't tolerate inaccuracy. It still shapes how he thinks about trust in AI products.",
   },
   {
     years: "2006–2009",
     employer: "Accenture",
     role: "Senior consultant",
-    body: "I saw how big-firm consulting works from the inside, including where value gets lost between the people who sell the work and the people who deliver it.",
+    body: "He saw how big-firm consulting works from the inside, including where value gets lost between the people who sell the work and the people who deliver it.",
   },
   {
     years: "1999–2003",

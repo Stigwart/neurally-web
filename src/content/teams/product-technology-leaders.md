@@ -25,7 +25,7 @@ decisions:
     - title: Which functions you need
       body: Whether to stand up a Product AI or Product Operations function, what each owns, and how roadmaps, commitments and dependencies become visible in one place.
     - title: Who builds it
-      body: Your own teams, a partner or both. Neurally helps you choose and brief build partners and writes pilot specifications and acceptance criteria.
+      body: Your own teams, a partner or both. We help you choose and brief build partners and write pilot specifications and acceptance criteria.
 risks:
   heading: What tends to go wrong.
   items:
@@ -71,7 +71,7 @@ faq:
   - q: What was the 50% figure?
     a: At Compare the Market, a 50% reduction in discovery-to-development time was reported for the product lifecycle after it was redesigned around AI. It is a reported outcome from a role Stuart held before Neurally, not a promise about your organisation.
   - q: Will you tell us which model or vendor to use?
-    a: Neurally helps you choose and brief partners and has no commercial tie to any of them. The choice follows from the work you have decided to do.
+    a: We help you choose and brief partners and have no commercial tie to any of them. The choice follows from the work you have decided to do.
   - q: Do you work with the CEO or with me?
     a: Either. Product and technology leaders are a first-class buyer. The work goes better when the CEO sponsors it, and scoping confirms that before any fee.
 related:

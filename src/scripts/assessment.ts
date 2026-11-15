@@ -325,7 +325,7 @@ if (root) {
       setStatus(
         statusEl,
         "success",
-        "Thanks, I’ve got your results and will reply personally within two working days.",
+        "Thanks, we’ve got your results and Stuart will reply personally within two working days.",
       );
       statusEl.focus();
     } catch {
@@ -333,7 +333,7 @@ if (root) {
       appendLink(
         statusEl,
         `mailto:${FALLBACK_EMAIL}?subject=${encodeURIComponent(`AI maturity assessment (${lvl.name})`)}&body=${encodeURIComponent(summary)}`,
-        "Email me the results instead.",
+        "Email us the results instead.",
       );
       submitBtn.disabled = false;
     }

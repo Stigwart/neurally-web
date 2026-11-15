@@ -29,7 +29,7 @@ export const engagements: Engagement[] = [
     price: 0,
     stage: "any",
     summary:
-      "A conversation about the problem, whether Neurally is a fit, and the right next step. Sometimes the right next step is none of the engagements below.",
+      "A conversation about the problem, whether we are a fit, and the right next step. Sometimes the right next step is none of the engagements below.",
     outputs: [
       "A clear view of the problem",
       "An honest read on fit",

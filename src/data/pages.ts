@@ -15,7 +15,7 @@ export const staticOgPages: { slug: string; title: string; label: string }[] = [
     label: "Services and fees",
   },
   { slug: "about", title: "Stuart Davis. Nineteen years on the inside of the change.", label: "About" },
-  { slug: "contact", title: "Tell me what you're trying to decide.", label: "Contact" },
+  { slug: "contact", title: "Tell us what you're trying to decide.", label: "Contact" },
   {
     slug: "assessment",
     title: "Where is your business on AI? Ten questions, two minutes.",

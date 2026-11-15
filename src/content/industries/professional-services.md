@@ -51,16 +51,16 @@ entry:
   heading: Start by getting the leadership group to one view.
   body: The AI Opportunity Workshop is one day with your leadership team. It ends with a shared view of the opportunity, an agreed top three priorities with owners and next steps, and a written summary within three working days. The £2,500 fee is credited in full against a Diagnostic or Deep Dive booked within 60 days.
   alsoConsider: training
-focusAreaNote: Professional services is a sector Neurally is focusing on. Stuart has not led AI change inside a professional services firm, and nothing here claims otherwise. What carries over is the method, and nineteen years of redesigning how knowledge-intensive teams work.
+focusAreaNote: Professional services is a sector we are focusing on. Stuart has not led AI change inside a professional services firm, and nothing here claims otherwise. What carries over is the method, and nineteen years of redesigning how knowledge-intensive teams work.
 faq:
   - q: Have you worked with professional services firms before?
-    a: Professional services is a focus area for Neurally, not a claimed track record. Stuart's career has been in product, technology and transformation at consumer platforms and software businesses, and he began as a senior consultant at Accenture. The approach carries over. The sector-specific knowledge comes from your people.
+    a: Professional services is a focus area for us, not a claimed track record. Stuart's career has been in product, technology and transformation at consumer platforms and software businesses, and he began as a senior consultant at Accenture. The approach carries over. The sector-specific knowledge comes from your people.
   - q: Will AI reduce what we can charge?
-    a: That depends on choices the firm makes about pricing, capacity and service. Neurally helps the leadership group see those choices clearly, with revenue, cost savings and released capacity kept separate. It does not promise an outcome.
+    a: That depends on choices the firm makes about pricing, capacity and service. We help the leadership group see those choices clearly, with revenue, cost savings and released capacity kept separate. It does not promise an outcome.
   - q: Do you provide AI training for fee earners?
     a: Yes. Training is built around your own work and governance, with a leadership session on judging opportunities, value and risk, and team sessions that use real work.
   - q: Which tools should we buy?
-    a: Neurally does not sell or resell tools, so it has no preference to push. Tool choices follow from the redesigned work, and you get help choosing and briefing suppliers.
+    a: We do not sell or resell tools, so we have no preference to push. Tool choices follow from the redesigned work, and you get help choosing and briefing suppliers.
 related:
   - teams/ceos-founders-boards
   - use-cases/ai-operating-model

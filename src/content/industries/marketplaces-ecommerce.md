@@ -25,7 +25,7 @@ decisions:
     - title: What happens to operational cost
       body: AI-assisted service and operations release capacity. That becomes a saving only when spending is reduced or avoided, so plan what the capacity is for.
     - title: Build, buy or partner
-      body: Some capabilities belong in your product. Others are better bought. Neurally sells neither, and helps you choose and brief the partners who build.
+      body: Some capabilities belong in your product. Others are better bought. We sell neither, and help you choose and brief the partners who build.
 risks:
   heading: What tends to go wrong.
   items:
@@ -67,9 +67,9 @@ faq:
   - q: Have you worked in marketplaces?
     a: Yes, as an operator. Stuart led product at Gumtree, Not On The High Street and ClearScore, and worked on search at HouseTrip, a holiday-rental marketplace. Those are roles held before Neurally, not Neurally client engagements.
   - q: Do you build recommendation or search systems?
-    a: No. Neurally does not write the software or sell tools. It helps you decide what is worth building, specifies pilots and acceptance criteria, and helps you choose and brief the teams or partners who build.
+    a: No. We do not write the software or sell tools. We help you decide what is worth building, specify pilots and acceptance criteria, and help you choose and brief the teams or partners who build.
   - q: We are smaller than the companies you worked at. Is that a problem?
-    a: Not if the business has real operational complexity and a leadership team able to act. Neurally works with businesses of roughly 50 to 1,000 people.
+    a: Not if the business has real operational complexity and a leadership team able to act. We work with businesses of roughly 50 to 1,000 people.
   - q: What will we have at the end of a Diagnostic?
     a: Prioritised opportunities for the areas in scope, an initial value hypothesis with its assumptions stated, a readiness, risk and dependency view, and a recommended next step. They are yours to keep whether or not you continue.
 related:
@@ -82,4 +82,4 @@ related:
 
 A marketplace exists to put the right option in front of the right person. That has been a data and ranking problem for as long as marketplaces have been online, which is why AI tends to arrive as a series of features: a smarter search box, a recommendation strip, a support assistant.
 
-The return comes when the journey itself is rethought, the operation behind it changes shape, and someone is accountable for the commercial result. That is a product and operating-model decision before it is a technology one, and it is where Neurally starts.
+The return comes when the journey itself is rethought, the operation behind it changes shape, and someone is accountable for the commercial result. That is a product and operating-model decision before it is a technology one, and it is where we start.

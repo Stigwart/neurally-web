@@ -23,11 +23,11 @@ if (form && status) {
     setStatus(status, "pending", "Sending…");
     try {
       await submit(config, data);
-      setStatus(status, "success", "Thanks, I'll reply personally within two working days.");
+      setStatus(status, "success", "Thanks, Stuart will reply personally within two working days.");
       form.reset();
     } catch {
       setStatus(status, "error", "Something went wrong sending this.");
-      appendLink(status, fallback, "Email me directly instead.");
+      appendLink(status, fallback, "Email us directly instead.");
     } finally {
       if (button) button.disabled = false;
     }

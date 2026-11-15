@@ -147,7 +147,7 @@ test("assessment runs, scores and sends results", async ({ page }) => {
   await page.locator("#assess-name").fill("Test Person");
   await page.locator("#assess-email").fill("test@example.com");
   await page.getByRole("button", { name: "Send my results" }).click();
-  await expect(page.locator("#assess-status")).toContainText("I’ve got your results");
+  await expect(page.locator("#assess-status")).toContainText("we’ve got your results");
   expect(posted).toContain("Activity Without Payback");
   expect(posted).toContain("8 of 24");
   expect(errors).toEqual([]);

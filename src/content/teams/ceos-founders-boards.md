@@ -34,7 +34,7 @@ risks:
     - title: A strategy with no owner
       body: The document is approved, the organisation carries on as before, and the result belongs to no one.
     - title: Advice with a product behind it
-      body: Recommendations shaped by what the adviser sells. Neurally sells no software and takes no payment by results.
+      body: Recommendations shaped by what the adviser sells. We sell no software and take no payment by results.
 path:
   heading: How the four stages look from the top.
   steps:
@@ -59,7 +59,7 @@ faq:
   - q: Do you work with private equity and growth investors?
     a: Yes. For investors the work is AI and product value-creation assessment, due diligence and portfolio-company mobilisation.
   - q: How are you independent?
-    a: Neurally does not sell software, resell tools or take payment by results. Fees are fixed or quoted before work starts, so a recommendation to stop costs Neurally nothing.
+    a: We do not sell software, resell tools or take payment by results. Fees are fixed or quoted before work starts, so a recommendation to stop costs us nothing.
   - q: What do you need from me?
     a: Sponsorship, access to evidence and people, a budget, and a willingness to change how the business operates. All of that is confirmed in scoping, before any fee.
 related:

@@ -59,13 +59,13 @@ evidence:
       where: Compare the Market
 faq:
   - q: Do you provide an AI governance framework?
-    a: Not as a standalone product. Neurally builds governance into the operating-model design and the mobilisation plan, so that accountability, decision rights and review routes are part of how the work is done.
+    a: Not as a standalone product. We build governance into the operating-model design and the mobilisation plan, so that accountability, decision rights and review routes are part of how the work is done.
   - q: Does Consumer Duty apply to our use of AI?
-    a: If you are an FCA-regulated firm serving retail customers, the outcomes you owe those customers apply whether or not AI is involved. Neurally tests designs against Consumer Duty outcomes and conduct risk. Whether and how the rules apply to your firm is a question for your compliance team and legal advisers.
+    a: If you are an FCA-regulated firm serving retail customers, the outcomes you owe those customers apply whether or not AI is involved. We test designs against Consumer Duty outcomes and conduct risk. Whether and how the rules apply to your firm is a question for your compliance team and legal advisers.
   - q: Does the EU AI Act matter to a UK business?
-    a: It can, for example where products or services reach the EU. Neurally flags possible risk-category exposure early, while the design can still change. It does not give legal advice, so confirm the position with your counsel.
+    a: It can, for example where products or services reach the EU. We flag possible risk-category exposure early, while the design can still change. We do not give legal advice, so confirm the position with your counsel.
   - q: Are you lawyers or compliance consultants?
-    a: No. Neurally designs products, workflows and operating models with regulation in view and works alongside your legal, risk and compliance teams. Formal advice stays with them.
+    a: No. We design products, workflows and operating models with regulation in view and work alongside your legal, risk and compliance teams. Formal advice stays with them.
   - q: How is governance different from the operating model?
     a: The operating model is how work is done and who decides. Governance is the control, accountability and oversight around it. They meet at decision rights, which is why they are designed together.
 related:

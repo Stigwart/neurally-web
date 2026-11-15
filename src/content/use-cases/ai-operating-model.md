@@ -58,7 +58,7 @@ faq:
   - q: What is an AI operating model?
     a: It is how work gets done and who decides once AI is part of the business. In practice that means workflows, roles, decision rights, the boundaries between people, AI assistance and automation, and the data, technology and governance those depend on.
   - q: How is this different from AI governance?
-    a: The operating model sets out how work is done and who decides. Governance sets the controls, accountability and oversight around it. They overlap at decision rights, which is why Neurally designs them together.
+    a: The operating model sets out how work is done and who decides. Governance sets the controls, accountability and oversight around it. They overlap at decision rights, which is why we design them together.
   - q: How long does operating-model design take?
     a: Six to ten weeks, depending on how many functions and workflows are in scope. The fee is fixed once the scope is agreed.
   - q: Do we need a Deep Dive first?

@@ -23,7 +23,7 @@ export const homeFaq: FaqItem[] = [
   },
   {
     q: "Do you build or implement the AI?",
-    a: "Neurally leads agreed transformation work and supports implementation hands-on: specifying pilots, choosing and briefing build partners, and working alongside your teams on the first releases. Your teams and specialist partners write the software. Neurally does not sell software or resell tools, so the advice is not tied to a product.",
+    a: "We lead agreed transformation work and support implementation hands-on: specifying pilots, choosing and briefing build partners, and working alongside your teams on the first releases. Your teams and specialist partners write the software. We do not sell software or resell tools, so the advice is not tied to a product.",
   },
   {
     q: "How is this different from a large consultancy?",
@@ -34,7 +34,7 @@ export const homeFaq: FaqItem[] = [
 export const approachFaq: FaqItem[] = [
   {
     q: "What happens in each stage?",
-    a: "Decide: choose the few opportunities worth funding, with a value case and measures for each. Design: redesign products, workflows, roles and decision rights around them. Deliver: test the riskiest assumptions in small, time-boxed pilots, then build and scale what works. Embed: train your people, track results against the agreed measures and leave an operating rhythm your team runs without Neurally.",
+    a: "Decide: choose the few opportunities worth funding, with a value case and measures for each. Design: redesign products, workflows, roles and decision rights around them. Deliver: test the riskiest assumptions in small, time-boxed pilots, then build and scale what works. Embed: train your people, track results against the agreed measures and leave an operating rhythm your team runs without us.",
   },
   {
     q: "Do we have to do all four stages?",
@@ -50,11 +50,11 @@ export const approachFaq: FaqItem[] = [
   },
   {
     q: "How do you handle the EU AI Act and UK GDPR?",
-    a: "Where a product or workflow could fall into an EU AI Act risk category, it is flagged early, while the design can still change. Data use, retention and third-party processing under UK GDPR are covered in scoping. Neurally is not a law firm, so formal legal advice stays with your counsel.",
+    a: "Where a product or workflow could fall into an EU AI Act risk category, it is flagged early, while the design can still change. Data use, retention and third-party processing under UK GDPR are covered in scoping. We are not a law firm, so formal legal advice stays with your counsel.",
   },
   {
     q: "Do you sell software or resell AI tools?",
-    a: "No. Training and implementation support are tied to the changes agreed with you. They are not off-the-shelf courses or standalone builds, and no tool vendor pays Neurally.",
+    a: "No. Training and implementation support are tied to the changes agreed with you. They are not off-the-shelf courses or standalone builds, and no tool vendor pays us.",
   },
 ];
 
@@ -81,7 +81,7 @@ export const servicesFaq: FaqItem[] = [
   },
   {
     q: "Do you take payment by results?",
-    a: "No. Fees are fixed or quoted in advance. Neurally also does not provide recruitment, extra staffing or open-ended functional cover: fractional and interim work is for a fixed term and a fixed outcome.",
+    a: "No. Fees are fixed or quoted in advance. We also do not provide recruitment, extra staffing or open-ended functional cover: fractional and interim work is for a fixed term and a fixed outcome.",
   },
   {
     q: "What do you need from us?",

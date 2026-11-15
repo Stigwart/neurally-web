@@ -45,7 +45,7 @@ path:
     - stage: deliver
       body: Specify pilots and acceptance criteria, work alongside product and engineering on first releases, and judge them against agreed measures.
     - stage: embed
-      body: Name owners, train teams on the new way of working, and track the result until it runs without Neurally.
+      body: Name owners, train teams on the new way of working, and track the result until it runs without us.
 entry:
   engagement: diagnostic
   heading: Start with the product area or team where the question is sharpest.
@@ -65,13 +65,13 @@ evidence:
       where: Fresha
 faq:
   - q: Do you help with AI product strategy or only internal use of AI?
-    a: Both. For a software business they are linked. Neurally works on what AI should do in the product and what it earns, and on how the product organisation itself should work now that AI is part of it.
+    a: Both. For a software business they are linked. We work on what AI should do in the product and what it earns, and on how the product organisation itself should work now that AI is part of it.
   - q: Have you built AI products yourself?
     a: Stuart has, in previous roles. At Fresha he led a machine-learning and AI subscription data product that reached more than 2,000 businesses and $75,000 in monthly revenue within six months. At Compare the Market he launched the company's first consumer AI assistant. Those are career results from before Neurally.
   - q: Can you act as an interim or fractional product leader?
     a: Yes, through Transformation Leadership. It is for a fixed term, typically three to six months, and a fixed outcome. It is not open-ended cover.
   - q: Do you write code or supply engineers?
-    a: No. Your teams and partners build. Neurally specifies pilots, helps choose and brief partners, and works alongside product and engineering on the first releases.
+    a: No. Your teams and partners build. We specify pilots, help choose and brief partners, and work alongside product and engineering on the first releases.
 related:
   - teams/product-technology-leaders
   - use-cases/ai-operating-model
@@ -82,4 +82,4 @@ related:
 
 Most SaaS companies treat AI in the product and AI in the organisation as different programmes with different owners. The product team ships an assistant. Engineering adopts coding tools. Customer success trials a support agent.
 
-They are the same decision seen from different sides. What you can offer customers depends on how fast and how safely your team can build. How your team should work depends on what the product is becoming. Neurally looks at both together, starting from the economics: what customers will pay for, what it costs to serve, and what has to change in the organisation to deliver it.
+They are the same decision seen from different sides. What you can offer customers depends on how fast and how safely your team can build. How your team should work depends on what the product is becoming. We look at both together, starting from the economics: what customers will pay for, what it costs to serve, and what has to change in the organisation to deliver it.
