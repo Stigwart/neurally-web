@@ -34,7 +34,7 @@ Improve all seven areas together. Treat none as optional:
 | Topic | Decision |
 |---|---|
 | Stack | **Astro** (latest stable), static output, TypeScript strict. Replaces the no-build HTML site. |
-| Hosting | **Cloudflare Pages**. Build `npm run build`, output `dist/`. Real 301s via `public/_redirects`, security headers via `public/_headers`. Stuart connects the repo and handles DNS. Don't touch DNS or `CNAME` behaviour on `main`. |
+| Hosting | **Cloudflare Pages** is the target. Build `npm run build`, output `dist/`. Real 301s via `public/_redirects`, security headers via `public/_headers`. Stuart connects the repo and handles DNS. Don't touch DNS or `CNAME` behaviour on `main`. **Cloudflare is not connected during your run, so there is no live preview.** Verify everything locally: serve `dist/` with `npx wrangler pages dev dist` (runs locally, no account needed) so `_redirects` and `_headers` are actually exercised, and run Playwright and Lighthouse against that local server. In CI, upload `dist/` as a build artefact on the PR so Stuart can download and inspect it. |
 | Visual | **Open redesign.** Keep the name and logo mark (`assets/logo-warm-off-white.svg`, plus other colourways in Drive `design/logo-final-svg/`). Everything else can change: type, palette, layout, texture, imagery. It must stay recognisably *Neurally / The Human Ratio*, professional and calm in its confidence, not a startup template. |
 | Motion | **Expressive.** Scroll-driven storytelling, a signature hero moment, page transitions, considered micro-interactions. It has to stay fast (§6) and must fully respect `prefers-reduced-motion`. |
 | Copy | **Rewrite freely.** The primary source is the existing site copy. Use the Drive docs for depth and fact-checking. The result must be professional and must position Neurally strongly against competitors like High Intent Labs. |
@@ -192,10 +192,14 @@ agents. Avoid re-reading files you already have in context.
   assumption you made in Stuart's place).
 - `README.md` with sections on running locally, deploying, adding a landing
   page in under 10 minutes, adding an article, and changing tokens.
-- A **"Stuart's manual steps"** checklist at the top of the PR: confirm the
-  Cloudflare Pages preview, then cut DNS over from GitHub Pages, then resubmit
-  the sitemap in Search Console, update the LinkedIn links, and anything else
-  only he can do.
+- A **"Stuart's manual steps"** checklist at the top of the PR. It must open
+  with a bold warning: **do not merge until Cloudflare Pages is connected.**
+  GitHub Pages serves `main` from the repo root, so merging the Astro source
+  while GitHub Pages is still live would break the site. Then: run the site
+  locally (exact commands), connect the repo to Cloudflare Pages (exact
+  settings), check the preview, merge, cut DNS over from GitHub Pages,
+  resubmit the sitemap in Search Console, update the LinkedIn links, and
+  anything else only he can do.
 
 Done means: CI is green, every budget in §6 is met (or any shortfall is
 explained), every page is in the claims ledger, and nothing in §4 is broken.
