@@ -26,11 +26,10 @@ this file says "exact", reproduce the wording or number exactly.
 - **"Are you an AI consultant?"** Neurally is an AI and business-transformation
   advisory. AI is the catalyst for work on business economics, products, customers,
   organisation and execution.
-- **The Human Ratio** is the brand concept named in `PRODUCT.md`. There is **no written
-  definition** in the Drive docs. Anchor it in the "deliberate allocation of work"
+- **"The Human Ratio" is a retired brand concept.** Don't use the phrase anywhere. A
+  recurring theme that is still current is the "deliberate allocation of work"
   principle (§6): for every workflow, deciding what stays with a person, what AI helps
-  with, and what AI can take over within agreed limits. Use it as a theme and visual
-  idea. Don't present it as a proprietary, proven methodology.
+  with, and what AI can take over within agreed limits.
 
 ## 2. Who it's for
 

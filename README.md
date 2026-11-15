@@ -1,7 +1,7 @@
 # Neurally — Website
 
 Marketing website for Stuart Davis's AI consulting business (working name
-**Neurally**, brand concept **The Human Ratio** — see `CLAUDE.md` for where the
+**Neurally** — see `CLAUDE.md` for where the
 full positioning lives). Plain static HTML/CSS/JS — no build step.
 
 ## Quick start

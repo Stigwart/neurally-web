@@ -37,7 +37,7 @@ Improve all seven areas together. Treat none as optional:
 | Stack | **Astro** (latest stable), static output, TypeScript strict, **Tailwind CSS v4** (via `@tailwindcss/vite`). Replaces the no-build HTML site. |
 | Design reference | **https://genesy.framer.website/** is the only reference. Analysis is in `docs/fable/moodboard.md`. Don't search for others. |
 | Hosting | **Cloudflare Pages** is the target. Build `npm run build`, output `dist/`. Real 301s via `public/_redirects`, security headers via `public/_headers`. Stuart connects the repo and handles DNS. Don't touch DNS or `CNAME` behaviour on `main`. **Cloudflare is not connected during your run, so there is no live preview.** Verify everything locally: serve `dist/` with `npx wrangler pages dev dist` (runs locally, no account needed) so `_redirects` and `_headers` are actually exercised, and run Playwright and Lighthouse against that local server. In CI, upload `dist/` as a build artefact on the PR so Stuart can download and inspect it. |
-| Visual | **Open redesign.** Keep the name and logo mark (`assets/logo-warm-off-white.svg`, plus other colourways in Drive `design/logo-final-svg/`). Everything else can change: type, palette, layout, texture, imagery. It must stay recognisably *Neurally / The Human Ratio*, professional and calm in its confidence, not a startup template. |
+| Visual | **Open redesign.** Keep the name and logo mark (`assets/logo-warm-off-white.svg`, plus other colourways in Drive `design/logo-final-svg/`). Everything else can change: type, palette, layout, texture, imagery. It must stay recognisably *Neurally*, professional and calm in its confidence, not a startup template. |
 | Motion | **Expressive.** Scroll-driven storytelling, a signature hero moment, page transitions, considered micro-interactions. It has to stay fast (§6) and must fully respect `prefers-reduced-motion`. |
 | Copy | **Rewrite freely.** The primary source is the existing site copy. Use the Drive docs for depth and fact-checking. The result must be professional and must position Neurally strongly against competitors like High Intent Labs. |
 | Landing pages | About 10–11 deep pages (§5). Quality beats volume. |
@@ -72,8 +72,7 @@ Sources, for spot-checks only:
    cohort scarcity. **Neurally has none of those and must not fake them.** Win on:
    senior operator depth (19+ years, regulated consumer platforms), published
    fixed fees, decision-to-delivery continuity, Consumer Duty and FCA
-   credibility, intellectual clarity (The Human Ratio, anchored as described in
-   the context pack §1), and a noticeably better crafted site.
+   credibility, intellectual clarity, and a noticeably better crafted site.
 
 ## 4. Non-negotiables
 
@@ -118,7 +117,7 @@ who ranks), then finalise slugs and titles. Starting point:
   give each enough substance.
 - **Insights** (`/insights/…`): index, tags, RSS, 3 cornerstone articles
   built from the positioning. Suggested angles: why AI pilots don't pay back;
-  The Human Ratio, deciding what stays with people; AI governance under Consumer Duty.
+  deciding what stays with people; AI governance under Consumer Duty.
 
 Each landing page must be **genuinely distinct**: the reader's situation in
 their own words, the specific decisions and risks for that context, how the
@@ -165,7 +164,7 @@ hubs, a fast LCP.
    View it once, following the screenshot rules in §8. Don't browse for more references.
 2. **Direction.** Write a short design direction: concept, type pairing,
    palette, grid, texture/imagery, motion principles, and the signature hero moment.
-   One idea worth exploring is a visual expression of *The Human Ratio*: the
+   One idea worth exploring is a visual expression of the
    balance between what AI takes on and what stays with people. Choose one
    direction and commit to it.
 3. **Build the homepage first.** Critique it hard against the references, iterate, and only

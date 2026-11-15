@@ -18,7 +18,7 @@ The public website for Neurally, an AI and business transformation advisory run 
 
 ## Positioning
 
-A senior operator, not an adviser. Stuart brings 19+ years leading product, technology and transformation in regulated consumer platforms (Compare the Market, Fresha, ClearScore, Not On The High Street, Gumtree) and carries work from the board-level decision through operating-model redesign into delivery. Fixed, published fees for the first three engagements make entry low-risk. The brand concept is "The Human Ratio" (see Drive `neurally-docs/neurally-overview-v2.1.md`).
+A senior operator, not an adviser. Stuart brings 19+ years leading product, technology and transformation in regulated consumer platforms (Compare the Market, Fresha, ClearScore, Not On The High Street, Gumtree) and carries work from the board-level decision through operating-model redesign into delivery. Fixed, published fees for the first three engagements make entry low-risk. Full positioning: Drive `neurally-docs/neurally-overview-v2.1.md`.
 
 ## Operating Context
 
@@ -36,7 +36,7 @@ Business documentation is the source of truth and lives in Google Drive (`ventur
 
 ## Brand Commitments
 
-Name: Neurally. Brand concept: The Human Ratio. Existing logo mark and founder headshot in `assets/`. Existing design tokens in `css/tokens.css` come from a Neurally design system built in Claude Design.
+Name: Neurally. Existing logo mark and founder headshot in `assets/`. Existing design tokens in `css/tokens.css` come from a Neurally design system built in Claude Design.
 
 ## Evidence on Hand
 
