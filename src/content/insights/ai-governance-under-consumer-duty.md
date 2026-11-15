@@ -50,7 +50,7 @@ It is cheaper to ask the Duty's questions at the start, when they are design inp
 4. **How outcomes will be monitored.** Which measures will show whether customers are getting good outcomes, broken down by the groups that matter, and who looks at them.
 5. **What would make you stop.** The threshold at which the system is paused or withdrawn.
 
-None of this is exotic. It is the Duty applied to a workflow. Done first, it shapes a better product and removes the late surprise.
+This is the Duty applied to a workflow. Done first, it shapes a better product and removes the late surprise.
 
 ## What boards should ask
 

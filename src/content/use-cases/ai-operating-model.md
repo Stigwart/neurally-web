@@ -71,7 +71,7 @@ related:
   - teams/product-technology-leaders
 ---
 
-## Allocation is the design
+## Start with who does the work
 
 The centre of an AI operating model is a decision most organisations never make explicitly: for each piece of work, who or what does it.
 

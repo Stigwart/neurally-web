@@ -4,7 +4,7 @@ headline: AI in a professional services firm.
 headlineSecond: When the product is knowledge work, the redesign is the strategy.
 seoTitle: AI advisory for professional services firms
 description: AI operating-model advice for UK professional services firms. Decide which knowledge work changes, what stays with your people and how the economics follow.
-lede: A firm that sells expert time feels AI in its core economics. The cost of knowledge work is changing, and so is what a small team can take on. The decisions are about the work itself, not the tools.
+lede: A firm that sells expert time feels AI in its core economics. The cost of knowledge work is changing, and so is what a small team can take on. The decisions are about the work itself.
 summary: Knowledge-intensive work, the cost of producing it, and what stays with your people.
 order: 4
 updated: 2026-11-15
@@ -67,7 +67,7 @@ related:
   - teams/operations-customer-service
 ---
 
-## The product is the work
+## When the work is the product
 
 In most businesses AI changes how the product gets made. In a professional services firm the work is the product. So questions other sectors can treat as operational are strategic here: what a client is paying for, who is accountable for the advice, and how the next generation of professionals learns the craft.
 

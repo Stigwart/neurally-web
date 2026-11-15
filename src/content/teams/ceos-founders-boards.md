@@ -4,7 +4,7 @@ headline: For CEOs, founders and boards.
 headlineSecond: Decide where AI is worth the money. Then hold someone to it.
 seoTitle: AI advisory for CEOs, founders and boards
 description: Independent AI advice for CEOs, founders, boards and investors. Choose where to invest, see the risk beside the opportunity and get a plan with owners.
-lede: You do not need another list of use cases. You need to know which few changes would move the business, what they would cost, who would own them, and how you would know if they were not working.
+lede: You need to know which few changes would move the business, what they would cost, who would own them, and how you would know if they were not working.
 summary: Investment decisions, value cases, a board-ready plan and independent challenge.
 order: 3
 updated: 2026-11-15
@@ -25,12 +25,12 @@ decisions:
     - title: Who owns the result
       body: A named executive for each outcome, with measures agreed in advance and decision gates where you can proceed, adapt or stop.
     - title: How much risk is acceptable
-      body: Assumptions, risks and dependencies set out as plainly as the opportunity, so the board can govern the investment and not just approve it.
+      body: Assumptions, risks and dependencies set out as plainly as the opportunity, so the board can govern the investment as well as approve it.
 risks:
   heading: What tends to go wrong.
   items:
     - title: Activity reported as progress
-      body: Pilots and tool purchases multiply. None is tied to the P&L, so nobody can say what to continue.
+      body: Pilots and tool purchases multiply. None is tied to the profit and loss account, so nobody can say what to continue.
     - title: A strategy with no owner
       body: The document is approved, the organisation carries on as before, and the result belongs to no one.
     - title: Advice with a product behind it
@@ -68,7 +68,7 @@ related:
   - industries/financial-services-insurance
 ---
 
-## The question behind the question
+## What a board means by an AI strategy
 
 When a board asks for an AI strategy it is rarely asking about AI. It wants to know whether the business is about to be outrun, whether money is being wasted, and whether anyone is in control.
 

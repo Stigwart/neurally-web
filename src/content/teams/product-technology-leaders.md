@@ -61,7 +61,7 @@ evidence:
       label: people given a single view of roadmaps, commitments and dependencies by new Product AI and Product Operations functions
       where: Compare the Market
     - figure: "46"
-      label: people led across London, Warsaw and Kosovo, with P&L accountability
+      label: people led across London, Warsaw and Kosovo, with profit-and-loss accountability
       where: Fresha
 faq:
   - q: Are you a peer or a consultant?
@@ -71,7 +71,7 @@ faq:
   - q: What was the 50% figure?
     a: At Compare the Market, a 50% reduction in discovery-to-development time was reported for the product lifecycle after it was redesigned around AI. It is a reported outcome from a role Stuart held before Neurally, not a promise about your organisation.
   - q: Will you tell us which model or vendor to use?
-    a: Neurally helps you choose and brief partners and has no commercial tie to any of them. The choice follows from the work you have decided to do, not the other way round.
+    a: Neurally helps you choose and brief partners and has no commercial tie to any of them. The choice follows from the work you have decided to do.
   - q: Do you work with the CEO or with me?
     a: Either. Product and technology leaders are a first-class buyer. The work goes better when the CEO sponsors it, and scoping confirms that before any fee.
 related:
@@ -82,6 +82,6 @@ related:
 
 ## Faster engineers, same roadmap
 
-It is common now for a product organisation to report that individuals are quicker and that delivery feels about the same. That is not a contradiction. Writing code was rarely the constraint. Deciding what to build, agreeing it across functions and getting it safely to customers were.
+It is common now for a product organisation to report that individuals are quicker and that delivery feels about the same. Both can be true, because writing code was rarely the constraint. Deciding what to build, agreeing it across functions and getting it safely to customers were.
 
 So the gain from AI in a product organisation depends on redesigning the lifecycle around it: how discovery runs, where decisions are made, what a team needs to hand off and what it no longer does. Stuart led that redesign in-house before starting Neurally, and it is the work he is most often asked about.

@@ -31,7 +31,7 @@ export const stages: Stage[] = [
     name: "Design",
     question: "What must change?",
     summary:
-      "Rework products, workflows, roles and decision rights around those opportunities, and agree which calls stay with people.",
+      "Rework products, workflows, roles and decision rights (who decides what) around those opportunities, and agree which calls stay with people.",
     detail:
       "Automating a poor process preserves the wrong work. So the work is redesigned first: what stops, what stays with a person, what AI assists, and what AI takes on within agreed limits.",
     outputs: [

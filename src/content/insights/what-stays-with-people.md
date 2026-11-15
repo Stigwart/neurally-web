@@ -64,7 +64,7 @@ Spotting a pattern across hundreds of complaints is assisted: AI surfaces it and
 
 And somewhere in the old process there was probably a step, a second review or a manual log, that can stop.
 
-None of that is exotic. What matters is that it was decided, written down, and the same in every team.
+What matters is that it was decided, written down, and the same in every team.
 
 ## Why writing it down matters
 

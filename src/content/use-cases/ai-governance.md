@@ -1,10 +1,10 @@
 ---
 name: AI governance
 headline: AI governance that helps the work.
-headlineSecond: Accountability designed in, not audited afterwards.
+headlineSecond: With accountability designed in from the start.
 seoTitle: AI governance for UK businesses
 description: Practical AI governance for UK businesses, built into operating-model design. Covers accountability, FCA Consumer Duty, UK GDPR and EU AI Act exposure.
-lede: Good governance is not a policy document. It is knowing, for each decision AI is involved in, who is accountable, what a person still checks, and how the decision can be reviewed and reversed.
+lede: Good governance means knowing, for each decision AI is involved in, who is accountable, what a person still checks, and how the decision can be reviewed and reversed.
 summary: Accountability, Consumer Duty, UK GDPR and the EU AI Act, built into the design.
 order: 4
 updated: 2026-11-15
@@ -43,7 +43,7 @@ path:
     - stage: design
       body: Accountability, decision rights and review routes are written into each redesigned workflow.
     - stage: deliver
-      body: Pilots have acceptance criteria that include the controls, not only the performance.
+      body: Pilots have acceptance criteria that cover the controls as well as the performance.
     - stage: embed
       body: Working norms and training fit your governance, and each result has an owner.
 entry:
@@ -80,4 +80,4 @@ Governance has a reputation for slowing things down, mostly because it tends to 
 
 Asked at the start, the same questions are design inputs. Who is accountable when this decision is wrong? What does a person still check? Can the customer have it reviewed? Which data is used, and where does it go? Answering them early shapes a better workflow and removes the late surprise.
 
-Stuart learned this by launching consumer AI inside an FCA-regulated business, before Neurally existed. It is why governance is part of every Neurally engagement and not a separate one.
+Stuart learned this by launching consumer AI inside an FCA-regulated business, before Neurally existed. It is why governance is part of every Neurally engagement.

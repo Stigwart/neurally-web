@@ -2,7 +2,7 @@
 title: Why AI pilots don't pay back
 seoTitle: Why AI pilots don't pay back, and what to change
 description: Most AI pilots work and still return nothing. The cause is rarely the technology. Three gaps explain it, and each has a practical fix.
-standfirst: The pilot worked. The demo was good. A year later nothing in the accounts has moved. The reason is usually found in the business around the pilot, not inside it.
+standfirst: The pilot worked. The demo was good. A year later nothing in the accounts has moved. The reason is usually found in the business around the pilot.
 published: 2026-11-10
 tags: [From pilot to value, Investment decisions]
 stage: deliver
@@ -14,7 +14,7 @@ Ask a leadership team how their AI pilots went and most will say they went well.
 
 Ask what the business got for it and the answer takes longer.
 
-That gap is common. In [BCG's 2026 CEO survey](https://www.bcg.com/press/22july2026-ceos-cost-revenue-benefits-ai-struggling-scale), most companies were running AI pilots, but only about a quarter had changed the wider business around them. The pilots are not failing. They are succeeding at something that was never connected to a result.
+That gap is common. In [BCG's 2026 CEO survey](https://www.bcg.com/press/22july2026-ceos-cost-revenue-benefits-ai-struggling-scale), most companies were running AI pilots, but only about a quarter had changed the wider business around them. The pilots succeed at something that was never connected to a result.
 
 In my experience there are three reasons, and they tend to arrive together.
 
@@ -26,7 +26,7 @@ An investment decision looks different. It says what should improve, by how much
 
 Without that, a pilot has no test to pass. It can only be judged on whether it ran. So it is declared a success, and then nothing follows, because success was never defined as something the business would act on.
 
-**The fix:** before a pilot starts, agree the measure it will be judged by and the decision that follows. There are only three: proceed, adapt or stop. If none of those would change what you do next, the pilot is not worth running.
+The fix is to agree, before a pilot starts, the measure it will be judged by and the decision that follows. There are only three: proceed, adapt or stop. If none of those would change what you do next, the pilot is not worth running.
 
 ## The work around it didn't change
 
@@ -36,7 +36,7 @@ Take a team that handles customer queries. An assistant drafts replies, and draf
 
 Automating one step of a poor process preserves the rest of it. The return comes from redesigning the work: what should stop, what stays with a person, what AI assists, and what AI can take on within agreed limits. That is an organisational change, and a pilot cannot make it.
 
-**The fix:** treat the workflow as the unit of change, not the tool. Redesign it first, then decide what to automate.
+The fix is to treat the workflow as the unit of change. Redesign it first, then decide what to automate.
 
 ## No one owns the result
 
@@ -44,7 +44,7 @@ Pilots tend to belong to the people who ran them: an innovation team, an enthusi
 
 So when the pilot ends there is nobody whose job it is to carry it into everyday use, find the money, retrain the team and answer for the outcome. It stays where it started.
 
-**The fix:** name an owner for the business result before the pilot begins. Not for the pilot. For the result.
+The fix is to name an owner for the business result before the pilot begins. That person should not be the one running the pilot.
 
 ## The saving that wasn't
 
@@ -68,12 +68,10 @@ It is smaller than most, and stricter.
 - It has an owner for the result, who is not the person running the pilot.
 - It ends in a decision: proceed, adapt or stop.
 
-Stopping counts. A pilot that shows an idea is not worth scaling has saved the cost of scaling it.
+Stopping counts, because a pilot that shows an idea is not worth scaling has saved the cost of scaling it.
 
 ## Where to start if this is you
 
 If you have several pilots and no clear return, do not start another. Look at what is running and give each one a verdict against the outcome it was meant to produce. Some will proceed. Some need the work around them redesigned. Some should stop.
 
 That review takes about a week when someone independent does it. It is what the [AI Advantage Diagnostic](/services/#diagnostic) is for, and it is the first step in [recovering a programme that has stalled](/use-cases/ai-transformation-rescue/).
-
-The technology usually isn't what's holding you back. It is doing its job. The business around it has not yet been asked to change.

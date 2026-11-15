@@ -4,7 +4,7 @@ headline: An AI strategy your board can approve.
 headlineSecond: And then hold to account.
 seoTitle: AI strategy for the board
 description: Turn a board's request for an AI strategy into an investment decision, with value cases, a 90-day mobilisation plan, owners, decision gates and a risk view.
-lede: A board does not want a tour of the technology. It wants to know where the money goes, what comes back, what could go wrong and who answers for it. That is what this work produces.
+lede: A board wants to know where the money goes, what comes back, what could go wrong and who answers for it. This work produces that answer.
 summary: From "we need an AI strategy" to an investment case with owners and decision gates.
 order: 1
 updated: 2026-11-15
@@ -67,7 +67,7 @@ related:
   - use-cases/ai-operating-model
 ---
 
-## Strategy is the short list
+## A strategy is a short list of choices
 
 Most documents called an AI strategy are inventories. They describe what is possible and what is under way, and they leave the choosing to later.
 

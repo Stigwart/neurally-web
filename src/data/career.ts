@@ -10,7 +10,7 @@ export const timeline = [
     years: "2023–2025",
     employer: "Fresha",
     role: "Head of Product (Banking & Payments)",
-    body: "Led payments, banking, insights and payroll at a global B2B2C platform, heading 46 people across London, Warsaw and Kosovo with P&L accountability. Launched an ML and AI subscription data product, which taught me to judge AI by the revenue it earns or the cost it removes, not by the demo.",
+    body: "Led payments, banking, insights and payroll at a global platform serving businesses and their customers, heading 46 people across London, Warsaw and Kosovo with profit-and-loss accountability. Launched a machine-learning and AI subscription data product, which taught me to judge AI by the revenue it earns or the cost it removes, not by the demo.",
   },
   {
     years: "2021–2023",
@@ -28,7 +28,7 @@ export const timeline = [
     years: "2015–2019",
     employer: "Gumtree (eBay)",
     role: "Product leadership",
-    body: "Led seven product teams and launched a Jobs vertical that grew to a third of UK revenue. An early lesson in redesigning how teams work, not just what they build.",
+    body: "Led seven product teams and launched a Jobs vertical that grew to a third of UK revenue. An early lesson in redesigning how teams work as well as what they build.",
   },
   {
     years: "2013–2014",
@@ -76,14 +76,14 @@ export const evidence = [
     ],
   },
   {
-    context: "Global B2B2C platform",
+    context: "Global platform for businesses and their customers",
     title: "New revenue and data products at Fresha",
     role: "Led payments, banking, insights and payroll for a platform serving more than 100,000 businesses, heading a 46-person organisation across three locations with P&L accountability.",
     figures: [
       {
         figure: "$75,000",
         label:
-          "monthly revenue within six months from an ML and AI subscription data product used by 2,000+ businesses",
+          "monthly revenue within six months from a machine-learning and AI subscription data product used by 2,000+ businesses",
       },
       { figure: "$20M", label: "revenue growth (62%), a wider commercial outcome" },
       { figure: "50% → 80%", label: "partner-onboarding conversion" },
@@ -109,7 +109,7 @@ export const evidence = [
       {
         figure: "45%",
         label:
-          "new-user growth at Not On The High Street, with an 8% conversion uplift and 130% app MAU growth",
+          "new-user growth at Not On The High Street, with an 8% conversion uplift and 130% growth in app monthly active users",
       },
       { figure: "⅓", label: "of Gumtree's UK revenue came from the Jobs vertical as it grew" },
     ],

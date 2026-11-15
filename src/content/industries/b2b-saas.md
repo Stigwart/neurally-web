@@ -25,7 +25,7 @@ decisions:
     - title: How the product team works now
       body: Discovery, design and delivery change when AI is part of the toolkit. Decide deliberately what the new lifecycle looks like, and who owns it.
     - title: Where people stay in the loop
-      body: Your customers will ask what the product does on its own and what a person reviews. Have the answer designed, not improvised.
+      body: Your customers will ask what the product does on its own and what a person reviews. Design the answer in advance.
 risks:
   heading: What tends to go wrong.
   items:
@@ -55,7 +55,7 @@ evidence:
   heading: Where this comes from.
   items:
     - figure: $75,000
-      label: monthly revenue within six months from an ML and AI subscription data product used by more than 2,000 businesses
+      label: monthly revenue within six months from a machine-learning and AI subscription data product used by more than 2,000 businesses
       where: Fresha
     - figure: 50%
       label: reduction in discovery-to-development time reported for an AI-redesigned product lifecycle
@@ -67,7 +67,7 @@ faq:
   - q: Do you help with AI product strategy or only internal use of AI?
     a: Both. For a software business they are linked. Neurally works on what AI should do in the product and what it earns, and on how the product organisation itself should work now that AI is part of it.
   - q: Have you built AI products yourself?
-    a: Stuart has, in previous roles. At Fresha he led an ML and AI subscription data product that reached more than 2,000 businesses and $75,000 in monthly revenue within six months. At Compare the Market he launched the company's first consumer AI assistant. Those are career results from before Neurally.
+    a: Stuart has, in previous roles. At Fresha he led a machine-learning and AI subscription data product that reached more than 2,000 businesses and $75,000 in monthly revenue within six months. At Compare the Market he launched the company's first consumer AI assistant. Those are career results from before Neurally.
   - q: Can you act as an interim or fractional product leader?
     a: Yes, through Transformation Leadership. It is for a fixed term, typically three to six months, and a fixed outcome. It is not open-ended cover.
   - q: Do you write code or supply engineers?

@@ -19,7 +19,7 @@ decisions:
   heading: What has to be decided, quickly.
   items:
     - title: What to proceed with, adapt or stop
-      body: Every initiative gets one of three verdicts, judged against the outcome it was meant to produce. Stopping something is a result, not a failure.
+      body: Every initiative gets one of three verdicts, judged against the outcome it was meant to produce. Stopping something counts as a result.
     - title: Where the real block is
       body: It is usually one of three gaps. The investment decision was never made, the business around the technology has not changed, or nobody owns the result.
     - title: Who owns it from here
@@ -68,7 +68,7 @@ related:
   - teams/product-technology-leaders
 ---
 
-## Stalled is a decision not yet made
+## Why programmes stall
 
 Programmes rarely stall because the technology failed. They stall because a decision was deferred. Nobody chose which initiatives mattered, so all of them continue at half strength. Nobody redesigned the work, so the pilot has nowhere to land. Nobody owns the outcome, so nobody can call time.
 

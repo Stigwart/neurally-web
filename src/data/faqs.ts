@@ -19,7 +19,7 @@ export const homeFaq: FaqItem[] = [
   },
   {
     q: "Are you an AI consultancy?",
-    a: "Not quite. AI is usually why people call, but most of the work is on the business itself: its economics, products, customers, organisation and delivery. AI is the catalyst for that work, not the subject of it.",
+    a: "Not quite. AI is usually why people call, but most of the work is on the business itself: its economics, products, customers, organisation and delivery. AI is the catalyst for that work.",
   },
   {
     q: "Do you build or implement the AI?",
@@ -77,7 +77,7 @@ export const servicesFaq: FaqItem[] = [
   },
   {
     q: "Can we start with training or a build?",
-    a: "Yes, if the problem and the expected value are already clear. Both are tied to your own priorities, not sold off the shelf. If leadership still needs to decide where to focus, the free call, the Workshop or the Diagnostic come first.",
+    a: "Yes, if the problem and the expected value are already clear. Both are built around your own priorities. If leadership still needs to decide where to focus, the free call, the Workshop or the Diagnostic come first.",
   },
   {
     q: "Do you take payment by results?",

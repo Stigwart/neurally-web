@@ -114,7 +114,7 @@ const governance = [
   },
   {
     title: "UK GDPR and the ICO",
-    body: "Data use, retention and third-party processing are covered in scoping, not discovered during the build.",
+    body: "Data use, retention and third-party processing are covered in scoping, before the build starts.",
   },
   { title: "EU AI Act", body: "Risk-category exposure is flagged early, while the design can still change." },
   {
@@ -211,11 +211,12 @@ const governance = [
         <Beat
           id="allocation-heading"
           first="Work is allocated on purpose."
-          second="Not by whichever tool arrived first."
+          second="Workflow by workflow, with a named owner."
         />
         <p class="text-muted mt-6 max-w-md text-lg">
           The design stage asks the same five questions of every workflow. The answers become the operating
-          model, and they are why people know where they stand when the change lands.
+          model: how the work gets done and who decides. They are also why people know where they stand when
+          the change lands.
         </p>
       </div>
       <ol class="border-line border-t lg:col-span-7">
@@ -235,7 +236,11 @@ const governance = [
 
   <Section tone="paper" labelledby="governance-heading">
     <div class="max-w-3xl" data-reveal>
-      <Beat id="governance-heading" first="Governance is a thread." second="Not a phase at the end." />
+      <Beat
+        id="governance-heading"
+        first="Governance runs through every stage."
+        second="It starts before anything is built."
+      />
       <p class="text-muted mt-6 text-lg">
         It runs through every engagement, because the cheapest time to deal with a regulatory or
         accountability problem is before anything has been built.

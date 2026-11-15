@@ -15,7 +15,8 @@ export async function getStaticPaths() {
 }
 const { post } = Astro.props;
 const d = post.data;
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
+const sections = headings.filter((h) => h.depth === 2);
 const href = `/insights/${post.id}/`;
 const related = await resolveRelated(d.related);
 const others = (await getInsights()).filter((p) => p.id !== post.id).slice(0, 2);
@@ -77,21 +78,52 @@ const crumbs = [
     </header>
 
     <section data-tone="paper" class="py-section-sm">
-      <div class="container-page">
-        <div class="prose prose-neurally">
-          <Content />
+      <div class="container-page grid gap-x-12 gap-y-10 lg:grid-cols-12">
+        <aside class="lg:col-span-4">
+          <div class="lg:sticky lg:top-28">
+            {sections.length > 1 && (
+              <nav aria-labelledby="toc-heading">
+                <h2 id="toc-heading" class="text-faint text-label font-mono font-normal uppercase">
+                  In this article
+                </h2>
+                <ol class="border-line mt-3 border-t">
+                  {sections.map((h) => (
+                    <li class="border-line border-b">
+                      <a
+                        href={`#${h.slug}`}
+                        class="text-muted hover:text-fg block py-2.5 text-sm transition-colors duration-fast"
+                      >
+                        {h.text}
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+            )}
+            <p class="text-muted mt-8 hidden text-sm lg:block">
+              Want to talk it through?
+              <a class="link" href={site.calendly} target="_blank" rel="noopener" data-cta="calendly">
+                Book a free discovery call<span class="sr-only"> (opens in a new tab)</span>
+              </a>
+            </p>
+          </div>
+        </aside>
+        <div class="lg:col-span-8">
+          <div class="prose prose-neurally">
+            <Content />
+          </div>
+          <p class="border-line mt-12 flex max-w-(--container-measure) flex-wrap items-center gap-2 border-t pt-6">
+            <span class="text-muted mr-2 text-sm">Filed under</span>
+            {d.tags.map((tag) => (
+              <a
+                href={`/insights/tags/${tagSlug(tag)}/`}
+                class="border-line-strong hover:border-fg rounded-full border px-3.5 py-1.5 text-sm transition-colors duration-fast"
+              >
+                {tag}
+              </a>
+            ))}
+          </p>
         </div>
-        <p class="border-line mt-12 flex max-w-(--container-measure) flex-wrap items-center gap-2 border-t pt-6">
-          <span class="text-muted mr-2 text-sm">Filed under</span>
-          {d.tags.map((tag) => (
-            <a
-              href={`/insights/tags/${tagSlug(tag)}/`}
-              class="border-line-strong hover:border-fg rounded-full border px-3.5 py-1.5 text-sm transition-colors duration-fast"
-            >
-              {tag}
-            </a>
-          ))}
-        </p>
       </div>
     </section>
   </article>

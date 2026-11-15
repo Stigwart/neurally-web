@@ -53,7 +53,7 @@ entry:
   alsoConsider: training
 faq:
   - q: Will this lead to job cuts?
-    a: That is your decision, not Neurally's, and it should be made openly. The work makes the choice visible by separating released capacity from cost savings, and by setting out what stays with people in each workflow. Many businesses use the capacity to grow or to improve service.
+    a: That is your decision, and it should be made openly. The work makes the choice visible by separating released capacity from cost savings, and by setting out what stays with people in each workflow. Many businesses use the capacity to grow or to improve service.
   - q: Do you implement contact-centre or automation platforms?
     a: No. Neurally does not sell or implement software. It redesigns the work, specifies pilots and acceptance criteria, and helps you choose and brief the partners who implement.
   - q: How do you measure whether it worked?
@@ -68,8 +68,8 @@ related:
   - industries/financial-services-insurance
 ---
 
-## Capacity is not cash
+## Capacity is not the same as cash
 
 The most common flaw in an operational AI business case is one line: hours saved, multiplied by a salary, presented as a saving. Nothing has been saved until spending falls, or until the hours are used for something worth more.
 
-That is not an argument against the investment. Released capacity can be the whole point: shorter queues, better service, room to grow without hiring. But it has to be named for what it is, or the operations leader ends up owning a target that was never real. Neurally keeps the four kinds of value in separate columns from the first estimate, and records how confident anyone should be in each.
+Released capacity can still justify the investment through shorter queues, better service or room to grow without hiring. But it has to be named for what it is, or the operations leader ends up owning a target that was never real. Neurally keeps the four kinds of value in separate columns from the first estimate, and records how confident anyone should be in each.

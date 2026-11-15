@@ -91,7 +91,7 @@ export const engagements: Engagement[] = [
       "An AI governance and risk view",
       "A board recommendation pack",
     ],
-    bestFor: "A board or CEO who needs an investment decision, not another list of use cases.",
+    bestFor: "A board or CEO who needs an investment decision.",
   },
   {
     id: "operating-model-design",
@@ -172,7 +172,7 @@ export const engagements: Engagement[] = [
     summary: "Continuing access to independent senior judgement, alongside any stage or on its own.",
     outputs: [
       "Independent challenge on opportunity, investment and execution risk",
-      "For boards and NEDs: governance and readiness",
+      "For boards and non-executive directors: governance and readiness",
       "For investors: AI and product value-creation assessment, due diligence and portfolio-company mobilisation",
     ],
     bestFor: "CEOs, boards and investors who want a second opinion that isn't selling a build.",

@@ -48,8 +48,8 @@ const strengths = [
       <div class="fade-up">
         <Breadcrumbs crumbs={crumbs} />
       </div>
-      <div class="mt-10 grid items-end gap-x-12 gap-y-10 lg:mt-14 lg:grid-cols-12">
-        <div class="lg:col-span-8">
+      <div class="mt-10 grid items-end gap-x-10 gap-y-10 md:grid-cols-12 lg:mt-14 lg:gap-x-12">
+        <div class="md:col-span-8">
           <h1 id="page-heading" class="text-display">
             <span class="line-rise" style="--i:0">
               <span>Stuart Davis.</span>
@@ -71,7 +71,7 @@ const strengths = [
             </Button>
           </div>
         </div>
-        <div class="fade-up lg:col-span-4" style="--i:2">
+        <div class="fade-up md:col-span-4" style="--i:2">
           <Image
             src={portrait}
             alt="Stuart Davis, founder of Neurally"
@@ -197,5 +197,5 @@ const strengths = [
     </div>
   </Section>
 
-  <Cta first="Talk to the person who does the work." second="Thirty minutes, no fee." />
+  <Cta first="Talk to the person who does the work." second="Thirty minutes, free." />
 </Base>

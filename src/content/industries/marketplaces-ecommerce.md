@@ -78,8 +78,8 @@ related:
   - teams/operations-customer-service
 ---
 
-## Matching was always the business
+## Marketplaces already run on matching
 
 A marketplace exists to put the right option in front of the right person. That has been a data and ranking problem for as long as marketplaces have been online, which is why AI tends to arrive as a series of features: a smarter search box, a recommendation strip, a support assistant.
 
-Features are not where the money is. The return comes when the journey itself is rethought, the operation behind it changes shape, and someone is accountable for the commercial result. That is a product and operating-model decision before it is a technology one, and it is where Neurally starts.
+The return comes when the journey itself is rethought, the operation behind it changes shape, and someone is accountable for the commercial result. That is a product and operating-model decision before it is a technology one, and it is where Neurally starts.
