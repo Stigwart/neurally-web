@@ -1,0 +1,118 @@
+---
+import { render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import Section from "../../components/Section.astro";
+import LinkCards from "../../components/LinkCards.astro";
+import Cta from "../../components/Cta.astro";
+import { site } from "../../data/site";
+import { article } from "../../lib/schema";
+import { getInsights, formatDate, tagSlug, resolveRelated } from "../../lib/content";
+
+export async function getStaticPaths() {
+  const posts = await getInsights();
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+const { post } = Astro.props;
+const d = post.data;
+const { Content } = await render(post);
+const href = `/insights/${post.id}/`;
+const related = await resolveRelated(d.related);
+const others = (await getInsights()).filter((p) => p.id !== post.id).slice(0, 2);
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: "Insights", href: "/insights/" },
+  { name: d.title, href },
+];
+---
+
+<Base
+  title={d.seoTitle ?? d.title}
+  description={d.description}
+  ogType="article"
+  crumbs={crumbs}
+  schema={[
+    article({
+      title: d.title,
+      description: d.description,
+      href,
+      published: d.published,
+      updated: d.updated,
+      image: `/og/insights/${post.id}.png`,
+    }),
+  ]}
+>
+  <article>
+    <header class="pt-10 pb-14 lg:pt-14 lg:pb-20" data-stage={d.stage}>
+      <div class="container-page">
+        <div class="fade-up">
+          <Breadcrumbs crumbs={crumbs} />
+        </div>
+        <div class="mt-10 max-w-4xl lg:mt-14">
+          <h1 class="text-display">
+            <span class="line-rise">
+              <span>{d.title}</span>
+            </span>
+          </h1>
+          <p class="fade-up text-muted mt-8 text-xl" style="--i:2">
+            {d.standfirst}
+          </p>
+          <p
+            class="fade-up text-muted text-label mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono uppercase"
+            style="--i:3"
+          >
+            <span class="bg-stage size-2 rounded-full" aria-hidden="true"></span>
+            <span>
+              By{" "}
+              <a class="link" href="/about/">
+                {site.founder}
+              </a>
+            </span>
+            <time datetime={d.published.toISOString()}>{formatDate(d.published)}</time>
+            <span>{d.readingMinutes} min read</span>
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <section data-tone="paper" class="py-section-sm">
+      <div class="container-page">
+        <div class="prose prose-neurally">
+          <Content />
+        </div>
+        <p class="border-line mt-12 flex max-w-(--container-measure) flex-wrap items-center gap-2 border-t pt-6">
+          <span class="text-muted mr-2 text-sm">Filed under</span>
+          {d.tags.map((tag) => (
+            <a
+              href={`/insights/tags/${tagSlug(tag)}/`}
+              class="border-line-strong hover:border-fg rounded-full border px-3.5 py-1.5 text-sm transition-colors duration-fast"
+            >
+              {tag}
+            </a>
+          ))}
+        </p>
+      </div>
+    </section>
+  </article>
+
+  <Section size="sm" labelledby="next-heading">
+    <h2 id="next-heading" class="text-title">
+      Read next
+    </h2>
+    <div class="mt-6">
+      <LinkCards
+        items={[
+          ...related.map((r) => ({ href: r.href, name: r.name, summary: r.summary, label: r.family })),
+          ...others.map((p) => ({
+            href: `/insights/${p.id}/`,
+            name: p.data.title,
+            summary: p.data.standfirst,
+            label: "Insight",
+          })),
+        ]}
+      />
+    </div>
+  </Section>
+
+  <Cta />
+</Base>

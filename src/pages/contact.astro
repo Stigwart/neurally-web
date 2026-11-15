@@ -1,0 +1,134 @@
+---
+import Base from "../layouts/Base.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import Button from "../components/Button.astro";
+import Field from "../components/Field.astro";
+import { site } from "../data/site";
+
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: "Contact", href: "/contact/" },
+];
+const expect = [
+  "A reply from Stuart, personally, within two working days",
+  "No sales sequence and no mailing list",
+  "An NDA before you share anything substantive",
+];
+---
+
+<Base
+  title="Contact Neurally: book a free discovery call"
+  description="Book a free 30-minute discovery call with Stuart Davis, or send a message. You will get a personal reply within two working days."
+  crumbs={crumbs}
+>
+  <section class="pt-10 pb-24 lg:pt-14" aria-labelledby="page-heading">
+    <div class="container-page">
+      <div class="fade-up">
+        <Breadcrumbs crumbs={crumbs} />
+      </div>
+      <div class="mt-10 grid gap-x-16 gap-y-14 lg:mt-14 lg:grid-cols-12">
+        <div class="lg:col-span-6">
+          <h1 id="page-heading" class="text-display">
+            <span class="line-rise" style="--i:0">
+              <span>Tell me what you're trying to decide.</span>
+            </span>
+            <span class="line-rise text-muted" style="--i:1">
+              <span>I'll tell you if I can help.</span>
+            </span>
+          </h1>
+          <p class="fade-up text-muted mt-8 max-w-xl text-xl" style="--i:3">
+            The quickest route is a free 30-minute call. We'll talk about the problem, whether Neurally is a
+            fit, and the right next step. Sometimes that is none of the engagements.
+          </p>
+          <div class="fade-up mt-8" style="--i:4">
+            <Button href={site.calendly} external size="lg" data-cta="calendly">
+              Book a free discovery call
+            </Button>
+          </div>
+          <ul class="fade-up border-line mt-12 border-t" style="--i:5">
+            {expect.map((e) => (
+              <li class="border-line text-muted border-b py-4">{e}</li>
+            ))}
+          </ul>
+          <p class="fade-up text-muted mt-8" style="--i:5">
+            Prefer email?{" "}
+            <a class="link" href={`mailto:${site.email}`}>
+              {site.email}
+            </a>
+          </p>
+        </div>
+
+        <div class="fade-up lg:col-span-6" style="--i:2">
+          <form
+            id="contact-form"
+            class="border-line bg-surface grid gap-5 rounded-lg border p-6 sm:grid-cols-2 md:p-9"
+            action={site.web3forms.endpoint}
+            method="post"
+            novalidate
+            data-endpoint={site.web3forms.endpoint}
+            data-access-key={site.web3forms.accessKey}
+            data-fallback={`mailto:${site.email}`}
+          >
+            <h2 class="text-title sm:col-span-2">Or send a message</h2>
+            <input type="hidden" name="access_key" value={site.web3forms.accessKey} />
+            <div class="sr-only" aria-hidden="true">
+              <label for="botcheck">Leave this field empty</label>
+              <input id="botcheck" type="text" name="botcheck" tabindex="-1" autocomplete="off" />
+            </div>
+            <Field
+              id="name"
+              name="name"
+              label="Name"
+              autocomplete="name"
+              required
+              error="Please add your name."
+            />
+            <Field
+              id="email"
+              name="email"
+              type="email"
+              label="Work email"
+              autocomplete="email"
+              placeholder="you@company.com"
+              required
+              error="Please add a valid email address."
+            />
+            <Field
+              id="company"
+              name="company"
+              label="Company and role"
+              autocomplete="organization"
+              optional
+              class="sm:col-span-2"
+            />
+            <Field
+              id="message"
+              name="message"
+              label="What are you trying to decide?"
+              textarea
+              required
+              error="Please add a short message."
+              class="sm:col-span-2"
+            />
+            <div class="sm:col-span-2">
+              <Button type="submit" size="lg">
+                Send message
+              </Button>
+              <p id="form-status" class="form-status mt-5" role="status" hidden></p>
+              <p class="text-faint mt-5 text-sm">
+                Sent via Web3Forms to {site.email}. See the{" "}
+                <a class="link" href="/privacy/">
+                  privacy notice
+                </a>
+                .
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    import "../scripts/contact-form.ts";
+  </script>
+</Base>

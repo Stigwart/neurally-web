@@ -1,0 +1,65 @@
+---
+interface Props {
+  id: string;
+  name: string;
+  label: string;
+  type?: "text" | "email";
+  textarea?: boolean;
+  rows?: number;
+  required?: boolean;
+  optional?: boolean;
+  autocomplete?: string;
+  placeholder?: string;
+  error?: string;
+  class?: string;
+}
+const {
+  id,
+  name,
+  label,
+  type = "text",
+  textarea = false,
+  rows = 5,
+  required = false,
+  optional = false,
+  autocomplete,
+  placeholder,
+  error,
+  class: className,
+} = Astro.props;
+const control =
+  "border-line-strong bg-surface text-fg placeholder:text-faint hover:border-fg aria-invalid:border-embed mt-2 block w-full rounded-md border px-4 py-3 text-base transition-colors duration-fast";
+---
+
+<div class:list={["group/field", className]}>
+  <label for={id} class="text-sm font-medium">
+    {label}
+    {optional && <span class="text-faint font-normal"> (optional)</span>}
+  </label>
+  {textarea ? (
+    <textarea
+      id={id}
+      name={name}
+      rows={rows}
+      required={required}
+      class={control}
+      aria-describedby={error ? `${id}-error` : undefined}
+    />
+  ) : (
+    <input
+      id={id}
+      name={name}
+      type={type}
+      required={required}
+      autocomplete={autocomplete}
+      placeholder={placeholder}
+      class={control}
+      aria-describedby={error ? `${id}-error` : undefined}
+    />
+  )}
+  {error && (
+    <p id={`${id}-error`} class="text-embed mt-2 hidden text-sm group-has-aria-invalid/field:block">
+      {error}
+    </p>
+  )}
+</div>

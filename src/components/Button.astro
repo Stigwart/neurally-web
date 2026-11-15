@@ -1,0 +1,49 @@
+---
+import Icon from "./Icon.astro";
+
+interface Props {
+  href?: string;
+  variant?: "primary" | "secondary" | "text";
+  size?: "md" | "lg";
+  type?: "button" | "submit";
+  external?: boolean;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const {
+  href,
+  variant = "primary",
+  size = "md",
+  type = "button",
+  external = false,
+  class: className,
+  ...rest
+} = Astro.props;
+
+const base =
+  "group/btn inline-flex items-center justify-center gap-2.5 font-medium whitespace-nowrap transition-[background-color,border-color,color,transform] duration-fast ease-out active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50";
+const variants = {
+  primary: "rounded-full bg-fg text-bg hover:bg-accent",
+  secondary: "rounded-full border border-line-strong text-fg hover:border-fg hover:bg-surface",
+  text: "text-fg underline decoration-line-strong underline-offset-[0.3em] hover:decoration-current",
+};
+const sizes = {
+  md: variant === "text" ? "text-base" : "min-h-11 px-5 text-sm",
+  lg: variant === "text" ? "text-lg" : "min-h-13 px-7 text-base",
+};
+const classes = [base, variants[variant], sizes[size], className];
+const Tag = href ? "a" : "button";
+const linkAttrs = href ? { href, ...(external ? { target: "_blank", rel: "noopener" } : {}) } : { type };
+---
+
+<Tag class:list={classes} {...linkAttrs} {...rest}>
+  <span>
+    <slot />
+  </span>
+  <Icon
+    name={external ? "arrow-up-right" : "arrow"}
+    class="transition-transform duration-base ease-out-expo group-hover/btn:translate-x-1"
+  />
+  {external && <span class="sr-only">(opens in a new tab)</span>}
+</Tag>

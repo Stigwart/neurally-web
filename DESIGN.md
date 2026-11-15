@@ -141,6 +141,7 @@ The mood is restrained, precise and authoritative. Headlines are set large, ligh
 This system rejects generic AI-startup gloss (gradients, glows, neon, brain and robot imagery) and big-four consultancy styling (stock-photo corporate, blue-and-grey deck aesthetics).
 
 **Key Characteristics:**
+
 - Dark Ink ground by default; an optional `.on-paper` inverse theme exists for light surfaces.
 - One display family (Archivo) and one text family (Instrument Sans); two voices, no more.
 - Four stage colours are semantic marks, never decoration.
@@ -153,14 +154,17 @@ This system rejects generic AI-startup gloss (gradients, glows, neon, brain and 
 A near-monochrome warm-neutral palette with four muted pastel accents. Blue doubles as the interface accent.
 
 ### Primary
+
 - **Decide Blue** (#A9C4D9): The interface accent and first stage colour. Links, hero kicker, focus ring, accent button, active borders, "Decide" stat and tag. Deep (#7FA3BF) is the pressed state; light (#C7DAE8) is hover and tag text; tint (#34383C) is the hover/background wash.
 
 ### Secondary
+
 - **Design Yellow** (#EFDBA0): Second stage colour ("Design"), and also the text-selection background. Light #F5E7BE, deep #CFB877, tint #403D32.
 - **Deliver Sage** (#B7C9A8): Third stage colour ("Deliver"). Light #CEDBC3, deep #8FA67D, tint #363933.
 - **Embed Coral** (#E8A599): Fourth stage colour ("Embed"), and the form error colour. Light #F0C0B7, deep #C97F71, tint #3F3331.
 
 ### Neutral
+
 - **Ink** (#1A1A1A): Page ground.
 - **Sunken Ink** (#141414): Recessed bands such as the stat band.
 - **Raised Ink** (#202020): Cards, inputs, tags.
@@ -172,6 +176,7 @@ A near-monochrome warm-neutral palette with four muted pastel accents. Blue doub
 - **Paper Sunken** (#EDEAE3): Primary button hover.
 
 ### Named Rules
+
 **The Stage Order Rule.** The four stage colours always appear in the order blue, yellow, sage, coral, mapping to Decide, Design, Deliver, Embed. A stage colour is never used for anything but its stage (blue also serves as the interface accent).
 
 **The Scarce Chroma Rule.** Outside the stage marks and the blue accent, the page is neutral. A new accent colour or gradient is never introduced.
@@ -184,6 +189,7 @@ A near-monochrome warm-neutral palette with four muted pastel accents. Blue doub
 **Character:** Archivo at regular weight with tight negative tracking gives headlines a calm, editorial authority. Instrument Sans keeps running text neutral and legible. Hierarchy comes from size and tracking, not weight.
 
 ### Hierarchy
+
 - **Display L** (400, 56px, 1.04, -0.038em): Home hero headline. Drops to 40px under 720px.
 - **Display M** (400, 44px, 1.06, -0.035em): Inner-page openers, capped at 22ch. 34px on small screens.
 - **Headline** (400, 34px, 1.1, -0.03em): Stat values (26px between 1100 and 1279px wide). 28px on small screens.
@@ -195,6 +201,7 @@ A near-monochrome warm-neutral palette with four muted pastel accents. Blue doub
 - **Label** (400, 12px, 0.14em, uppercase): Kickers only.
 
 ### Named Rules
+
 **The One Caps Rule.** Uppercase is used only for the 12px tracked kicker. Headings and buttons are sentence case.
 
 **The Light Headline Rule.** Display and headline sizes use regular weight (400). Weight is not used to create emphasis at large sizes. Smaller headings (section title, title) use medium (500).
@@ -208,11 +215,13 @@ A single centred container (max 1180px; 760px for narrow reading columns) with a
 Depth is mostly tonal: page (#1A1A1A), sunken (#141414), raised (#202020) and overlay (#2A2A29) layers, separated by 1px borders. Shadows are quiet and appear on cards and on hover only.
 
 ### Shadow Vocabulary
+
 - **Small** (`0 1px 2px rgba(0,0,0,0.40)`): Cards at rest.
 - **Medium** (`0 2px 6px rgba(0,0,0,0.45), 0 0 0 1px rgba(250,248,244,0.04)`): Linked card on hover.
 - **Large** (`0 12px 32px rgba(0,0,0,0.55), 0 0 0 1px rgba(250,248,244,0.06)`): Reserved for overlays.
 
 ### Named Rules
+
 **The Tonal First Rule.** Separate surfaces with a tone step or a hairline before reaching for a shadow.
 
 ## Shapes
@@ -222,6 +231,7 @@ Small, practical corners: 8px on buttons, cards, inputs; 4px on tags and focus o
 ## Components
 
 ### Buttons
+
 - **Shape:** 8px radius, 1px border, medium weight, sentence case.
 - **Primary:** Warm Paper fill with Ink text, 10px 20px (large: 14px 26px, 18px text; small: 6px 14px). Hover shifts to Paper Sunken.
 - **Secondary:** Transparent with a strong hairline border; hover adds the blue tint and a blue border.
@@ -230,31 +240,38 @@ Small, practical corners: 8px on buttons, cards, inputs; 4px on tags and focus o
 - **Press / Focus:** 1px downward nudge on press; 2px blue focus outline with 2px offset. Transitions run 160ms on `cubic-bezier(0.2, 0, 0, 1)`.
 
 ### Cards / Containers
+
 - **Corner Style:** 8px.
 - **Background:** Raised Ink (#202020) with a 1px subtle border.
 - **Shadow Strategy:** Small at rest; linked cards gain medium shadow and a blue border on hover.
 - **Internal Padding:** 24px, 12px gap between children, 14px secondary text.
 
 ### Tags
+
 - **Style:** 4px radius, 14px text, 4px 10px padding. Stage variants use the stage tint as background and the stage's light colour as text, with no border.
 
 ### Inputs / Fields
+
 - **Style:** Raised Ink fill, 1px default border, 8px radius, 10px 14px padding, 16px text.
 - **Focus:** Border shifts to blue; the outline is suppressed in favour of the border.
 - **Error:** Coral border and coral status text.
 
 ### Navigation
+
 - **Style:** Ink bar with a 1px bottom hairline, 20px vertical padding. Wordmark ("neurally" in lowercase, Archivo medium, -0.035em) with the logo mark on the left; text links and one small accent button ("Book a conversation") on the right. The current page link is emphasised. Links wrap on narrow screens.
 
 ### Stat Band (signature)
+
 A sunken band of four columns, one per stage. Each has a tracked kicker naming the client problem, a headline-size value in the stage colour, and a 14px description. It is the system's clearest expression of the stage colours.
 
 ### Hero
+
 Left-aligned two-line display headline on Ink, blue kicker above, 18px lede, one primary and one secondary button, and the logo mark as a 7%-opacity texture bleeding off the right edge.
 
 ## Do's and Don'ts
 
 ### Do:
+
 - **Do** keep the ground Ink (#1A1A1A) with Warm Paper (#FAF8F4) text; use `.on-paper` only for deliberate light surfaces.
 - **Do** use stage colours in the order blue, yellow, sage, coral and only for their stage.
 - **Do** set headlines at weight 400 with negative tracking; use size, not weight, for hierarchy.
@@ -264,6 +281,7 @@ Left-aligned two-line display headline on Ink, blue kicker above, 18px lede, one
 - **Do** honour `prefers-reduced-motion`; motion is limited to 90-240ms state transitions.
 
 ### Don't:
+
 - **Don't** use gradients, glows, neon, or brain and robot imagery (generic AI-startup gloss).
 - **Don't** use stock-photo corporate imagery or blue-and-grey deck styling (big-four consultancy).
 - **Don't** add new accent colours, or use stage colours as decoration.

@@ -1,0 +1,114 @@
+---
+import Base from "../layouts/Base.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { site } from "../data/site";
+
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: "Privacy", href: "/privacy/" },
+];
+---
+
+<Base
+  title="Privacy notice"
+  description="What personal data the Neurally website collects, why, who processes it, how long it is kept and what your rights are under UK GDPR."
+  crumbs={crumbs}
+>
+  <section class="pt-10 pb-12 lg:pt-14">
+    <div class="container-page">
+      <Breadcrumbs crumbs={crumbs} />
+      <h1 class="text-display mt-10 lg:mt-14">Privacy notice</h1>
+      <p class="text-muted mt-6 max-w-2xl text-xl">
+        What this site collects, why, and what your rights are. It is a short list.
+      </p>
+    </div>
+  </section>
+  <section data-tone="paper" class="py-section-sm">
+    <div class="container-page">
+      <div class="prose prose-neurally">
+        <p>
+          Neurally is a trading name of Stuart Davis. Stuart is the data controller for personal data
+          collected through this site. Contact: <a href={`mailto:${site.email}`}>{site.email}</a>.
+        </p>
+
+        <h2>What we collect, and why</h2>
+        <ul>
+          <li>
+            <strong>Contact form.</strong> Your name, work email, company and role (optional) and message are
+            submitted through{" "}
+            <a href="https://web3forms.com/" target="_blank" rel="noopener">
+              Web3Forms
+            </a>
+            , a third-party form-delivery service, and forwarded to {site.email}. Web3Forms processes this
+            data under its own privacy policy.
+          </li>
+          <li>
+            <strong>AI maturity assessment.</strong> Your answers are scored in your browser and are not
+            stored. Only if you choose to send your results does the same information as the contact form,
+            plus your answers and score, go through Web3Forms to {site.email}. We count anonymous completions
+            by result type in GoatCounter.
+          </li>
+          <li>
+            <strong>Booking a call.</strong> If you book via{" "}
+            <a href="https://calendly.com/privacy" target="_blank" rel="noopener">
+              Calendly
+            </a>
+            , Calendly processes your name, email and chosen time under its own privacy policy. Calendly is an
+            external link: nothing from Calendly loads on this site.
+          </li>
+          <li>
+            <strong>Analytics.</strong> This site uses{" "}
+            <a href="https://www.goatcounter.com/" target="_blank" rel="noopener">
+              GoatCounter
+            </a>
+            , a cookie-free analytics service that counts page visits in aggregate, without cookies or
+            personal data.
+          </li>
+        </ul>
+
+        <h2>What this site does not do</h2>
+        <p>
+          It sets no cookies and uses no advertising or tracking pixels. Fonts, images and scripts are served
+          from this site itself. The only third-party requests are the GoatCounter visit count and, when you
+          submit a form, the Web3Forms submission.
+        </p>
+
+        <h2>Hosting</h2>
+        <p>
+          The site is hosted on{" "}
+          <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">
+            Cloudflare
+          </a>
+          Pages. Like any web host, Cloudflare processes technical request data such as IP addresses in order
+          to deliver pages and protect the service.
+        </p>
+
+        <h2>How long we keep it</h2>
+        <p>
+          We keep enquiry and booking information for as long as needed to respond to you and, where a working
+          relationship follows, for the ordinary course of that engagement. Then we delete it.
+        </p>
+
+        <h2>Your rights</h2>
+        <p>
+          Under UK GDPR, you can ask to see, correct or delete the personal data we hold about you. Email{" "}
+          <a href={`mailto:${site.email}`}>{site.email}</a>.
+        </p>
+
+        <h2>Complaints</h2>
+        <p>
+          If you're unhappy with how your data has been handled, you can complain to the
+          <a href="https://ico.org.uk/make-a-complaint/" target="_blank" rel="noopener">
+            Information Commissioner's Office
+          </a>
+          .
+        </p>
+
+        <h2>Changes</h2>
+        <p>
+          This notice may be updated as the site or the tools behind it change. Last updated November 2026.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>

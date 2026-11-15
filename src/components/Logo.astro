@@ -1,0 +1,17 @@
+---
+import { Image } from "astro:assets";
+import mark from "../assets/logo-mark.png";
+---
+
+<a href="/" class="group flex items-center gap-3" aria-label="Neurally home">
+  <Image
+    src={mark}
+    alt=""
+    width={34}
+    height={30}
+    densities={[1, 2, 3]}
+    loading="eager"
+    class="h-[30px] w-auto transition-transform duration-base ease-out-expo group-hover:-rotate-3"
+  />
+  <span class="font-display text-[1.3rem] font-medium tracking-[-0.03em]">Neurally</span>
+</a>

@@ -1,0 +1,44 @@
+---
+import Icon from "./Icon.astro";
+
+interface Props {
+  withoutLabel?: string;
+  withLabel?: string;
+  rows: { without: string; with: string; detail?: string }[];
+}
+const { withoutLabel = "Where it stalls", withLabel = "What changes", rows } = Astro.props;
+---
+
+<div class="border-line border-t">
+  <div class="text-faint text-label hidden grid-cols-12 gap-6 py-4 font-mono uppercase md:grid">
+    <span class="col-span-4">{withoutLabel}</span>
+    <span class="col-span-8">{withLabel}</span>
+  </div>
+  {rows.map((row, i) => (
+    <div
+      class="border-line grid gap-x-6 gap-y-3 border-t py-7 md:grid-cols-12 md:py-9"
+      data-reveal
+      style={`--i:${i % 4}`}
+    >
+      <p class="text-muted flex items-start gap-3 md:col-span-4">
+        <Icon name="cross" class="text-faint mt-1" />
+        <span>
+          <span class="sr-only">{withoutLabel}: </span>
+          {row.without}
+        </span>
+      </p>
+      <div class="md:col-span-8">
+        <p class="font-display text-title flex items-start gap-3">
+          <Icon name="check" class="mt-[0.2em]" />
+          <span>
+            <span class="sr-only">{withLabel}: </span>
+            {row.with}
+          </span>
+        </p>
+        {row.detail && (
+          <p class="text-muted max-w-measure mt-2 pl-[calc(1.1em+0.75rem)] text-lg">{row.detail}</p>
+        )}
+      </div>
+    </div>
+  ))}
+</div>

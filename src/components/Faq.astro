@@ -1,0 +1,24 @@
+---
+import Icon from "./Icon.astro";
+
+interface Props {
+  items: { q: string; a: string }[];
+  /** Name shared by the group so only one answer is open at a time. */
+  group?: string;
+}
+const { items, group = "faq" } = Astro.props;
+---
+
+<div class="border-line border-t">
+  {items.map((item, i) => (
+    <details class="disclosure group border-line border-b" name={group} open={i === 0}>
+      <summary class="hover:text-fg flex items-start justify-between gap-6 py-6 transition-colors duration-fast">
+        <h3 class="text-title font-display">{item.q}</h3>
+        <span class="border-line-strong mt-1 grid size-8 shrink-0 place-items-center rounded-full border transition-transform duration-base ease-out-expo group-open:rotate-45">
+          <Icon name="plus" />
+        </span>
+      </summary>
+      <p class="text-muted max-w-measure pb-7 text-lg" set:html={item.a} />
+    </details>
+  ))}
+</div>

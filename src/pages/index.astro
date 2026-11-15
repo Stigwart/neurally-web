@@ -1,0 +1,429 @@
+---
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import Section from "../components/Section.astro";
+import Beat from "../components/Beat.astro";
+import Button from "../components/Button.astro";
+import Icon from "../components/Icon.astro";
+import AllocationBoard from "../components/AllocationBoard.astro";
+import Compare from "../components/Compare.astro";
+import StagePath from "../components/StagePath.astro";
+import Ladder from "../components/Ladder.astro";
+import Faq from "../components/Faq.astro";
+import Cta from "../components/Cta.astro";
+import CareerNote from "../components/CareerNote.astro";
+import { site } from "../data/site";
+import { homeFaq } from "../data/faqs";
+import { faqPage } from "../lib/schema";
+import { getAllLanding, landingHref } from "../lib/content";
+import portrait from "../assets/stuart-davis.jpg";
+
+const groups = await getAllLanding();
+
+const facts = [
+  "Published fixed fees, from £2,500",
+  "One senior operator, board to delivery",
+  "Stop after any stage, keep every output",
+];
+
+const stalls = [
+  {
+    without: "AI activity, no payback",
+    with: "Pick the right bets",
+    detail:
+      "We find the few changes that will move revenue, cost or service, and put a value case behind each.",
+  },
+  {
+    without: "New tools, same old habits",
+    with: "Change the work",
+    detail:
+      "We redesign products, workflows and roles so the gains land, and say clearly what stays with people.",
+  },
+  {
+    without: "No one owns the outcome",
+    with: "Get it built and live",
+    detail: "We lead the change with your teams and support the build hands-on, with partners where needed.",
+  },
+  {
+    without: "Teams unsure how to use it",
+    with: "A team that runs it",
+    detail: "We train your people on their real work, not generic demos, and agree how results are measured.",
+  },
+];
+
+const ledgers = [
+  { name: "Revenue", note: "New or protected income, with the assumptions behind it." },
+  { name: "Cost savings", note: "Spending that is reduced or avoided. Nothing else counts here." },
+  { name: "Released capacity", note: "Time handed back to people. Real, but not yet cash." },
+  { name: "Customer outcomes", note: "Speed, quality and fairness for the people you serve." },
+];
+
+const governance = [
+  {
+    title: "Accountability, written down",
+    body: "Every redesigned workflow names who is accountable, what stays with a person, what is automated, and how a decision can be reviewed and reversed.",
+  },
+  {
+    title: "Consumer Duty and conduct risk",
+    body: "For financial services and insurance, designs are tested against Consumer Duty outcomes before they reach a board.",
+  },
+  {
+    title: "UK GDPR and the EU AI Act",
+    body: "Data use, retention and third-party processing are covered in scoping. Risk-category exposure is flagged while the design can still change.",
+  },
+  {
+    title: "A board that can see the risk",
+    body: "Assumptions, risks and dependencies are made as visible as the opportunity, with owners and decision gates in the plan.",
+  },
+];
+
+const career = [
+  {
+    figure: "50%",
+    label:
+      "reduction in discovery-to-development time reported after redesigning the product lifecycle around AI",
+    where: "Compare the Market",
+  },
+  {
+    figure: "First",
+    label:
+      "ChatGPT app for insurance, and the company's first consumer AI assistant, launched under FCA and Consumer Duty rules",
+    where: "Compare the Market",
+  },
+  {
+    figure: "$75,000",
+    label:
+      "monthly revenue within six months from an ML and AI subscription data product used by 2,000+ businesses",
+    where: "Fresha",
+  },
+];
+---
+
+<Base
+  title="Neurally | AI & business transformation advisory"
+  rawTitle
+  description="Stop experimenting with AI and start operating with it. Neurally helps UK leadership teams choose where AI pays, redesign the business around it and deliver measured results."
+  schema={[faqPage(homeFaq)]}
+>
+  <!-- Hero -->
+  <section class="relative overflow-clip pt-14 pb-20 lg:pt-20 lg:pb-28" aria-labelledby="hero-heading">
+    <div class="container-page grid items-center gap-x-12 gap-y-14 lg:grid-cols-12">
+      <div class="lg:col-span-7">
+        <Beat
+          as="h1"
+          id="hero-heading"
+          size="display"
+          rise
+          first="Stop experimenting with AI."
+          second="Start operating with it."
+        />
+        <p class="fade-up text-muted mt-8 max-w-xl text-xl" style="--i:3">
+          Neurally helps leadership teams decide where AI is worth the investment, redesign products,
+          processes and teams around it, and lead the change through to measured results.
+        </p>
+        <div class="fade-up mt-10 flex flex-wrap items-center gap-x-6 gap-y-4" style="--i:4">
+          <Button href={site.calendly} external size="lg" data-cta="calendly">
+            Book a free discovery call
+          </Button>
+          <Button href="/assessment/" variant="text">
+            Take the two-minute assessment
+          </Button>
+        </div>
+        <ul
+          class="fade-up text-muted mt-12 flex flex-col gap-2.5 text-sm sm:flex-row sm:flex-wrap sm:gap-x-7"
+          style="--i:5"
+        >
+          {facts.map((f) => (
+            <li class="flex items-center gap-2.5">
+              <Icon name="check" class="text-fg" />
+              {f}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="fade-up lg:col-span-5" style="--i:2">
+        <AllocationBoard />
+        <p class="text-faint mt-4 text-sm">
+          Move any of them. Deciding this for each workflow, and who answers for it, is where the value and
+          the risk both sit.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The problem -->
+  <Section tone="paper" labelledby="problem-heading">
+    <div class="grid gap-x-12 gap-y-8 lg:grid-cols-12">
+      <div class="lg:col-span-7" data-reveal>
+        <Beat
+          id="problem-heading"
+          first="The technology usually isn't what's holding you back."
+          second="The business around it hasn't moved."
+        />
+      </div>
+      <div class="text-muted space-y-5 text-lg lg:col-span-5 lg:pt-3" data-reveal style="--i:1">
+        <p>
+          Pilots multiply and licences get bought, but the work, the roles and the decisions stay as they
+          were. So the benefit stays local and nobody can point to it in the numbers.
+        </p>
+        <p>
+          In{" "}
+          <a
+            class="link"
+            href="https://www.bcg.com/press/22july2026-ceos-cost-revenue-benefits-ai-struggling-scale"
+            target="_blank"
+            rel="noopener"
+          >
+            BCG's 2026 CEO survey<span class="sr-only"> (opens in a new tab)</span>
+          </a>
+          , most companies were running AI pilots, but only about a quarter had changed the wider business
+          around them.
+        </p>
+      </div>
+    </div>
+    <div class="mt-16">
+      <Compare rows={stalls} />
+    </div>
+  </Section>
+
+  <!-- Where every engagement starts -->
+  <Section labelledby="question-heading">
+    <figure class="mx-auto max-w-5xl text-center" data-progress>
+      <blockquote>
+        <p id="question-heading" class="font-display text-headline" data-reveal>
+          “What could this business do now that it couldn't two years ago?”
+        </p>
+      </blockquote>
+      <figcaption class="text-muted mt-6" data-reveal style="--i:1">
+        Where every engagement starts.
+      </figcaption>
+    </figure>
+  </Section>
+
+  <!-- The path -->
+  <Section class="pt-0!" labelledby="path-heading">
+    <StagePath />
+    <div class="mt-12 lg:pl-[calc(41.666%+3rem)]">
+      <Button href="/approach/" variant="secondary">
+        How the approach works
+      </Button>
+    </div>
+  </Section>
+
+  <!-- Honest maths -->
+  <Section tone="paper" labelledby="maths-heading">
+    <div class="grid gap-x-12 gap-y-10 lg:grid-cols-12">
+      <div class="lg:col-span-6" data-reveal>
+        <Beat
+          id="maths-heading"
+          first="Time saved creates capacity."
+          second="It only becomes a cash saving when spending is reduced or avoided."
+        />
+      </div>
+      <div class="lg:col-span-6 lg:pt-3" data-reveal style="--i:1">
+        <p class="text-muted text-lg">
+          Most AI business cases blur those two together. Ours keep four kinds of value in separate columns,
+          and record the evidence gaps and confidence against every estimate, so your board can tell a
+          hypothesis from a validated investment case.
+        </p>
+      </div>
+    </div>
+    <dl class="border-line mt-14 grid border-t sm:grid-cols-2 lg:grid-cols-4">
+      {ledgers.map((l, i) => (
+        <div
+          class="border-line border-b py-7 sm:px-6 sm:odd:pl-0 lg:border-b-0 lg:border-l lg:first:border-l-0 lg:first:pl-0"
+          data-reveal
+          style={`--i:${i}`}
+        >
+          <dt class="font-display text-title">{l.name}</dt>
+          <dd class="text-muted mt-2">{l.note}</dd>
+        </div>
+      ))}
+    </dl>
+  </Section>
+
+  <!-- Governance -->
+  <Section labelledby="governance-heading">
+    <div class="grid gap-x-12 gap-y-10 lg:grid-cols-12">
+      <div class="lg:col-span-5" data-reveal>
+        <Beat
+          id="governance-heading"
+          first="Governance runs through the work."
+          second="It isn't a separate product."
+        />
+        <p class="text-muted mt-6 max-w-md text-lg">
+          Stuart launched Compare the Market's first consumer AI assistant, and the first ChatGPT app for
+          insurance, inside an FCA and Consumer Duty environment. That discipline carries into every
+          engagement.
+        </p>
+        <p class="text-faint mt-3 text-sm">
+          Career experience before Neurally, not a Neurally client result.
+        </p>
+        <Button href="/use-cases/ai-governance/" variant="text" class="mt-7">
+          AI governance in practice
+        </Button>
+      </div>
+      <ul class="border-line border-t lg:col-span-7">
+        {governance.map((g, i) => (
+          <li
+            class="border-line grid gap-x-8 gap-y-2 border-b py-6 md:grid-cols-5"
+            data-reveal
+            style={`--i:${i}`}
+          >
+            <h3 class="font-display text-xl md:col-span-2">{g.title}</h3>
+            <p class="text-muted md:col-span-3">{g.body}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </Section>
+
+  <!-- Fees -->
+  <Section tone="paper" labelledby="fees-heading">
+    <div class="grid gap-x-12 gap-y-6 lg:grid-cols-12 lg:items-end">
+      <div class="lg:col-span-7" data-reveal>
+        <Beat id="fees-heading" first="The first steps have fixed fees." second="Here they are." />
+      </div>
+      <p class="text-muted text-lg lg:col-span-5" data-reveal style="--i:1">
+        Agreed before work starts, with no day-rate meter running. The Workshop fee is credited in full
+        against a Diagnostic or Deep Dive booked within 60 days.
+      </p>
+    </div>
+    <div class="mt-12" data-reveal>
+      <Ladder ids={["discovery-call", "workshop", "diagnostic", "deep-dive"]} expandable={false} />
+    </div>
+    <div class="mt-10 flex flex-wrap items-center justify-between gap-6">
+      <p class="text-muted max-w-xl">
+        After that: operating-model design, implementation support, transformation leadership, training and
+        advisory, each scoped and quoted before it begins.
+      </p>
+      <Button href="/services/" variant="secondary">
+        All nine engagements
+      </Button>
+    </div>
+  </Section>
+
+  <!-- Stuart -->
+  <Section labelledby="stuart-heading">
+    <div class="grid gap-x-12 gap-y-12 lg:grid-cols-12">
+      <div class="lg:col-span-4" data-reveal>
+        <Image
+          src={portrait}
+          alt="Stuart Davis, founder of Neurally"
+          widths={[320, 480, 640]}
+          sizes="(min-width: 64rem) 30vw, 80vw"
+          class="aspect-[4/5] w-full max-w-sm rounded-lg object-cover grayscale"
+        />
+      </div>
+      <div class="lg:col-span-8">
+        <div data-reveal>
+          <Beat id="stuart-heading" first="An operator's judgement." second="Not an adviser's theory." />
+          <p class="max-w-measure mt-6 text-lg">
+            Neurally is led by Stuart Davis. He has spent more than 19 years running product, technology and
+            transformation inside consumer platforms, most recently as Head of Product for Data, AI, Apps and
+            Operations at Compare the Market, and before that leading banking and payments at Fresha.
+          </p>
+          <p class="text-muted max-w-measure mt-4 text-lg">
+            The judgement you hire is the judgement applied to your business, from the board decision through
+            to delivery.
+          </p>
+        </div>
+        <dl class="border-line mt-10 border-t">
+          {career.map((c, i) => (
+            <div
+              class="border-line grid gap-x-8 gap-y-1 border-b py-5 md:grid-cols-12"
+              data-reveal
+              style={`--i:${i}`}
+            >
+              <dt class="font-display text-figure md:col-span-3">{c.figure}</dt>
+              <dd class="md:col-span-9 md:self-center">
+                <span class="text-muted">{c.label}.</span>
+                <span class="text-faint text-label mt-1 block font-mono uppercase">
+                  {c.where}, before Neurally
+                </span>
+              </dd>
+            </div>
+          ))}
+        </dl>
+        <CareerNote class="mt-5" />
+        <Button href="/about/" variant="secondary" class="mt-8">
+          About Stuart
+        </Button>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Who it's for -->
+  <Section tone="paper" labelledby="for-heading">
+    <div data-reveal>
+      <Beat
+        id="for-heading"
+        first="The answer depends on where you sit."
+        second="Start from your own situation."
+      />
+    </div>
+    <div class="mt-12 grid gap-x-10 gap-y-12 md:grid-cols-3">
+      {groups.map(({ family, entries }, i) => (
+        <div data-reveal style={`--i:${i}`}>
+          <a
+            href={family.base}
+            class="border-line-strong group flex items-baseline justify-between border-b pb-3"
+          >
+            <h3 class="text-title">{family.label}</h3>
+            <Icon
+              name="arrow"
+              class="text-faint group-hover:text-fg transition-[color,transform] duration-base ease-out-expo group-hover:translate-x-1"
+            />
+          </a>
+          <ul>
+            {entries.map((e) => (
+              <li class="border-line border-b">
+                <a
+                  href={landingHref(family.collection, e.id)}
+                  class="text-muted hover:text-fg block py-3 transition-colors duration-fast"
+                >
+                  {e.data.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <!-- Assessment -->
+  <Section labelledby="assess-heading">
+    <div class="border-line bg-surface relative overflow-clip rounded-lg border p-8 md:p-14">
+      <div
+        class="hatch pointer-events-none absolute inset-y-0 right-0 hidden w-2/5 opacity-30 [mask-image:linear-gradient(to_left,black,transparent)] md:block"
+        aria-hidden="true"
+      ></div>
+      <div class="relative max-w-2xl" data-reveal>
+        <Beat id="assess-heading" first="Not sure where you stand?" second="Ten questions will tell you." />
+        <p class="text-muted mt-6 text-lg">
+          The AI maturity assessment takes about two minutes and places you in one of four scenarios, with
+          your biggest gap and a sensible next step. It is scored in your browser. No sign-up, and nothing is
+          stored.
+        </p>
+        <Button href="/assessment/" size="lg" class="mt-8">
+          Take the assessment
+        </Button>
+      </div>
+    </div>
+  </Section>
+
+  <!-- FAQ -->
+  <Section class="pt-0!" labelledby="faq-heading">
+    <div class="grid gap-x-12 gap-y-8 lg:grid-cols-12">
+      <div class="lg:col-span-4" data-reveal>
+        <Beat id="faq-heading" first="Fair questions." second="Straight answers." />
+      </div>
+      <div class="lg:col-span-8">
+        <Faq items={homeFaq} />
+      </div>
+    </div>
+  </Section>
+
+  <Cta />
+</Base>

@@ -1,0 +1,8 @@
+# Old .html URLs from the static site -> clean URLs. 301 = permanent.
+/approach.html    /approach/    301
+/services.html    /services/    301
+/about.html       /about/       301
+/contact.html     /contact/     301
+/assessment.html  /assessment/  301
+/privacy.html     /privacy/     301
+/sitemap.xml      /sitemap-index.xml  301

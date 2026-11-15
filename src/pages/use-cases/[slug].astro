@@ -1,0 +1,12 @@
+---
+import Landing from "../../layouts/Landing.astro";
+import { getFamily } from "../../lib/content";
+
+export async function getStaticPaths() {
+  const entries = await getFamily("use-cases");
+  return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+const { entry } = Astro.props;
+---
+
+<Landing entry={entry} collection="use-cases" />

@@ -1,0 +1,240 @@
+---
+import Base from "../layouts/Base.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import Button from "../components/Button.astro";
+import Field from "../components/Field.astro";
+import { site } from "../data/site";
+import { QUESTIONS } from "../data/assessment";
+import { stages } from "../data/stages";
+
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: "AI maturity assessment", href: "/assessment/" },
+];
+---
+
+<Base
+  title="AI maturity assessment: where is your business on AI?"
+  description="Ten questions, about two minutes. See which of four AI maturity scenarios you are in, your biggest gap and a sensible next step. No sign-up, nothing stored."
+  crumbs={crumbs}
+>
+  <section class="pt-10 pb-24 lg:pt-14">
+    <div class="container-page">
+      <Breadcrumbs crumbs={crumbs} />
+      <div
+        id="assessment"
+        class="mt-10 max-w-3xl lg:mt-14"
+        data-endpoint={site.web3forms.endpoint}
+        data-access-key={site.web3forms.accessKey}
+        data-email={site.email}
+      >
+        <noscript>
+          <p class="text-muted text-lg">
+            This assessment needs JavaScript. You can{" "}
+            <a class="link" href="/contact/">
+              get in touch
+            </a>{" "}
+            instead and we'll talk it through.
+          </p>
+        </noscript>
+
+        <!-- Intro -->
+        <div id="screen-intro">
+          <h1 class="text-display">
+            <span class="block">Where is your business on AI?</span>
+            <span class="text-muted block">Ten questions. About two minutes.</span>
+          </h1>
+          <p class="text-muted mt-8 max-w-2xl text-xl">
+            Answer honestly about how your organisation uses AI today. You'll see where you sit on a
+            four-stage scale, where the biggest gap is, and what a sensible next step looks like.
+          </p>
+          <ol
+            class="mt-10 grid grid-cols-2 gap-px sm:grid-cols-4"
+            aria-label="The four areas the assessment covers"
+          >
+            {stages.map((s) => (
+              <li data-stage={s.id} class="border-stage border-t-2 pt-3 pr-4">
+                <span class="text-faint text-label font-mono">{s.index}</span>
+                <span class="font-display block text-xl">{s.name}</span>
+              </li>
+            ))}
+          </ol>
+          <div class="mt-10">
+            <Button size="lg" id="start-btn">
+              Start the assessment
+            </Button>
+          </div>
+          <p class="text-faint mt-5 text-sm">
+            No sign-up. Your answers stay in your browser unless you choose to send them to me.
+          </p>
+        </div>
+
+        <!-- Quiz -->
+        <div id="screen-quiz" hidden>
+          <div class="flex items-center gap-5">
+            <div
+              id="progress"
+              class="bg-line h-1 flex-1 overflow-hidden rounded-full"
+              role="progressbar"
+              aria-label="Assessment progress"
+              aria-valuemin="1"
+              aria-valuemax={QUESTIONS.length}
+              aria-valuenow="1"
+            >
+              <div
+                id="progress-bar"
+                class="bg-stage h-full rounded-full transition-[width,background-color] duration-base ease-out-expo"
+              ></div>
+            </div>
+            <p id="progress-label" class="text-muted text-label font-mono uppercase" aria-live="polite">
+              Question 1 of 10
+            </p>
+          </div>
+          <fieldset class="mt-12" aria-labelledby="q-title">
+            <legend class="sr-only">Question</legend>
+            <h1 id="q-title" class="text-headline outline-none" tabindex="-1"></h1>
+            <p id="q-hint" class="text-muted mt-3 text-lg"></p>
+            <div id="q-options" class="mt-8 grid gap-3"></div>
+          </fieldset>
+          <div class="mt-8 flex items-center justify-between">
+            <button
+              id="q-back"
+              type="button"
+              class="text-muted hover:text-fg min-h-11 px-2 text-sm underline decoration-line-strong underline-offset-4 transition-colors duration-fast"
+            >
+              Back
+            </button>
+            <Button id="q-next" class="ml-auto" disabled>
+              Next
+            </Button>
+          </div>
+          <p class="text-faint mt-6 text-sm">Tip: press a number key to choose an answer.</p>
+        </div>
+
+        <!-- Result -->
+        <div id="screen-result" hidden>
+          <p class="text-muted text-label font-mono uppercase">
+            Your result <span aria-hidden="true">·</span> <span id="r-stage"></span>
+          </p>
+          <h1 id="r-name" class="text-display mt-4 outline-none" tabindex="-1"></h1>
+          <p class="mt-4 flex flex-wrap items-baseline gap-x-3">
+            <span id="r-score" class="font-display text-title tabular-nums"></span>
+            <span class="text-faint text-sm">self-assessed and indicative</span>
+          </p>
+          <p id="r-means" class="text-muted mt-6 text-xl"></p>
+
+          <h2 class="text-title mt-14">Where you stand</h2>
+          <div id="r-bars" class="mt-6 grid gap-6"></div>
+
+          <div id="r-gap" class="border-line bg-surface mt-10 rounded-lg border p-6">
+            <p id="r-gap-title" class="font-display flex items-center gap-3 text-xl"></p>
+            <p id="r-gap-body" class="text-muted mt-2"></p>
+          </div>
+
+          <h2 class="text-title mt-14">How Neurally can help</h2>
+          <p id="r-help" class="text-muted mt-4 text-lg"></p>
+
+          <div class="border-line-strong mt-10 rounded-lg border p-6 md:p-8">
+            <h2 id="r-cta-title" class="text-title"></h2>
+            <p class="text-muted mt-3">
+              Free, no obligation. Book thirty minutes, or send me your results using the form below and I'll
+              reply personally.
+            </p>
+            <Button href={site.calendly} external size="lg" class="mt-6" data-cta="calendly">
+              Book a free discovery call
+            </Button>
+          </div>
+
+          <form id="assess-form" class="mt-12 grid gap-5 sm:grid-cols-2" novalidate>
+            <h2 class="text-title sm:col-span-2">Send me these results</h2>
+            <div class="sr-only" aria-hidden="true">
+              <label for="assess-botcheck">Leave this field empty</label>
+              <input id="assess-botcheck" type="text" name="botcheck" tabindex="-1" autocomplete="off" />
+            </div>
+            <Field
+              id="assess-name"
+              name="name"
+              label="Name"
+              autocomplete="name"
+              required
+              error="Please add your name."
+            />
+            <Field
+              id="assess-email"
+              name="email"
+              type="email"
+              label="Work email"
+              autocomplete="email"
+              placeholder="you@company.com"
+              required
+              error="Please add a valid email address."
+            />
+            <Field
+              id="assess-company"
+              name="company"
+              label="Company and role"
+              autocomplete="organization"
+              optional
+              class="sm:col-span-2"
+            />
+            <Field
+              id="assess-note"
+              name="note"
+              label="Anything you'd like me to know?"
+              textarea
+              rows={3}
+              optional
+              class="sm:col-span-2"
+            />
+            <div class="sm:col-span-2">
+              <Button type="submit" size="lg">
+                Send my results
+              </Button>
+              <p class="text-faint mt-4 text-sm">
+                Your answers and score are included in the email to me. Sent via Web3Forms; see the
+                <a class="link" href="/privacy/">
+                  privacy notice
+                </a>
+                .
+              </p>
+            </div>
+          </form>
+          <p
+            id="assess-status"
+            class="form-status mt-6 text-lg outline-none"
+            role="status"
+            tabindex="-1"
+            hidden
+          ></p>
+
+          <div class="border-line mt-12 border-t pt-8">
+            <label for="r-share" class="text-sm font-medium">
+              Link to this result
+            </label>
+            <div class="mt-2 flex gap-3">
+              <input
+                type="text"
+                id="r-share"
+                readonly
+                class="border-line-strong bg-surface text-muted min-w-0 flex-1 rounded-md border px-4 py-3 font-mono text-sm"
+              />
+              <Button id="copy-link" variant="secondary">
+                Copy link
+              </Button>
+            </div>
+            <button
+              id="retake-btn"
+              type="button"
+              class="text-muted hover:text-fg mt-5 min-h-11 text-sm underline decoration-line-strong underline-offset-4 transition-colors duration-fast"
+            >
+              Retake the assessment
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    import "../scripts/assessment.ts";
+  </script>
+</Base>

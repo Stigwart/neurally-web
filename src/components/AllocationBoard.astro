@@ -1,0 +1,193 @@
+---
+/**
+ * The signature hero piece: one workflow, with every task deliberately
+ * allocated to a person, to AI assistance, or to AI within agreed limits.
+ * It is a real control (three radios per task), not a picture of one.
+ */
+type Lane = "person" | "assist" | "ai";
+const rows: { task: string; lane: Lane }[] = [
+  { task: "Read and sort the complaint", lane: "ai" },
+  { task: "Pull together the account history", lane: "ai" },
+  { task: "Draft the reply", lane: "assist" },
+  { task: "Decide the remedy", lane: "person" },
+  { task: "Spot the pattern across cases", lane: "assist" },
+  { task: "Approve anything above the limit", lane: "person" },
+  { task: "Answer for the outcome", lane: "person" },
+];
+const lanes: { id: Lane; label: string; short: string }[] = [
+  { id: "person", label: "Stays with a person", short: "Person" },
+  { id: "assist", label: "AI assists", short: "Assist" },
+  { id: "ai", label: "AI, within limits", short: "AI" },
+];
+const count = (lane: Lane) => rows.filter((r) => r.lane === lane).length;
+---
+
+<div class="board border-line bg-surface rounded-lg border" data-board>
+  <div class="border-line flex items-baseline justify-between gap-4 border-b px-5 py-4">
+    <p class="text-sm font-medium">Handling a customer complaint</p>
+    <p class="text-faint text-label font-mono uppercase">Illustrative</p>
+  </div>
+
+  <div class="px-5 pt-4 pb-2">
+    <div class="board-grid text-faint text-label font-mono uppercase" aria-hidden="true">
+      <span>Task</span>
+      <div class="grid grid-cols-3 text-center">
+        {lanes.map((l) => (
+          <span>{l.short}</span>
+        ))}
+      </div>
+    </div>
+
+    {rows.map((row, i) => (
+      <div
+        class="board-row board-grid border-line border-t"
+        role="radiogroup"
+        aria-label={row.task}
+        style={`--i:${i}`}
+      >
+        <span class="py-3 text-sm sm:text-base">{row.task}</span>
+        <div class="track">
+          {lanes.map((l) => (
+            <label class="slot">
+              <input
+                type="radio"
+                class="sr-only"
+                name={`task-${i}`}
+                value={l.id}
+                checked={row.lane === l.id}
+              />
+              <span class="sr-only">{l.label}</span>
+              <span class="dot" aria-hidden="true" />
+            </label>
+          ))}
+          <span class="token" aria-hidden="true" />
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <dl class="border-line text-muted grid grid-cols-3 border-t text-sm">
+    {lanes.map((l) => (
+      <div class="border-line flex flex-col gap-1 border-l px-5 py-4 first:border-l-0">
+        <dd class="font-display text-fg text-title tabular-nums" data-tally={l.id}>
+          {count(l.id)}
+        </dd>
+        <dt class="flex items-center gap-2">
+          <span class:list={["key", `key-${l.id}`]} aria-hidden="true" />
+          {l.label}
+        </dt>
+      </div>
+    ))}
+  </dl>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-board]").forEach((board) => {
+    board.addEventListener("change", () => {
+      board.querySelectorAll<HTMLElement>("[data-tally]").forEach((el) => {
+        const lane = el.dataset.tally;
+        el.textContent = String(board.querySelectorAll(`input[value="${lane}"]:checked`).length);
+      });
+    });
+  });
+</script>
+
+<style>
+  .board-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(8.5rem, 34%, 12rem);
+    align-items: center;
+    column-gap: 1rem;
+  }
+  .board-row {
+    --pos: 0;
+    --solid: 100%;
+  }
+  .board-row:has(input[value="assist"]:checked) {
+    --pos: 1;
+    --solid: 50%;
+  }
+  .board-row:has(input[value="ai"]:checked) {
+    --pos: 2;
+    --solid: 0%;
+  }
+  .track {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 2.75rem;
+  }
+  .slot {
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+  }
+  .slot:has(:focus-visible) {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+  }
+  .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--line-strong);
+    transition: transform var(--duration-fast) ease;
+  }
+  .slot:hover .dot {
+    transform: scale(1.8);
+  }
+  .token,
+  .key {
+    border: 1px solid var(--fg);
+    border-radius: var(--radius-xs);
+    background-image: repeating-linear-gradient(-55deg, var(--hatch) 0 1px, transparent 1px 4px);
+    overflow: hidden;
+  }
+  .token::before,
+  .key::before {
+    content: "";
+    display: block;
+    height: 100%;
+    width: var(--solid);
+    background: var(--fg);
+    transition: width var(--duration-base) var(--ease-out-expo);
+  }
+  .token {
+    position: absolute;
+    top: 0.625rem;
+    bottom: 0.625rem;
+    left: 0;
+    width: calc(100% / 3 - 0.75rem);
+    margin-inline: 0.375rem;
+    pointer-events: none;
+    transform: translateX(calc(var(--pos) * (100% + 0.75rem)));
+    transition: transform var(--duration-slow) var(--ease-out-expo);
+    animation: settle 1000ms var(--ease-out-expo) both;
+    animation-delay: calc(var(--i) * 130ms + 500ms);
+  }
+  .key {
+    width: 1.5rem;
+    height: 0.625rem;
+    flex-shrink: 0;
+  }
+  .key-person {
+    --solid: 100%;
+  }
+  .key-assist {
+    --solid: 50%;
+  }
+  .key-ai {
+    --solid: 0%;
+  }
+  /* On load every task starts undecided, then settles into its lane. */
+  @keyframes settle {
+    from {
+      transform: translateX(-70%);
+      opacity: 0;
+    }
+    30% {
+      opacity: 1;
+    }
+  }
+</style>

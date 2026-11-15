@@ -1,0 +1,12 @@
+---
+/** The caveat that must accompany every career figure. */
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<p class:list={["text-faint max-w-measure text-sm", className]}>
+  These are outcomes from roles Stuart held before founding Neurally. They are not Neurally client results,
+  and the wider commercial figures reflect the work of whole teams, not AI alone.
+</p>

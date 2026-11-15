@@ -1,0 +1,263 @@
+---
+import { render } from "astro:content";
+import Base from "./Base.astro";
+import PageHero from "../components/PageHero.astro";
+import Section from "../components/Section.astro";
+import Beat from "../components/Beat.astro";
+import Button from "../components/Button.astro";
+import Icon from "../components/Icon.astro";
+import Faq from "../components/Faq.astro";
+import LinkCards from "../components/LinkCards.astro";
+import CareerNote from "../components/CareerNote.astro";
+import Cta from "../components/Cta.astro";
+import { site } from "../data/site";
+import { stages } from "../data/stages";
+import { engagement } from "../data/engagements";
+import { families, type FamilyId } from "../data/nav";
+import { faqPage } from "../lib/schema";
+import { landingHref, resolveRelated, type LandingEntry } from "../lib/content";
+
+interface Props {
+  entry: LandingEntry;
+  collection: FamilyId;
+}
+const { entry, collection } = Astro.props;
+const d = entry.data;
+const family = families.find((f) => f.collection === collection)!;
+const { Content } = await render(entry);
+const hasBody = (entry.body ?? "").trim().length > 0;
+const related = await resolveRelated(d.related);
+const entryEngagement = engagement(d.entry.engagement);
+const also = d.entry.alsoConsider ? engagement(d.entry.alsoConsider) : null;
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: family.label, href: family.base },
+  { name: d.name, href: landingHref(collection, entry.id) },
+];
+---
+
+<Base title={d.seoTitle} description={d.description} crumbs={crumbs} schema={[faqPage(d.faq)]}>
+  <PageHero crumbs={crumbs} first={d.headline} second={d.headlineSecond} lede={d.lede}>
+    <Button href={site.calendly} external size="lg" data-cta="calendly">
+      Book a free discovery call
+    </Button>
+    <Button href="#where-to-start" variant="text">
+      Where to start, and what it costs
+    </Button>
+  </PageHero>
+
+  <!-- The situation, in the reader's words -->
+  <Section tone="paper" labelledby="situation-heading">
+    <div class="grid gap-x-12 gap-y-10 lg:grid-cols-12">
+      <div class="lg:col-span-4" data-reveal>
+        <h2 id="situation-heading" class="text-headline">
+          {d.situation.heading}
+        </h2>
+      </div>
+      <ul class="border-line border-t lg:col-span-8">
+        {d.situation.quotes.map((q, i) => (
+          <li class="border-line font-display text-title border-b py-6" data-reveal style={`--i:${i}`}>
+            “{q}”
+          </li>
+        ))}
+      </ul>
+    </div>
+  </Section>
+
+  {hasBody && (
+    <Section size="sm" class="pb-0!">
+      <div class="prose prose-neurally" data-reveal>
+        <Content />
+      </div>
+    </Section>
+  )}
+
+  <!-- Decisions -->
+  <Section labelledby="decisions-heading">
+    <div class="max-w-3xl" data-reveal>
+      <h2 id="decisions-heading" class="text-headline">
+        {d.decisions.heading}
+      </h2>
+      {d.decisions.intro && <p class="text-muted mt-6 text-lg">{d.decisions.intro}</p>}
+    </div>
+    <ol class="border-line mt-12 border-t">
+      {d.decisions.items.map((item, i) => (
+        <li
+          class="border-line grid gap-x-8 gap-y-2 border-b py-7 md:grid-cols-12"
+          data-reveal
+          style={`--i:${i % 4}`}
+        >
+          <span class="text-faint text-label pt-2 font-mono md:col-span-1">0{i + 1}</span>
+          <h3 class="text-title md:col-span-4">{item.title}</h3>
+          <p class="text-muted text-lg md:col-span-7">{item.body}</p>
+        </li>
+      ))}
+    </ol>
+  </Section>
+
+  <!-- Risks -->
+  <Section tone="paper" labelledby="risks-heading">
+    <div class="grid gap-x-12 gap-y-10 lg:grid-cols-12">
+      <div class="lg:col-span-4" data-reveal>
+        <h2 id="risks-heading" class="text-headline">
+          {d.risks.heading}
+        </h2>
+      </div>
+      <ul class="border-line border-t lg:col-span-8">
+        {d.risks.items.map((item, i) => (
+          <li class="border-line flex gap-4 border-b py-6" data-reveal style={`--i:${i}`}>
+            <Icon name="cross" class="text-faint mt-1.5" />
+            <div>
+              <h3 class="font-display text-xl">{item.title}</h3>
+              <p class="text-muted mt-1.5">{item.body}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </Section>
+
+  <!-- How the path applies -->
+  <Section labelledby="path-heading">
+    <div class="max-w-3xl" data-reveal>
+      <h2 id="path-heading" class="text-headline">
+        {d.path.heading}
+      </h2>
+    </div>
+    <ol class="mt-12 grid gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-4">
+      {d.path.steps.map((step, i) => {
+        const s = stages.find((x) => x.id === step.stage)!;
+        return (
+          <li data-stage={s.id} class="border-stage border-t-2 pt-5" data-reveal style={`--i:${i}`}>
+            <p class="text-muted text-label font-mono uppercase">Stage {s.index}</p>
+            <h3 class="text-title mt-2">{s.name}</h3>
+            <p class="text-muted mt-3">{step.body}</p>
+          </li>
+        );
+      })}
+    </ol>
+    <div class="mt-10">
+      <Button href="/approach/" variant="text">
+        How the four stages work
+      </Button>
+    </div>
+  </Section>
+
+  <!-- Career evidence, where relevant -->
+  {d.evidence && (
+    <Section tone="paper" labelledby="evidence-heading">
+      <div class="max-w-3xl" data-reveal>
+        <h2 id="evidence-heading" class="text-headline">
+          {d.evidence.heading}
+        </h2>
+      </div>
+      <dl class="border-line mt-10 border-t">
+        {d.evidence.items.map((item, i) => (
+          <div
+            class="border-line grid gap-x-8 gap-y-1 border-b py-5 md:grid-cols-12"
+            data-reveal
+            style={`--i:${i}`}
+          >
+            <dt class="font-display text-figure tabular-nums md:col-span-4">{item.figure}</dt>
+            <dd class="md:col-span-8 md:self-center">
+              <span class="text-muted text-lg">{item.label}</span>
+              <span class="text-faint text-label mt-1 block font-mono uppercase">
+                {item.where}, before Neurally
+              </span>
+            </dd>
+          </div>
+        ))}
+      </dl>
+      <CareerNote class="mt-5" />
+    </Section>
+  )}
+  {d.focusAreaNote && (
+    <Section tone="paper" size="sm">
+      <p class="font-display text-title max-w-4xl" data-reveal>
+        {d.focusAreaNote}
+      </p>
+    </Section>
+  )}
+
+  <!-- Entry engagement -->
+  <Section id="where-to-start" labelledby="start-heading" class="scroll-mt-16">
+    <div
+      class="border-line-strong grid gap-x-12 gap-y-8 rounded-lg border p-7 md:p-12 lg:grid-cols-12"
+      data-stage={entryEngagement.stage === "any" ? undefined : entryEngagement.stage}
+      data-reveal
+    >
+      <div class="lg:col-span-7">
+        <h2 id="start-heading" class="text-headline">
+          {d.entry.heading}
+        </h2>
+        <p class="text-muted mt-6 text-lg">{d.entry.body}</p>
+        <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+          <Button href={site.calendly} external data-cta="calendly">
+            Talk it through first, free
+          </Button>
+          <Button href={`/services/#${entryEngagement.id}`} variant="text">
+            Full scope on the services page
+          </Button>
+        </div>
+      </div>
+      <div class="lg:col-span-5">
+        <div class="border-line border-t pt-5">
+          <p class="text-faint text-label font-mono uppercase">Engagement {entryEngagement.index}</p>
+          <p class="font-display text-title mt-2">{entryEngagement.name}</p>
+          <p class="mt-4 flex items-baseline gap-4">
+            <span class="font-display text-figure tabular-nums">{entryEngagement.fee}</span>
+            <span class="text-muted">{entryEngagement.length}</span>
+          </p>
+          {entryEngagement.feeNote && <p class="text-muted mt-3 text-sm">{entryEngagement.feeNote}</p>}
+          <ul class="mt-5">
+            {entryEngagement.outputs.slice(0, 4).map((o) => (
+              <li class="border-line flex gap-3 border-t py-2.5 text-sm">
+                <Icon name="check" class="text-stage mt-0.5" />
+                {o}
+              </li>
+            ))}
+          </ul>
+          {also && (
+            <p class="text-muted border-line mt-1 border-t pt-4 text-sm">
+              Also worth a look:{" "}
+              <a class="link" href={`/services/#${also.id}`}>
+                {also.name}
+              </a>{" "}
+              ({also.fee === "Quoted" ? "quoted after scoping" : `${also.fee}, ${also.length}`}).
+            </p>
+          )}
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- FAQ -->
+  <Section class="pt-0!" labelledby="faq-heading">
+    <div class="grid gap-x-12 gap-y-8 lg:grid-cols-12">
+      <div class="lg:col-span-4" data-reveal>
+        <Beat
+          id="faq-heading"
+          first="Questions we hear."
+          second={`From ${family.collection === "industries" ? "this sector" : family.collection === "teams" ? "this seat" : "people in this spot"}.`}
+        />
+      </div>
+      <div class="lg:col-span-8">
+        <Faq items={d.faq} />
+      </div>
+    </div>
+  </Section>
+
+  <!-- Related -->
+  <Section tone="paper" size="sm" labelledby="related-heading">
+    <h2 id="related-heading" class="text-title" data-reveal>
+      Related reading
+    </h2>
+    <div class="mt-6">
+      <LinkCards
+        items={related.map((r) => ({ href: r.href, name: r.name, summary: r.summary, label: r.family }))}
+      />
+    </div>
+  </Section>
+
+  <Cta />
+</Base>

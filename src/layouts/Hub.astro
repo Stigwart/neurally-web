@@ -1,0 +1,70 @@
+---
+import Base from "./Base.astro";
+import PageHero from "../components/PageHero.astro";
+import Section from "../components/Section.astro";
+import LinkCards from "../components/LinkCards.astro";
+import Icon from "../components/Icon.astro";
+import Cta from "../components/Cta.astro";
+import { families, type FamilyId } from "../data/nav";
+import { getFamily, landingHref } from "../lib/content";
+
+interface Props {
+  collection: FamilyId;
+  title: string;
+  description: string;
+  first: string;
+  second: string;
+  lede: string;
+}
+const { collection, title, description, first, second, lede } = Astro.props;
+const family = families.find((f) => f.collection === collection)!;
+const entries = await getFamily(collection);
+const others = families.filter((f) => f.collection !== collection);
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: family.label, href: family.base },
+];
+---
+
+<Base title={title} description={description} crumbs={crumbs}>
+  <PageHero crumbs={crumbs} first={first} second={second} lede={lede} />
+
+  <Section tone="paper" size="sm">
+    <LinkCards
+      headingLevel="h2"
+      items={entries.map((e) => ({
+        href: landingHref(collection, e.id),
+        name: e.data.name,
+        summary: e.data.summary,
+      }))}
+    />
+    <slot />
+  </Section>
+
+  <Section size="sm" labelledby="other-heading">
+    <h2 id="other-heading" class="text-title">
+      Or start somewhere else
+    </h2>
+    <ul class="mt-6 grid gap-6 md:grid-cols-2">
+      {others.map((f) => (
+        <li>
+          <a
+            href={f.base}
+            class="group border-line hover:border-fg flex items-center justify-between rounded-lg border p-6 transition-colors duration-fast"
+          >
+            <span>
+              <span class="font-display text-title block">{f.label}</span>
+              <span class="text-muted">{f.blurb}</span>
+            </span>
+            <Icon
+              name="arrow"
+              class="text-faint group-hover:text-fg transition-[color,transform] duration-base ease-out-expo group-hover:translate-x-1"
+            />
+          </a>
+        </li>
+      ))}
+    </ul>
+  </Section>
+
+  <Cta />
+</Base>
