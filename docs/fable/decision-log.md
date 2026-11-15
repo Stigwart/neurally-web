@@ -20,8 +20,8 @@ before merging.
 - **D4. URLs are clean and end in a slash** (`/approach/`). Old `.html` URLs
   301 to them. `/index.html` is left to Cloudflare Pages, which already
   redirects it to `/`.
-- **D5. `CNAME` left in place, untouched.** It only matters to GitHub Pages.
-  Removing it is on the post-cutover checklist.
+- **D5. `CNAME` removed after the cutover.** It only mattered to GitHub Pages,
+  which was switched off on 15 November 2026.
 - **D6. Slugs chosen from the research** for the plain head phrase:
   `financial-services-insurance`, `marketplaces-ecommerce`, `b2b-saas`,
   `professional-services`, `product-technology-leaders`,
@@ -148,3 +148,7 @@ before merging.
   client all the way through to delivery, even where others write the
   software. Answers that opened with "No, we don't build" now open with what
   we do through delivery, and say who writes the code second.
+- **D38. Cutover on 15 November 2026.** The site moved to the Cloudflare Pages
+  project `neurally-web`, connected to this repository, with `main` as the
+  production branch. GitHub Pages is off. DNS stays at GoDaddy: `www` is a
+  CNAME to `neurally-web.pages.dev` and the apex is forwarded to `www`.
