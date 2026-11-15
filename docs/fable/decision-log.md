@@ -51,8 +51,7 @@ before merging.
 - **D11. Signature hero: an allocation board.** One workflow, seven tasks, each
   allocated to a person, to AI assistance, or to AI within limits. It animates
   from undecided to decided on load and the visitor can move any task. It is
-  labelled "Illustrative". **Review**: the example workflow (a customer
-  complaint) and its allocations are my choice.
+  labelled "Illustrative". Stuart confirmed the customer-complaint example.
 - **D12. Motion without a library.** CSS does the entrances, the hero settle
   and the page transitions (cross-document view transitions). About 2 KB of
   TypeScript adds scroll progress and the active stage. No GSAP, and Astro's
@@ -68,17 +67,17 @@ before merging.
 - **D14. Added "Neurally does not give legal or regulatory advice".** The
   governance and financial-services pages talk about Consumer Duty, UK GDPR and
   the EU AI Act. Saying plainly where the advice stops is more credible with a
-  regulated audience. **Review.**
-- **D15. H1 kept exactly.** "Stop experimenting with AI. Start operating with
-  it." is already a two-beat line and is the spine of the pitch. The
-  sub-heading is rewritten around decide, redesign, deliver.
-- **D16. The three articles are drafts in Stuart's name.** They use only
-  facts from the context pack plus two FCA sources and the BCG release. The
-  first-person lines ("In my experience…", "What I learned doing it") are
-  written for Stuart and need his read. **Review before merge.** To hold one
-  back, set `draft: true` in its front matter.
-- **D17. Article dates** are 27 October, 3 November and 10 November 2026.
-  Change `published` if you'd rather they carry the launch date.
+  regulated audience. Stuart confirmed these stay.
+- **D15. H1 is "Take AI from pilot to payback."** Stuart chose it on 15
+  November 2026 to replace "Stop experimenting with AI. Start operating with
+  it.", which read as a formula. The sub-heading carries the detail.
+- **D16. The three articles are in Stuart's name and publish at launch**
+  (Stuart's decision, 15 November 2026). They use only
+  facts from the context pack plus two FCA sources and the BCG release. They keep
+  first-person lines because they are bylined. To hold one back, set
+  `draft: true` in its front matter.
+- **D17. Article dates** stay staggered at 27 October, 3 November and 10
+  November 2026 (Stuart's decision).
 - **D18. BCG statistic kept, wording unchanged from the live site,** with the
   link. The release's own figure is 26% "embedded AI as part of a broader
   business transformation".
@@ -123,3 +122,17 @@ before merging.
 - **D33. `.impeccable/design.json` was left as it is.** It is the design
   skill's cached sidecar for the old site. Run `/impeccable document` once to
   regenerate it from the new build if you use that tool's live mode.
+
+## Copy review (15 November 2026)
+
+- **D34. Site voice is "we".** Stuart's decision. Pages, FAQs, forms and
+  landing pages say "we" and "us". The About page describes Stuart in the
+  third person. The three articles keep "I" because they carry his byline.
+  "Neurally" is kept where the company is being named or defined.
+- **D35. Plain-language and AI-tell pass.** Checked against ISO 24495-1
+  (relevant, findable, understandable, usable) and the humanizer rules.
+  Removed contrast-for-weight lines ("not X, but Y"), one-line closers and
+  aphorism headings; expanded abbreviations (NED, MAU, ML, P&L, B2B2C);
+  defined "operating model" and "decision rights" where first used. Contrasts
+  that correct a real belief or carry a required caveat ("career evidence, not
+  client results") were kept. Assessment wording was not touched.

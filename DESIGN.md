@@ -195,8 +195,7 @@ out. It is never a full background.
 All three are self-hosted. Archivo and Instrument Sans are preloaded.
 
 **Two-beat headings.** Most headings are a statement followed by a quieter
-second line that completes it ("Stop experimenting with AI. / Start operating
-with it."). The `Beat` component renders the second beat in `muted`. Keep both
+second line that completes it ("Governance runs through every stage. / It starts before anything is built."). The `Beat` component renders the second beat in `muted`. Keep both
 beats short, and don't force a second beat where the first is enough.
 
 **Index numbers** appear only where order carries meaning: stages 01–04,

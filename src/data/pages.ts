@@ -5,7 +5,7 @@
 export const staticOgPages: { slug: string; title: string; label: string }[] = [
   {
     slug: "home",
-    title: "Stop experimenting with AI. Start operating with it.",
+    title: "Take AI from pilot to payback.",
     label: "AI & business transformation advisory",
   },
   { slug: "approach", title: "Three questions. Four stages. One person accountable.", label: "Approach" },
