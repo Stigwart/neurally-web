@@ -10,6 +10,16 @@ export const site = {
   /** The Neurally company page (footer, Organization schema). */
   linkedinCompany: "https://www.linkedin.com/company/146344022/",
   founder: "Stuart Davis",
+  /** Registered company details (Companies House). */
+  company: {
+    legalName: "Neurally Ltd",
+    number: "17529243",
+    jurisdiction: "England and Wales",
+    office: "128 City Road, London, EC1V 2NX",
+    street: "128 City Road",
+    locality: "London",
+    postcode: "EC1V 2NX",
+  },
   locale: "en-GB",
   defaultDescription:
     "Neurally helps leadership teams decide where AI is worth the investment, redesign products, processes and teams around it, and lead the change through to measured results.",

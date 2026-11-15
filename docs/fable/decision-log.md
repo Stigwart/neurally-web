@@ -136,3 +136,10 @@ before merging.
   defined "operating model" and "decision rights" where first used. Contrasts
   that correct a real belief or carry a required caveat ("career evidence, not
   client results") were kept. Assessment wording was not touched.
+- **D36. Neurally is a limited company.** Stuart supplied the details on 15
+  November 2026: Neurally Ltd, company number 17529243. The privacy page now
+  names the company as data controller. The registered name, number, place of
+  registration and office appear on the Privacy and Contact pages, which covers
+  the website disclosure rule while the footer stays as "© Neurally" at
+  Stuart's request. "England and Wales" is inferred from the company number
+  format and the London office; correct `src/data/site.ts` if that is wrong.

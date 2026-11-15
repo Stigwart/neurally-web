@@ -11,7 +11,15 @@ export const organization = (): Json => ({
   "@type": "ProfessionalService",
   "@id": ORG_ID,
   name: site.name,
+  legalName: site.company.legalName,
   url: `${site.url}/`,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: site.company.street,
+    addressLocality: site.company.locality,
+    postalCode: site.company.postcode,
+    addressCountry: "GB",
+  },
   description:
     "Neurally is a UK-based AI and business transformation advisory that helps leadership teams decide where AI is worth the investment, redesign the business around it and lead the change through to measured results.",
   logo: abs("/assets/linkedin/neurally-logo-300x300.png"),

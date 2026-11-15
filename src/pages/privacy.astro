@@ -27,8 +27,10 @@ const crumbs = [
     <div class="container-page">
       <div class="prose prose-neurally">
         <p>
-          Neurally is a trading name of Stuart Davis. Stuart is the data controller for personal data
-          collected through this site. Contact: <a href={`mailto:${site.email}`}>{site.email}</a>.
+          {site.company.legalName} ("Neurally", "we") is the data controller for personal data collected
+          through this site. {site.company.legalName} is registered in {site.company.jurisdiction}, company
+          number {site.company.number}. Registered office: {site.company.office}. Contact:{" "}
+          <a href={`mailto:${site.email}`}>{site.email}</a>.
         </p>
 
         <h2>What we collect, and why</h2>
