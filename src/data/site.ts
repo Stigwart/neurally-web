@@ -5,7 +5,10 @@ export const site = {
   url: "https://www.neurally.co.uk",
   email: "hello@neurally.co.uk",
   calendly: "https://calendly.com/stuartdavis/30min",
+  /** Stuart's personal profile (About page, Person schema). */
   linkedin: "https://www.linkedin.com/in/stuartgdavis/",
+  /** The Neurally company page (footer, Organization schema). */
+  linkedinCompany: "https://www.linkedin.com/company/146344022/",
   founder: "Stuart Davis",
   locale: "en-GB",
   defaultDescription:

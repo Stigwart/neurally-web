@@ -19,6 +19,7 @@ export const organization = (): Json => ({
   email: site.email,
   areaServed: { "@type": "Country", name: "United Kingdom" },
   founder: { "@id": PERSON_ID },
+  sameAs: [site.linkedinCompany],
   priceRange: "££",
 });
 
