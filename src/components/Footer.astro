@@ -25,13 +25,13 @@ const headClass = "text-faint font-mono text-label uppercase";
         <p class="text-muted mt-5 max-w-xs text-sm">
           {site.descriptor}. UK-based and founder-led by {site.founder}.
         </p>
-        <p class="mt-5 text-sm">
-          <a class="link" href={`mailto:${site.email}`}>
+        <p class="mt-4 text-sm">
+          <a class="link inline-block py-1" href={`mailto:${site.email}`}>
             {site.email}
           </a>
         </p>
-        <p class="mt-1 text-sm">
-          <a class="link" href={site.linkedin} target="_blank" rel="noopener">
+        <p class="text-sm">
+          <a class="link inline-block py-1" href={site.linkedin} target="_blank" rel="noopener">
             Stuart on LinkedIn<span class="sr-only"> (opens in a new tab)</span>
           </a>
         </p>
@@ -52,7 +52,10 @@ const headClass = "text-faint font-mono text-label uppercase";
         {groups.map(({ family, entries }) => (
           <div>
             <p class={headClass}>
-              <a href={family.base} class="hover:text-fg transition-colors duration-fast">
+              <a
+                href={family.base}
+                class="hover:text-fg -my-1.5 inline-block py-1.5 transition-colors duration-fast"
+              >
                 {family.label}
               </a>
             </p>
@@ -72,10 +75,10 @@ const headClass = "text-faint font-mono text-label uppercase";
     <div class="border-line text-faint mt-14 flex flex-wrap items-center justify-between gap-x-8 gap-y-2 border-t pt-6 text-sm">
       <p>© {year} Neurally. Neurally is a trading name of Stuart Davis.</p>
       <p class="flex gap-6">
-        <a class="hover:text-fg transition-colors duration-fast" href="/privacy/">
+        <a class="hover:text-fg inline-block py-1.5 transition-colors duration-fast" href="/privacy/">
           Privacy
         </a>
-        <a class="hover:text-fg transition-colors duration-fast" href="/rss.xml">
+        <a class="hover:text-fg inline-block py-1.5 transition-colors duration-fast" href="/rss.xml">
           RSS
         </a>
       </p>

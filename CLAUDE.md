@@ -3,8 +3,11 @@
 ## What this is
 
 The public website for Stuart Davis's AI consulting business. This repo holds
-only the site itself (HTML/CSS/JS) — no business content lives here as the
-source of truth.
+only the site itself. No business content lives here as the source of truth.
+
+It is an **Astro** static site (TypeScript strict, **Tailwind CSS v4**) deployed
+to **Cloudflare Pages**. `README.md` covers running, deploying, adding pages and
+changing tokens. `DESIGN.md` covers the design system.
 
 ## Where the real business docs live
 
@@ -27,20 +30,38 @@ navigation (Linear project, go-to-market plan, related repos).
 
 ## Working on this site
 
-1. Check the Drive `overview.md` for current positioning before writing new
-   copy — don't invent claims not backed by that doc or Stuart directly.
-2. This is a plain static site: edit the `*.html` pages / `css/` / `js/main.js`
-   directly, no build step, no framework. Nav and footer are duplicated in
-   every page — keep them in sync.
-3. Six pages (Home, Approach, Services, About, Contact, Privacy) plus
-   `assessment.html` (AI maturity assessment, linked from the nav,
-   footer and home page). Don't add pages unless Stuart asks for them.
-4. Never publish invented client results, testimonials or case studies. The
-   About page's numbers are Stuart's career evidence from the Drive doc and
-   must stay labelled as pre-Neurally.
-5. The contact form posts to Web3Forms (real access key live in `js/main.js`)
-   and the site carries GoatCounter analytics (`neurally.goatcounter.com`,
-   live in every page's `<head>`). The free discovery call links to Calendly.
-   None of this is a build step — still plain static HTML/JS.
-6. The founding-client discount (see Drive `proof-plan.md`) is private and
-   network-only — never add it to this site.
+1. Check the Drive `neurally-overview-v2.1.md` for current positioning before
+   writing new copy. Don't invent claims not backed by that doc or Stuart
+   directly. Every factual claim on the site has a row in
+   `docs/claims-ledger.md`; add or update the row in the same change.
+2. **Never push to `main` directly.** Pushing `main` publishes the live site.
+   Work on a branch and open a pull request; Cloudflare Pages builds a preview
+   for it and CI must be green.
+3. Run `npm run verify` before opening a PR (types, lint, format, build, link
+   check, HTML validation, Playwright and axe).
+4. Pages: Home, Approach, Services, About, Contact, Assessment, Privacy, 404,
+   plus landing pages by industry, team and use case, and an Insights section.
+   Landing pages and articles are Markdown files in `src/content/` and need no
+   code. Stuart has authorised adding more of these when a page can be made
+   substantive and distinct. Don't add thin or templated pages.
+5. Facts that appear in more than one place live in `src/data/` (fees and
+   engagements, stages, career figures, FAQs). Change them there, never in a
+   page. Engagement fees are exact.
+6. Never publish invented client results, testimonials, logos or case studies.
+   Career figures are Stuart's evidence from the Drive doc and must stay
+   labelled as pre-Neurally (the `CareerNote` component does this). Past
+   employers appear as text, never as a logo wall. Professional services is a
+   focus area, not claimed experience.
+7. The founding-client discount (see Drive `proof-plan.md`) is private and
+   network-only. Never add it to this site. The only discount that may appear
+   is the Workshop credit.
+8. Integrations: the contact form and the assessment post to Web3Forms (public
+   access key in `src/data/site.ts`), every page carries GoatCounter analytics
+   (`neurally.goatcounter.com`), and the discovery call links out to Calendly.
+   If you add a third party, update `public/_headers` (CSP) and the privacy
+   page.
+9. Styling uses the tokens in the `@theme` block of `src/styles/global.css`.
+   Don't add arbitrary values where a token exists. All motion must respect
+   `prefers-reduced-motion`.
+10. British English. Short, plain sentences. No hype, and nothing a regulated
+    (FCA, Consumer Duty) audience would read as an overstated AI claim.
