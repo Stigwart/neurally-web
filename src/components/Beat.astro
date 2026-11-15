@@ -1,0 +1,38 @@
+---
+/**
+ * The two-beat heading used across the site: a statement, then a quieter
+ * second line that completes it.
+ */
+interface Props {
+  as?: "h1" | "h2" | "h3";
+  first: string;
+  second?: string | undefined;
+  size?: "display" | "headline" | "title";
+  /** Animate the lines in on load (hero use only). */
+  rise?: boolean;
+  class?: string;
+  id?: string;
+}
+const { as: Tag = "h2", first, second, size = "headline", rise = false, class: className, id } = Astro.props;
+const sizes = { display: "text-display", headline: "text-headline", title: "text-title" };
+---
+
+<Tag id={id} class:list={[sizes[size], className]}>
+  {rise ? (
+    <>
+      <span class="line-rise" style="--i:0">
+        <span>{first}</span>
+      </span>
+      {second && (
+        <span class="line-rise text-muted" style="--i:1">
+          <span>{second}</span>
+        </span>
+      )}
+    </>
+  ) : (
+    <>
+      <span class="block">{first}</span>
+      {second && <span class="text-muted block">{second}</span>}
+    </>
+  )}
+</Tag>

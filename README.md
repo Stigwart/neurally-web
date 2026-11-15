@@ -1,72 +1,178 @@
-# Neurally — Website
+# Neurally website
 
-Marketing website for Stuart Davis's AI consulting business (working name
-**Neurally**, brand concept **The Human Ratio** — see `CLAUDE.md` for where the
-full positioning lives). Plain static HTML/CSS/JS — no build step.
+The public site for [Neurally](https://www.neurally.co.uk), an AI and business
+transformation advisory led by Stuart Davis.
 
-## Quick start
+It is a static site built with **Astro**, **TypeScript** (strict) and
+**Tailwind CSS v4**, deployed to **Cloudflare Pages**. There is no server and no
+database. Business documentation lives in Google Drive, not here (see
+`CLAUDE.md`).
 
-Open `index.html` directly in a browser, or serve it locally:
+## Run it locally
+
+You need Node 22.23.4 or newer (Node 22 LTS or 24 LTS).
 
 ```bash
-python3 -m http.server 8000
+npm install
 ```
 
-Then visit http://localhost:8000.
+```bash
+npm run dev
+```
 
-## Structure
+That serves the site at `http://localhost:4321` with live reload.
 
-| Path | What |
-|---|---|
-| `index.html` | Home: hero, four problem/message pairs, why it stalls, four-stage path, why Neurally, ladder recap CTA, AI maturity assessment promo, hidden endorsements placeholder |
-| `approach.html` | Three questions, the path, how opportunities are sized, governance in regulated environments, principles, boundaries |
-| `services.html` | The engagement ladder (free call, Workshop, Diagnostic, Deep Dive) plus unpriced Design/Leadership/Advisory, fit, FAQ (`#faq`, with FAQPage schema) |
-| `about.html` | Founder hero (photo, LinkedIn), narrative, dated career timeline, career evidence (pre-Neurally), how I work, hidden endorsements |
-| `contact.html` | Calendly booking CTA plus a form that posts to Web3Forms, with a mailto fallback on failure |
-| `assessment.html` | AI maturity assessment (linked from nav, footer and home): 10 one-per-screen questions, scored in the browser into four scenarios, with an optional form that emails results via Web3Forms |
-| `privacy.html` | Privacy notice covering the contact form, Calendly and GoatCounter |
-| `404.html` | GitHub Pages not-found page (uses root-relative paths) |
-| `css/tokens.css` | Design tokens from the Neurally design system (Claude Design project) |
-| `css/styles.css` | Component styles: nav, section, rule, button, tag, card, stat, stage list, forms, footer, plus timeline/about-hero/offer-group added for the Sept 2026 update |
-| `js/main.js` | Footer year and the contact form's Web3Forms submit handler |
-| `js/assessment.js` | Assessment questions, scoring, scenarios and results form (shares the Web3Forms key with `main.js`) |
-| `robots.txt`, `sitemap.xml` | Crawl rules and the 7 indexable URLs (update the sitemap when pages change) |
-| `assets/og-image.png` | 1200x630 social share image used by every page's `og:image` / Twitter Card |
-| `assets/` | Logo mark (warm off-white colourway, C2PA metadata stripped), founder headshot |
+To see exactly what Cloudflare will serve, including redirects and security
+headers:
 
-The nav and footer are repeated in each page. If you change one, change them all.
+```bash
+npm run build
+```
 
-## Design system
+```bash
+npm run preview
+```
 
-Visuals come from the **Neurally design system** in Claude Design (dark Ink ground,
-Archivo + Instrument Sans, four stage colours: blue, yellow, sage, coral). Stage
-colours are semantic and map to the four stages of the work: Decide (blue), Design
-(yellow), Deliver (sage) and Embed (coral). The home page's four key messages use the
-same order. On Services, the free call is neutral (no stage colour); the Workshop,
-Diagnostic and Deep Dive are blue (three depths of Decide); Operating Model Design is
-yellow; Implementation Support and Leadership are sage; Training is coral; Advisory
-runs alongside any stage and uses blue.
+`preview` runs `wrangler pages dev dist` on `http://localhost:8788`. It runs
+locally and needs no Cloudflare account.
 
-## Third-party integrations
+## Check your work
 
-- **Web3Forms** — the contact form posts to it (`js/main.js`). Needs a real
-  `WEB3FORMS_ACCESS_KEY` in place of the placeholder before go-live.
-- **Calendly** — the free discovery call booking link
-  (`https://calendly.com/stuartdavis/30min`), used as an external link, not embedded.
-- **GoatCounter** — cookie-free analytics, one script tag per page
-  (`neurally.goatcounter.com`).
+```bash
+npm run verify
+```
 
-The founding-client discount mentioned in the Drive `proof-plan.md` is intentionally
-not documented here or anywhere in this repo — it's a private, network-only offer
-and must never appear on the site.
+This runs, in order: `astro check` (types), ESLint, Prettier, the build, the
+internal link check, HTML validation and the Playwright suite (smoke tests,
+form tests against a mocked endpoint, axe accessibility checks). CI runs the
+same steps on every pull request, plus Lighthouse (`npm run lhci`) with the
+budgets in `lighthouserc.json`, and uploads the built `dist/` as an artefact.
 
-## Content source of truth
+The first time, install the test browser: `npx playwright install chromium`.
 
-The business positioning, offer, ICP and copy all come from the Google Drive
-business docs, not this repo — see `CLAUDE.md` for the link. Update the docs
-there first, then bring copy changes back into the site.
+## Deploy
 
-## Deploying
+Cloudflare Pages builds and deploys automatically:
 
-GitHub Pages serves `main` from the repo root at https://www.neurally.co.uk (see
-`CNAME`). Pushing to `main` publishes.
+| Setting                | Value                 |
+| ---------------------- | --------------------- |
+| Framework preset       | Astro                 |
+| Build command          | `npm run build`       |
+| Build output directory | `dist`                |
+| Production branch      | `main`                |
+| Environment variable   | `NODE_VERSION` = `22` |
+
+Every pull request gets its own preview URL. Merging to `main` publishes.
+
+`public/_redirects` holds the 301s from the old `.html` URLs. `public/_headers`
+holds the security headers and cache rules. Both are plain text and are read by
+Cloudflare Pages.
+
+## Where things are
+
+```
+src/
+  content/           Landing pages and articles (Markdown). Start here.
+    industries/  teams/  use-cases/  insights/
+  content.config.ts  The schema each Markdown file must satisfy
+  data/              Facts used in more than one place
+    engagements.ts     the engagement ladder and fees
+    stages.ts          Decide, Design, Deliver, Embed
+    career.ts          Stuart's timeline and career figures
+    faqs.ts            FAQs for Home, Approach and Services
+    assessment.ts      assessment questions and scoring
+    site.ts            email, Calendly, Web3Forms key, analytics
+  components/        Header, Footer, Ladder, StagePath, Faq, and so on
+  layouts/           Base (every page), Landing, Hub
+  pages/             One file per URL, plus RSS and OG image endpoints
+  scripts/           Navigation and motion, the forms, the assessment
+  styles/global.css  Design tokens and the few hand-written styles
+public/              Files served as they are (_redirects, _headers, icons)
+tests/               Playwright smoke and accessibility tests
+docs/                Claims ledger, decision log, the rebuild brief
+```
+
+## Add a landing page (under ten minutes)
+
+1. Copy the closest existing file in `src/content/industries/`, `teams/` or
+   `use-cases/`. The file name becomes the URL:
+   `src/content/industries/healthcare.md` is served at `/industries/healthcare/`.
+2. Edit the front matter. Every field is checked when you build, and the error
+   message names the field that is wrong. The ones that matter most:
+   - `name`: short label for menus and breadcrumbs.
+   - `headline` and `headlineSecond`: the two beats of the H1.
+   - `seoTitle` (up to 62 characters) and `description` (110–165 characters).
+   - `situation.quotes`: the reader's situation in their own words.
+   - `decisions`, `risks`, `path`: the substance of the page.
+   - `entry.engagement`: an id from `src/data/engagements.ts`. The fee and
+     outputs are pulled in automatically, so they can't drift.
+   - `faq`: three to six questions. They are also published as FAQ structured
+     data.
+   - `related`: two to four other pages, written `collection/file-name`.
+3. Optionally write a few paragraphs of Markdown under the front matter.
+4. Run `npm run dev` and open the page.
+5. Add a row to `docs/claims-ledger.md` for each new fact, and add the URL to
+   `tests/pages.ts` so the tests cover it.
+
+The page appears in the navigation, the footer, its hub, the sitemap, and gets
+its own Open Graph image. No code changes are needed.
+
+Rules that still apply: no invented client results, testimonials or logos;
+career figures need `evidence` (which adds the "before Neurally" caveat
+automatically); if the sector is a focus area and not a track record, say so
+with `focusAreaNote`.
+
+## Add an article
+
+1. Create `src/content/insights/your-title.md`. The file name is the URL.
+2. Front matter:
+
+   ```yaml
+   ---
+   title: The title
+   description: 110 to 165 characters for search results.
+   standfirst: One or two sentences under the title.
+   published: 2026-12-01
+   tags: [Operating model]
+   stage: design # optional: decide, design, deliver or embed
+   readingMinutes: 6
+   related: [use-cases/ai-operating-model]
+   ---
+   ```
+
+3. Write the article in Markdown. Use `##` for section headings.
+4. It appears on `/insights/`, on its tag pages and in `/rss.xml`. Set
+   `draft: true` to keep it off the site.
+
+Use `.mdx` instead of `.md` if you need a component inside an article.
+
+## Change the design tokens
+
+All tokens are in the `@theme` block at the top of `src/styles/global.css`:
+colours, fonts, the type scale, spacing, radii, easing and durations. Change a
+value there and every utility that uses it follows (`text-headline`,
+`bg-surface`, `duration-base`, and so on).
+
+- **Stage colours** (`--color-decide`, `--color-design`, `--color-deliver`,
+  `--color-embed`) are the only chroma on the site. Each stage always keeps its
+  own colour.
+- **Tones.** A section is dark by default. Add `tone="paper"` to a `Section`
+  (or `data-tone="paper"` to any element) and the semantic colours inside it
+  (`bg`, `fg`, `muted`, `line`) switch. The two sets are defined just under
+  the `@theme` block.
+- **Fonts** are self-hosted through Fontsource packages and imported at the top
+  of the same file. To change a typeface, install its package, swap the import
+  and update `--font-display`, `--font-sans` or `--font-mono`.
+
+`DESIGN.md` describes the design system and the reasoning behind it.
+
+## Integrations
+
+| What                                         | Where it is configured                                 | Notes                                   |
+| -------------------------------------------- | ------------------------------------------------------ | --------------------------------------- |
+| Web3Forms (contact form, assessment results) | `src/data/site.ts`                                     | The access key is public by design      |
+| GoatCounter analytics                        | `src/data/site.ts`, loaded in `src/layouts/Base.astro` | Cookie-free                             |
+| Calendly                                     | `src/data/site.ts`                                     | External link only; nothing is embedded |
+
+If you add a third party, add it to the Content Security Policy in
+`public/_headers` and describe it on the privacy page.

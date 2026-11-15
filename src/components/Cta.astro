@@ -1,0 +1,42 @@
+---
+import Button from "./Button.astro";
+import Beat from "./Beat.astro";
+import { site } from "../data/site";
+
+interface Props {
+  first?: string;
+  second?: string;
+  body?: string;
+}
+const {
+  first = "Start with a conversation.",
+  second = "Thirty minutes, free.",
+  body = "Tell us what you are trying to decide. If we can help, we will say how and what it would cost. If we can't, we will say that too.",
+} = Astro.props;
+---
+
+<section class="py-section relative overflow-clip" aria-labelledby="cta-heading">
+  <div
+    class="hatch pointer-events-none absolute inset-y-0 right-0 w-1/3 opacity-25 [mask-image:linear-gradient(to_left,black,transparent)]"
+    aria-hidden="true"
+  ></div>
+  <div class="container-page relative">
+    <div class="bg-line mb-12 h-px" data-reveal="rule"></div>
+    <div class="grid gap-10 lg:grid-cols-12 lg:items-end">
+      <div class="lg:col-span-7" data-reveal>
+        <Beat id="cta-heading" first={first} second={second} />
+      </div>
+      <div class="lg:col-span-5" data-reveal style="--i:1">
+        <p class="text-muted text-lg">{body}</p>
+        <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+          <Button href={site.calendly} external size="lg" data-cta="calendly">
+            Book a free discovery call
+          </Button>
+          <Button href="/contact/" variant="text">
+            Or send a message
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

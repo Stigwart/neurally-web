@@ -1,0 +1,29 @@
+---
+/** A small authored icon set: one stroke weight, one grid. */
+interface Props {
+  name: "arrow" | "arrow-up-right" | "plus" | "check" | "cross" | "chevron";
+  class?: string;
+}
+const { name, class: className } = Astro.props;
+const paths: Record<Props["name"], string> = {
+  arrow: "M3 10h13M11 5l5 5-5 5",
+  "arrow-up-right": "M6 14 14 6M7 6h7v7",
+  plus: "M10 4v12M4 10h12",
+  check: "m4 10.5 4 4 8-9",
+  cross: "m5 5 10 10M15 5 5 15",
+  chevron: "m5 8 5 5 5-5",
+};
+---
+
+<svg
+  class:list={["size-[1.1em] shrink-0", className]}
+  viewBox="0 0 20 20"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.5"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+>
+  <path d={paths[name]}></path>
+</svg>

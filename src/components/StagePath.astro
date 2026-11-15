@@ -1,0 +1,73 @@
+---
+import { stages } from "../data/stages";
+import Beat from "./Beat.astro";
+
+interface Props {
+  first?: string;
+  second?: string;
+  intro?: string;
+  headingLevel?: "h1" | "h2";
+}
+const {
+  first = "Four stages, in this order.",
+  second = "Stop after any of them and keep every output.",
+  intro = "We can work with you from the first decision through to delivery. Each stage also ends with something you can use if you stop there.",
+  headingLevel = "h2",
+} = Astro.props;
+---
+
+<div class="grid gap-x-12 gap-y-10 lg:grid-cols-12" data-story>
+  <div class="lg:col-span-5">
+    <div class="lg:sticky lg:top-28">
+      <Beat as={headingLevel} id="path-heading" first={first} second={second} />
+      <p class="text-muted mt-6 max-w-md text-lg">{intro}</p>
+
+      <ol class="mt-10 hidden lg:block" aria-hidden="true">
+        {stages.map((s) => (
+          <li
+            data-step-ref={s.id}
+            data-stage={s.id}
+            class="group text-faint border-line data-current:text-fg flex items-center gap-4 border-t py-3 transition-colors duration-base"
+          >
+            <span class="text-label font-mono">{s.index}</span>
+            <span class="font-display text-xl">{s.name}</span>
+            <span class="bg-stage ml-auto h-2.5 w-2.5 scale-0 rounded-full transition-transform duration-base ease-out-expo group-data-current:scale-100" />
+          </li>
+        ))}
+      </ol>
+    </div>
+  </div>
+
+  <ol class="relative lg:col-span-7">
+    {stages.map((s) => (
+      <li
+        data-step={s.id}
+        data-stage={s.id}
+        data-progress="through"
+        class="border-line relative border-t py-10 first:border-t-0 first:pt-0 lg:py-16 lg:pl-10"
+      >
+        <span
+          class="bg-stage absolute top-0 left-0 hidden h-full w-px origin-top scale-y-(--p,0) lg:block"
+          aria-hidden="true"
+        />
+        <p class="text-label text-muted flex items-center gap-3 font-mono uppercase">
+          <span class="bg-stage size-2.5 rounded-full" aria-hidden="true" />
+          Stage {s.index}
+        </p>
+        <h3 class="text-display mt-4">{s.name}</h3>
+        <p class="font-display text-title text-muted mt-3">{s.question}</p>
+        <p class="max-w-measure mt-6 text-lg">{s.summary}</p>
+        <p class="text-muted max-w-measure mt-4">{s.detail}</p>
+        <ul class="mt-7 flex flex-wrap gap-2">
+          {s.outputs.map((o) => (
+            <li class="border-line text-muted rounded-full border px-3.5 py-1.5 text-sm">{o}</li>
+          ))}
+        </ul>
+        <p class="text-faint mt-6 text-sm">
+          <span class="sr-only">Engagements: </span>
+          {s.engagements}
+        </p>
+      </li>
+    ))}
+  </ol>
+</div>

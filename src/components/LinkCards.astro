@@ -1,0 +1,32 @@
+---
+import Icon from "./Icon.astro";
+
+interface Props {
+  items: { href: string; name: string; summary: string; label?: string }[];
+  headingLevel?: "h2" | "h3";
+}
+const { items, headingLevel: H = "h3" } = Astro.props;
+---
+
+<ul class="border-line border-t">
+  {items.map((item, i) => (
+    <li data-reveal style={`--i:${i % 4}`}>
+      <a
+        href={item.href}
+        class="group border-line hover:bg-surface -mx-3 grid gap-x-8 gap-y-2 rounded-md border-b px-3 py-7 transition-colors duration-fast md:grid-cols-12 md:items-baseline"
+      >
+        <H class="font-display text-title md:col-span-5">
+          {item.label && (
+            <span class="text-faint text-label mb-1 block font-mono font-normal uppercase">{item.label}</span>
+          )}
+          {item.name}
+        </H>
+        <p class="text-muted md:col-span-6">{item.summary}</p>
+        <Icon
+          name="arrow"
+          class="text-faint group-hover:text-fg hidden justify-self-end transition-[color,transform] duration-base ease-out-expo group-hover:translate-x-1 md:block"
+        />
+      </a>
+    </li>
+  ))}
+</ul>

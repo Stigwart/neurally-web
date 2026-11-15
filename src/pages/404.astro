@@ -1,0 +1,35 @@
+---
+import Base from "../layouts/Base.astro";
+import Button from "../components/Button.astro";
+---
+
+<Base
+  title="Page not found"
+  description="That page doesn't exist. Here is where to go instead."
+  noindex
+  ogImage="/og/home.png"
+>
+  <section class="py-section">
+    <div class="container-page">
+      <p class="text-muted text-label font-mono uppercase">Error 404</p>
+      <h1 class="text-display mt-6">
+        <span class="block">That page isn't here.</span>
+        <span class="text-muted block">The rest of the site is.</span>
+      </h1>
+      <p class="text-muted mt-8 max-w-xl text-xl">
+        The address may have changed when the site was rebuilt, or the link may be mistyped.
+      </p>
+      <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
+        <Button href="/" size="lg">
+          Back to the home page
+        </Button>
+        <Button href="/services/" variant="text">
+          Services and fees
+        </Button>
+        <Button href="/contact/" variant="text">
+          Contact
+        </Button>
+      </div>
+    </div>
+  </section>
+</Base>

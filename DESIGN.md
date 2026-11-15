@@ -1,273 +1,277 @@
 ---
 name: Neurally
-description: A dark, restrained working-ledger site for a senior AI and business transformation adviser, with four pastel stage colours as the only chroma.
+description: A dark-and-paper editorial ledger for a senior AI and business transformation adviser. Four stage colours are the only chroma, and a fine hatch from the logo is the only texture.
 colors:
-  ink: "#1A1A1A"
-  ink-sunken: "#141414"
-  ink-raised: "#202020"
-  ink-overlay: "#2A2A29"
-  ink-border: "#383836"
-  ink-border-strong: "#4A4A47"
-  ink-muted: "#8A8A85"
-  ink-secondary: "#B0ACA3"
+  ink-950: "#0C0C0B"
+  ink-900: "#121211"
+  ink-850: "#191918"
+  ink-800: "#212120"
+  ink-700: "#2C2C2A"
+  ink-600: "#3A3A37"
   paper: "#FAF8F4"
-  paper-sunken: "#EDEAE3"
-  decide-blue: "#A9C4D9"
-  decide-blue-light: "#C7DAE8"
-  decide-blue-deep: "#7FA3BF"
-  decide-blue-tint: "#34383C"
-  design-yellow: "#EFDBA0"
-  design-yellow-light: "#F5E7BE"
-  design-yellow-deep: "#CFB877"
-  design-yellow-tint: "#403D32"
-  deliver-sage: "#B7C9A8"
-  deliver-sage-light: "#CEDBC3"
-  deliver-sage-deep: "#8FA67D"
-  deliver-sage-tint: "#363933"
-  embed-coral: "#E8A599"
-  embed-coral-light: "#F0C0B7"
-  embed-coral-deep: "#C97F71"
-  embed-coral-tint: "#3F3331"
+  paper-200: "#F2EFE8"
+  paper-300: "#E6E2D9"
+  stone-400: "#ABA79E"
+  stone-500: "#8F8C84"
+  stone-600: "#5A5750"
+  decide: "#A9C4D9"
+  design: "#EFDBA0"
+  deliver: "#B7C9A8"
+  embed: "#E8A599"
+  decide-deep: "#3F6885"
+  design-deep: "#7A6520"
+  deliver-deep: "#4C6638"
+  embed-deep: "#9C4A3A"
 typography:
-  display-l:
-    fontFamily: "Archivo, Helvetica Neue, Helvetica, Arial, sans-serif"
-    fontSize: "56px"
-    fontWeight: 400
-    lineHeight: 1.04
-    letterSpacing: "-0.038em"
-  display-m:
-    fontFamily: "Archivo, Helvetica Neue, Helvetica, Arial, sans-serif"
-    fontSize: "44px"
-    fontWeight: 400
-    lineHeight: 1.06
-    letterSpacing: "-0.035em"
+  display:
+    fontFamily: "Archivo Variable, Helvetica Neue, Helvetica, Arial, sans-serif"
+    fontSize: "clamp(2.5rem, 1.1rem + 4.6vw, 4.75rem)"
+    fontWeight: 500
+    lineHeight: 0.98
+    letterSpacing: "-0.04em"
   headline:
-    fontFamily: "Archivo, Helvetica Neue, Helvetica, Arial, sans-serif"
-    fontSize: "34px"
-    fontWeight: 400
-    lineHeight: 1.1
-    letterSpacing: "-0.03em"
-  section-title:
-    fontFamily: "Archivo, Helvetica Neue, Helvetica, Arial, sans-serif"
-    fontSize: "26px"
+    fontFamily: "Archivo Variable, Helvetica Neue, Helvetica, Arial, sans-serif"
+    fontSize: "clamp(1.875rem, 1.3rem + 2.4vw, 3.25rem)"
     fontWeight: 500
-    lineHeight: 1.15
-    letterSpacing: "-0.025em"
+    lineHeight: 1.06
+    letterSpacing: "-0.032em"
+  figure:
+    fontFamily: "Archivo Variable, Helvetica Neue, Helvetica, Arial, sans-serif"
+    fontSize: "clamp(2.25rem, 1.6rem + 2.6vw, 3.75rem)"
+    fontWeight: 500
+    lineHeight: 1
+    letterSpacing: "-0.04em"
   title:
-    fontFamily: "Archivo, Helvetica Neue, Helvetica, Arial, sans-serif"
-    fontSize: "20px"
+    fontFamily: "Archivo Variable, Helvetica Neue, Helvetica, Arial, sans-serif"
+    fontSize: "clamp(1.375rem, 1.2rem + 0.7vw, 1.75rem)"
     fontWeight: 500
-    lineHeight: 1.25
+    lineHeight: 1.2
     letterSpacing: "-0.02em"
-  body-l:
-    fontFamily: "Instrument Sans, Helvetica Neue, Helvetica, Arial, sans-serif"
-    fontSize: "18px"
+  body-xl:
+    fontFamily: "Instrument Sans Variable, Helvetica Neue, Helvetica, Arial, sans-serif"
+    fontSize: "clamp(1.25rem, 1.15rem + 0.4vw, 1.4375rem)"
     fontWeight: 400
-    lineHeight: 1.6
+    lineHeight: 1.4
+  body-lg:
+    fontFamily: "Instrument Sans Variable, Helvetica Neue, Helvetica, Arial, sans-serif"
+    fontSize: "1.125rem"
+    fontWeight: 400
+    lineHeight: 1.55
   body:
-    fontFamily: "Instrument Sans, Helvetica Neue, Helvetica, Arial, sans-serif"
-    fontSize: "16px"
+    fontFamily: "Instrument Sans Variable, Helvetica Neue, Helvetica, Arial, sans-serif"
+    fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.6
-  body-s:
-    fontFamily: "Instrument Sans, Helvetica Neue, Helvetica, Arial, sans-serif"
-    fontSize: "14px"
+  body-sm:
+    fontFamily: "Instrument Sans Variable, Helvetica Neue, Helvetica, Arial, sans-serif"
+    fontSize: "0.875rem"
     fontWeight: 400
     lineHeight: 1.55
   label:
-    fontFamily: "Instrument Sans, Helvetica Neue, Helvetica, Arial, sans-serif"
-    fontSize: "12px"
+    fontFamily: "IBM Plex Mono, ui-monospace, SF Mono, Menlo, monospace"
+    fontSize: "0.75rem"
     fontWeight: 400
     lineHeight: 1.4
-    letterSpacing: "0.14em"
+    letterSpacing: "0.08em"
 rounded:
   xs: "2px"
   sm: "4px"
   md: "8px"
-  lg: "12px"
+  lg: "14px"
+  full: "999px"
 spacing:
-  xs: "4px"
-  sm: "8px"
-  md: "16px"
-  lg: "24px"
-  xl: "40px"
-  section: "96px"
-  gutter: "32px"
+  gutter: "clamp(1.25rem, 0.6rem + 3vw, 3rem)"
+  section: "clamp(4.5rem, 3rem + 7vw, 9rem)"
+  section-sm: "clamp(3rem, 2rem + 4vw, 5.5rem)"
+  page: "80rem"
+  measure: "42rem"
+motion:
+  ease-out-expo: "cubic-bezier(0.16, 1, 0.3, 1)"
+  fast: "160ms"
+  base: "320ms"
+  slow: "700ms"
+  slower: "1100ms"
 components:
   button-primary:
     backgroundColor: "{colors.paper}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.md}"
-    padding: "10px 20px"
-  button-primary-hover:
-    backgroundColor: "{colors.paper-sunken}"
+    textColor: "{colors.ink-900}"
+    rounded: "{rounded.full}"
+    padding: "0 20px"
   button-secondary:
     backgroundColor: "transparent"
     textColor: "{colors.paper}"
-    rounded: "{rounded.md}"
-    padding: "10px 20px"
-  button-accent:
-    backgroundColor: "transparent"
-    textColor: "{colors.decide-blue}"
-    rounded: "{rounded.md}"
-    padding: "10px 20px"
-  card:
-    backgroundColor: "{colors.ink-raised}"
+    rounded: "{rounded.full}"
+    padding: "0 20px"
+  panel:
+    backgroundColor: "{colors.ink-850}"
     textColor: "{colors.paper}"
-    rounded: "{rounded.md}"
+    rounded: "{rounded.lg}"
     padding: "24px"
-  tag:
-    backgroundColor: "{colors.ink-raised}"
-    textColor: "{colors.ink-secondary}"
-    rounded: "{rounded.sm}"
-    padding: "4px 10px"
   input:
-    backgroundColor: "{colors.ink-raised}"
+    backgroundColor: "{colors.ink-850}"
     textColor: "{colors.paper}"
     rounded: "{rounded.md}"
-    padding: "10px 14px"
+    padding: "12px 16px"
 ---
 
 # Design System: Neurally
+
+The tokens above mirror the `@theme` block in `src/styles/global.css`, which is
+the source of truth. If the two ever disagree, the CSS wins and this file needs
+updating.
 
 ## Overview
 
 **Creative North Star: "The Operator's Ledger"**
 
-The site reads like a senior operator's working document: dark, plain-spoken, and exact. A near-black Ink ground carries warm off-white type; structure comes from hairline borders and spacing rather than boxes, gradients or imagery. Colour is deliberately scarce. The only chroma on the page is four pastel stage colours that annotate the four stages of the work (Decide, Design, Deliver, Embed) and always appear in that order.
+The site reads like a senior operator's working document: plain-spoken, exact
+and unhurried. Sentences carry the page. Structure comes from hairlines, a
+strict grid and generous space between sections, not from cards, gradients or
+stock imagery.
 
-The mood is restrained, precise and authoritative. Headlines are set large, light-weight and tightly tracked, so a sentence carries the page instead of decoration. Body copy is compact and sits on a 62ch measure. The oversized logo mark appears once, as a 7%-opacity texture behind the hero, so brand presence is felt without being displayed.
+The reference for craft and rhythm is Genesy (see `docs/fable/moodboard.md`):
+a near-monochrome base, one disciplined accent, large confident type, two-beat
+headlines and a mono index system. Neurally keeps that restraint and makes it
+its own in three ways:
 
-This system rejects generic AI-startup gloss (gradients, glows, neon, brain and robot imagery) and big-four consultancy styling (stock-photo corporate, blue-and-grey deck aesthetics).
+1. **Stage colour.** The only chroma is four pastel colours, one for each stage
+   of the work: Decide (blue), Design (yellow), Deliver (sage), Embed (coral).
+2. **The hatch.** The logo is drawn from parallel strokes. The same fine
+   diagonal hatch is the site's single texture. In the hero it marks work that
+   AI takes on; elsewhere it appears only as a faint edge.
+3. **Ink and paper.** Sections alternate between a warm near-black and a warm
+   paper, so long copy is comfortable to read and the page has a pulse.
 
-**Key Characteristics:**
-- Dark Ink ground by default; an optional `.on-paper` inverse theme exists for light surfaces.
-- One display family (Archivo) and one text family (Instrument Sans); two voices, no more.
-- Four stage colours are semantic marks, never decoration.
-- Hairline 1px borders and tonal surface layers instead of heavy shadows.
-- Small radii (4px and 8px); no pills, no large rounded blocks.
-- The only all-caps style is the 12px tracked kicker.
+It rejects AI-startup gloss (gradients, glows, neon, robot imagery), big-firm
+deck styling, logo walls, and metric tiles built on client results. Neurally
+has none of those results yet and the design does not pretend otherwise. Proof
+is carried by published fees, clear scope and labelled career evidence.
 
-## Colors
+## Colour
 
-A near-monochrome warm-neutral palette with four muted pastel accents. Blue doubles as the interface accent.
+### Tones
 
-### Primary
-- **Decide Blue** (#A9C4D9): The interface accent and first stage colour. Links, hero kicker, focus ring, accent button, active borders, "Decide" stat and tag. Deep (#7FA3BF) is the pressed state; light (#C7DAE8) is hover and tag text; tint (#34383C) is the hover/background wash.
+Every section is one of two tones. Components never hard-code a colour; they
+use semantic utilities that resolve differently in each tone.
 
-### Secondary
-- **Design Yellow** (#EFDBA0): Second stage colour ("Design"), and also the text-selection background. Light #F5E7BE, deep #CFB877, tint #403D32.
-- **Deliver Sage** (#B7C9A8): Third stage colour ("Deliver"). Light #CEDBC3, deep #8FA67D, tint #363933.
-- **Embed Coral** (#E8A599): Fourth stage colour ("Embed"), and the form error colour. Light #F0C0B7, deep #C97F71, tint #3F3331.
+| Utility                | Ink (default)      | Paper (`data-tone="paper"`) |
+| ---------------------- | ------------------ | --------------------------- |
+| `bg`                   | ink-900            | paper-200                   |
+| `surface`              | ink-850            | paper                       |
+| `raised`               | ink-800            | white                       |
+| `fg`                   | paper              | ink-900                     |
+| `muted`                | stone-400          | stone-600                   |
+| `faint`                | stone-500          | stone-600                   |
+| `line` / `line-strong` | paper at 13% / 30% | ink at 14% / 40%            |
+| `accent`               | decide             | decide-deep                 |
 
-### Neutral
-- **Ink** (#1A1A1A): Page ground.
-- **Sunken Ink** (#141414): Recessed bands such as the stat band.
-- **Raised Ink** (#202020): Cards, inputs, tags.
-- **Overlay Ink** (#2A2A29): Subtle borders and overlays.
-- **Border Ink** (#383836) / **Strong Border Ink** (#4A4A47): Default and emphasised hairlines.
-- **Muted Ink** (#8A8A85): Kickers and meta text.
-- **Secondary Ink** (#B0ACA3): Supporting copy.
-- **Warm Paper** (#FAF8F4): Primary text on dark; page ground on `.on-paper`; inverse button fill.
-- **Paper Sunken** (#EDEAE3): Primary button hover.
+All text pairs meet WCAG AA (4.5:1) in both tones.
 
-### Named Rules
-**The Stage Order Rule.** The four stage colours always appear in the order blue, yellow, sage, coral, mapping to Decide, Design, Deliver, Embed. A stage colour is never used for anything but its stage (blue also serves as the interface accent).
+### Named rules
 
-**The Scarce Chroma Rule.** Outside the stage marks and the blue accent, the page is neutral. A new accent colour or gradient is never introduced.
+**The Stage Order Rule.** Stage colours always appear in the order blue,
+yellow, sage, coral, and each is used only for its own stage. Set
+`data-stage="decide"` (or design, deliver, embed) on an element and
+`bg-stage`, `text-stage` and `border-stage` inside it take that colour. On
+paper the deep variant is used automatically so text stays legible.
+
+**The Scarce Chroma Rule.** Outside stage marks, the page is neutral. The
+interface accent (links, focus rings, text selection, primary-button hover) is
+the Decide blue, because the first step is the action. No fifth colour, and no
+gradients.
+
+**The Hatch Rule.** The hatch means "AI takes this on" in the allocation board
+and is otherwise a quiet edge texture at low opacity, always masked to fade
+out. It is never a full background.
 
 ## Typography
 
-**Display Font:** Archivo (with Helvetica Neue, Helvetica, Arial)
-**Body Font:** Instrument Sans (with Helvetica Neue, Helvetica, Arial)
+- **Archivo** (variable, weight 500) for display, headlines, titles and
+  figures. Tight negative tracking, never below -0.04em.
+- **Instrument Sans** (variable) for all running text.
+- **IBM Plex Mono** for index numbers, breadcrumbs, dates and small uppercase
+  labels only. It marks data and sequence. It is not used for body copy.
 
-**Character:** Archivo at regular weight with tight negative tracking gives headlines a calm, editorial authority. Instrument Sans keeps running text neutral and legible. Hierarchy comes from size and tracking, not weight.
+All three are self-hosted. Archivo and Instrument Sans are preloaded.
 
-### Hierarchy
-- **Display L** (400, 56px, 1.04, -0.038em): Home hero headline. Drops to 40px under 720px.
-- **Display M** (400, 44px, 1.06, -0.035em): Inner-page openers, capped at 22ch. 34px on small screens.
-- **Headline** (400, 34px, 1.1, -0.03em): Stat values (26px between 1100 and 1279px wide). 28px on small screens.
-- **Section title** (500, 26px, 1.15, -0.025em): Section headings (`h2`). 24px on small screens.
-- **Title** (500, 20px, 1.25, -0.02em): Card and timeline headings.
-- **Body L** (400, 18px, 1.6): Hero lede and section intros, max 62ch.
-- **Body** (400, 16px, 1.6): Default text.
-- **Body S** (400, 14px, 1.55): Card copy, labels, hints, stat descriptions.
-- **Label** (400, 12px, 0.14em, uppercase): Kickers only.
+**Two-beat headings.** Most headings are a statement followed by a quieter
+second line that completes it ("Governance runs through every stage. / It starts before anything is built."). The `Beat` component renders the second beat in `muted`. Keep both
+beats short, and don't force a second beat where the first is enough.
 
-### Named Rules
-**The One Caps Rule.** Uppercase is used only for the 12px tracked kicker. Headings and buttons are sentence case.
+**Index numbers** appear only where order carries meaning: stages 01–04,
+engagements 00–08, numbered decisions. They are never decoration.
 
-**The Light Headline Rule.** Display and headline sizes use regular weight (400). Weight is not used to create emphasis at large sizes. Smaller headings (section title, title) use medium (500).
+Headings use `text-wrap: balance`; paragraphs use `text-wrap: pretty`. Body
+copy is held to a 42rem measure.
 
 ## Layout
 
-A single centred container (max 1180px; 760px for narrow reading columns) with a 32px gutter (16px under 720px). Sections use 96px vertical padding (72px on small screens), with a tight variant of 56px. Grids are 2, 3 or 4 columns that collapse to 2 at 960px and 1 at 600px. The stat band uses subgrid so problem, value and label rows align across columns. The contact page splits 1.4fr and 1fr with a 56px gap and stacks at 860px. Spacing follows a 2/4/6/8/12/16/20/24/32/40/56/72/96/128 scale. Nav and footer repeat on every page.
-
-## Elevation & Depth
-
-Depth is mostly tonal: page (#1A1A1A), sunken (#141414), raised (#202020) and overlay (#2A2A29) layers, separated by 1px borders. Shadows are quiet and appear on cards and on hover only.
-
-### Shadow Vocabulary
-- **Small** (`0 1px 2px rgba(0,0,0,0.40)`): Cards at rest.
-- **Medium** (`0 2px 6px rgba(0,0,0,0.45), 0 0 0 1px rgba(250,248,244,0.04)`): Linked card on hover.
-- **Large** (`0 12px 32px rgba(0,0,0,0.55), 0 0 0 1px rgba(250,248,244,0.06)`): Reserved for overlays.
-
-### Named Rules
-**The Tonal First Rule.** Separate surfaces with a tone step or a hairline before reaching for a shadow.
-
-## Shapes
-
-Small, practical corners: 8px on buttons, cards, inputs; 4px on tags and focus outlines; 2px and 12px exist in the scale but are rarely used. The signature shape is the 3px by 44px stage rule, a short coloured bar that opens a section and carries its stage colour. There are no pills and no circular badges.
+- A 12-column grid inside an 80rem container with a fluid gutter.
+- The common section shape is an asymmetric split: heading in 4 or 5 columns,
+  content in 7 or 8.
+- Lists are rows separated by hairlines, not cards. Panels with a border and a
+  14px radius are reserved for things that are objects: the allocation board,
+  forms, the entry-engagement block, the assessment prompt.
+- Section spacing is fluid (`py-section`, `py-section-sm`).
+- Tested at 375, 768, 1280 and 1600. No horizontal scroll at any width.
 
 ## Components
 
-### Buttons
-- **Shape:** 8px radius, 1px border, medium weight, sentence case.
-- **Primary:** Warm Paper fill with Ink text, 10px 20px (large: 14px 26px, 18px text; small: 6px 14px). Hover shifts to Paper Sunken.
-- **Secondary:** Transparent with a strong hairline border; hover adds the blue tint and a blue border.
-- **Accent:** Transparent with a Decide Blue outline and text; hover adds the blue tint.
-- **Ghost:** Transparent, secondary text; hover raises to the Raised Ink surface.
-- **Press / Focus:** 1px downward nudge on press; 2px blue focus outline with 2px offset. Transitions run 160ms on `cubic-bezier(0.2, 0, 0, 1)`.
+| Component         | Use                                                                                                 |
+| ----------------- | --------------------------------------------------------------------------------------------------- |
+| `Section`         | A band of the page. `tone="paper"` switches tone                                                    |
+| `Beat`            | Two-beat heading at display, headline or title size                                                 |
+| `PageHero`        | Breadcrumbs, H1, lede and actions for inner pages                                                   |
+| `Button`          | `primary` (filled pill), `secondary` (outline pill), `text` (underlined). The arrow nudges on hover |
+| `AllocationBoard` | The hero signature: seven tasks, three lanes, real radio controls                                   |
+| `StagePath`       | The four stages as a scroll story with a sticky index                                               |
+| `Ladder`          | The engagement ladder: expandable rows, or linked rows on Home                                      |
+| `Compare`         | "Without / With" rows                                                                               |
+| `Faq`             | Accordion. One answer open at a time; also emits FAQ structured data via the page                   |
+| `LinkCards`       | Hairline rows linking to other pages                                                                |
+| `CareerNote`      | The caveat that must accompany every career figure                                                  |
+| `Cta`             | The closing call to action                                                                          |
+| `Field`           | Labelled input or textarea with an inline error                                                     |
 
-### Cards / Containers
-- **Corner Style:** 8px.
-- **Background:** Raised Ink (#202020) with a 1px subtle border.
-- **Shadow Strategy:** Small at rest; linked cards gain medium shadow and a blue border on hover.
-- **Internal Padding:** 24px, 12px gap between children, 14px secondary text.
+## Motion
 
-### Tags
-- **Style:** 4px radius, 14px text, 4px 10px padding. Stage variants use the stage tint as background and the stage's light colour as text, with no border.
+Motion is expressive in a few places and absent everywhere else.
 
-### Inputs / Fields
-- **Style:** Raised Ink fill, 1px default border, 8px radius, 10px 14px padding, 16px text.
-- **Focus:** Border shifts to blue; the outline is suppressed in favour of the border.
-- **Error:** Coral border and coral status text.
+- **The hero settle.** On load, each task on the allocation board starts
+  undecided at the left and settles into its lane in sequence. Moving a task
+  slides its marker and changes its fill.
+- **Line rise.** Page headlines rise out of a mask, one beat after the other.
+- **Scroll story.** In the stage path, a rule in each stage's colour draws
+  down as you read, and the sticky index marks the current stage.
+- **Reveals.** Rows rise 16px and fade as they enter, staggered within a
+  group. Hairlines draw from the left.
+- **Page transitions.** A short cross-fade and rise between pages, using
+  cross-document view transitions. No JavaScript is involved.
+- **Micro-interactions.** Arrows nudge, disclosure icons rotate, accordions
+  open with an eased height.
 
-### Navigation
-- **Style:** Ink bar with a 1px bottom hairline, 20px vertical padding. Wordmark ("neurally" in lowercase, Archivo medium, -0.035em) with the logo mark on the left; text links and one small accent button ("Book a conversation") on the right. The current page link is emphasised. Links wrap on narrow screens.
+Rules: ease-out-expo for anything entering; nothing bounces; durations come
+from tokens. Content is visible by default and entrance motion only applies
+when scripting is available. With `prefers-reduced-motion: reduce`, every
+animation and transition is switched off, page transitions are disabled, and
+all content is shown in its final state.
 
-### Stat Band (signature)
-A sunken band of four columns, one per stage. Each has a tracked kicker naming the client problem, a headline-size value in the stage colour, and a 14px description. It is the system's clearest expression of the stage colours.
+The motion code is about 2 KB of TypeScript (`src/scripts/site.ts`) with no
+library.
 
-### Hero
-Left-aligned two-line display headline on Ink, blue kicker above, 18px lede, one primary and one secondary button, and the logo mark as a 7%-opacity texture bleeding off the right edge.
+## Browser surfaces
 
-## Do's and Don'ts
+Text selection is Decide blue on ink. Focus rings are a 2px accent outline
+with a 3px offset. Link underlines sit 0.22em below the baseline. Figures in
+tables and tallies use tabular numerals. The scrollbar is themed to the ink
+palette. Form carets take the accent.
 
-### Do:
-- **Do** keep the ground Ink (#1A1A1A) with Warm Paper (#FAF8F4) text; use `.on-paper` only for deliberate light surfaces.
-- **Do** use stage colours in the order blue, yellow, sage, coral and only for their stage.
-- **Do** set headlines at weight 400 with negative tracking; use size, not weight, for hierarchy.
-- **Do** separate surfaces with tone steps and 1px hairlines before using shadows.
-- **Do** open sections with the 3px by 44px stage rule when a stage applies.
-- **Do** keep copy blocks within 62ch (44ch for section titles).
-- **Do** honour `prefers-reduced-motion`; motion is limited to 90-240ms state transitions.
+## Do and don't
 
-### Don't:
-- **Don't** use gradients, glows, neon, or brain and robot imagery (generic AI-startup gloss).
-- **Don't** use stock-photo corporate imagery or blue-and-grey deck styling (big-four consultancy).
-- **Don't** add new accent colours, or use stage colours as decoration.
-- **Don't** use all-caps outside the kicker.
-- **Don't** add pill buttons, large radii, or heavy drop shadows.
-- **Don't** show the logo mark at full opacity at large size; it is a texture, not an illustration.
-- **Don't** use bold weights for display-size headings.
+- Do let a sentence carry a section. Don't add an icon to explain it.
+- Do use a stage colour for its stage. Don't use it because a section looks
+  plain.
+- Do label career figures with the employer and "before Neurally". Don't
+  present them as tiles of client results.
+- Do write new sections with existing components and tokens. Don't add
+  arbitrary colour, size or spacing values where a token exists.

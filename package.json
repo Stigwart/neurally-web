@@ -1,0 +1,58 @@
+{
+  "name": "neurally-web",
+  "type": "module",
+  "version": "2.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=22.23.4"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "wrangler pages dev dist --port 8788",
+    "check": "astro check",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check:links": "node scripts/check-links.mjs",
+    "check:html": "html-validate \"dist/**/*.html\"",
+    "test": "playwright test",
+    "lhci": "lhci autorun",
+    "verify": "npm run check && npm run lint && npm run format:check && npm run build && npm run check:links && npm run check:html && npm run test"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@astrojs/mdx": "^8.1.6",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.5",
+    "@fontsource-variable/archivo": "^5.3.0",
+    "@fontsource-variable/instrument-sans": "^5.3.0",
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@resvg/resvg-js": "^2.6.2",
+    "@tailwindcss/typography": "^0.5.20",
+    "@tailwindcss/vite": "^4.3.5",
+    "astro": "^7.4.12",
+    "satori": "^0.63.2",
+    "sharp": "^0.35.5",
+    "tailwindcss": "^4.3.5",
+    "typescript": "^6.0.3"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "@eslint/js": "^10.0.1",
+    "@fontsource/archivo": "^5.3.0",
+    "@fontsource/instrument-sans": "^5.3.0",
+    "@lhci/cli": "^0.16.1",
+    "@playwright/test": "^1.65.1",
+    "@typescript-eslint/parser": "^8.72.2",
+    "eslint": "^10.15.0",
+    "eslint-plugin-astro": "^1.7.0",
+    "html-validate": "^11.21.1",
+    "linkinator": "^8.1.0",
+    "prettier": "^3.10.1",
+    "prettier-plugin-astro": "^1.1.2",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "typescript-eslint": "^8.72.2",
+    "wrangler": "^4.162.0"
+  }
+}

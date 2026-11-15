@@ -1,0 +1,457 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Self-hosted fonts (bundled by Vite, no third-party requests). */
+@import "@fontsource-variable/archivo/wght.css";
+@import "@fontsource-variable/instrument-sans/wght.css";
+@import "@fontsource/ibm-plex-mono/latin-400.css";
+
+/* ------------------------------------------------------------------
+   Design tokens. This block is the single source of truth: change a
+   value here and every utility that uses it follows.
+   ------------------------------------------------------------------ */
+@theme {
+  /* Reset Tailwind's default palette so only Neurally colours exist. */
+  --color-*: initial;
+
+  /* Raw palette */
+  --color-ink-950: #0c0c0b;
+  --color-ink-900: #121211;
+  --color-ink-850: #191918;
+  --color-ink-800: #212120;
+  --color-ink-700: #2c2c2a;
+  --color-ink-600: #3a3a37;
+  --color-paper: #faf8f4;
+  --color-paper-200: #f2efe8;
+  --color-paper-300: #e6e2d9;
+  --color-stone-400: #aba79e;
+  --color-stone-500: #8f8c84;
+  --color-stone-600: #5a5750;
+
+  /* Stage colours: the only chroma on the site. One per stage, always. */
+  --color-decide: #a9c4d9;
+  --color-design: #efdba0;
+  --color-deliver: #b7c9a8;
+  --color-embed: #e8a599;
+  --color-decide-deep: #3f6885;
+  --color-design-deep: #7a6520;
+  --color-deliver-deep: #4c6638;
+  --color-embed-deep: #9c4a3a;
+
+  --color-white: #fff;
+  --color-black: #000;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  /* Type */
+  --font-display: "Archivo Variable", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-sans: "Instrument Sans Variable", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --text-label: 0.75rem;
+  --text-label--line-height: 1.4;
+  --text-label--letter-spacing: 0.08em;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.55;
+  --text-base: 1rem;
+  --text-base--line-height: 1.6;
+  --text-lg: 1.125rem;
+  --text-lg--line-height: 1.55;
+  --text-xl: clamp(1.25rem, 1.15rem + 0.4vw, 1.4375rem);
+  --text-xl--line-height: 1.4;
+  --text-title: clamp(1.375rem, 1.2rem + 0.7vw, 1.75rem);
+  --text-title--line-height: 1.2;
+  --text-title--letter-spacing: -0.02em;
+  --text-headline: clamp(1.875rem, 1.3rem + 2.4vw, 3.25rem);
+  --text-headline--line-height: 1.06;
+  --text-headline--letter-spacing: -0.032em;
+  --text-display: clamp(2.5rem, 1.1rem + 4.6vw, 4.75rem);
+  --text-display--line-height: 0.98;
+  --text-display--letter-spacing: -0.04em;
+  --text-figure: clamp(2.25rem, 1.6rem + 2.6vw, 3.75rem);
+  --text-figure--line-height: 1;
+  --text-figure--letter-spacing: -0.04em;
+
+  /* Layout */
+  --spacing-gutter: clamp(1.25rem, 0.6rem + 3vw, 3rem);
+  --spacing-section: clamp(4.5rem, 3rem + 7vw, 9rem);
+  --spacing-section-sm: clamp(3rem, 2rem + 4vw, 5.5rem);
+  --container-page: 80rem;
+  --container-measure: 42rem;
+
+  /* Shape */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-full: 999px;
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+  --duration-fast: 160ms;
+  --duration-base: 320ms;
+  --duration-slow: 700ms;
+  --duration-slower: 1100ms;
+}
+
+/* Semantic colours. They resolve through CSS variables so a section can
+   switch tone (ink or paper) with one attribute. */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-raised: var(--raised);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-stage: var(--stage);
+}
+
+@layer base {
+  :root,
+  [data-tone="ink"] {
+    --bg: var(--color-ink-900);
+    --surface: var(--color-ink-850);
+    --raised: var(--color-ink-800);
+    --fg: var(--color-paper);
+    --muted: var(--color-stone-400);
+    --faint: var(--color-stone-500);
+    --line: rgb(250 248 244 / 0.13);
+    --line-strong: rgb(250 248 244 / 0.3);
+    --accent: var(--color-decide);
+    --stage: var(--color-paper);
+    --hatch: rgb(250 248 244 / 0.5);
+    color-scheme: dark;
+  }
+
+  [data-tone="paper"] {
+    --bg: var(--color-paper-200);
+    --surface: var(--color-paper);
+    --raised: var(--color-white);
+    --fg: var(--color-ink-900);
+    --muted: var(--color-stone-600);
+    --faint: var(--color-stone-600);
+    --line: rgb(18 18 17 / 0.14);
+    --line-strong: rgb(18 18 17 / 0.4);
+    --accent: var(--color-decide-deep);
+    --stage: var(--color-ink-900);
+    --hatch: rgb(18 18 17 / 0.5);
+    color-scheme: light;
+  }
+
+  [data-stage="decide"] {
+    --stage: var(--color-decide);
+  }
+  [data-stage="design"] {
+    --stage: var(--color-design);
+  }
+  [data-stage="deliver"] {
+    --stage: var(--color-deliver);
+  }
+  [data-stage="embed"] {
+    --stage: var(--color-embed);
+  }
+  [data-tone="paper"] [data-stage="decide"] {
+    --stage: var(--color-decide-deep);
+  }
+  [data-tone="paper"] [data-stage="design"] {
+    --stage: var(--color-design-deep);
+  }
+  [data-tone="paper"] [data-stage="deliver"] {
+    --stage: var(--color-deliver-deep);
+  }
+  [data-tone="paper"] [data-stage="embed"] {
+    --stage: var(--color-embed-deep);
+  }
+
+  html {
+    background: var(--color-ink-900);
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scrollbar-color: var(--color-ink-600) var(--color-ink-900);
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+
+  [data-tone] {
+    background: var(--bg);
+    color: var(--fg);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    text-wrap: balance;
+  }
+
+  p,
+  li,
+  dd {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--color-decide);
+    color: var(--color-ink-900);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: var(--radius-xs);
+  }
+
+  a {
+    text-underline-offset: 0.22em;
+    text-decoration-thickness: 1px;
+  }
+
+  summary {
+    cursor: pointer;
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  input,
+  textarea {
+    caret-color: var(--accent);
+  }
+
+  [hidden] {
+    display: none !important;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Small authored pieces that utilities can't express cleanly.
+   ------------------------------------------------------------------ */
+@layer components {
+  /* The logo is drawn from parallel strokes. The same hatch is the
+     site's one texture: it marks work that AI takes on. */
+  .hatch {
+    background-image: repeating-linear-gradient(-55deg, var(--hatch) 0 1px, transparent 1px 5px);
+  }
+
+  /* Inline text link */
+  .link {
+    color: var(--fg);
+    text-decoration-line: underline;
+    text-decoration-color: var(--line-strong);
+    transition: text-decoration-color var(--duration-fast) ease;
+  }
+  .link:hover {
+    text-decoration-color: currentColor;
+  }
+
+  /* Animated disclosure (FAQ, ladder). Falls back to instant open. */
+  details.disclosure::details-content {
+    block-size: 0;
+    overflow: clip;
+    opacity: 0;
+    transition:
+      block-size var(--duration-base) var(--ease-out-expo),
+      opacity var(--duration-base) ease,
+      content-visibility var(--duration-base) allow-discrete;
+  }
+  details.disclosure[open]::details-content {
+    block-size: auto;
+    opacity: 1;
+  }
+  @supports (interpolate-size: allow-keywords) {
+    details.disclosure {
+      interpolate-size: allow-keywords;
+    }
+  }
+
+  /* Form status line: colour follows the outcome. */
+  .form-status[data-kind="success"] {
+    color: var(--color-deliver);
+  }
+  .form-status[data-kind="error"] {
+    color: var(--color-embed);
+  }
+  [data-tone="paper"] .form-status[data-kind="success"] {
+    color: var(--color-deliver-deep);
+  }
+  [data-tone="paper"] .form-status[data-kind="error"] {
+    color: var(--color-embed-deep);
+  }
+}
+
+/* Long-form prose. Unlayered so it overrides the typography plugin defaults. */
+.prose.prose-neurally {
+  --tw-prose-body: var(--fg);
+  --tw-prose-headings: var(--fg);
+  --tw-prose-lead: var(--muted);
+  --tw-prose-links: var(--fg);
+  --tw-prose-bold: var(--fg);
+  --tw-prose-counters: var(--muted);
+  --tw-prose-bullets: var(--line-strong);
+  --tw-prose-hr: var(--line);
+  --tw-prose-quotes: var(--fg);
+  --tw-prose-quote-borders: var(--line-strong);
+  --tw-prose-captions: var(--muted);
+  --tw-prose-th-borders: var(--line-strong);
+  --tw-prose-td-borders: var(--line);
+  font-size: var(--text-lg);
+  line-height: 1.7;
+  max-width: var(--container-measure);
+}
+.prose.prose-neurally :where(h2, h3) {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
+.prose.prose-neurally :where(h2) {
+  font-size: var(--text-title);
+  margin-top: 2.4em;
+}
+.prose.prose-neurally :where(a) {
+  text-decoration-color: var(--line-strong);
+  font-weight: inherit;
+}
+.prose.prose-neurally :where(a):hover {
+  text-decoration-color: currentColor;
+}
+.prose.prose-neurally :where(blockquote) {
+  font-style: normal;
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  border-inline-start-width: 1px;
+}
+.prose.prose-neurally :where(blockquote p)::before,
+.prose.prose-neurally :where(blockquote p)::after {
+  content: none;
+}
+
+/* ------------------------------------------------------------------
+   Motion. Content is visible by default; the `js` class (set before
+   first paint) opts elements in to entrance motion, and reduced-motion
+   opts everything back out.
+   ------------------------------------------------------------------ */
+@layer utilities {
+  /* Entrance motion only applies when scripting is available, so the
+     page never depends on JavaScript to become visible. */
+  @media (scripting: enabled) {
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(1rem);
+      transition:
+        opacity var(--duration-slow) var(--ease-out-expo),
+        transform var(--duration-slow) var(--ease-out-expo);
+      transition-delay: calc(var(--i, 0) * 70ms);
+    }
+    [data-reveal="clip"] {
+      opacity: 1;
+      transform: none;
+      clip-path: inset(0 100% 0 0);
+      transition: clip-path var(--duration-slower) var(--ease-out-expo);
+      transition-delay: calc(var(--i, 0) * 70ms);
+    }
+    [data-reveal="rule"] {
+      opacity: 1;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--duration-slower) var(--ease-out-expo);
+    }
+    [data-reveal].is-in {
+      opacity: 1;
+      transform: none;
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  /* Hero headline: lines rise out of a mask on first load (CSS only). */
+  .line-rise {
+    display: block;
+    overflow: clip;
+    overflow-clip-margin: 0.14em;
+  }
+  .line-rise > span {
+    display: block;
+    animation: line-rise var(--duration-slower) var(--ease-out-expo) both;
+    animation-delay: calc(var(--i, 0) * 90ms + 60ms);
+  }
+  @keyframes line-rise {
+    from {
+      transform: translateY(110%);
+    }
+  }
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(0.75rem);
+    }
+  }
+  .fade-up {
+    animation: fade-up var(--duration-slow) var(--ease-out-expo) both;
+    animation-delay: calc(var(--i, 0) * 90ms + 60ms);
+  }
+}
+
+@utility container-page {
+  width: min(100% - 2 * var(--spacing-gutter), var(--container-page));
+  margin-inline: auto;
+}
+
+/* Page transitions between documents (no JavaScript involved). */
+@view-transition {
+  navigation: auto;
+}
+::view-transition-old(root) {
+  animation: vt-out 180ms ease both;
+}
+::view-transition-new(root) {
+  animation: vt-in 420ms var(--ease-out-expo) both;
+}
+@keyframes vt-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes vt-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+}

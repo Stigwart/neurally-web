@@ -1,0 +1,14 @@
+dist
+.astro
+node_modules
+package-lock.json
+.lighthouseci
+playwright-report
+test-results
+.wrangler
+.impeccable
+.claude
+public
+docs/fable/upgrade-brief.md
+docs/fable/context-pack.md
+docs/fable/moodboard.md

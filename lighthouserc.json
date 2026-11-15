@@ -1,0 +1,66 @@
+{
+  "ci": {
+    "collect": {
+      "startServerCommand": "npx wrangler pages dev dist --port 8789",
+      "startServerReadyPattern": "Ready on",
+      "url": [
+        "http://localhost:8789/",
+        "http://localhost:8789/services/",
+        "http://localhost:8789/industries/financial-services-insurance/",
+        "http://localhost:8789/insights/why-ai-pilots-dont-pay-back/",
+        "http://localhost:8789/assessment/"
+      ],
+      "numberOfRuns": 3
+    },
+    "assert": {
+      "assertions": {
+        "categories:performance": [
+          "error",
+          {
+            "minScore": 0.95
+          }
+        ],
+        "categories:accessibility": [
+          "error",
+          {
+            "minScore": 1
+          }
+        ],
+        "categories:best-practices": [
+          "error",
+          {
+            "minScore": 1
+          }
+        ],
+        "categories:seo": [
+          "error",
+          {
+            "minScore": 1
+          }
+        ],
+        "largest-contentful-paint": [
+          "error",
+          {
+            "maxNumericValue": 2000
+          }
+        ],
+        "cumulative-layout-shift": [
+          "error",
+          {
+            "maxNumericValue": 0.05
+          }
+        ],
+        "total-blocking-time": [
+          "error",
+          {
+            "maxNumericValue": 200
+          }
+        ]
+      }
+    },
+    "upload": {
+      "target": "filesystem",
+      "outputDir": ".lighthouseci"
+    }
+  }
+}

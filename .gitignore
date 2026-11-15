@@ -9,3 +9,12 @@
 .env
 .env.local
 .claude/
+
+# Build and tooling
+node_modules/
+dist/
+.astro/
+.wrangler/
+.lighthouseci/
+test-results/
+playwright-report/
