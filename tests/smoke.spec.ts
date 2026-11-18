@@ -188,7 +188,13 @@ test("mobile menu opens and closes", async ({ page, isMobile }) => {
   await page.goto("/");
   const toggle = page.locator("[data-menu-toggle]");
   await toggle.click();
-  await expect(page.locator("#mobile-menu")).toBeVisible();
+  const menu = page.locator("#mobile-menu");
+  await expect(menu).toBeVisible();
+  // Visible is not enough: the panel once opened one pixel tall.
+  const box = await menu.boundingBox();
+  const viewport = page.viewportSize();
+  expect(box!.height).toBeGreaterThan(viewport!.height * 0.8);
+  await expect(menu.getByRole("link", { name: "Contact" })).toBeInViewport();
   await page.keyboard.press("Escape");
   await expect(page.locator("#mobile-menu")).toBeHidden();
 });

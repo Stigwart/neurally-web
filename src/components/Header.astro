@@ -108,11 +108,13 @@ const linkClass =
     </div>
   </div>
 
-  <!-- Mobile: everything -->
+  <!-- Mobile: everything. Positioned against the header, not the viewport:
+       the header's backdrop-filter makes it the containing block for fixed
+       children, so `fixed` with `bottom-0` collapses the panel to nothing. -->
   <div
     id="mobile-menu"
     hidden
-    class="bg-bg border-line fixed inset-x-0 top-16 bottom-0 overflow-y-auto border-t lg:hidden"
+    class="bg-bg border-line absolute inset-x-0 top-full h-[calc(100dvh-100%)] overflow-y-auto overscroll-contain border-t lg:hidden"
   >
     <nav aria-label="Mobile" class="container-page flex flex-col gap-8 py-8">
       <ul class="font-display text-headline">
