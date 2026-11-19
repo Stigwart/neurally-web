@@ -152,3 +152,9 @@ before merging.
   project `neurally-web`, connected to this repository, with `main` as the
   production branch. GitHub Pages is off. DNS stays at GoDaddy: `www` is a
   CNAME to `neurally-web.pages.dev` and the apex is forwarded to `www`.
+- **D39. DNS moved to Cloudflare on 19 November 2026.** GoDaddy's apex
+  forwarding dropped the path, so links like `neurally.co.uk/services/`
+  returned 404, and the bare root went to `http://www`. The zone now lives on
+  Cloudflare; GoDaddy stays registrar. The apex is a Pages custom domain and a
+  Redirect Rule 301s it to `https://www.neurally.co.uk`, keeping path and
+  query. Hostinger mail records were copied across unchanged, DNS only.
