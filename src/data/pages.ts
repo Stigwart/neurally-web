@@ -14,7 +14,7 @@ export const staticOgPages: { slug: string; title: string; label: string }[] = [
     title: "Nine engagements. The first four have the price on them.",
     label: "Services and fees",
   },
-  { slug: "about", title: "Stuart Davis. Nineteen years on the inside of the change.", label: "About" },
+  { slug: "about", title: "About Neurally. Built for the work after the pilot.", label: "About" },
   { slug: "contact", title: "Tell us what you're trying to decide.", label: "Contact" },
   {
     slug: "assessment",
