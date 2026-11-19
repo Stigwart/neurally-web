@@ -36,12 +36,5 @@ export const getInsights = async () => {
   return posts.sort((a, b) => b.data.published.valueOf() - a.data.published.valueOf());
 };
 
-export const tagSlug = (tag: string) =>
-  tag
-    .toLowerCase()
-    .replace(/&/g, "and")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
-
 export const formatDate = (d: Date) =>
   d.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });

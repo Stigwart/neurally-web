@@ -3,10 +3,9 @@ import Base from "../../layouts/Base.astro";
 import PageHero from "../../components/PageHero.astro";
 import Section from "../../components/Section.astro";
 import Cta from "../../components/Cta.astro";
-import { getInsights, formatDate, tagSlug } from "../../lib/content";
+import { getInsights, formatDate } from "../../lib/content";
 
 const posts = await getInsights();
-const tags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
 const crumbs = [
   { name: "Home", href: "/" },
   { name: "Insights", href: "/insights/" },
@@ -48,17 +47,6 @@ const crumbs = [
         </li>
       ))}
     </ul>
-    <nav aria-label="Topics" class="mt-10 flex flex-wrap items-center gap-2">
-      <span class="text-muted mr-2 text-sm">Topics</span>
-      {tags.map((tag) => (
-        <a
-          href={`/insights/tags/${tagSlug(tag)}/`}
-          class="border-line-strong hover:border-fg rounded-full border px-3.5 py-1.5 text-sm transition-colors duration-fast"
-        >
-          {tag}
-        </a>
-      ))}
-    </nav>
   </Section>
 
   <Cta />

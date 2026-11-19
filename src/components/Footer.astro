@@ -6,7 +6,6 @@ import { getAllLanding, landingHref } from "../lib/content";
 const groups = await getAllLanding();
 const year = new Date().getFullYear();
 const company = [
-  { label: "Approach", href: "/approach/" },
   { label: "Services and fees", href: "/services/" },
   { label: "About Neurally", href: "/about/" },
   { label: "Insights", href: "/insights/" },
@@ -51,14 +50,7 @@ const headClass = "text-faint font-mono text-label uppercase";
         </div>
         {groups.map(({ family, entries }) => (
           <div>
-            <p class={headClass}>
-              <a
-                href={family.base}
-                class="hover:text-fg -my-1.5 inline-block py-1.5 transition-colors duration-fast"
-              >
-                {family.label}
-              </a>
-            </p>
+            <p class={headClass}>{family.label}</p>
             <ul class="mt-3">
               {entries.map((e) => (
                 <li>

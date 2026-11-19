@@ -3,38 +3,36 @@ export interface NavLink {
   href: string;
 }
 
+/** The main menu. Kept to three links plus the call to action. */
 export const primaryNav: NavLink[] = [
-  { label: "Approach", href: "/approach/" },
   { label: "Services", href: "/services/" },
-];
-
-export const secondaryNav: NavLink[] = [
-  { label: "Insights", href: "/insights/" },
   { label: "About", href: "/about/" },
+  { label: "Insights", href: "/insights/" },
 ];
 
-/** The three landing-page families, in the order they appear in menus. */
+/**
+ * The three landing-page families, in the order they appear in the footer.
+ * They have no hub pages: each page is reached from the footer and from
+ * related links in page content.
+ */
 export const families = [
   {
     collection: "industries",
     label: "Industries",
     singular: "Industry",
     base: "/industries/",
-    blurb: "Where the sector changes the answer.",
   },
   {
     collection: "teams",
     label: "Teams",
     singular: "Team",
     base: "/teams/",
-    blurb: "The decisions on your desk, by role.",
   },
   {
     collection: "use-cases",
     label: "Use cases",
     singular: "Use case",
     base: "/use-cases/",
-    blurb: "The situation you are in right now.",
   },
 ] as const;
 

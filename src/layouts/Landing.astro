@@ -31,7 +31,6 @@ const entryEngagement = engagement(d.entry.engagement);
 const also = d.entry.alsoConsider ? engagement(d.entry.alsoConsider) : null;
 const crumbs = [
   { name: "Home", href: "/" },
-  { name: family.label, href: family.base },
   { name: d.name, href: landingHref(collection, entry.id) },
 ];
 ---
@@ -137,7 +136,7 @@ const crumbs = [
       })}
     </ol>
     <div class="mt-10">
-      <Button href="/approach/" variant="text">
+      <Button href="/services/#how-we-work" variant="text">
         How the four stages work
       </Button>
     </div>

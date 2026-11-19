@@ -37,7 +37,6 @@ const bindDisclosure = (toggleSel: string, onChange?: (open: boolean) => void) =
   return { setOpen, isOpen, toggle };
 };
 
-bindDisclosure("[data-mega-toggle]");
 const mobile = bindDisclosure("[data-menu-toggle]", (open) => {
   document.documentElement.style.overflow = open ? "hidden" : "";
   document.querySelector("[data-menu-toggle]")?.setAttribute("aria-label", open ? "Close menu" : "Menu");

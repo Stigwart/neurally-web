@@ -7,12 +7,11 @@ import Button from "../components/Button.astro";
 import Icon from "../components/Icon.astro";
 import AllocationBoard from "../components/AllocationBoard.astro";
 import Compare from "../components/Compare.astro";
-import StagePath from "../components/StagePath.astro";
-import Ladder from "../components/Ladder.astro";
 import Faq from "../components/Faq.astro";
 import Cta from "../components/Cta.astro";
 import CareerNote from "../components/CareerNote.astro";
 import { site } from "../data/site";
+import { ways } from "../data/engagements";
 import { homeFaq } from "../data/faqs";
 import { faqPage } from "../lib/schema";
 import portrait from "../assets/stuart-davis.jpg";
@@ -147,49 +146,6 @@ const career = [
     </div>
   </Section>
 
-  <!-- The path -->
-  <Section labelledby="path-heading">
-    <p class="text-muted mb-12 max-w-2xl text-lg" data-reveal>
-      Every engagement starts with one question:{" "}
-      <span class="text-fg">“What could this business do now that it couldn't two years ago?”</span>
-    </p>
-    <StagePath />
-    <div class="mt-12">
-      <Button href="/approach/" variant="secondary">
-        How the approach works
-      </Button>
-    </div>
-  </Section>
-
-  <!-- Fees -->
-  <Section tone="paper" labelledby="fees-heading">
-    <div class="grid gap-x-12 gap-y-6 lg:grid-cols-12 lg:items-end">
-      <div class="lg:col-span-7" data-reveal>
-        <Beat
-          id="fees-heading"
-          first="The first steps have fixed fees."
-          second="Agreed before any work starts."
-        />
-      </div>
-      <p class="text-muted text-lg lg:col-span-5" data-reveal style="--i:1">
-        There is no day-rate meter running. The Workshop fee is credited in full against a Diagnostic or Deep
-        Dive booked within 60 days.
-      </p>
-    </div>
-    <div class="mt-12" data-reveal>
-      <Ladder ids={["discovery-call", "workshop", "diagnostic", "deep-dive"]} expandable={false} />
-    </div>
-    <div class="mt-10 flex flex-wrap items-center justify-between gap-6">
-      <p class="text-muted max-w-xl">
-        After that: operating-model design, implementation support, transformation leadership, training and
-        advisory, each scoped and quoted before it begins.
-      </p>
-      <Button href="/services/" variant="secondary">
-        All nine engagements
-      </Button>
-    </div>
-  </Section>
-
   <!-- Stuart -->
   <Section labelledby="stuart-heading">
     <div class="grid gap-x-10 gap-y-12 md:grid-cols-12 lg:gap-x-12">
@@ -242,47 +198,47 @@ const career = [
     </div>
   </Section>
 
-  <!-- Governance, in brief -->
-  <Section tone="paper" size="sm" labelledby="governance-heading">
-    <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between" data-reveal>
-      <div class="max-w-3xl">
-        <h2 id="governance-heading" class="font-display text-title">
-          Governance runs through every engagement, from scoping.
-        </h2>
-        <p class="text-muted mt-3">
-          A named owner for every AI-assisted decision. Consumer Duty, UK GDPR and the EU AI Act dealt with
-          while the design can still change.
-        </p>
+  <!-- Ways to work -->
+  <Section tone="paper" labelledby="ways-heading">
+    <div class="grid gap-x-12 gap-y-6 lg:grid-cols-12 lg:items-end">
+      <div class="lg:col-span-7" data-reveal>
+        <Beat id="ways-heading" first="Four ways to work together." second="The first two have fixed fees." />
       </div>
-      <Button href="/use-cases/ai-governance/" variant="secondary" class="shrink-0">
-        AI governance in practice
+      <p class="text-muted text-lg lg:col-span-5" data-reveal style="--i:1">
+        Each starts with a free 30-minute call. There is no day-rate meter running, and you can stop after any
+        step and keep every output.
+      </p>
+    </div>
+    <ul class="border-line mt-12 grid border-t md:grid-cols-2">
+      {ways.map((w, i) => (
+        <li class="border-line border-b md:odd:border-r" data-reveal style={`--i:${i % 2}`}>
+          <a
+            href={`/services/#${w.id}`}
+            class="group hover:bg-surface flex h-full flex-col gap-3 p-6 transition-colors duration-fast md:p-8"
+          >
+            <span class="text-faint text-label font-mono">{w.index}</span>
+            <span class="font-display text-title">{w.name}</span>
+            <span class="text-muted">{w.summary}</span>
+            <span class="mt-auto flex items-center justify-between gap-4 pt-3">
+              <span class="font-display text-xl tabular-nums">{w.fee}</span>
+              <Icon
+                name="arrow"
+                class="text-faint group-hover:text-fg transition-[color,transform] duration-base ease-out-expo group-hover:translate-x-1"
+              />
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <div class="mt-10">
+      <Button href="/services/" variant="secondary">
+        Services, fees and how we work
       </Button>
     </div>
   </Section>
 
-  <!-- Assessment -->
-  <Section labelledby="assess-heading">
-    <div class="border-line bg-surface relative overflow-clip rounded-lg border p-8 md:p-14">
-      <div
-        class="hatch pointer-events-none absolute inset-y-0 right-0 hidden w-2/5 opacity-30 [mask-image:linear-gradient(to_left,black,transparent)] md:block"
-        aria-hidden="true"
-      ></div>
-      <div class="relative max-w-2xl" data-reveal>
-        <Beat id="assess-heading" first="Not sure where you stand?" second="Ten questions will tell you." />
-        <p class="text-muted mt-6 text-lg">
-          The AI maturity assessment takes about two minutes and places you in one of four scenarios, with
-          your biggest gap and a sensible next step. It is scored in your browser. No sign-up, and nothing is
-          stored.
-        </p>
-        <Button href="/assessment/" size="lg" class="mt-8">
-          Take the assessment
-        </Button>
-      </div>
-    </div>
-  </Section>
-
   <!-- FAQ -->
-  <Section class="pt-0!" labelledby="faq-heading">
+  <Section labelledby="faq-heading">
     <div class="grid gap-x-12 gap-y-8 lg:grid-cols-12">
       <div class="lg:col-span-4" data-reveal>
         <Beat id="faq-heading" first="Questions people ask first." />

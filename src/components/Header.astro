@@ -1,15 +1,11 @@
 ---
 import Logo from "./Logo.astro";
 import Button from "./Button.astro";
-import Icon from "./Icon.astro";
-import { primaryNav, secondaryNav } from "../data/nav";
+import { primaryNav } from "../data/nav";
 import { site } from "../data/site";
-import { getAllLanding, landingHref } from "../lib/content";
 
-const groups = await getAllLanding();
 const path = Astro.url.pathname;
 const isCurrent = (href: string) => path === href || (href !== "/" && path.startsWith(href));
-const inFamilies = groups.some((g) => path.startsWith(g.family.base));
 const linkClass =
   "text-muted hover:text-fg aria-[current=page]:text-fg rounded-full px-3 py-2 text-sm transition-colors duration-fast";
 ---
@@ -28,34 +24,9 @@ const linkClass =
           {l.label}
         </a>
       ))}
-      <button
-        type="button"
-        class:list={[linkClass, "flex items-center gap-1.5", inFamilies && "text-fg"]}
-        aria-expanded="false"
-        aria-controls="mega"
-        data-mega-toggle
-      >
-        Who it's for
-        <Icon
-          name="chevron"
-          class="transition-transform duration-base ease-out-expo [[aria-expanded=true]>&]:rotate-180"
-        />
-      </button>
-      {secondaryNav.map((l) => (
-        <a href={l.href} class={linkClass} aria-current={isCurrent(l.href) ? "page" : undefined}>
-          {l.label}
-        </a>
-      ))}
     </nav>
 
     <div class="flex items-center gap-2">
-      <a
-        href="/assessment/"
-        class:list={[linkClass, "hidden xl:inline-flex"]}
-        aria-current={isCurrent("/assessment/") ? "page" : undefined}
-      >
-        Assessment
-      </a>
       <Button href={site.calendly} external class="hidden sm:inline-flex" data-cta="calendly">
         Book a call
       </Button>
@@ -75,40 +46,7 @@ const linkClass =
     </div>
   </div>
 
-  <!-- Desktop: who it's for -->
-  <div
-    id="mega"
-    hidden
-    class="border-line bg-bg absolute inset-x-0 top-full border-y shadow-[0_24px_48px_-24px_rgb(0_0_0/0.6)]"
-  >
-    <div class="container-page grid grid-cols-3 gap-10 py-10">
-      {groups.map(({ family, entries }) => (
-        <div>
-          <a href={family.base} class="group/h flex items-baseline justify-between border-line border-b pb-3">
-            <span class="font-display text-xl">{family.label}</span>
-            <span class="text-faint group-hover/h:text-fg text-sm transition-colors duration-fast">
-              All {family.label.toLowerCase()}
-            </span>
-          </a>
-          <ul class="mt-3">
-            {entries.map((e) => (
-              <li>
-                <a
-                  href={landingHref(family.collection, e.id)}
-                  class="text-muted hover:text-fg aria-[current=page]:text-fg flex items-center justify-between py-2 transition-colors duration-fast"
-                  aria-current={path === landingHref(family.collection, e.id) ? "page" : undefined}
-                >
-                  {e.data.name}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
-    </div>
-  </div>
-
-  <!-- Mobile: everything. Positioned against the header, not the viewport:
+  <!-- Mobile menu. Positioned against the header, not the viewport:
        the header's backdrop-filter makes it the containing block for fixed
        children, so `fixed` with `bottom-0` collapses the panel to nothing. -->
   <div
@@ -118,12 +56,7 @@ const linkClass =
   >
     <nav aria-label="Mobile" class="container-page flex flex-col gap-8 py-8">
       <ul class="font-display text-headline">
-        {[
-          ...primaryNav,
-          ...secondaryNav,
-          { label: "Assessment", href: "/assessment/" },
-          { label: "Contact", href: "/contact/" },
-        ].map((l) => (
+        {[...primaryNav, { label: "Contact", href: "/contact/" }].map((l) => (
           <li>
             <a href={l.href} class="block py-1.5" aria-current={isCurrent(l.href) ? "page" : undefined}>
               {l.label}
@@ -131,24 +64,6 @@ const linkClass =
           </li>
         ))}
       </ul>
-      <div class="grid gap-8 sm:grid-cols-3">
-        {groups.map(({ family, entries }) => (
-          <div>
-            <a href={family.base} class="text-faint font-mono text-label uppercase">
-              {family.label}
-            </a>
-            <ul class="mt-2">
-              {entries.map((e) => (
-                <li>
-                  <a href={landingHref(family.collection, e.id)} class="text-muted block py-2">
-                    {e.data.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
       <Button href={site.calendly} external size="lg" class="self-start" data-cta="calendly">
         Book a free discovery call
       </Button>

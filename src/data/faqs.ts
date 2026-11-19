@@ -7,7 +7,7 @@ export interface FaqItem {
 export const homeFaq: FaqItem[] = [
   {
     q: "What does Neurally do?",
-    a: 'Neurally is a UK-based advisory that helps leadership teams decide where AI is worth the investment, redesign products, processes and teams around it, and lead the change through to measured results. Every engagement follows four stages: Decide, Design, Deliver and Embed. <a class="link" href="/approach/">Read more about our approach</a>.',
+    a: 'Neurally is a UK-based advisory that helps leadership teams decide where AI is worth the investment, redesign products, processes and teams around it, and lead the change through to measured results. Every engagement follows four stages: Decide, Design, Deliver and Embed. <a class="link" href="/services/#how-we-work">Read how we work</a>.',
   },
   {
     q: "Who is it for?",

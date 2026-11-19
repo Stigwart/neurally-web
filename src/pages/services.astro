@@ -5,11 +5,12 @@ import Section from "../components/Section.astro";
 import Beat from "../components/Beat.astro";
 import Button from "../components/Button.astro";
 import Ladder from "../components/Ladder.astro";
-import Compare from "../components/Compare.astro";
+import StagePath from "../components/StagePath.astro";
 import Faq from "../components/Faq.astro";
 import Cta from "../components/Cta.astro";
 import { site } from "../data/site";
-import { servicesFaq } from "../data/faqs";
+import { servicesFaq, approachFaq } from "../data/faqs";
+import { ways, engagement } from "../data/engagements";
 import { faqPage, services } from "../lib/schema";
 
 const crumbs = [
@@ -24,63 +25,126 @@ const fit = [
   "A problem one senior operator can influence across functions",
 ];
 
-const wont = [
+const governance = [
   {
-    without: "Sell software or resell tools",
-    with: "Advice with no product behind it",
-    detail:
-      "Your teams, or partners we help you choose and brief, write the software. We stay alongside them until it is live.",
+    title: "Human and AI accountability",
+    body: "Every workflow redesign sets out who is accountable, what stays with a person, what is automated, and how a decision can be reviewed and reversed.",
   },
   {
-    without: "Generic, off-the-shelf training",
-    with: "Training on your real work",
-    detail: "Built around your redesigned workflows and your governance.",
+    title: "FCA Consumer Duty and conduct risk",
+    body: "For financial services and insurance, designs are tested against Consumer Duty outcomes and conduct risk before they reach a board.",
   },
   {
-    without: "Recruitment or extra staffing",
-    with: "A fixed term and a fixed outcome",
-    detail: "Fractional and interim leadership ends when the agreed outcome is delivered.",
+    title: "UK GDPR and the EU AI Act",
+    body: "Data use, retention and third-party processing are covered in scoping. AI Act risk-category exposure is flagged while the design can still change.",
   },
   {
-    without: "Payment by results",
-    with: "Fees agreed before work starts",
-    detail: "So the advice on whether to proceed, adapt or stop is never bent by how we get paid.",
+    title: "Board oversight",
+    body: "Assumptions, risks and dependencies are made as visible as the opportunity, and plans carry a governance and risk view with owners and decision gates.",
   },
 ];
+
+/** One FAQ for fees, scope and how we work. */
+const keepFromApproach = [
+  "Are you an AI consultancy?",
+  "Do we have to do all four stages?",
+  "How do you handle the EU AI Act and UK GDPR?",
+  "Do you sell software or resell AI tools?",
+];
+const faq = [...servicesFaq, ...approachFaq.filter((f) => keepFromApproach.includes(f.q))];
+const discovery = engagement("discovery-call");
 ---
 
 <Base
-  title="AI advisory services and fixed fees"
-  description="Nine engagements, from a free discovery call to transformation leadership. Published fixed fees: Workshop £2,500, Diagnostic £6,000, Deep Dive £12,500."
+  title="AI advisory services, fees and how we work"
+  description="Four ways to work together, from a one-day Workshop to ongoing advice. Published fixed fees: Workshop £2,500, Diagnostic £6,000, Deep Dive £12,500."
   crumbs={crumbs}
-  schema={[faqPage(servicesFaq), ...services()]}
+  schema={[faqPage(faq), ...services()]}
 >
   <PageHero
     crumbs={crumbs}
-    first="Nine engagements."
-    second="The first four have the price on them."
+    first="Four ways to work together."
+    second="The first two have the price on them."
     lede="Start with a free call. Take one fixed-fee step. Carry on only if it was worth it. Every engagement leaves you with outputs you keep, whether or not there is a next one."
   >
     <Button href={site.calendly} external size="lg" data-cta="calendly">
       Book a free discovery call
     </Button>
-    <Button href="#ladder" variant="text">
-      See the ladder
+    <Button href="#ways" variant="text">
+      See the four ways
     </Button>
   </PageHero>
 
-  <Section tone="paper" id="ladder" labelledby="ladder-heading" class="scroll-mt-16">
+  <Section tone="paper" id="ways" labelledby="ways-heading" class="scroll-mt-16">
     <div class="grid gap-x-12 gap-y-6 lg:grid-cols-12 lg:items-end">
       <div class="lg:col-span-7" data-reveal>
-        <Beat id="ladder-heading" first="The engagement ladder." second="Open any step for what you get." />
+        <Beat id="ways-heading" first="Four ways to work." second="Open any one for what you get." />
       </div>
       <p class="text-muted text-lg lg:col-span-5" data-reveal style="--i:1">
-        Steps 01 to 03 have fixed fees agreed before work starts. The Workshop fee is credited in full against
-        a Diagnostic or Deep Dive booked within 60 days.
+        Each starts with a free {discovery.length.replace(" minutes", "-minute")} call. The Workshop fee is
+        credited in full against a Diagnostic or Deep Dive booked within 60 days.
       </p>
     </div>
-    <div class="mt-12">
-      <Ladder open="workshop" />
+    <div class="mt-14 space-y-16">
+      {ways.map((w) => (
+        <div id={w.id} class="scroll-mt-24">
+          <div class="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2" data-reveal>
+            <h3 class="font-display text-headline">
+              <span class="text-faint text-label mr-3 align-middle font-mono">{w.index}</span>
+              {w.name}
+            </h3>
+            <p class="text-muted font-mono text-label uppercase">
+              {w.stages} · {w.fee}
+            </p>
+          </div>
+          <p class="text-muted max-w-measure mt-3 text-lg" data-reveal>
+            {w.summary}
+          </p>
+          <div class="mt-6">
+            <Ladder ids={w.ids} numbered={false} open={w.id === "focus" ? "workshop" : undefined} />
+          </div>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section id="how-we-work" labelledby="how-heading" class="scroll-mt-16">
+    <div class="grid gap-x-12 gap-y-6 lg:grid-cols-12 lg:items-end">
+      <div class="lg:col-span-7" data-reveal>
+        <Beat id="how-heading" first="How we work." second="Four stages. Stop after any of them." />
+      </div>
+      <p class="text-muted text-lg lg:col-span-5" data-reveal style="--i:1">
+        Every engagement answers three questions: where is the advantage, what must change, and how will we
+        realise it? You keep every output, whichever stage you stop at.
+      </p>
+    </div>
+    <div class="mt-14">
+      <StagePath />
+    </div>
+  </Section>
+
+  <Section tone="paper" size="sm" labelledby="governance-heading">
+    <div class="max-w-3xl" data-reveal>
+      <h2 id="governance-heading" class="font-display text-title">
+        Governance runs through every stage, from scoping.
+      </h2>
+      <p class="text-muted mt-3">
+        The cheapest time to deal with a regulatory or accountability problem is before anything has been
+        built.
+      </p>
+    </div>
+    <ul class="border-line mt-10 grid border-t sm:grid-cols-2">
+      {governance.map((g, i) => (
+        <li class="border-line border-b py-6 sm:pr-8" data-reveal style={`--i:${i % 2}`}>
+          <h3 class="font-display text-xl">{g.title}</h3>
+          <p class="text-muted mt-2">{g.body}</p>
+        </li>
+      ))}
+    </ul>
+    <div class="mt-8">
+      <Button href="/use-cases/ai-governance/" variant="secondary">
+        AI governance in practice
+      </Button>
     </div>
   </Section>
 
@@ -95,7 +159,8 @@ const wont = [
         <p class="text-muted mt-6 max-w-md text-lg">
           We work with scaling and established businesses of roughly 50 to 1,000 people. An engagement needs
           an executive sponsor, access to evidence and people, a budget, and a willingness to change how the
-          business operates. All of it is confirmed in scoping, before any fee.
+          business operates. All of it is confirmed in scoping, before any fee. An NDA is standard before any
+          substantive information is shared.
         </p>
       </div>
       <ul class="border-line border-t lg:col-span-7">
@@ -113,25 +178,13 @@ const wont = [
     </div>
   </Section>
 
-  <Section tone="paper" labelledby="wont-heading">
-    <div data-reveal>
-      <Beat id="wont-heading" first="What we won't do." second="And what you get because of it." />
-    </div>
-    <div class="mt-12">
-      <Compare withoutLabel="Not offered" withLabel="What that means for you" rows={wont} />
-    </div>
-    <p class="text-muted mt-8 max-w-measure">
-      An NDA is standard before any substantive information is shared.
-    </p>
-  </Section>
-
-  <Section labelledby="faq-heading">
+  <Section tone="paper" labelledby="faq-heading">
     <div class="grid gap-x-12 gap-y-8 lg:grid-cols-12">
       <div class="lg:col-span-4" data-reveal>
-        <Beat id="faq-heading" first="Fees and scope." second="Common questions." />
+        <Beat id="faq-heading" first="Fees, scope and approach." second="Common questions." />
       </div>
       <div class="lg:col-span-8">
-        <Faq items={servicesFaq} />
+        <Faq items={faq} />
       </div>
     </div>
   </Section>

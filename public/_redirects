@@ -1,8 +1,19 @@
 # Old .html URLs from the static site -> clean URLs. 301 = permanent.
-/approach.html    /approach/    301
+/approach.html    /services/    301
 /services.html    /services/    301
 /about.html       /about/       301
 /contact.html     /contact/     301
 /assessment.html  /assessment/  301
 /privacy.html     /privacy/     301
 /sitemap.xml      /sitemap-index.xml  301
+
+# Pages folded in or removed when the site was simplified (Nov 2026).
+/approach         /services/    301
+/approach/        /services/    301
+/industries       /services/    301
+/industries/      /services/    301
+/teams            /services/    301
+/teams/           /services/    301
+/use-cases        /services/    301
+/use-cases/       /services/    301
+/insights/tags/*  /insights/    301

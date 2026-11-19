@@ -186,3 +186,62 @@ export const engagement = (id: string): Engagement => {
 };
 
 export const engagementIds = engagements.map((e) => e.id) as [string, ...string[]];
+
+export interface Way {
+  id: string;
+  index: string;
+  name: string;
+  /** One line on what this way of working is for. */
+  summary: string;
+  /** Where it sits in the four stages. */
+  stages: string;
+  /** Fee line for the way as a whole. */
+  fee: string;
+  /** The engagements it contains, in ladder order. */
+  ids: string[];
+}
+
+/**
+ * The nine engagements, presented as four ways to work. Grouping only:
+ * every engagement, fee and output above is unchanged. The free discovery
+ * call is the way in to all four, not one of them.
+ */
+export const ways: Way[] = [
+  {
+    id: "focus",
+    index: "01",
+    name: "Agree where to focus",
+    summary: "One day with your leadership team to agree the few AI opportunities worth backing.",
+    stages: "Decide",
+    fee: "£2,500",
+    ids: ["workshop"],
+  },
+  {
+    id: "case",
+    index: "02",
+    name: "Build the case",
+    summary:
+      "A week on one or two priority areas, or two weeks across the business, ending in a value case and a plan.",
+    stages: "Decide",
+    fee: "£6,000 or £12,500",
+    ids: ["diagnostic", "deep-dive"],
+  },
+  {
+    id: "change",
+    index: "03",
+    name: "Make the change",
+    summary: "Redesign the work, lead it through to live and train your people, until your own team runs it.",
+    stages: "Design, Deliver, Embed",
+    fee: "Scoped and quoted",
+    ids: ["operating-model-design", "implementation-support", "transformation-leadership", "training"],
+  },
+  {
+    id: "advice",
+    index: "04",
+    name: "Ongoing advice",
+    summary: "Independent senior judgement for a CEO, board or investor, alongside any stage or on its own.",
+    stages: "Alongside any stage",
+    fee: "Retainer, quoted",
+    ids: ["advisory"],
+  },
+];

@@ -7,7 +7,7 @@ import LinkCards from "../../components/LinkCards.astro";
 import Cta from "../../components/Cta.astro";
 import { site } from "../../data/site";
 import { article, person } from "../../lib/schema";
-import { getInsights, formatDate, tagSlug, resolveRelated } from "../../lib/content";
+import { getInsights, formatDate, resolveRelated } from "../../lib/content";
 
 export async function getStaticPaths() {
   const posts = await getInsights();
@@ -115,12 +115,7 @@ const crumbs = [
           <p class="border-line mt-12 flex max-w-(--container-measure) flex-wrap items-center gap-2 border-t pt-6">
             <span class="text-muted mr-2 text-sm">Filed under</span>
             {d.tags.map((tag) => (
-              <a
-                href={`/insights/tags/${tagSlug(tag)}/`}
-                class="border-line-strong hover:border-fg rounded-full border px-3.5 py-1.5 text-sm transition-colors duration-fast"
-              >
-                {tag}
-              </a>
+              <span class="border-line-strong rounded-full border px-3.5 py-1.5 text-sm">{tag}</span>
             ))}
           </p>
         </div>
