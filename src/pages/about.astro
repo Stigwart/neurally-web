@@ -5,10 +5,8 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
 import Section from "../components/Section.astro";
 import Beat from "../components/Beat.astro";
 import Button from "../components/Button.astro";
-import CareerNote from "../components/CareerNote.astro";
 import Cta from "../components/Cta.astro";
 import { site } from "../data/site";
-import { timeline, evidence } from "../data/career";
 import { person } from "../lib/schema";
 import portrait from "../assets/stuart-davis.jpg";
 
@@ -17,29 +15,57 @@ const crumbs = [
   { name: "About", href: "/about/" },
 ];
 
-const strengths = [
+const facts = [
+  { term: "What we are", detail: "An AI and business transformation advisory" },
+  { term: "Founded", detail: "2026, by Stuart Davis" },
+  { term: "Based", detail: "United Kingdom" },
+  { term: "What we sell", detail: "Advice and leadership. No software, no tools." },
+];
+
+const gaps = [
   {
-    title: "An operator's experience",
-    body: "Stuart has built the teams, shipped the products and lived with the results. His recommendations are made for the people who will have to deliver them.",
+    title: "Deciding where to invest",
+    body: "Use cases and local productivity gains haven't become a short list of choices about revenue, cost, capacity or customers.",
   },
   {
-    title: "Boardroom to delivery, joined up",
-    body: "He can take the work from the investment case through operating-model and product design into delivery, alongside your teams. The person who made the recommendation helps you carry it out.",
+    title: "Changing the business around it",
+    body: "Products, workflows, roles and decisions haven't adapted to what the new tools can do.",
   },
   {
-    title: "At home where the stakes are high",
-    body: "He has launched consumer AI under FCA and Consumer Duty rules. Regulation, accountability and accuracy go into the design from the first conversation, before anything reaches a board or a customer.",
+    title: "Getting it done",
+    body: "Nobody owns the outcome, or the people and coordination needed to deliver it aren't in place.",
+  },
+];
+
+const choices = [
+  {
+    title: "Small and senior on purpose",
+    body: "You work directly with the person leading the work, from the first leadership conversation to the teams making the change. Specialists are added only where the problem needs them.",
   },
   {
-    title: "Accountable for the numbers",
-    body: "He has owned commercial targets and led a 46-person organisation. Each recommendation comes with the investment case and the measures you'll use to judge whether it paid off.",
+    title: "Independent",
+    body: "We don't sell software, resell tools or take payment by results. When we recommend building, buying or stopping something, nothing else sits behind that advice.",
   },
+  {
+    title: "Every step stands on its own",
+    body: "The first steps have fixed fees agreed before work starts. You can stop after any stage and keep everything produced so far.",
+  },
+  {
+    title: "Built to hand over",
+    body: "Outputs, decisions and methods belong to you. We train your people on their redesigned work so the change keeps going after we leave.",
+  },
+];
+
+const triggers = [
+  "The board expects an AI strategy, and nobody can yet say which opportunities are strongest.",
+  "Pilots and tool purchases are multiplying, with nothing to show in the numbers.",
+  "A product, digital or AI transformation needs an independent diagnosis or a senior leader to own it.",
 ];
 ---
 
 <Base
-  title="About Stuart Davis, founder of Neurally"
-  description="Stuart Davis has spent 19+ years leading product, technology and transformation at Compare the Market, Fresha, ClearScore and others. He now leads Neurally."
+  title="About Neurally"
+  description="Neurally is a UK-based AI and business transformation advisory, founded by Stuart Davis in 2026. Why it exists, what it is for and how it works with leadership teams."
   crumbs={crumbs}
   schema={[person()]}
 >
@@ -48,158 +74,171 @@ const strengths = [
       <div class="fade-up">
         <Breadcrumbs crumbs={crumbs} />
       </div>
-      <div class="mt-10 grid items-end gap-x-10 gap-y-10 md:grid-cols-12 lg:mt-14 lg:gap-x-12">
+      <div class="mt-10 grid items-end gap-x-10 gap-y-12 md:grid-cols-12 lg:mt-14 lg:gap-x-12">
         <div class="md:col-span-8">
           <h1 id="page-heading" class="text-display">
             <span class="line-rise" style="--i:0">
-              <span>Stuart Davis.</span>
+              <span>About Neurally.</span>
             </span>
             <span class="line-rise text-muted" style="--i:1">
-              <span>Nineteen years on the inside of the change.</span>
+              <span>Built for the work after the pilot.</span>
             </span>
           </h1>
           <p class="fade-up text-muted mt-8 max-w-2xl text-xl" style="--i:3">
-            Founder of Neurally. Formerly Head of Product (Data, AI, Apps & Ops) at Compare the Market and
-            Head of Product (Banking & Payments) at Fresha.
+            We help leadership teams decide where AI is worth the investment, redesign the business around it
+            and lead the change through to measured results.
           </p>
           <div class="fade-up mt-8 flex flex-wrap items-center gap-x-6 gap-y-4" style="--i:4">
             <Button href={site.calendly} external size="lg" data-cta="calendly">
               Book a free discovery call
             </Button>
-            <Button href={site.linkedin} external variant="text">
-              Stuart on LinkedIn
+            <Button href={site.linkedinCompany} external variant="text">
+              Neurally on LinkedIn
             </Button>
           </div>
         </div>
-        <div class="fade-up md:col-span-4" style="--i:2">
-          <Image
-            src={portrait}
-            alt="Stuart Davis, founder of Neurally"
-            widths={[320, 480, 640]}
-            sizes="(min-width: 64rem) 30vw, 70vw"
-            loading="eager"
-            class="aspect-[4/5] w-full max-w-sm rounded-lg object-cover grayscale"
-          />
-        </div>
+        <dl class="fade-up border-line border-t md:col-span-4" style="--i:2">
+          {facts.map((f) => (
+            <div class="border-line border-b py-4">
+              <dt class="text-faint text-label font-mono uppercase">{f.term}</dt>
+              <dd class="mt-1">{f.detail}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
     </div>
   </section>
 
-  <Section tone="paper" labelledby="story-heading">
+  <Section tone="paper" labelledby="why-heading">
     <div class="grid gap-x-12 gap-y-8 lg:grid-cols-12">
       <div class="lg:col-span-5" data-reveal>
         <Beat
-          id="story-heading"
-          first="Most AI advice stops at the pilot."
-          second="The hard part comes after it."
+          id="why-heading"
+          first="Why Neurally exists."
+          second="Experiments show what AI can do. They don't decide what your business should do with it."
         />
       </div>
-      <div class="space-y-5 text-lg lg:col-span-7" data-reveal style="--i:1">
-        <p>
-          The hard part is deciding where AI changes the economics of your business, then reorganising
-          products, workflows, roles and decision rights to capture that value, while regulators, boards,
-          existing teams and live customers are all watching.
-        </p>
-        <p class="text-muted">
-          That's the work Stuart has spent more than nineteen years doing from the inside. Most recently he
-          wrote Compare the Market's consumer AI strategy, won board backing for it and led the launch of its
-          first consumer AI assistant. Before that he led payments, banking and data products at Fresha, with
-          a 46-person organisation.
-        </p>
-        <p class="text-muted">
-          He brings that operator's judgement to CEOs, founders, and product and technology leaders of scaling
-          and established businesses. Most often that's financial services, marketplaces and B2B SaaS.
-          Professional services is a growing focus. You work with him directly, from the first leadership
-          conversation through to the teams doing the work.
+      <div class="lg:col-span-7" data-reveal style="--i:1">
+        <p class="text-lg">Trying AI is the easy part. What comes next tends to stall in three places.</p>
+        <ol class="border-line mt-8 border-t">
+          {gaps.map((g, i) => (
+            <li class="border-line grid gap-x-6 gap-y-2 border-b py-6 md:grid-cols-12">
+              <span class="text-faint text-label pt-1.5 font-mono md:col-span-1">0{i + 1}</span>
+              <div class="md:col-span-11">
+                <h3 class="font-display text-xl">{g.title}</h3>
+                <p class="text-muted mt-2">{g.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+        <p class="text-muted mt-8 text-lg">
+          Closing those gaps takes business design and someone to lead the change, as well as technology
+          expertise. Neurally was set up to do all three, with one accountable lead from the board decision
+          through to delivery.
         </p>
       </div>
     </div>
   </Section>
 
-  <Section labelledby="strengths-heading">
+  <Section labelledby="mission-heading">
+    <p class="text-faint text-label font-mono uppercase" data-reveal>
+      Our mission
+    </p>
+    <p id="mission-heading" class="font-display text-headline mt-6 max-w-5xl" data-reveal style="--i:1">
+      To help established businesses turn AI from experiments into results they can measure, and leave their
+      own teams able to carry the work on.
+    </p>
+  </Section>
+
+  <Section tone="paper" labelledby="choices-heading">
     <div data-reveal>
-      <Beat
-        id="strengths-heading"
-        first="What Stuart brings to an engagement."
-        second="Four things, mainly."
-      />
+      <Beat id="choices-heading" first="How Neurally is set up." second="Four choices we made on purpose." />
     </div>
     <ul class="border-line mt-12 grid border-t md:grid-cols-2">
-      {strengths.map((s, i) => (
+      {choices.map((c, i) => (
         <li
           class="border-line border-b py-8 md:odd:pr-10 md:even:border-l md:even:pl-10"
           data-reveal
           style={`--i:${i % 2}`}
         >
-          <h3 class="text-title">{s.title}</h3>
-          <p class="text-muted mt-3 text-lg">{s.body}</p>
+          <h3 class="text-title">{c.title}</h3>
+          <p class="text-muted mt-3 text-lg">{c.body}</p>
         </li>
       ))}
     </ul>
   </Section>
 
-  <Section tone="paper" labelledby="career-heading">
-    <div class="grid gap-x-12 gap-y-8 lg:grid-cols-12">
-      <div class="lg:col-span-4">
-        <div class="lg:sticky lg:top-28" data-reveal>
-          <Beat
-            id="career-heading"
-            first="Where the judgement comes from."
-            second="Career, before Neurally."
-          />
+  <Section labelledby="help-heading">
+    <div class="grid gap-x-12 gap-y-10 lg:grid-cols-12">
+      <div class="lg:col-span-5" data-reveal>
+        <Beat id="help-heading" first="Who we help." second="And when they tend to call." />
+        <p class="text-muted mt-6 max-w-md text-lg">
+          CEOs, founders, and product and technology leaders of scaling and established businesses, roughly 50
+          to 1,000 people. Boards and investors also bring us in for an independent view.
+        </p>
+        <p class="text-muted mt-4 max-w-md text-lg">
+          Our experience runs deepest in financial services and insurance, marketplaces and e-commerce, and
+          B2B SaaS. Professional services is a growing focus.
+        </p>
+      </div>
+      <div class="lg:col-span-7">
+        <ul class="border-line border-t">
+          {triggers.map((t, i) => (
+            <li
+              class="border-line font-display text-title flex gap-5 border-b py-6"
+              data-reveal
+              style={`--i:${i}`}
+            >
+              <span class="text-faint text-label mt-2 font-mono">0{i + 1}</span>
+              {t}
+            </li>
+          ))}
+        </ul>
+        <div class="mt-10 flex flex-wrap gap-4" data-reveal>
+          <Button href="/approach/" variant="secondary">
+            How the approach works
+          </Button>
+          <Button href="/services/" variant="text">
+            Services and fees
+          </Button>
         </div>
       </div>
-      <ol class="border-line border-t lg:col-span-8">
-        {timeline.map((t, i) => (
-          <li
-            class="border-line grid gap-x-8 gap-y-2 border-b py-7 md:grid-cols-4"
-            data-reveal
-            style={`--i:${i % 3}`}
-          >
-            <p class="text-muted text-label pt-1.5 font-mono uppercase">{t.years}</p>
-            <div class="md:col-span-3">
-              <h3 class="font-display text-title">{t.employer}</h3>
-              <p class="text-muted text-sm">{t.role}</p>
-              {t.body && <p class="mt-3">{t.body}</p>}
-            </div>
-          </li>
-        ))}
-      </ol>
-    </div>
-    <blockquote class="font-display text-headline mt-16 max-w-4xl" data-reveal>
-      With Neurally, the judgement you hire is the judgement applied to your business.
-    </blockquote>
-  </Section>
-
-  <Section labelledby="evidence-heading">
-    <div class="max-w-3xl" data-reveal>
-      <Beat
-        id="evidence-heading"
-        first="What the experience looks like in numbers."
-        second="Career evidence, not client results."
-      />
-      <CareerNote class="mt-6 text-base!" />
-    </div>
-    <div class="mt-12 grid gap-y-14">
-      {evidence.map((e) => (
-        <article class="border-line grid gap-x-12 gap-y-6 border-t pt-8 lg:grid-cols-12" data-reveal>
-          <div class="lg:col-span-4">
-            <p class="text-faint text-label font-mono uppercase">{e.context}</p>
-            <h3 class="text-title mt-3">{e.title}</h3>
-            <p class="text-muted mt-3">{e.role}</p>
-          </div>
-          <dl class="grid gap-x-10 sm:grid-cols-2 lg:col-span-8">
-            {e.figures.map((f) => (
-              <div class="border-line border-b py-5">
-                <dt class="font-display text-figure tabular-nums">{f.figure}</dt>
-                <dd class="text-muted mt-2">{f.label}</dd>
-              </div>
-            ))}
-          </dl>
-        </article>
-      ))}
     </div>
   </Section>
 
-  <Cta first="Talk to the person who does the work." second="Thirty minutes, free." />
+  <Section tone="paper" labelledby="founder-heading" id="stuart-davis">
+    <div class="grid gap-x-10 gap-y-12 md:grid-cols-12 lg:gap-x-12">
+      <div class="md:col-span-4" data-reveal>
+        <Image
+          src={portrait}
+          alt="Stuart Davis, founder of Neurally"
+          widths={[320, 480, 640]}
+          sizes="(min-width: 64rem) 30vw, 80vw"
+          class="aspect-[4/5] w-full max-w-sm rounded-lg object-cover grayscale"
+        />
+      </div>
+      <div class="md:col-span-8">
+        <div data-reveal>
+          <Beat
+            id="founder-heading"
+            first="Founded by Stuart Davis."
+            second="Nineteen years running the change from the inside."
+          />
+          <p class="max-w-measure mt-6 text-lg">
+            Stuart has spent more than 19 years leading product, technology and transformation. Most recently,
+            as Head of Product (Data, AI, Apps & Ops) at Compare the Market, he wrote the consumer AI
+            strategy, won board backing for it and led the launch of the company's first consumer AI
+            assistant. Before that he was Head of Product (Banking & Payments) at Fresha.
+          </p>
+          <p class="text-muted max-w-measure mt-4 text-lg">He leads every Neurally engagement himself.</p>
+        </div>
+        <p class="text-faint mt-4 text-sm">Career before Neurally, not Neurally client work.</p>
+        <Button href={site.linkedin} external variant="secondary" class="mt-8">
+          Stuart on LinkedIn
+        </Button>
+      </div>
+    </div>
+  </Section>
+
+  <Cta first="Tell us what you're trying to decide." second="Thirty minutes, free." />
 </Base>

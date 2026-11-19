@@ -18,10 +18,6 @@ export const homeFaq: FaqItem[] = [
     a: 'The first call is free. After that the Workshop (one day, £2,500), the Diagnostic (one week, £6,000) and the Deep Dive (two weeks, £12,500) each have a fixed fee agreed before work starts. The Workshop fee is credited in full if you book a Diagnostic or Deep Dive within 60 days. <a class="link" href="/services/">See every engagement and fee</a>.',
   },
   {
-    q: "Are you an AI consultancy?",
-    a: "Not quite. AI is usually why people call, but most of the work is on the business itself: its economics, products, customers, organisation and delivery. AI is the catalyst for that work.",
-  },
-  {
     q: "Do you stay through to delivery?",
     a: "Yes. We can work with you from the first decision until the change is live and your team runs it. We lead the agreed transformation work and support implementation hands-on: specifying pilots, choosing and briefing build partners, and working alongside your teams on the first releases. Your teams or specialist partners write the software. We do not sell software or resell tools, so our advice on what to build has nothing to sell.",
   },
@@ -32,6 +28,10 @@ export const homeFaq: FaqItem[] = [
 ];
 
 export const approachFaq: FaqItem[] = [
+  {
+    q: "Are you an AI consultancy?",
+    a: "Not quite. AI is usually why people call, but most of the work is on the business itself: its economics, products, customers, organisation and delivery. AI is the catalyst for that work.",
+  },
   {
     q: "What happens in each stage?",
     a: "Decide: choose the few opportunities worth funding, with a value case and measures for each. Design: redesign products, workflows, roles and decision rights around them. Deliver: test the riskiest assumptions in small, time-boxed pilots, then build and scale what works. Embed: train your people, track results against the agreed measures and leave an operating rhythm your team runs without us.",
