@@ -66,9 +66,12 @@ The Cloudflare Pages project is `neurally-web`, connected to this repository.
 Every pull request gets its own preview URL (Cloudflare comments it on the PR).
 Merging to `main` publishes to `www.neurally.co.uk`.
 
-DNS is held at GoDaddy, not Cloudflare. `www` is a CNAME to
-`neurally-web.pages.dev`, and the apex `neurally.co.uk` is forwarded to
-`https://www.neurally.co.uk` with a permanent redirect.
+DNS is on Cloudflare (zone `neurally.co.uk`); GoDaddy is only the registrar.
+Both `www` and the apex are proxied CNAMEs to `neurally-web.pages.dev` and are
+custom domains on the Pages project. A zone Redirect Rule sends the apex to
+`https://www.neurally.co.uk` with a 301 that keeps the path and query string,
+and Always Use HTTPS is on. Email is Hostinger: the MX, SPF, DMARC and three
+`_domainkey` CNAMEs are DNS only (grey cloud) and must stay that way.
 
 `public/_redirects` holds the 301s from the old `.html` URLs. `public/_headers`
 holds the security headers and cache rules. Both are plain text and are read by
