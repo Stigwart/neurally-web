@@ -1,6 +1,6 @@
 ---
 name: Neurally
-description: A light, spacious site for a senior AI and business transformation adviser. Four stage colours carry the page. The homepage uses the Stage light look; inner pages still use the earlier ink-and-paper ledger until they are migrated.
+description: A light, spacious site for a senior AI and business transformation adviser. Paper base, white rounded panels, four stage colours carrying the page, and one dark band at the close.
 colors:
   ink-950: "#0C0C0B"
   ink-900: "#121211"
@@ -74,7 +74,7 @@ typography:
     fontWeight: 400
     lineHeight: 1.55
   label:
-    fontFamily: "IBM Plex Mono, ui-monospace, SF Mono, Menlo, monospace"
+    fontFamily: "Instrument Sans Variable, Helvetica Neue, Helvetica, Arial, sans-serif"
     fontSize: "0.75rem"
     fontWeight: 400
     lineHeight: 1.4
@@ -130,9 +130,9 @@ updating.
 
 ## Overview
 
-**Creative North Star: "Stage light"** (homepage, from November 2026)
+**Creative North Star: "Stage light"** (every page, from November 2026)
 
-The homepage is light, centred and spacious. It sits on warm paper with white
+The site is light and spacious. It sits on warm paper with white
 rounded panels, and the four stage colours carry the visitor down the page in
 the order the work runs: Decide (blue), Design (yellow), Deliver (sage), Embed
 (coral). There is one dark band, the closing call to action, which runs into
@@ -155,31 +155,34 @@ client results. Neurally has none of those results yet and the design does not
 pretend otherwise. Proof is carried by published fees, clear scope and
 labelled career evidence.
 
-**Inner pages** (Approach, Services, About, landing pages, Insights and the
-rest) have not been migrated. They keep the earlier "Operator's Ledger" look:
-ink and paper bands, hairline rows, mono index labels and the hatch texture.
-The ink and paper rules below still describe those pages. Set `tone="light"`
-on `Base` to move a page to Stage light.
+**Home and inner pages.** The homepage is the fullest expression: a centred
+hero, the problem picker, the stage row and the stepped engagement cards.
+Inner pages share the tone, type, panels, header and closing band, and keep
+their left-aligned, hairline-row layouts for long reading. Their heroes carry
+a quieter echo of the home hero: four soft stage shapes at the right edge.
 
 ## Colour
 
 ### Tones
 
 Every section has a tone. Components never hard-code a colour; they use
-semantic utilities that resolve differently in each tone. Stage light pages
-use `light` (bg paper, surface and raised white, fg ink-900, muted stone-600,
-accent decide-deep). Inner pages use the two tones below.
+semantic utilities that resolve differently in each tone. The page default is
+`light`. `Section tone="paper"` gives a slightly deeper band to separate long
+pages, and `ink` is used only for the closing band and the footer.
 
-| Utility                | Ink (default)      | Paper (`data-tone="paper"`) |
-| ---------------------- | ------------------ | --------------------------- |
-| `bg`                   | ink-900            | paper-200                   |
-| `surface`              | ink-850            | paper                       |
-| `raised`               | ink-800            | white                       |
-| `fg`                   | paper              | ink-900                     |
-| `muted`                | stone-400          | stone-600                   |
-| `faint`                | stone-500          | stone-600                   |
-| `line` / `line-strong` | paper at 13% / 30% | ink at 14% / 40%            |
-| `accent`               | decide             | decide-deep                 |
+| Utility                | Ink (close, footer) | Paper (`data-tone="paper"`) |
+| ---------------------- | ------------------- | --------------------------- |
+| `bg`                   | ink-900             | paper-200                   |
+| `surface`              | ink-850             | paper                       |
+| `raised`               | ink-800             | white                       |
+| `fg`                   | paper               | ink-900                     |
+| `muted`                | stone-400           | stone-600                   |
+| `faint`                | stone-500           | stone-600                   |
+| `line` / `line-strong` | paper at 13% / 30%  | ink at 14% / 40%            |
+| `accent`               | decide              | decide-deep                 |
+
+`light` (the default) is: bg paper, surface and raised white, fg ink-900,
+muted and faint stone-600, line ink at 12%, accent decide-deep.
 
 All text pairs meet WCAG AA (4.5:1) in both tones.
 
@@ -202,7 +205,7 @@ interface accent (links, focus rings, text selection, primary-button hover) is
 the Decide blue, because the first step is the action. No fifth colour. The
 only soft-edged colour is the four blurred hero shapes.
 
-**The Hatch Rule (inner pages and the closing band).** The hatch means "AI
+**The Hatch Rule.** The hatch means "AI
 takes this on" in the allocation board on the Approach page and is otherwise
 a quiet edge texture at low opacity, always masked to fade out. It is never a
 full background, and it is not used on light panels.
@@ -212,14 +215,13 @@ full background, and it is not used on light panels.
 - **Archivo** (variable, weight 500) for display, headlines, titles and
   figures. Tight negative tracking, never below -0.04em.
 - **Instrument Sans** (variable) for all running text.
-- **IBM Plex Mono** for index numbers, breadcrumbs, dates and small uppercase
-  labels on inner pages only. Stage light does not use it: labels are
-  sentence case in Instrument Sans, and the audience line is a pill.
+- No monospace face. Index numbers, breadcrumbs, dates and small labels are
+  sentence case in Instrument Sans at `text-sm`.
 
-On Stage light, the hero uses the `hero` size and section headings are set at
-weight 600 and centred.
+The home hero uses the `hero` size. `Beat` sets display and headline sizes at
+weight 600. Home section headings are centred; inner pages are left-aligned.
 
-All three are self-hosted. Archivo and Instrument Sans are preloaded.
+Both are self-hosted. Archivo and Instrument Sans are preloaded.
 
 **Two-beat headings.** Most headings are a statement followed by a quieter
 second line that completes it ("Governance runs through every stage. / It starts before anything is built."). The `Beat` component renders the second beat in `muted`. Keep both
@@ -288,8 +290,9 @@ scrolling library and nothing takes over the scroll.
 - **Micro-interactions.** Arrows nudge, cards lift 4px on hover, accordions
   open with an eased height.
 
-Inner pages keep the earlier CSS-only motion (`data-reveal`, the stage path
-scroll story) in `src/scripts/site.ts`.
+Inner pages use CSS-only motion: `data-reveal` rises, the stage path scroll
+story (`src/scripts/site.ts`), and hero shapes that drift on a slow CSS loop.
+GSAP is loaded on the homepage only.
 
 Rules: ease-out-expo for anything entering; nothing bounces. Content is
 visible by default and entrance states are only set by script, so the page

@@ -19,7 +19,7 @@ const { heading = "Four stages: decide, design, deliver, embed" } = Astro.props;
 <ol class="grid gap-x-8 gap-y-12 md:grid-cols-2 xl:grid-cols-4">
   {stages.map((s, i) => (
     <li data-stage={s.id} class="border-stage flex flex-col border-t-2 pt-5" data-reveal style={`--i:${i}`}>
-      <p class="text-label text-muted font-mono uppercase">Stage {s.index}</p>
+      <p class="text-sm text-muted">Stage {s.index}</p>
       <h3 class="text-title mt-2">{s.name}</h3>
       <p class="font-display text-muted mt-2 text-lg">{s.question}</p>
       <p class="mt-4">{s.summary}</p>

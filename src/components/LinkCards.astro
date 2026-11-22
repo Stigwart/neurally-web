@@ -16,9 +16,7 @@ const { items, headingLevel: H = "h3" } = Astro.props;
         class="group border-line hover:bg-surface -mx-3 grid gap-x-8 gap-y-2 rounded-md border-b px-3 py-7 transition-colors duration-fast md:grid-cols-12 md:items-baseline"
       >
         <H class="font-display text-title md:col-span-5">
-          {item.label && (
-            <span class="text-faint text-label mb-1 block font-mono font-normal uppercase">{item.label}</span>
-          )}
+          {item.label && <span class="text-faint text-sm mb-1 block font-normal">{item.label}</span>}
           {item.name}
         </H>
         <p class="text-muted md:col-span-6">{item.summary}</p>

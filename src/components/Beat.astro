@@ -14,7 +14,11 @@ interface Props {
   id?: string;
 }
 const { as: Tag = "h2", first, second, size = "headline", rise = false, class: className, id } = Astro.props;
-const sizes = { display: "text-display", headline: "text-headline", title: "text-title" };
+const sizes = {
+  display: "text-display font-semibold",
+  headline: "text-headline font-semibold",
+  title: "text-title",
+};
 ---
 
 <Tag id={id} class:list={[sizes[size], className]}>

@@ -9,7 +9,7 @@ import { getAllLanding, landingHref } from "../lib/content";
 interface Props {
   tone?: "ink" | "light";
 }
-const { tone = "ink" } = Astro.props;
+const { tone = "light" } = Astro.props;
 const groups = await getAllLanding();
 const path = Astro.url.pathname;
 const isCurrent = (href: string) => path === href || (href !== "/" && path.startsWith(href));
@@ -138,7 +138,7 @@ const linkClass =
       <div class="grid gap-8 sm:grid-cols-3">
         {groups.map(({ family, entries }) => (
           <div>
-            <a href={family.base} class="text-faint font-mono text-label uppercase">
+            <a href={family.base} class="text-faint text-sm">
               {family.label}
             </a>
             <ul class="mt-2">

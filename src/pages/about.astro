@@ -100,7 +100,7 @@ const triggers = [
         <dl class="fade-up border-line border-t md:col-span-4" style="--i:2">
           {facts.map((f) => (
             <div class="border-line border-b py-4">
-              <dt class="text-faint text-label font-mono uppercase">{f.term}</dt>
+              <dt class="text-faint text-sm">{f.term}</dt>
               <dd class="mt-1">{f.detail}</dd>
             </div>
           ))}
@@ -123,7 +123,7 @@ const triggers = [
         <ol class="border-line mt-8 border-t">
           {gaps.map((g, i) => (
             <li class="border-line grid gap-x-6 gap-y-2 border-b py-6 md:grid-cols-12">
-              <span class="text-faint text-label pt-1.5 font-mono md:col-span-1">0{i + 1}</span>
+              <span class="text-faint text-sm pt-1.5 md:col-span-1">0{i + 1}</span>
               <div class="md:col-span-11">
                 <h3 class="font-display text-xl">{g.title}</h3>
                 <p class="text-muted mt-2">{g.body}</p>
@@ -141,7 +141,7 @@ const triggers = [
   </Section>
 
   <Section labelledby="mission-heading">
-    <p class="text-faint text-label font-mono uppercase" data-reveal>
+    <p class="text-faint text-sm" data-reveal>
       Our mission
     </p>
     <p id="mission-heading" class="font-display text-headline mt-6 max-w-5xl" data-reveal style="--i:1">
@@ -189,7 +189,7 @@ const triggers = [
               data-reveal
               style={`--i:${i}`}
             >
-              <span class="text-faint text-label mt-2 font-mono">0{i + 1}</span>
+              <span class="text-faint text-sm mt-2">0{i + 1}</span>
               {t}
             </li>
           ))}
@@ -214,7 +214,7 @@ const triggers = [
           alt="Stuart Davis, founder of Neurally"
           widths={[320, 480, 640]}
           sizes="(min-width: 64rem) 30vw, 80vw"
-          class="aspect-[4/5] w-full max-w-sm rounded-lg object-cover grayscale"
+          class="aspect-[4/5] w-full max-w-sm rounded-2xl object-cover"
         />
       </div>
       <div class="md:col-span-8">

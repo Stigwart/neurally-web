@@ -20,7 +20,7 @@ interface Props {
   crumbs?: { name: string; href: string }[];
   /** Extra JSON-LD nodes for this page. */
   schema?: Record<string, unknown>[];
-  /** Page tone. "light" is the Stage light look (homepage). */
+  /** Page tone. "light" (Stage light) is the default for every page. */
   tone?: "ink" | "light";
 }
 
@@ -32,7 +32,7 @@ const {
   ogType = "website",
   crumbs,
   schema = [],
-  tone = "ink",
+  tone = "light",
 } = Astro.props;
 
 const pathname = Astro.url.pathname;

@@ -81,7 +81,7 @@ if (root) {
       input.checked = answers[current] === i;
       const key = document.createElement("span");
       key.className =
-        "border-line-strong text-muted group-has-checked:bg-stage group-has-checked:border-stage group-has-checked:text-bg grid size-7 shrink-0 place-items-center rounded-sm border font-mono text-label transition-colors duration-fast";
+        "border-line-strong text-muted group-has-checked:bg-stage group-has-checked:border-stage group-has-checked:text-bg grid size-7 shrink-0 place-items-center rounded-sm border text-sm transition-colors duration-fast";
       key.setAttribute("aria-hidden", "true");
       key.textContent = String(i + 1);
       const span = document.createElement("span");
@@ -190,7 +190,7 @@ if (root) {
       asks.className = "text-muted text-sm";
       asks.textContent = d.asks;
       const val = document.createElement("span");
-      val.className = "ml-auto font-mono text-sm tabular-nums";
+      val.className = "ml-auto text-sm tabular-nums";
       val.textContent = `${r.dims[i]} / 6`;
       head.append(name, asks, val);
       const track = document.createElement("div");

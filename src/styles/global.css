@@ -4,7 +4,6 @@
 /* Self-hosted fonts (bundled by Vite, no third-party requests). */
 @import "@fontsource-variable/archivo/wght.css";
 @import "@fontsource-variable/instrument-sans/wght.css";
-@import "@fontsource/ibm-plex-mono/latin-400.css";
 
 /* ------------------------------------------------------------------
    Design tokens. This block is the single source of truth: change a
@@ -46,7 +45,7 @@
   /* Type */
   --font-display: "Archivo Variable", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-sans: "Instrument Sans Variable", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
 
   --text-label: 0.75rem;
   --text-label--line-height: 1.4;
@@ -381,6 +380,41 @@
     }
   }
 
+  /* Inner-page heroes: a quieter echo of the home hero. Four soft stage
+     shapes sit at the right edge and drift slowly (CSS only). */
+  .page-shapes {
+    position: absolute;
+    inset: 0 0 0 auto;
+    display: none;
+    width: 42%;
+    pointer-events: none;
+    mask-image: linear-gradient(to left, black 30%, transparent);
+  }
+  @media (width >= 64rem) {
+    .page-shapes {
+      display: block;
+    }
+  }
+  .page-shapes > span {
+    position: absolute;
+    top: calc(-22% + var(--i) * 26%);
+    right: calc(-6% + var(--i) * 9%);
+    width: clamp(10rem, 18vw, 18rem);
+    aspect-ratio: 1;
+    border-radius: var(--radius-full);
+    opacity: 0.7;
+    filter: blur(clamp(1.5rem, 3vw, 3rem));
+    animation: shape-drift calc(11s + var(--i) * 3s) ease-in-out calc(var(--i) * -4s) infinite alternate;
+  }
+  @keyframes shape-drift {
+    from {
+      transform: translate(-8%, -6%) scale(0.9);
+    }
+    to {
+      transform: translate(10%, 8%) scale(1.15);
+    }
+  }
+
   /* Problems: pick one, read its answer. One column on small screens
      (each answer opens under its statement), two on large. */
   .problems {
@@ -578,9 +612,11 @@
   .form-status[data-kind="error"] {
     color: var(--color-embed);
   }
+  [data-tone="light"] .form-status[data-kind="success"],
   [data-tone="paper"] .form-status[data-kind="success"] {
     color: var(--color-deliver-deep);
   }
+  [data-tone="light"] .form-status[data-kind="error"],
   [data-tone="paper"] .form-status[data-kind="error"] {
     color: var(--color-embed-deep);
   }

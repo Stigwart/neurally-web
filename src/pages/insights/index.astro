@@ -33,7 +33,7 @@ const crumbs = [
             href={`/insights/${post.id}/`}
             class="group border-line hover:bg-surface -mx-3 grid gap-x-8 gap-y-3 rounded-md border-b px-3 py-9 transition-colors duration-fast md:grid-cols-12"
           >
-            <p class="text-muted text-label flex items-center gap-3 pt-2 font-mono uppercase md:col-span-3">
+            <p class="text-muted text-sm flex items-center gap-3 pt-2 md:col-span-3">
               <span class="bg-stage size-2 rounded-full" aria-hidden="true" />
               <time datetime={post.data.published.toISOString()}>{formatDate(post.data.published)}</time>
             </p>

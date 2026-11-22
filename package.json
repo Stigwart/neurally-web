@@ -27,7 +27,6 @@
     "@astrojs/sitemap": "^3.7.5",
     "@fontsource-variable/archivo": "^5.3.0",
     "@fontsource-variable/instrument-sans": "^5.3.0",
-    "@fontsource/ibm-plex-mono": "^5.3.0",
     "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.5",

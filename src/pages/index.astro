@@ -69,7 +69,6 @@ const problems: Parameters<typeof ProblemPicker>[0]["problems"] = [
   rawTitle
   description="Take AI from pilot to payback. We help UK leadership teams choose where AI pays, redesign the business around it and deliver measured results."
   schema={[faqPage(homeFaq)]}
-  tone="light"
 >
   <!-- Hero -->
   <section class="relative isolate overflow-clip" aria-labelledby="hero-heading" data-hero>
@@ -110,7 +109,7 @@ const problems: Parameters<typeof ProblemPicker>[0]["problems"] = [
   <!-- The problem -->
   <Section class="pt-section-sm!" labelledby="problem-heading">
     <div class="text-center" data-rise>
-      <Beat id="problem-heading" class="font-semibold" first="AI isn't working for your business yet." />
+      <Beat id="problem-heading" first="AI isn't working for your business yet." />
       <p class="text-muted mx-auto mt-6 max-w-2xl text-lg">
         Most leadership teams recognise at least one of these.
       </p>
@@ -136,7 +135,7 @@ const problems: Parameters<typeof ProblemPicker>[0]["problems"] = [
   <!-- The path -->
   <Section class="pt-0!" labelledby="path-heading">
     <div class="text-center" data-rise>
-      <Beat id="path-heading" class="font-semibold" first="What working with us looks like." />
+      <Beat id="path-heading" first="What working with us looks like." />
       <p class="text-muted mx-auto mt-6 max-w-2xl text-lg">
         Every engagement starts with one question:{" "}
         <span class="text-fg">“What could this business do now that it couldn't two years ago?”</span>
@@ -155,7 +154,7 @@ const problems: Parameters<typeof ProblemPicker>[0]["problems"] = [
   <!-- Ways to work together -->
   <Section class="pt-0!" labelledby="fees-heading">
     <div class="text-center" data-rise>
-      <Beat id="fees-heading" class="font-semibold" first="What we can do together." />
+      <Beat id="fees-heading" first="What we can do together." />
       <p class="text-muted mx-auto mt-6 max-w-2xl text-lg">
         It starts with a conversation. From there, we can spend a day, a week or two weeks with you, depending
         on how much of the business you want to look at.
@@ -190,7 +189,7 @@ const problems: Parameters<typeof ProblemPicker>[0]["problems"] = [
       <div class="md:col-span-7" data-rise>
         <Beat
           id="stuart-heading"
-          class="font-semibold"
+
           first="An operator's judgement."
           second="From someone who has run the change in-house."
         />
@@ -237,7 +236,7 @@ const problems: Parameters<typeof ProblemPicker>[0]["problems"] = [
     <div class="bg-surface rounded-2xl px-6 py-14 text-center md:p-20" data-rise>
       <Beat
         id="assess-heading"
-        class="font-semibold"
+
         first="Not sure where you stand?"
         second="Ten questions will tell you."
       />
@@ -255,7 +254,7 @@ const problems: Parameters<typeof ProblemPicker>[0]["problems"] = [
   <Section class="pt-0!" labelledby="faq-heading">
     <div class="grid gap-x-12 gap-y-8 lg:grid-cols-12">
       <div class="lg:col-span-4" data-rise>
-        <Beat id="faq-heading" class="font-semibold" first="Questions people ask first." />
+        <Beat id="faq-heading" first="Questions people ask first." />
       </div>
       <div class="lg:col-span-8" data-rise>
         <Faq items={homeFaq} />
@@ -264,9 +263,7 @@ const problems: Parameters<typeof ProblemPicker>[0]["problems"] = [
   </Section>
 
   <!-- Close: the one dark band -->
-  <div data-tone="ink" class="origin-top rounded-t-2xl" data-close>
-    <Cta />
-  </div>
+  <Cta />
 
   <script>
     import "../scripts/home.ts";

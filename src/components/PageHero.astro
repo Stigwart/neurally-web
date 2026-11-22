@@ -1,6 +1,7 @@
 ---
 import Beat from "./Beat.astro";
 import Breadcrumbs from "./Breadcrumbs.astro";
+import { stages } from "../data/stages";
 
 interface Props {
   crumbs: { name: string; href: string }[];
@@ -17,10 +18,11 @@ const { crumbs, first, second, lede, stage } = Astro.props;
   aria-labelledby="page-heading"
   data-stage={stage}
 >
-  <div
-    class="hatch pointer-events-none absolute top-0 right-0 hidden h-full w-1/4 opacity-20 [mask-image:linear-gradient(to_left,black,transparent)] lg:block"
-    aria-hidden="true"
-  ></div>
+  <div class="page-shapes" aria-hidden="true">
+    {stages.map((s, i) => (
+      <span data-wash={s.id} style={`--i:${i}`} />
+    ))}
+  </div>
   <div class="container-page relative">
     <div class="fade-up">
       <Breadcrumbs crumbs={crumbs} />

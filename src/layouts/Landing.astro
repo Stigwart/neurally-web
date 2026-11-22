@@ -87,7 +87,7 @@ const crumbs = [
           data-reveal
           style={`--i:${i % 4}`}
         >
-          <span class="text-faint text-label pt-2 font-mono md:col-span-1">0{i + 1}</span>
+          <span class="text-faint text-sm pt-2 md:col-span-1">0{i + 1}</span>
           <h3 class="text-title md:col-span-4">{item.title}</h3>
           <p class="text-muted text-lg md:col-span-7">{item.body}</p>
         </li>
@@ -129,7 +129,7 @@ const crumbs = [
         const s = stages.find((x) => x.id === step.stage)!;
         return (
           <li data-stage={s.id} class="border-stage border-t-2 pt-5" data-reveal style={`--i:${i}`}>
-            <p class="text-muted text-label font-mono uppercase">Stage {s.index}</p>
+            <p class="text-muted text-sm">Stage {s.index}</p>
             <h3 class="text-title mt-2">{s.name}</h3>
             <p class="text-muted mt-3">{step.body}</p>
           </li>
@@ -161,9 +161,7 @@ const crumbs = [
             <dt class="font-display text-figure tabular-nums md:col-span-4">{item.figure}</dt>
             <dd class="md:col-span-8 md:self-center">
               <span class="text-muted text-lg">{item.label}</span>
-              <span class="text-faint text-label mt-1 block font-mono uppercase">
-                {item.where}, before Neurally
-              </span>
+              <span class="text-faint text-sm mt-1 block">{item.where}, before Neurally</span>
             </dd>
           </div>
         ))}
@@ -182,7 +180,7 @@ const crumbs = [
   <!-- Entry engagement -->
   <Section id="where-to-start" labelledby="start-heading" class="scroll-mt-16">
     <div
-      class="border-line-strong grid gap-x-12 gap-y-8 rounded-lg border p-7 md:p-12 lg:grid-cols-12"
+      class="border-line-strong grid gap-x-12 gap-y-8 rounded-2xl border p-7 md:p-12 lg:grid-cols-12"
       data-stage={entryEngagement.stage === "any" ? undefined : entryEngagement.stage}
       data-reveal
     >
@@ -202,7 +200,7 @@ const crumbs = [
       </div>
       <div class="lg:col-span-5">
         <div class="border-line border-t pt-5">
-          <p class="text-faint text-label font-mono uppercase">Engagement {entryEngagement.index}</p>
+          <p class="text-faint text-sm">Engagement {entryEngagement.index}</p>
           <p class="font-display text-title mt-2">{entryEngagement.name}</p>
           <p class="mt-4 flex items-baseline gap-4">
             <span class="font-display text-figure tabular-nums">{entryEngagement.fee}</span>
