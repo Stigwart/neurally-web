@@ -45,13 +45,10 @@ const crumbs = [
     <h2 id="other-heading" class="text-title">
       Or start somewhere else
     </h2>
-    <ul class="mt-6 grid gap-6 md:grid-cols-2">
+    <ul class="tiles mt-6 md:grid-cols-2">
       {others.map((f) => (
         <li>
-          <a
-            href={f.base}
-            class="group border-line hover:border-fg flex items-center justify-between rounded-2xl border p-6 transition-colors duration-fast"
-          >
+          <a href={f.base} class="group tile flex items-center justify-between">
             <span>
               <span class="font-display text-title block">{f.label}</span>
               <span class="text-muted">{f.blurb}</span>

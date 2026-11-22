@@ -97,9 +97,9 @@ const triggers = [
             </Button>
           </div>
         </div>
-        <dl class="fade-up border-line border-t md:col-span-4" style="--i:2">
+        <dl class="fade-up tile md:col-span-4" style="--i:2">
           {facts.map((f) => (
-            <div class="border-line border-b py-4">
+            <div class="border-line border-b py-4 first:pt-0 last:border-b-0 last:pb-0">
               <dt class="text-faint text-sm">{f.term}</dt>
               <dd class="mt-1">{f.detail}</dd>
             </div>
@@ -120,9 +120,9 @@ const triggers = [
       </div>
       <div class="lg:col-span-7" data-reveal style="--i:1">
         <p class="text-lg">Trying AI is the easy part. What comes next tends to stall in three places.</p>
-        <ol class="border-line mt-8 border-t">
+        <ol class="rows mt-8">
           {gaps.map((g, i) => (
-            <li class="border-line grid gap-x-6 gap-y-2 border-b py-6 md:grid-cols-12">
+            <li class="row grid gap-x-6 gap-y-2 md:grid-cols-12">
               <span class="text-faint text-sm pt-1.5 md:col-span-1">0{i + 1}</span>
               <div class="md:col-span-11">
                 <h3 class="font-display text-xl">{g.title}</h3>
@@ -154,13 +154,9 @@ const triggers = [
     <div data-reveal>
       <Beat id="choices-heading" first="How Neurally is set up." second="Four choices we made on purpose." />
     </div>
-    <ul class="border-line mt-12 grid border-t md:grid-cols-2">
+    <ul class="tiles mt-12 md:grid-cols-2">
       {choices.map((c, i) => (
-        <li
-          class="border-line border-b py-8 md:odd:pr-10 md:even:border-l md:even:pl-10"
-          data-reveal
-          style={`--i:${i % 2}`}
-        >
+        <li class="tile" data-reveal style={`--i:${i % 2}`}>
           <h3 class="text-title">{c.title}</h3>
           <p class="text-muted mt-3 text-lg">{c.body}</p>
         </li>
@@ -182,20 +178,16 @@ const triggers = [
         </p>
       </div>
       <div class="lg:col-span-7">
-        <ul class="border-line border-t">
+        <ul class="rows">
           {triggers.map((t, i) => (
-            <li
-              class="border-line font-display text-title flex gap-5 border-b py-6"
-              data-reveal
-              style={`--i:${i}`}
-            >
+            <li class="row font-display text-title flex gap-5" data-reveal style={`--i:${i}`}>
               <span class="text-faint text-sm mt-2">0{i + 1}</span>
               {t}
             </li>
           ))}
         </ul>
         <div class="mt-10 flex flex-wrap gap-4" data-reveal>
-          <Button href="/approach/" variant="secondary">
+          <Button href="/approach/" variant="text">
             How the approach works
           </Button>
           <Button href="/services/" variant="text">

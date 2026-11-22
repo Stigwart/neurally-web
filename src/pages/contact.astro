@@ -45,9 +45,9 @@ const expect = [
               Book a free discovery call
             </Button>
           </div>
-          <ul class="fade-up border-line mt-12 border-t" style="--i:5">
+          <ul class="fade-up rows mt-12" style="--i:5">
             {expect.map((e) => (
-              <li class="border-line text-muted border-b py-4">{e}</li>
+              <li class="row text-muted">{e}</li>
             ))}
           </ul>
           <p class="fade-up text-muted mt-8" style="--i:5">
@@ -65,7 +65,7 @@ const expect = [
         <div class="fade-up lg:col-span-6" style="--i:2">
           <form
             id="contact-form"
-            class="border-line bg-surface grid gap-5 rounded-2xl border p-6 sm:grid-cols-2 md:p-9"
+            class="bg-surface grid gap-5 rounded-2xl p-6 sm:grid-cols-2 md:p-9"
             action={site.web3forms.endpoint}
             method="post"
             novalidate

@@ -157,9 +157,10 @@ labelled career evidence.
 
 **Home and inner pages.** The homepage is the fullest expression: a centred
 hero, the problem picker, the stage row and the stepped engagement cards.
-Inner pages share the tone, type, panels, header and closing band, and keep
-their left-aligned, hairline-row layouts for long reading. Their heroes carry
-a quieter echo of the home hero: four soft stage shapes at the right edge.
+Inner pages share the tone, type, header and closing band, and use the same
+white panels: tiles in a grid and rows in a list, in place of hairline-separated
+lists. They stay left-aligned for long reading. Their heroes carry a quieter
+echo of the home hero: four soft stage shapes at the right edge.
 
 ## Colour
 
@@ -181,6 +182,7 @@ pages, and `ink` is used only for the closing band and the footer.
 | `line` / `line-strong` | paper at 13% / 30%  | ink at 14% / 40%            |
 | `accent`               | decide              | decide-deep                 |
 
+In `paper`, surface is white so panels stand out on the deeper band.
 `light` (the default) is: bg paper, surface and raised white, fg ink-900,
 muted and faint stone-600, line ink at 12%, accent decide-deep.
 
@@ -238,9 +240,10 @@ copy is held to a 42rem measure.
 - A 12-column grid inside an 80rem container with a fluid gutter.
 - The common section shape is an asymmetric split: heading in 4 or 5 columns,
   content in 7 or 8.
-- Lists are rows separated by hairlines, not cards. Panels with a border and a
-  14px radius are reserved for things that are objects: the allocation board,
-  forms, the entry-engagement block, the assessment prompt.
+- Lists are white panels, not hairline rows. Use `.tiles` with `.tile` for a
+  grid of short items (32px radius) and `.rows` with `.row` for a stacked list
+  (24px radius). A tile with `data-wash` takes its stage colour. Hairlines are
+  kept only inside a panel, to separate its own lines.
 - Section spacing is fluid (`py-section`, `py-section-sm`). On Stage light,
   sections after the first drop their top padding so the gap between bands is
   one `section` step, and the hero content sits centred in the first screen.
@@ -251,24 +254,23 @@ copy is held to a 42rem measure.
 
 ## Components
 
-| Component         | Use                                                                                                   |
-| ----------------- | ----------------------------------------------------------------------------------------------------- |
-| `Section`         | A band of the page. `tone="paper"` switches tone                                                      |
-| `Beat`            | Two-beat heading at display, headline or title size                                                   |
-| `PageHero`        | Breadcrumbs, H1, lede and actions for inner pages                                                     |
-| `Button`          | `primary` (filled pill), `secondary` (outline pill), `text` (underlined). The arrow nudges on hover   |
-| `AllocationBoard` | Approach page: seven tasks, three lanes, real radio controls. No longer on Home                       |
-| `StagePath`       | The four stages as a scroll story with a sticky index (inner pages)                                   |
-| `ProblemPicker`   | Home: five problems with icons; one answer and a booking button on show at a time                     |
-| `StageRow`        | Home: the four stages as colour cards; one open, three collapsed to a spine; stacked on small screens |
-| `Steps`           | Home: engagements as cards that step up in height with their length; the free call carries the button |
-| `Ladder`          | The engagement ladder: expandable rows, or linked rows on Home                                        |
-| `Compare`         | "Without / With" rows                                                                                 |
-| `Faq`             | Accordion. One answer open at a time; also emits FAQ structured data via the page                     |
-| `LinkCards`       | Hairline rows linking to other pages                                                                  |
-| `CareerNote`      | The caveat that must accompany every career figure                                                    |
-| `Cta`             | The closing call to action                                                                            |
-| `Field`           | Labelled input or textarea with an inline error                                                       |
+| Component         | Use                                                                                                                |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `Section`         | A band of the page. `tone="paper"` switches tone                                                                   |
+| `Beat`            | Two-beat heading at display, headline or title size                                                                |
+| `PageHero`        | Breadcrumbs, H1, lede and actions for inner pages                                                                  |
+| `Button`          | `primary` (filled pill), `secondary` (outline pill), `text` (underlined). The arrow nudges on hover                |
+| `AllocationBoard` | Approach page: seven tasks, three lanes, real radio controls. No longer on Home                                    |
+| `ProblemPicker`   | Home: five problems with icons; one answer and a booking button on show at a time                                  |
+| `StageRow`        | Home and Approach: the four stages as colour cards; one open, three collapsed to a spine; stacked on small screens |
+| `Steps`           | Home: engagements as cards that step up in height with their length; the free call carries the button              |
+| `Ladder`          | The engagement ladder on Services: expandable white rows with fees                                                 |
+| `Compare`         | "Without / With" rows                                                                                              |
+| `Faq`             | Accordion. One answer open at a time; also emits FAQ structured data via the page                                  |
+| `LinkCards`       | White rows linking to other pages                                                                                  |
+| `CareerNote`      | The caveat that must accompany every career figure                                                                 |
+| `Cta`             | The closing call to action                                                                                         |
+| `Field`           | Labelled input or textarea with an inline error                                                                    |
 
 ## Motion
 
@@ -290,8 +292,9 @@ scrolling library and nothing takes over the scroll.
 - **Micro-interactions.** Arrows nudge, cards lift 4px on hover, accordions
   open with an eased height.
 
-Inner pages use CSS-only motion: `data-reveal` rises, the stage path scroll
-story (`src/scripts/site.ts`), and hero shapes that drift on a slow CSS loop.
+Inner pages use CSS-only motion: `data-reveal` rises (`src/scripts/site.ts`)
+and hero shapes that drift on a slow CSS loop. The stage row has its own small
+script (`src/scripts/stage-row.ts`) with no library.
 GSAP is loaded on the homepage only.
 
 Rules: ease-out-expo for anything entering; nothing bounces. Content is

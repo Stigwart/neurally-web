@@ -72,7 +72,7 @@ if (root) {
     q.options.forEach((text, i) => {
       const label = document.createElement("label");
       label.className =
-        "assess-option group border-line-strong hover:border-fg has-checked:border-stage has-checked:bg-surface flex cursor-pointer items-center gap-4 rounded-md border px-4 py-4 transition-colors duration-fast has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-accent";
+        "assess-option group border-line-strong hover:border-fg has-checked:border-stage has-checked:bg-surface flex cursor-pointer items-center gap-4 rounded-xl border px-4 py-4 transition-colors duration-fast has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-accent";
       const input = document.createElement("input");
       input.type = "radio";
       input.name = `q${current}`;

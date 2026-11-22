@@ -84,58 +84,6 @@ if (problems) {
   });
 }
 
-// ── Stage row: one card open, the rest collapsed ────────────────────
-const row = document.querySelector<HTMLElement>("[data-stage-row]");
-if (row) {
-  const cards = Array.from(row.querySelectorAll<HTMLElement>("[data-stage-card]"));
-  const toggles = cards.map((card) => card.querySelector<HTMLButtonElement>("[data-stage-toggle]"));
-  let intro: gsap.core.Tween[] = [];
-  let hoverTimer = 0;
-
-  const open = (index: number) => {
-    cards.forEach((card, i) => {
-      card.toggleAttribute("data-open", i === index);
-      toggles[i]?.setAttribute("aria-expanded", String(i === index));
-    });
-  };
-  const stopIntro = () => {
-    intro.forEach((call) => call.kill());
-    intro = [];
-  };
-
-  cards.forEach((card, i) => {
-    card.addEventListener("click", () => {
-      stopIntro();
-      open(i);
-    });
-    card.addEventListener("pointerenter", (event) => {
-      if (event.pointerType !== "mouse") return;
-      window.clearTimeout(hoverTimer);
-      hoverTimer = window.setTimeout(() => {
-        stopIntro();
-        open(i);
-      }, 110);
-    });
-    card.addEventListener("pointerleave", () => window.clearTimeout(hoverTimer));
-    toggles[i]?.addEventListener("focus", stopIntro);
-  });
-
-  const setLive = () => row.classList.toggle("is-live", large.matches);
-  setLive();
-  large.addEventListener("change", setLive);
-
-  // Once, as the row arrives: open each stage in order, then rest on the first.
-  ScrollTrigger.create({
-    trigger: row,
-    start: "top 60%",
-    once: true,
-    onEnter: () => {
-      if (reduce || !large.matches) return;
-      intro = [1, 2, 3, 0].map((index, step) => gsap.delayedCall(0.5 + step * 0.8, () => open(index)));
-    },
-  });
-}
-
 // ── Motion ──────────────────────────────────────────────────────────
 if (!reduce) {
   // Hero: the four stage colours keep moving, follow the mouse, and fall

@@ -8,13 +8,10 @@ interface Props {
 const { items, headingLevel: H = "h3" } = Astro.props;
 ---
 
-<ul class="border-line border-t">
+<ul class="rows">
   {items.map((item, i) => (
     <li data-reveal style={`--i:${i % 4}`}>
-      <a
-        href={item.href}
-        class="group border-line hover:bg-surface -mx-3 grid gap-x-8 gap-y-2 rounded-md border-b px-3 py-7 transition-colors duration-fast md:grid-cols-12 md:items-baseline"
-      >
+      <a href={item.href} class="group row grid gap-x-8 gap-y-2 md:grid-cols-12 md:items-baseline">
         <H class="font-display text-title md:col-span-5">
           {item.label && <span class="text-faint text-sm mb-1 block font-normal">{item.label}</span>}
           {item.name}

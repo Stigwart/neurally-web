@@ -134,7 +134,7 @@
 
   [data-tone="paper"] {
     --bg: var(--color-paper-200);
-    --surface: var(--color-paper);
+    --surface: var(--color-white);
     --raised: var(--color-white);
     --fg: var(--color-ink-900);
     --muted: var(--color-stone-600);
@@ -378,6 +378,49 @@
       opacity: 0;
       transform: translateY(30%) scale(0.6);
     }
+  }
+
+  /* Large headings are a step heavier than the rest. */
+  :is(h1, h2).text-display,
+  :is(h1, h2).text-headline {
+    font-weight: 600;
+  }
+
+  /* White panels. Tiles sit in a grid; rows stack as a list. They replace
+     hairline-separated lists across the site. */
+  .tiles {
+    display: grid;
+    gap: 0.75rem;
+  }
+  .tile {
+    border-radius: var(--radius-2xl);
+    background: var(--surface);
+    padding: clamp(1.5rem, 1.1rem + 1.4vw, 2.25rem);
+  }
+  [data-wash].tile {
+    background: var(--wash);
+  }
+  .rows {
+    display: grid;
+    gap: 0.5rem;
+  }
+  .row {
+    border-radius: var(--radius-xl);
+    background: var(--surface);
+    padding: 1.25rem 1.5rem;
+  }
+  @media (width >= 48rem) {
+    .row {
+      padding: 1.5rem 1.75rem;
+    }
+  }
+  a.row,
+  a.tile {
+    transition: transform var(--duration-base) var(--ease-out-expo);
+  }
+  a.row:hover,
+  a.tile:hover {
+    transform: translateY(-2px);
   }
 
   /* Inner-page heroes: a quieter echo of the home hero. Four soft stage
