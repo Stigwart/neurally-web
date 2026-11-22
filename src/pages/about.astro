@@ -4,6 +4,7 @@ import Base from "../layouts/Base.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import Section from "../components/Section.astro";
 import Beat from "../components/Beat.astro";
+import Glow from "../components/Glow.astro";
 import Button from "../components/Button.astro";
 import Cta from "../components/Cta.astro";
 import { site } from "../data/site";
@@ -109,7 +110,7 @@ const triggers = [
     </div>
   </section>
 
-  <Section tone="paper" labelledby="why-heading">
+  <Section glow={{ side: "right", colours: ["decide", "lilac"] }} tone="paper" labelledby="why-heading">
     <div class="grid gap-x-12 gap-y-8 lg:grid-cols-12">
       <div class="lg:col-span-5" data-reveal>
         <Beat
@@ -140,7 +141,7 @@ const triggers = [
     </div>
   </Section>
 
-  <Section labelledby="mission-heading">
+  <Section glow={{ side: "left", colours: ["design", "embed"] }} labelledby="mission-heading">
     <p class="text-faint text-sm" data-reveal>
       Our mission
     </p>
@@ -150,7 +151,7 @@ const triggers = [
     </p>
   </Section>
 
-  <Section tone="paper" labelledby="choices-heading">
+  <Section glow={{ side: "right", colours: ["deliver", "design"] }} tone="paper" labelledby="choices-heading">
     <div data-reveal>
       <Beat id="choices-heading" first="How Neurally is set up." second="Four choices we made on purpose." />
     </div>
@@ -164,7 +165,7 @@ const triggers = [
     </ul>
   </Section>
 
-  <Section labelledby="help-heading">
+  <Section glow={{ side: "left", colours: ["lilac", "decide"] }} labelledby="help-heading">
     <div class="grid gap-x-12 gap-y-10 lg:grid-cols-12">
       <div class="lg:col-span-5" data-reveal>
         <Beat id="help-heading" first="Who we help." second="And when they tend to call." />
@@ -200,7 +201,8 @@ const triggers = [
 
   <Section tone="paper" labelledby="founder-heading" id="stuart-davis">
     <div class="grid gap-x-10 gap-y-12 md:grid-cols-12 lg:gap-x-12">
-      <div class="md:col-span-4" data-reveal>
+      <div class="relative isolate md:col-span-4" data-reveal>
+        <Glow side="behind" colours={["deliver", "decide", "lilac"]} />
         <Image
           src={portrait}
           alt="Stuart Davis, founder of Neurally"
@@ -209,7 +211,7 @@ const triggers = [
           class="aspect-[4/5] w-full max-w-sm rounded-2xl object-cover"
         />
       </div>
-      <div class="md:col-span-8">
+      <div class="relative md:col-span-8">
         <div data-reveal>
           <Beat
             id="founder-heading"

@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
+import Glow from "../components/Glow.astro";
 import Button from "../components/Button.astro";
 import Field from "../components/Field.astro";
 import { site } from "../data/site";
@@ -27,7 +28,7 @@ const expect = [
         <Breadcrumbs crumbs={crumbs} />
       </div>
       <div class="mt-10 grid gap-x-16 gap-y-14 lg:mt-14 lg:grid-cols-12">
-        <div class="lg:col-span-6">
+        <div class="relative z-10 lg:col-span-6">
           <h1 id="page-heading" class="text-display">
             <span class="line-rise" style="--i:0">
               <span>Tell us what you're trying to decide.</span>
@@ -62,7 +63,8 @@ const expect = [
           </p>
         </div>
 
-        <div class="fade-up lg:col-span-6" style="--i:2">
+        <div class="fade-up relative isolate lg:col-span-6" style="--i:2">
+          <Glow side="behind" colours={["lilac", "decide", "embed"]} />
           <form
             id="contact-form"
             class="bg-surface grid gap-5 rounded-2xl p-6 sm:grid-cols-2 md:p-9"

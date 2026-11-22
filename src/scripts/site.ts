@@ -4,6 +4,8 @@
  * without it.
  */
 
+import "./glow.ts";
+
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 // ── Navigation ──────────────────────────────────────────────────────

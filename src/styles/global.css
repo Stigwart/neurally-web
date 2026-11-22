@@ -37,6 +37,18 @@
   --color-deliver-deep: #4c6638;
   --color-embed-deep: #9c4a3a;
 
+  /* Pale tints of the stage colours, for large stage-related fills. */
+  --color-decide-tint: #e4edf4;
+  --color-design-tint: #faf3dc;
+  --color-deliver-tint: #e7eee0;
+  --color-embed-tint: #f8e1dc;
+
+  /* Lilac: the one secondary colour, for everything that is not a stage. */
+  --color-lilac-100: #efeaf6;
+  --color-lilac-200: #ddd3ec;
+  --color-lilac-300: #c9bce0;
+  --color-lilac-400: #b3a2d3;
+
   --color-white: #fff;
   --color-black: #000;
   --color-transparent: transparent;
@@ -217,6 +229,31 @@
   [data-wash="embed"] {
     --wash: var(--color-embed);
   }
+  [data-wash="decide-tint"] {
+    --wash: var(--color-decide-tint);
+  }
+  [data-wash="design-tint"] {
+    --wash: var(--color-design-tint);
+  }
+  [data-wash="deliver-tint"] {
+    --wash: var(--color-deliver-tint);
+  }
+  [data-wash="embed-tint"] {
+    --wash: var(--color-embed-tint);
+  }
+  [data-wash="lilac-1"] {
+    --wash: var(--color-lilac-100);
+  }
+  [data-wash="lilac-2"] {
+    --wash: var(--color-lilac-200);
+  }
+  [data-wash="lilac-3"],
+  [data-wash="lilac"] {
+    --wash: var(--color-lilac-300);
+  }
+  [data-wash="lilac-4"] {
+    --wash: var(--color-lilac-400);
+  }
 
   html:has(body[data-tone="light"]) {
     background: var(--color-paper);
@@ -380,6 +417,79 @@
     }
   }
 
+  /* Glows may reach past the page edge; never let that scroll the page. */
+  main {
+    overflow-x: clip;
+  }
+
+  /* Glows: soft colour that follows the page down. Each glow mixes at
+     least two colours. It drifts on a CSS loop, and `glow.ts` moves it with
+     the scroll position and the mouse through --gx, --gy and --gmy. */
+  .has-glow {
+    position: relative;
+    isolation: isolate;
+    overflow-x: clip;
+  }
+  .glow {
+    --gx: 0px;
+    --gy: 0px;
+    --gmy: 0px;
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    width: clamp(18rem, 40vw, 40rem);
+    aspect-ratio: 1;
+    pointer-events: none;
+  }
+  .glow[data-side="left"] {
+    left: 0;
+    translate: -60% -50%;
+  }
+  .glow[data-side="right"] {
+    right: 0;
+    translate: 60% -50%;
+  }
+  /* A glow behind a component must stay behind its neighbours too: give
+     the neighbouring content `relative` so it paints above the glow. */
+  .glow[data-side="behind"] {
+    inset: -10%;
+    width: auto;
+    aspect-ratio: auto;
+  }
+  .glow > span {
+    --k: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 68%;
+    aspect-ratio: 1;
+    border-radius: var(--radius-full);
+    opacity: 0.6;
+    filter: blur(clamp(2rem, 5vw, 4.5rem));
+    translate: calc(var(--gx) * var(--k)) calc((var(--gy) + var(--gmy)) * var(--k));
+    animation: shape-drift 13s ease-in-out infinite alternate;
+  }
+  .glow > span:nth-child(2) {
+    --k: 1.7;
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    animation-duration: 17s;
+    animation-direction: alternate-reverse;
+  }
+  .glow > span:nth-child(3) {
+    --k: 0.5;
+    top: 26%;
+    left: 22%;
+    animation-duration: 21s;
+  }
+  @media (width >= 48rem) {
+    .glow > span {
+      opacity: 0.75;
+    }
+  }
+
   /* Large headings are a step heavier than the rest. */
   :is(h1, h2).text-display,
   :is(h1, h2).text-headline {
@@ -510,7 +620,7 @@
   }
   .problem-panel {
     border-radius: var(--radius-2xl);
-    background: var(--surface);
+    background: var(--color-lilac-100);
     padding: clamp(1.5rem, 1rem + 2vw, 3rem);
   }
   @media (width >= 64rem) {

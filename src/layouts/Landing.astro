@@ -47,7 +47,7 @@ const crumbs = [
   </PageHero>
 
   <!-- The situation, in the reader's words -->
-  <Section tone="paper" labelledby="situation-heading">
+  <Section glow={{ side: "right", colours: ["decide", "lilac"] }} tone="paper" labelledby="situation-heading">
     <div class="grid gap-x-12 gap-y-10 lg:grid-cols-12">
       <div class="lg:col-span-4" data-reveal>
         <h2 id="situation-heading" class="text-headline">
@@ -73,7 +73,7 @@ const crumbs = [
   )}
 
   <!-- Decisions -->
-  <Section labelledby="decisions-heading">
+  <Section glow={{ side: "left", colours: ["lilac", "design"] }} labelledby="decisions-heading">
     <div class="max-w-3xl" data-reveal>
       <h2 id="decisions-heading" class="text-headline">
         {d.decisions.heading}
@@ -92,7 +92,7 @@ const crumbs = [
   </Section>
 
   <!-- Risks -->
-  <Section tone="paper" labelledby="risks-heading">
+  <Section glow={{ side: "right", colours: ["embed", "design"] }} tone="paper" labelledby="risks-heading">
     <div class="grid gap-x-12 gap-y-10 lg:grid-cols-12">
       <div class="lg:col-span-4" data-reveal>
         <h2 id="risks-heading" class="text-headline">
@@ -141,7 +141,11 @@ const crumbs = [
 
   <!-- Career evidence, where relevant -->
   {d.evidence && (
-    <Section tone="paper" labelledby="evidence-heading">
+    <Section
+      glow={{ side: "left", colours: ["deliver", "decide"] }}
+      tone="paper"
+      labelledby="evidence-heading"
+    >
       <div class="max-w-3xl" data-reveal>
         <h2 id="evidence-heading" class="text-headline">
           {d.evidence.heading}
@@ -170,7 +174,12 @@ const crumbs = [
   )}
 
   <!-- Entry engagement -->
-  <Section id="where-to-start" labelledby="start-heading" class="scroll-mt-16">
+  <Section
+    glow={{ side: "right", colours: ["lilac", "embed"] }}
+    id="where-to-start"
+    labelledby="start-heading"
+    class="scroll-mt-16"
+  >
     <div
       class="bg-surface grid gap-x-12 gap-y-8 rounded-2xl p-7 md:p-12 lg:grid-cols-12"
       data-stage={entryEngagement.stage === "any" ? undefined : entryEngagement.stage}

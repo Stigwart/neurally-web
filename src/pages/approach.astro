@@ -148,13 +148,18 @@ const governance = [
     </Button>
   </PageHero>
 
-  <Section tone="paper" labelledby="questions-heading">
+  <Section glow={{ side: "left", colours: ["decide", "lilac"] }} tone="paper" labelledby="questions-heading">
     <div data-reveal>
       <Beat id="questions-heading" first="Every engagement answers three questions." />
     </div>
     <ol class="tiles mt-12 md:grid-cols-3">
       {questions.map((item, i) => (
-        <li class="tile" data-reveal style={`--i:${i}`}>
+        <li
+          class="tile"
+          data-wash={["decide-tint", "design-tint", "deliver-tint"][i]}
+          data-reveal
+          style={`--i:${i}`}
+        >
           <span class="text-faint text-sm">0{i + 1}</span>
           <h3 class="text-title mt-3">{item.q}</h3>
           <p class="text-muted mt-3">{item.a}</p>
@@ -170,7 +175,7 @@ const governance = [
     <StageRow />
   </Section>
 
-  <Section tone="paper" labelledby="sizing-heading">
+  <Section glow={{ side: "right", colours: ["design", "deliver"] }} tone="paper" labelledby="sizing-heading">
     <div class="grid gap-x-12 gap-y-8 lg:grid-cols-12">
       <div class="lg:col-span-6" data-reveal>
         <Beat id="sizing-heading" first="How an opportunity is sized." />
@@ -196,7 +201,7 @@ const governance = [
     </dl>
   </Section>
 
-  <Section labelledby="allocation-heading">
+  <Section glow={{ side: "left", colours: ["lilac", "decide"] }} labelledby="allocation-heading">
     <div class="grid gap-x-12 gap-y-10 lg:grid-cols-12">
       <div class="lg:col-span-5" data-reveal>
         <Beat
@@ -221,7 +226,7 @@ const governance = [
     </div>
   </Section>
 
-  <Section tone="paper" labelledby="governance-heading">
+  <Section glow={{ side: "right", colours: ["embed", "lilac"] }} tone="paper" labelledby="governance-heading">
     <div class="max-w-3xl" data-reveal>
       <Beat
         id="governance-heading"
@@ -248,7 +253,7 @@ const governance = [
     </div>
   </Section>
 
-  <Section labelledby="principles-heading">
+  <Section glow={{ side: "left", colours: ["deliver", "design"] }} labelledby="principles-heading">
     <div data-reveal>
       <Beat id="principles-heading" first="Five principles." second="Each one replaces a habit." />
     </div>

@@ -18,6 +18,14 @@ colors:
   design: "#EFDBA0"
   deliver: "#B7C9A8"
   embed: "#E8A599"
+  decide-tint: "#E4EDF4"
+  design-tint: "#FAF3DC"
+  deliver-tint: "#E7EEE0"
+  embed-tint: "#F8E1DC"
+  lilac-100: "#EFEAF6"
+  lilac-200: "#DDD3EC"
+  lilac-300: "#C9BCE0"
+  lilac-400: "#B3A2D3"
   decide-deep: "#3F6885"
   design-deep: "#7A6520"
   deliver-deep: "#4C6638"
@@ -202,10 +210,28 @@ text is darkened to ink-600, which keeps AA contrast on all four pastels.
 Washes are for stage content and the hero shapes only. Every other panel is
 white on paper.
 
-**The Scarce Chroma Rule.** Outside stage colour, the page is neutral. The
-interface accent (links, focus rings, text selection, primary-button hover) is
-the Decide blue, because the first step is the action. No fifth colour. The
-only soft-edged colour is the four blurred hero shapes.
+**The Lilac Rule.** Lilac is the one secondary colour. It is for things that
+are not a stage: the engagement cards (four steps, deepening with the length
+of the engagement), the problem answer panel, and glows. Stage colours still
+mean a stage and nothing else.
+
+**The Tint Rule.** Each stage colour has a pale tint (`decide-tint` and so
+on, set with `data-wash="decide-tint"`). Use a tint where content belongs to
+a stage but a full wash would be too heavy, such as the three questions on
+Approach.
+
+**The Glow Rule.** Colour follows the visitor down every page as soft glows.
+A section glow sits at one edge, alternating left and right down the page
+(`glow` prop on `Section`). A glow can also sit behind a component such as the
+founder portrait or the contact form (`Glow side="behind"`). Every glow mixes
+at least two colours, taken from the stage colours and lilac. Glows are never
+placed behind running text, and anything next to a "behind" glow is given
+`relative` so it paints above it.
+
+**The Scarce Chroma Rule.** There is no colour beyond the four stage colours,
+their tints and deep shades, and lilac. The interface accent (links, focus
+rings, text selection, primary-button hover) is the Decide blue, because the
+first step is the action.
 
 **The Hatch Rule.** The hatch means "AI
 takes this on" in the allocation board on the Approach page and is otherwise
@@ -269,6 +295,7 @@ copy is held to a 42rem measure.
 | `Faq`             | Accordion. One answer open at a time; also emits FAQ structured data via the page                                  |
 | `LinkCards`       | White rows linking to other pages                                                                                  |
 | `CareerNote`      | The caveat that must accompany every career figure                                                                 |
+| `Glow`            | A soft glow of two or three colours, at a section edge or behind a component                                       |
 | `Cta`             | The closing call to action                                                                                         |
 | `Field`           | Labelled input or textarea with an inline error                                                                    |
 
@@ -282,6 +309,9 @@ scrolling library and nothing takes over the scroll.
   shapes float in and then never sit still: each swells and wanders on its
   own slow loop, leans towards the mouse with a soft lag, and falls behind as
   the page scrolls.
+- **Glows (every page).** Each glow drifts on a slow CSS loop, shifts as its
+  section scrolls through the screen, and leans towards the mouse
+  (`src/scripts/glow.ts`, no library).
 - **Problems.** Icons draw their strokes in. A white highlight slides between
   statements, and the answer's lines rise in when the selection changes.
 - **Stage row.** As the row arrives, each stage opens once in order and it

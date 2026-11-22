@@ -9,6 +9,7 @@ import StageRow from "../components/StageRow.astro";
 import Steps from "../components/Steps.astro";
 import Faq from "../components/Faq.astro";
 import Cta from "../components/Cta.astro";
+import Glow from "../components/Glow.astro";
 import { site } from "../data/site";
 import { homeFaq } from "../data/faqs";
 import { faqPage } from "../lib/schema";
@@ -107,7 +108,11 @@ const problems: Parameters<typeof ProblemPicker>[0]["problems"] = [
   </section>
 
   <!-- The problem -->
-  <Section class="pt-section-sm!" labelledby="problem-heading">
+  <Section
+    glow={{ side: "left", colours: ["decide", "lilac"] }}
+    class="pt-section-sm!"
+    labelledby="problem-heading"
+  >
     <div class="text-center" data-rise>
       <Beat id="problem-heading" first="AI isn't working for your business yet." />
       <p class="text-muted mx-auto mt-6 max-w-2xl text-lg">
@@ -152,7 +157,7 @@ const problems: Parameters<typeof ProblemPicker>[0]["problems"] = [
   </Section>
 
   <!-- Ways to work together -->
-  <Section class="pt-0!" labelledby="fees-heading">
+  <Section glow={{ side: "right", colours: ["lilac", "design"] }} class="pt-0!" labelledby="fees-heading">
     <div class="text-center" data-rise>
       <Beat id="fees-heading" first="What we can do together." />
       <p class="text-muted mx-auto mt-6 max-w-2xl text-lg">
@@ -177,7 +182,8 @@ const problems: Parameters<typeof ProblemPicker>[0]["problems"] = [
   <!-- Stuart -->
   <Section class="pt-0!" labelledby="stuart-heading">
     <div class="grid items-center gap-x-10 gap-y-12 md:grid-cols-12 lg:gap-x-16">
-      <div class="md:col-span-5" data-rise>
+      <div class="relative isolate md:col-span-5" data-rise>
+        <Glow side="behind" colours={["deliver", "decide", "lilac"]} />
         <Image
           src={portrait}
           alt="Stuart Davis, founder of Neurally"
@@ -186,7 +192,7 @@ const problems: Parameters<typeof ProblemPicker>[0]["problems"] = [
           class="aspect-[4/5] w-full max-w-md rounded-2xl object-cover"
         />
       </div>
-      <div class="md:col-span-7" data-rise>
+      <div class="relative md:col-span-7" data-rise>
         <Beat
           id="stuart-heading"
 
@@ -210,7 +216,7 @@ const problems: Parameters<typeof ProblemPicker>[0]["problems"] = [
 
     <!-- Governance, in brief -->
     <div
-      class="bg-surface mt-14 flex flex-col gap-6 rounded-2xl p-6 md:p-8 lg:flex-row lg:items-center"
+      class="bg-surface relative mt-14 flex flex-col gap-6 rounded-2xl p-6 md:p-8 lg:flex-row lg:items-center"
       aria-labelledby="governance-heading"
       role="group"
       data-rise
@@ -232,7 +238,7 @@ const problems: Parameters<typeof ProblemPicker>[0]["problems"] = [
   </Section>
 
   <!-- Assessment -->
-  <Section class="pt-0!" labelledby="assess-heading">
+  <Section glow={{ side: "left", colours: ["embed", "lilac"] }} class="pt-0!" labelledby="assess-heading">
     <div class="bg-surface rounded-2xl px-6 py-14 text-center md:p-20" data-rise>
       <Beat
         id="assess-heading"
@@ -251,7 +257,7 @@ const problems: Parameters<typeof ProblemPicker>[0]["problems"] = [
   </Section>
 
   <!-- FAQ -->
-  <Section class="pt-0!" labelledby="faq-heading">
+  <Section glow={{ side: "right", colours: ["deliver", "design"] }} class="pt-0!" labelledby="faq-heading">
     <div class="grid gap-x-12 gap-y-8 lg:grid-cols-12">
       <div class="lg:col-span-4" data-rise>
         <Beat id="faq-heading" first="Questions people ask first." />

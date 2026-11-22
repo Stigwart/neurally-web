@@ -25,7 +25,7 @@ const crumbs = [
     lede="Longer pieces on the questions that come up in every engagement. No predictions about the technology. Mostly about the business around it."
   />
 
-  <Section tone="paper" size="sm">
+  <Section glow={{ side: "right", colours: ["lilac", "deliver"] }} tone="paper" size="sm">
     <ul class="rows">
       {posts.map((post, i) => (
         <li data-reveal style={`--i:${i % 4}`} data-stage={post.data.stage}>

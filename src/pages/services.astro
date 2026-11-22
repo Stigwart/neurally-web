@@ -69,7 +69,13 @@ const wont = [
     </Button>
   </PageHero>
 
-  <Section tone="paper" id="ladder" labelledby="ladder-heading" class="scroll-mt-16">
+  <Section
+    glow={{ side: "right", colours: ["lilac", "decide"] }}
+    tone="paper"
+    id="ladder"
+    labelledby="ladder-heading"
+    class="scroll-mt-16"
+  >
     <div class="grid gap-x-12 gap-y-6 lg:grid-cols-12 lg:items-end">
       <div class="lg:col-span-7" data-reveal>
         <Beat id="ladder-heading" first="The engagement ladder." second="Open any step for what you get." />
@@ -84,7 +90,7 @@ const wont = [
     </div>
   </Section>
 
-  <Section labelledby="fit-heading">
+  <Section glow={{ side: "left", colours: ["design", "lilac"] }} labelledby="fit-heading">
     <div class="grid gap-x-12 gap-y-10 lg:grid-cols-12">
       <div class="lg:col-span-5" data-reveal>
         <Beat
@@ -109,7 +115,7 @@ const wont = [
     </div>
   </Section>
 
-  <Section tone="paper" labelledby="wont-heading">
+  <Section glow={{ side: "right", colours: ["embed", "design"] }} tone="paper" labelledby="wont-heading">
     <div data-reveal>
       <Beat id="wont-heading" first="What we won't do." second="And what you get because of it." />
     </div>
@@ -121,7 +127,7 @@ const wont = [
     </p>
   </Section>
 
-  <Section labelledby="faq-heading">
+  <Section glow={{ side: "left", colours: ["deliver", "lilac"] }} labelledby="faq-heading">
     <div class="grid gap-x-12 gap-y-8 lg:grid-cols-12">
       <div class="lg:col-span-4" data-reveal>
         <Beat id="faq-heading" first="Fees and scope." second="Common questions." />
