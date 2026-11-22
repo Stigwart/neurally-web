@@ -91,7 +91,6 @@ spacing:
   gutter: "clamp(1.25rem, 0.6rem + 3vw, 3rem)"
   section: "clamp(4.5rem, 3rem + 7vw, 9rem)"
   section-sm: "clamp(3rem, 2rem + 4vw, 5.5rem)"
-  section-lg: "clamp(5.5rem, 3.5rem + 9vw, 11.5rem)"
   page: "80rem"
   measure: "42rem"
 motion:
@@ -240,8 +239,9 @@ copy is held to a 42rem measure.
 - Lists are rows separated by hairlines, not cards. Panels with a border and a
   14px radius are reserved for things that are objects: the allocation board,
   forms, the entry-engagement block, the assessment prompt.
-- Section spacing is fluid (`py-section`, `py-section-sm`). Stage light
-  sections use `py-section-lg` (`size="lg"` on `Section`).
+- Section spacing is fluid (`py-section`, `py-section-sm`). On Stage light,
+  sections after the first drop their top padding so the gap between bands is
+  one `section` step, and the hero content sits centred in the first screen.
 - On Stage light, panels are white with a 32px radius (`rounded-2xl`), section
   headings are centred, and lists that would be long become a picker or a row
   of cards.

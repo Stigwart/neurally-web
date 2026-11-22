@@ -80,7 +80,6 @@
   --spacing-gutter: clamp(1.25rem, 0.6rem + 3vw, 3rem);
   --spacing-section: clamp(4.5rem, 3rem + 7vw, 9rem);
   --spacing-section-sm: clamp(3rem, 2rem + 4vw, 5.5rem);
-  --spacing-section-lg: clamp(5.5rem, 3.5rem + 9vw, 11.5rem);
   --container-page: 80rem;
   --container-measure: 42rem;
 
