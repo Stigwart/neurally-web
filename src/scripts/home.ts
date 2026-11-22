@@ -138,22 +138,43 @@ if (row) {
 
 // ── Motion ──────────────────────────────────────────────────────────
 if (!reduce) {
-  // Hero: the four stage colours drift slowly, and fall behind as you scroll.
+  // Hero: the four stage colours keep moving, follow the mouse, and fall
+  // behind as you scroll.
   const hero = document.querySelector<HTMLElement>("[data-hero]");
   const shapes = gsap.utils.toArray<HTMLElement>("[data-hero-shape]");
   if (hero && shapes.length) {
+    // Always moving: each colour swells and wanders on its own slow loop.
+    const span = () => window.innerWidth;
     const drift = shapes.map((shape) =>
       gsap.to(shape, {
-        x: "random(-36, 36)",
-        y: "random(-28, 28)",
-        scale: "random(0.94, 1.1)",
-        duration: "random(5, 8)",
+        x: () => gsap.utils.random(-0.09, 0.09) * span(),
+        y: () => gsap.utils.random(-0.05, 0.05) * span(),
+        scale: "random(0.85, 1.25)",
+        duration: "random(4, 7)",
         ease: "sine.inOut",
         repeat: -1,
         yoyo: true,
         repeatRefresh: true,
       }),
     );
+
+    // The colours lean towards the mouse, each at its own rate, with a soft lag.
+    // This uses the `translate` property so it adds to the drift above.
+    const lean = { x: 0, y: 0 };
+    const applyLean = () =>
+      shapes.forEach((shape, i) => {
+        const reach = (0.05 + i * 0.018) * span();
+        shape.style.translate = `${(lean.x * reach).toFixed(1)}px ${(lean.y * reach * 0.7).toFixed(1)}px`;
+      });
+    const leanTo = (x: number, y: number) =>
+      gsap.to(lean, { x, y, duration: 1.6, ease: "power3.out", overwrite: true, onUpdate: applyLean });
+    hero.addEventListener("pointermove", (event) => {
+      if (event.pointerType !== "mouse") return;
+      const box = hero.getBoundingClientRect();
+      leanTo((event.clientX - box.left) / box.width - 0.5, (event.clientY - box.top) / box.height - 0.5);
+    });
+    hero.addEventListener("pointerleave", () => leanTo(0, 0));
+
     ScrollTrigger.create({
       trigger: hero,
       start: "top bottom",

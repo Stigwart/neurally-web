@@ -275,7 +275,9 @@ ScrollTrigger, bundled from npm (`src/scripts/home.ts`). There is no smooth
 scrolling library and nothing takes over the scroll.
 
 - **Hero.** The headline lines rise out of a mask (CSS). The four stage
-  shapes float in, drift slowly, and fall behind as the page scrolls.
+  shapes float in and then never sit still: each swells and wanders on its
+  own slow loop, leans towards the mouse with a soft lag, and falls behind as
+  the page scrolls.
 - **Problems.** Icons draw their strokes in. A white highlight slides between
   statements, and the answer's lines rise in when the selection changes.
 - **Stage row.** As the row arrives, each stage opens once in order and it
