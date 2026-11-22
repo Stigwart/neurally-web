@@ -72,18 +72,20 @@ career history and figures are `src/data/career.ts`, FAQs are
 
 ## Engagements and fees (exact)
 
-| Claim                                                                                                                               | Where it appears                                     | Source |
-| ----------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- | ------ |
-| Free discovery call, 30 minutes, via Calendly                                                                                       | Every page (CTA), Services                           | CP §7  |
-| AI Opportunity Workshop: 1 day, £2,500, credited in full against a Diagnostic or Deep Dive booked within 60 days; outputs as listed | Home, Services, landing pages, FAQs, schema          | CP §7  |
-| AI Advantage Diagnostic: 1 week, £6,000; outputs as listed                                                                          | Home, Services, landing pages, FAQs, schema          | CP §7  |
-| AI Transformation Deep Dive: 2 weeks, £12,500; outputs as listed, including board pack and 90-day plan                              | Home, Services, landing pages, FAQs, schema          | CP §7  |
-| Operating Model & Transformation Design: 6–10 weeks, fixed fee once scoped; outputs as listed                                       | Services, Operating model page                       | CP §7  |
-| Implementation Support: scoped and quoted; outputs as listed                                                                        | Services                                             | CP §7  |
-| Transformation Leadership: fixed term, e.g. 3–6 months, quoted; embedded, fractional or interim                                     | Services, Product leaders, Rescue pages              | CP §7  |
-| AI Training for Leaders & Teams: a session to a series, quoted                                                                      | Services, Operations and Professional services pages | CP §7  |
-| CEO, Board & Investor Advisory: retainer, quoted                                                                                    | Services, CEOs page                                  | CP §7  |
-| The first three paid steps have fixed fees agreed before work starts                                                                | Home, Services                                       | CP §7  |
+| Claim                                                                                                                               | Where it appears                                     | Source                                              |
+| ----------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- | --------------------------------------------------- |
+| Free discovery call, 30 minutes, via Calendly                                                                                       | Every page (CTA), Services                           | CP §7                                               |
+| AI Opportunity Workshop: 1 day, £2,500, credited in full against a Diagnostic or Deep Dive booked within 60 days; outputs as listed | Home, Services, landing pages, FAQs, schema          | CP §7                                               |
+| AI Advantage Diagnostic: 1 week, £6,000; outputs as listed                                                                          | Home, Services, landing pages, FAQs, schema          | CP §7                                               |
+| AI Transformation Deep Dive: 2 weeks, £12,500; outputs as listed, including board pack and 90-day plan                              | Home, Services, landing pages, FAQs, schema          | CP §7                                               |
+| Operating Model & Transformation Design: 6–10 weeks, fixed fee once scoped; outputs as listed                                       | Services, Operating model page                       | CP §7                                               |
+| Implementation Support: scoped and quoted; outputs as listed                                                                        | Services                                             | CP §7                                               |
+| Transformation Leadership: fixed term, e.g. 3–6 months, quoted; embedded, fractional or interim                                     | Services, Product leaders, Rescue pages              | CP §7                                               |
+| AI Training for Leaders & Teams: a session to a series, quoted                                                                      | Services, Operations and Professional services pages | CP §7                                               |
+| Executive AI Coaching: one-to-one training and coaching for executives, quoted                                                      | Services                                             | Stuart directly (2026-11-22); add to Drive overview |
+| CEO, Board & Investor Advisory: retainer, quoted                                                                                    | Services, CEOs page                                  | CP §7                                               |
+| Ten engagements on the ladder                                                                                                       | Home, Services                                       | `src/data/engagements.ts`                           |
+| The first three paid steps have fixed fees agreed before work starts                                                                | Home, Services                                       | CP §7                                               |
 
 ## Stuart's career (all pre-Neurally, always labelled as such)
 

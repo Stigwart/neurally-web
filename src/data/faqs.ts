@@ -73,7 +73,7 @@ export const servicesFaq: FaqItem[] = [
   },
   {
     q: "Why are the later engagements quoted rather than priced?",
-    a: "Because their scope depends on what the earlier work finds. Operating Model and Transformation Design is a fixed fee agreed once the scope is clear. Implementation support, leadership, training and advisory are quoted after a scoping conversation. Nothing starts before the fee is agreed.",
+    a: "Because their scope depends on what the earlier work finds. Operating Model and Transformation Design is a fixed fee agreed once the scope is clear. Implementation support, leadership, training, coaching and advisory are quoted after a scoping conversation. Nothing starts before the fee is agreed.",
   },
   {
     q: "Can we start with training or a build?",
