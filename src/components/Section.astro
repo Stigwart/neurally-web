@@ -1,7 +1,7 @@
 ---
 interface Props {
   tone?: "ink" | "paper";
-  size?: "md" | "sm";
+  size?: "lg" | "md" | "sm";
   id?: string;
   labelledby?: string;
   class?: string;
@@ -13,7 +13,7 @@ const { tone, size = "md", id, labelledby, class: className } = Astro.props;
   id={id}
   data-tone={tone}
   aria-labelledby={labelledby}
-  class:list={[size === "md" ? "py-section" : "py-section-sm", className]}
+  class:list={[{ lg: "py-section-lg", md: "py-section", sm: "py-section-sm" }[size], className]}
 >
   <div class="container-page">
     <slot />

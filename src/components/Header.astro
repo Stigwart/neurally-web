@@ -6,6 +6,10 @@ import { primaryNav, secondaryNav } from "../data/nav";
 import { site } from "../data/site";
 import { getAllLanding, landingHref } from "../lib/content";
 
+interface Props {
+  tone?: "ink" | "light";
+}
+const { tone = "ink" } = Astro.props;
 const groups = await getAllLanding();
 const path = Astro.url.pathname;
 const isCurrent = (href: string) => path === href || (href !== "/" && path.startsWith(href));
@@ -15,7 +19,7 @@ const linkClass =
 ---
 
 <header
-  data-tone="ink"
+  data-tone={tone}
   data-header
   class="border-line bg-bg/85 sticky top-0 z-50 border-b backdrop-blur-md [view-transition-name:site-header]"
 >
@@ -79,7 +83,7 @@ const linkClass =
   <div
     id="mega"
     hidden
-    class="border-line bg-bg absolute inset-x-0 top-full border-y shadow-[0_24px_48px_-24px_rgb(0_0_0/0.6)]"
+    class="border-line bg-bg absolute inset-x-0 top-full border-y shadow-[0_24px_48px_-24px_rgb(0_0_0/0.6)] [[data-tone=light]_&]:shadow-[0_24px_48px_-24px_rgb(18_18_17/0.18)]"
   >
     <div class="container-page grid grid-cols-3 gap-10 py-10">
       {groups.map(({ family, entries }) => (

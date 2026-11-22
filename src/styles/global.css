@@ -68,6 +68,10 @@
   --text-display: clamp(2.5rem, 1.1rem + 4.6vw, 4.75rem);
   --text-display--line-height: 0.98;
   --text-display--letter-spacing: -0.04em;
+  /* Stage light hero: the largest size on the site. */
+  --text-hero: clamp(2.75rem, 0.9rem + 7.4vw, 6.5rem);
+  --text-hero--line-height: 0.95;
+  --text-hero--letter-spacing: -0.045em;
   --text-figure: clamp(2.25rem, 1.6rem + 2.6vw, 3.75rem);
   --text-figure--line-height: 1;
   --text-figure--letter-spacing: -0.04em;
@@ -76,6 +80,7 @@
   --spacing-gutter: clamp(1.25rem, 0.6rem + 3vw, 3rem);
   --spacing-section: clamp(4.5rem, 3rem + 7vw, 9rem);
   --spacing-section-sm: clamp(3rem, 2rem + 4vw, 5.5rem);
+  --spacing-section-lg: clamp(5.5rem, 3.5rem + 9vw, 11.5rem);
   --container-page: 80rem;
   --container-measure: 42rem;
 
@@ -84,6 +89,8 @@
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 14px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
   --radius-full: 999px;
 
   /* Motion */
@@ -142,6 +149,23 @@
     color-scheme: light;
   }
 
+  /* Stage light: a paper page with white panels. Stage colours are used
+     as full fills here (see [data-wash]), not as thin marks. */
+  [data-tone="light"] {
+    --bg: var(--color-paper);
+    --surface: var(--color-white);
+    --raised: var(--color-white);
+    --fg: var(--color-ink-900);
+    --muted: var(--color-stone-600);
+    --faint: var(--color-stone-600);
+    --line: rgb(18 18 17 / 0.12);
+    --line-strong: rgb(18 18 17 / 0.4);
+    --accent: var(--color-decide-deep);
+    --stage: var(--color-ink-900);
+    --hatch: rgb(18 18 17 / 0.5);
+    color-scheme: light;
+  }
+
   [data-stage="decide"] {
     --stage: var(--color-decide);
   }
@@ -154,17 +178,51 @@
   [data-stage="embed"] {
     --stage: var(--color-embed);
   }
-  [data-tone="paper"] [data-stage="decide"] {
+  [data-tone="paper"] [data-stage="decide"],
+  [data-tone="light"] [data-stage="decide"] {
     --stage: var(--color-decide-deep);
   }
-  [data-tone="paper"] [data-stage="design"] {
+  [data-tone="paper"] [data-stage="design"],
+  [data-tone="light"] [data-stage="design"] {
     --stage: var(--color-design-deep);
   }
-  [data-tone="paper"] [data-stage="deliver"] {
+  [data-tone="paper"] [data-stage="deliver"],
+  [data-tone="light"] [data-stage="deliver"] {
     --stage: var(--color-deliver-deep);
   }
-  [data-tone="paper"] [data-stage="embed"] {
+  [data-tone="paper"] [data-stage="embed"],
+  [data-tone="light"] [data-stage="embed"] {
     --stage: var(--color-embed-deep);
+  }
+
+  /* A panel filled with its stage colour. Text is ink, and muted text is
+     darkened so it keeps AA contrast on all four pastels. */
+  [data-wash] {
+    --fg: var(--color-ink-900);
+    --muted: var(--color-ink-600);
+    --faint: var(--color-ink-600);
+    --line: rgb(18 18 17 / 0.18);
+    --line-strong: rgb(18 18 17 / 0.45);
+    --accent: var(--color-ink-900);
+    background: var(--wash);
+    color: var(--fg);
+  }
+  [data-wash="decide"] {
+    --wash: var(--color-decide);
+  }
+  [data-wash="design"] {
+    --wash: var(--color-design);
+  }
+  [data-wash="deliver"] {
+    --wash: var(--color-deliver);
+  }
+  [data-wash="embed"] {
+    --wash: var(--color-embed);
+  }
+
+  html:has(body[data-tone="light"]) {
+    background: var(--color-paper);
+    scrollbar-color: var(--color-stone-400) var(--color-paper);
   }
 
   html {
@@ -279,6 +337,238 @@
   @supports (interpolate-size: allow-keywords) {
     details.disclosure {
       interpolate-size: allow-keywords;
+    }
+  }
+
+  /* ── Stage light (homepage) ──────────────────────────────────────── */
+
+  /* The logo artwork is light strokes; flip it on a light header. */
+  [data-tone="light"] .logo-mark {
+    filter: invert(1);
+  }
+  [data-tone="ink"] .logo-mark {
+    filter: none;
+  }
+
+  /* Hero: four soft stage-colour shapes, in stage order. */
+  .hero-shapes {
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 50%;
+    pointer-events: none;
+    mask-image: linear-gradient(to bottom, transparent, black 45%);
+  }
+  .hero-shape {
+    position: absolute;
+    bottom: -45%;
+    width: clamp(14rem, 34vw, 34rem);
+    aspect-ratio: 1;
+  }
+  .hero-shape > span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius-full);
+    background: var(--wash);
+    opacity: 0.8;
+    filter: blur(clamp(1.5rem, 4vw, 3.5rem));
+    animation: shape-in var(--duration-slower) var(--ease-out-expo) both;
+    animation-delay: calc(var(--i, 0) * 120ms + 350ms);
+  }
+  @keyframes shape-in {
+    from {
+      opacity: 0;
+      transform: translateY(30%) scale(0.6);
+    }
+  }
+
+  /* Problems: pick one, read its answer. One column on small screens
+     (each answer opens under its statement), two on large. */
+  .problems {
+    position: relative;
+    display: grid;
+    gap: 0.5rem;
+  }
+  .problem-tab {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 1rem;
+    border-radius: var(--radius-xl);
+    padding: 1rem 1.25rem;
+    text-align: left;
+    color: var(--muted);
+    transition: color var(--duration-base) ease;
+  }
+  .problem-tab:hover,
+  .problem-tab[aria-expanded="true"] {
+    color: var(--fg);
+  }
+  .problems:not(.has-glider) .problem-tab[aria-expanded="true"] {
+    background: var(--surface);
+  }
+  .problem-icon {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: var(--radius-lg);
+    background: var(--color-paper-200);
+    color: var(--fg);
+    transition:
+      background-color var(--duration-base) ease,
+      color var(--duration-base) ease;
+  }
+  .problem-tab[aria-expanded="true"] .problem-icon {
+    background: var(--fg);
+    color: var(--bg);
+  }
+  .problem-icon svg {
+    width: 1.375rem;
+    height: 1.375rem;
+    stroke-width: 1.6;
+  }
+  .problem-glider {
+    display: none;
+  }
+  .problem-panel {
+    border-radius: var(--radius-2xl);
+    background: var(--surface);
+    padding: clamp(1.5rem, 1rem + 2vw, 3rem);
+  }
+  @media (width >= 64rem) {
+    .problems {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+      grid-template-rows: repeat(5, auto) 1fr;
+      column-gap: 2rem;
+    }
+    .problems > h3 {
+      grid-column: 1;
+      grid-row: var(--r);
+    }
+    .problem-panel {
+      grid-column: 2;
+      grid-row: 1 / -1;
+      min-height: 26rem;
+    }
+    .problems.has-glider .problem-glider {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: calc((100% - 2rem) * 5 / 11);
+      border-radius: var(--radius-xl);
+      background: var(--surface);
+    }
+    .problems.has-glider .problem-tab {
+      position: relative;
+    }
+  }
+  /* Without scripting every answer is shown, one after another. */
+  @media (scripting: none) {
+    .problem-panel[hidden] {
+      display: block !important;
+      grid-column: 1 / -1;
+      grid-row: auto;
+    }
+    .problems {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  /* Stage row: four colour cards. On large screens with scripting one
+     is open and the rest collapse to a spine. Otherwise they stack. */
+  .stage-row {
+    display: grid;
+    gap: 0.75rem;
+  }
+  .stage-card {
+    position: relative;
+    overflow: clip;
+    border-radius: var(--radius-2xl);
+  }
+  .stage-body {
+    padding: clamp(1.5rem, 1rem + 2vw, 2.75rem);
+  }
+  .stage-spine {
+    display: none;
+  }
+  @media (width >= 64rem) {
+    .stage-row.is-live {
+      --spine: 5.5rem;
+      --gaps: calc(3 * 0.75rem);
+      display: flex;
+      height: 40rem;
+      container-type: inline-size;
+    }
+    .is-live .stage-card {
+      flex: 0 0 var(--spine);
+      min-width: 0;
+      cursor: pointer;
+      transition: flex-basis var(--duration-slow) var(--ease-out-expo);
+    }
+    .is-live .stage-card[data-open] {
+      flex-basis: calc(100% - 3 * var(--spine) - var(--gaps));
+      cursor: default;
+    }
+    .is-live .stage-body {
+      width: calc(100cqw - 4 * var(--spine) - var(--gaps));
+      height: 100%;
+      margin-left: var(--spine);
+      padding-left: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        opacity var(--duration-base) ease,
+        visibility 0s linear var(--duration-base);
+    }
+    .is-live .stage-card[data-open] .stage-body {
+      opacity: 1;
+      visibility: visible;
+      transition:
+        opacity var(--duration-slow) ease 180ms,
+        visibility 0s;
+    }
+    .is-live .stage-spine {
+      position: absolute;
+      inset: 0 auto 0 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      width: var(--spine);
+      padding-block: clamp(1.5rem, 1rem + 2vw, 2.75rem);
+      border-radius: var(--radius-2xl);
+    }
+    .stage-spine-name {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      transition: opacity var(--duration-base) ease;
+    }
+    .stage-card[data-open] .stage-spine-name {
+      opacity: 0;
+    }
+  }
+  @media (width >= 80rem) {
+    .stage-row.is-live {
+      --spine: 6.5rem;
+      height: 34rem;
+    }
+  }
+
+  /* Engagements: four cards that step up in height, shortest first. */
+  .steps {
+    display: grid;
+    gap: 0.75rem;
+  }
+  @media (width >= 64rem) {
+    .steps {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      align-items: end;
+    }
+    .step-card {
+      min-height: calc(15rem + var(--n) * 2.75rem);
     }
   }
 
