@@ -464,7 +464,7 @@
     width: 68%;
     aspect-ratio: 1;
     border-radius: var(--radius-full);
-    opacity: 0.6;
+    opacity: 0.66;
     filter: blur(clamp(2rem, 5vw, 4.5rem));
     translate: calc(var(--gx) * var(--k)) calc((var(--gy) + var(--gmy)) * var(--k));
     animation: shape-drift 13s ease-in-out infinite alternate;
@@ -486,7 +486,7 @@
   }
   @media (width >= 48rem) {
     .glow > span {
-      opacity: 0.75;
+      opacity: 0.83;
     }
   }
 

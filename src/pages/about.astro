@@ -201,15 +201,19 @@ const triggers = [
 
   <Section tone="paper" labelledby="founder-heading" id="stuart-davis">
     <div class="grid gap-x-10 gap-y-12 md:grid-cols-12 lg:gap-x-12">
-      <div class="relative isolate md:col-span-4" data-reveal>
+      <!-- The reveal sits on the image only: a revealed element is clipped
+           to its own box, which would cut the glow off. -->
+      <div class="relative isolate md:col-span-4">
         <Glow side="behind" colours={["deliver", "decide", "lilac"]} />
-        <Image
-          src={portrait}
-          alt="Stuart Davis, founder of Neurally"
-          widths={[320, 480, 640]}
-          sizes="(min-width: 64rem) 30vw, 80vw"
-          class="aspect-[4/5] w-full max-w-sm rounded-2xl object-cover"
-        />
+        <div data-reveal>
+          <Image
+            src={portrait}
+            alt="Stuart Davis, founder of Neurally"
+            widths={[320, 480, 640]}
+            sizes="(min-width: 64rem) 30vw, 80vw"
+            class="aspect-[4/5] w-full max-w-sm rounded-2xl object-cover"
+          />
+        </div>
       </div>
       <div class="relative md:col-span-8">
         <div data-reveal>
