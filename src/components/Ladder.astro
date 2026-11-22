@@ -9,8 +9,10 @@ interface Props {
   expandable?: boolean;
   /** Open this engagement on load. */
   open?: string;
+  /** Show the fee column. */
+  showFee?: boolean;
 }
-const { ids, expandable = true, open } = Astro.props;
+const { ids, expandable = true, open, showFee = true } = Astro.props;
 const rows = ids ? ids.map((id) => engagements.find((e) => e.id === id)!) : engagements;
 const grid =
   "grid grid-cols-[2.25rem_minmax(0,1fr)_auto] items-baseline gap-x-4 md:grid-cols-[3rem_minmax(0,5fr)_minmax(0,3fr)_minmax(0,2fr)_2rem]";
@@ -25,9 +27,11 @@ const grid =
         <span class="text-muted col-start-2 row-start-2 text-sm md:col-start-3 md:row-start-1 md:text-base">
           {e.length}
         </span>
-        <span class="font-display text-title col-start-3 row-start-1 text-right tabular-nums md:col-start-4 md:text-left">
-          {e.fee}
-        </span>
+        {showFee && (
+          <span class="font-display text-title col-start-3 row-start-1 text-right tabular-nums md:col-start-4 md:text-left">
+            {e.fee}
+          </span>
+        )}
       </>
     );
     return expandable ? (

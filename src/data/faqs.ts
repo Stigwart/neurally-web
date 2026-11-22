@@ -15,7 +15,7 @@ export const homeFaq: FaqItem[] = [
   },
   {
     q: "What does it cost to get started?",
-    a: 'The first call is free. After that the Workshop (one day, £2,500), the Diagnostic (one week, £6,000) and the Deep Dive (two weeks, £12,500) each have a fixed fee agreed before work starts. The Workshop fee is credited in full if you book a Diagnostic or Deep Dive within 60 days. <a class="link" href="/services/">See every engagement and fee</a>.',
+    a: 'The first call is free. After that, the Workshop, the Diagnostic and the Deep Dive each have a fixed fee, agreed before any work starts. <a class="link" href="/services/">See every engagement and fee</a>.',
   },
   {
     q: "Do you stay through to delivery?",
@@ -73,7 +73,7 @@ export const servicesFaq: FaqItem[] = [
   },
   {
     q: "Why are the later engagements quoted rather than priced?",
-    a: "Because their scope depends on what the earlier work finds. Operating Model and Transformation Design is a fixed fee agreed once the scope is clear. Implementation support, leadership, training and advisory are quoted after a scoping conversation. Nothing starts before the fee is agreed.",
+    a: "Because their scope depends on what the earlier work finds. Operating Model and Transformation Design is a fixed fee agreed once the scope is clear. Implementation support, leadership, training, coaching and advisory are quoted after a scoping conversation. Nothing starts before the fee is agreed.",
   },
   {
     q: "Can we start with training or a build?",

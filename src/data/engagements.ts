@@ -163,8 +163,25 @@ export const engagements: Engagement[] = [
     bestFor: "Teams that have the tools and are unsure how to use them well.",
   },
   {
-    id: "advisory",
+    id: "executive-coaching",
     index: "08",
+    name: "Executive AI Coaching",
+    length: "One-to-one sessions",
+    fee: "Quoted",
+    stage: "any",
+    summary:
+      "Private, one-to-one training and coaching for executives who need to lead their business through AI and want to build their own knowledge first.",
+    outputs: [
+      "A working understanding of what AI can and can't do in your business",
+      "How to judge AI opportunities, value and risk",
+      "Better questions for your team, your vendors and your board",
+      "Sessions built around your own decisions, not generic courses",
+    ],
+    bestFor: "Leaders who feel AI is moving faster than they are.",
+  },
+  {
+    id: "advisory",
+    index: "09",
     name: "CEO, Board & Investor Advisory",
     length: "Retainer",
     fee: "Quoted",

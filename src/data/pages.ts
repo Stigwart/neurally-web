@@ -11,7 +11,7 @@ export const staticOgPages: { slug: string; title: string; label: string }[] = [
   { slug: "approach", title: "Three questions. Four stages. One person accountable.", label: "Approach" },
   {
     slug: "services",
-    title: "Nine engagements. The first four have the price on them.",
+    title: "Ten engagements. The first four have the price on them.",
     label: "Services and fees",
   },
   { slug: "about", title: "About Neurally. Built for the work after the pilot.", label: "About" },

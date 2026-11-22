@@ -2,15 +2,20 @@
 import { stages } from "../data/stages";
 
 interface Props {
-  /** Accessible name for the section. Visually hidden; the stages carry the content. */
-  heading?: string;
+  /**
+   * Accessible name for the section. Visually hidden; the stages carry the content.
+   * Pass false when the page shows its own visible heading with id "path-heading".
+   */
+  heading?: string | false;
 }
 const { heading = "Four stages: decide, design, deliver, embed" } = Astro.props;
 ---
 
-<h2 id="path-heading" class="sr-only">
-  {heading}
-</h2>
+{heading && (
+  <h2 id="path-heading" class="sr-only">
+    {heading}
+  </h2>
+)}
 <ol class="grid gap-x-8 gap-y-12 md:grid-cols-2 xl:grid-cols-4">
   {stages.map((s, i) => (
     <li data-stage={s.id} class="border-stage flex flex-col border-t-2 pt-5" data-reveal style={`--i:${i}`}>

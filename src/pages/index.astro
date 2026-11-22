@@ -4,66 +4,56 @@ import Base from "../layouts/Base.astro";
 import Section from "../components/Section.astro";
 import Beat from "../components/Beat.astro";
 import Button from "../components/Button.astro";
-import Icon from "../components/Icon.astro";
 import AllocationBoard from "../components/AllocationBoard.astro";
-import Compare from "../components/Compare.astro";
+import ProblemList from "../components/ProblemList.astro";
 import StagePath from "../components/StagePath.astro";
 import Ladder from "../components/Ladder.astro";
 import Faq from "../components/Faq.astro";
 import Cta from "../components/Cta.astro";
-import CareerNote from "../components/CareerNote.astro";
 import { site } from "../data/site";
 import { homeFaq } from "../data/faqs";
 import { faqPage } from "../lib/schema";
 import portrait from "../assets/stuart-davis.jpg";
 
-const facts = [
-  "Published fixed fees, from £2,500",
-  "One senior operator, board to delivery",
-  "No software to sell",
-  "Stop after any stage, keep every output",
-];
-
-const stalls = [
+const problems = [
   {
-    without: "AI activity, no payback",
-    with: "Pick the right bets",
-    detail:
-      "We find the few changes that will move revenue, cost or service, and put a value case behind each.",
+    name: "You know AI matters, but not where to start.",
+    description: "Everyone has a view on it, and very little of it is about your business.",
+    answer:
+      "We cut through the hype and show where AI could genuinely improve your business, and where it won't.",
+    fits: ["workshop"],
   },
   {
-    without: "New tools, same old habits",
-    with: "Change the work",
-    detail:
-      "We redesign products, workflows and roles so the gains land, and say clearly what stays with people.",
+    name: "You've run pilots, but they haven't lived up to the promise.",
+    description: "The results are hard to see, and some tools have made the work harder.",
+    answer:
+      "We find what's working and what isn't, remove the complexity that's crept in, and refocus on the outcomes that matter.",
+    fits: ["diagnostic", "deep-dive"],
   },
   {
-    without: "No one owns the outcome",
-    with: "Get it built and live",
-    detail: "We lead the change with your teams and support the build hands-on, with partners where needed.",
+    name: "You've bought the tools, but the business hasn't changed.",
+    description:
+      "The licences are in place, but the work, the roles and the decisions are the same as before.",
+    answer:
+      "We bring people, process and technology together. That means redesigning the work, training your teams and leading the change with you.",
+    fits: ["operating-model-design", "transformation-leadership", "training"],
   },
   {
-    without: "Teams unsure how to use it",
-    with: "A team that runs it",
-    detail: "We train your people on their real work, not generic demos, and agree how results are measured.",
-  },
-];
-
-const career = [
-  {
-    figure: "50%",
-    label:
-      "reduction in discovery-to-development time reported after redesigning the product lifecycle around AI",
+    name: "AI is everywhere in the business, but no one is in control of it.",
+    description:
+      "People are using tools nobody approved. Confidential and personal data is going into them, and no one can say what it all costs.",
+    answer:
+      "We find out where AI is really being used and what data goes into it. Then we agree which tools are approved, what data they can use, who is accountable, and how spend is kept in check.",
+    fits: ["diagnostic", "deep-dive"],
+    more: { label: "AI governance", href: "/use-cases/ai-governance/" },
   },
   {
-    figure: "First",
-    label:
-      "ChatGPT app for insurance, and the company's first consumer AI assistant, launched under FCA and Consumer Duty rules",
-  },
-  {
-    figure: "$75,000",
-    label:
-      "monthly revenue within six months from a machine-learning and AI subscription data product used by 2,000+ businesses",
+    name: "AI is moving fast, and you feel you're falling behind.",
+    description:
+      "You're expected to lead the business through this, and you want to understand it well enough to do that with confidence.",
+    answer:
+      "One-to-one coaching for executives, so you can judge AI for yourself and lead your team through it.",
+    fits: ["executive-coaching"],
   },
 ];
 ---
@@ -94,17 +84,6 @@ const career = [
             Take the two-minute assessment
           </Button>
         </div>
-        <ul
-          class="fade-up text-muted mt-12 flex flex-col gap-2.5 text-sm sm:flex-row sm:flex-wrap sm:gap-x-7"
-          style="--i:5"
-        >
-          {facts.map((f) => (
-            <li class="flex items-center gap-2.5">
-              <Icon name="check" class="text-fg" />
-              {f}
-            </li>
-          ))}
-        </ul>
       </div>
       <div class="fade-up lg:col-span-5" style="--i:2">
         <AllocationBoard />
@@ -114,46 +93,40 @@ const career = [
 
   <!-- The problem -->
   <Section tone="paper" labelledby="problem-heading">
-    <div class="grid gap-x-12 gap-y-8 lg:grid-cols-12">
-      <div class="lg:col-span-7" data-reveal>
-        <Beat
-          id="problem-heading"
-          first="The technology usually isn't what's holding you back."
-          second="The business around it hasn't moved."
-        />
-      </div>
-      <div class="text-muted space-y-5 text-lg lg:col-span-5 lg:pt-3" data-reveal style="--i:1">
-        <p>
-          Pilots multiply and licences get bought, but the work, the roles and the decisions stay as they
-          were. So the benefit stays local and nobody can point to it in the numbers.
-        </p>
-        <p>
-          In{" "}
-          <a
-            class="link"
-            href="https://www.bcg.com/press/22july2026-ceos-cost-revenue-benefits-ai-struggling-scale"
-            target="_blank"
-            rel="noopener"
-          >
-            BCG's 2026 CEO survey<span class="sr-only"> (opens in a new tab)</span>
-          </a>
-          , most companies were running AI pilots, but only about a quarter had changed the wider business
-          around them.
-        </p>
-      </div>
+    <div data-reveal>
+      <Beat id="problem-heading" first="AI isn't working for your business yet." />
     </div>
-    <div class="mt-16">
-      <Compare rows={stalls} />
+    <p class="text-muted mt-6 mb-12 max-w-2xl text-lg" data-reveal>
+      Most leadership teams recognise at least one of these.
+    </p>
+    <div>
+      <ProblemList problems={problems} />
     </div>
+    <p class="text-muted max-w-measure mt-8 text-sm" data-reveal>
+      You're not alone. In{" "}
+      <a
+        class="link"
+        href="https://www.bcg.com/press/22july2026-ceos-cost-revenue-benefits-ai-struggling-scale"
+        target="_blank"
+        rel="noopener"
+      >
+        BCG's 2026 CEO survey<span class="sr-only"> (opens in a new tab)</span>
+      </a>
+      , most companies were running AI pilots, but only about a quarter had changed the wider business around
+      them.
+    </p>
   </Section>
 
   <!-- The path -->
   <Section labelledby="path-heading">
-    <p class="text-muted mb-12 max-w-2xl text-lg" data-reveal>
+    <div data-reveal>
+      <Beat id="path-heading" first="What working with us looks like." />
+    </div>
+    <p class="text-muted mt-6 mb-12 max-w-2xl text-lg" data-reveal>
       Every engagement starts with one question:{" "}
       <span class="text-fg">“What could this business do now that it couldn't two years ago?”</span>
     </p>
-    <StagePath />
+    <StagePath heading={false} />
     <div class="mt-12">
       <Button href="/approach/" variant="secondary">
         How the approach works
@@ -161,31 +134,29 @@ const career = [
     </div>
   </Section>
 
-  <!-- Fees -->
+  <!-- Ways to work together -->
   <Section tone="paper" labelledby="fees-heading">
-    <div class="grid gap-x-12 gap-y-6 lg:grid-cols-12 lg:items-end">
-      <div class="lg:col-span-7" data-reveal>
-        <Beat
-          id="fees-heading"
-          first="The first steps have fixed fees."
-          second="Agreed before any work starts."
-        />
-      </div>
-      <p class="text-muted text-lg lg:col-span-5" data-reveal style="--i:1">
-        There is no day-rate meter running. The Workshop fee is credited in full against a Diagnostic or Deep
-        Dive booked within 60 days.
-      </p>
+    <div data-reveal>
+      <Beat id="fees-heading" first="What we can do together." />
     </div>
+    <p class="text-muted mt-6 max-w-2xl text-lg" data-reveal>
+      It starts with a conversation. From there, we can spend a day, a week or two weeks with you, depending
+      on how much of the business you want to look at.
+    </p>
     <div class="mt-12" data-reveal>
-      <Ladder ids={["discovery-call", "workshop", "diagnostic", "deep-dive"]} expandable={false} />
+      <Ladder
+        ids={["discovery-call", "workshop", "diagnostic", "deep-dive"]}
+        expandable={false}
+        showFee={false}
+      />
     </div>
     <div class="mt-10 flex flex-wrap items-center justify-between gap-6">
       <p class="text-muted max-w-xl">
-        After that: operating-model design, implementation support, transformation leadership, training and
-        advisory, each scoped and quoted before it begins.
+        After that, we can redesign how the work is done, support the build, lead the change, train your teams
+        and coach your leaders.
       </p>
       <Button href="/services/" variant="secondary">
-        All nine engagements
+        All ten engagements
       </Button>
     </div>
   </Section>
@@ -198,8 +169,8 @@ const career = [
           src={portrait}
           alt="Stuart Davis, founder of Neurally"
           widths={[320, 480, 640]}
-          sizes="(min-width: 64rem) 30vw, 80vw"
-          class="aspect-[4/5] w-full max-w-sm rounded-lg object-cover grayscale"
+          sizes="(min-width: 64rem) 21vw, 56vw"
+          class="aspect-[4/5] w-7/10 max-w-[16.8rem] rounded-lg object-cover grayscale"
         />
       </div>
       <div class="md:col-span-8">
@@ -219,22 +190,6 @@ const career = [
             to delivery.
           </p>
         </div>
-        <dl class="border-line mt-10 border-t">
-          {career.map((c, i) => (
-            <div
-              class="border-line grid gap-x-8 gap-y-1 border-b py-5 md:grid-cols-12"
-              data-reveal
-              style={`--i:${i}`}
-            >
-              <dt class="font-display text-figure md:col-span-3">{c.figure}</dt>
-              <dd class="md:col-span-9 md:self-center">
-                <span class="text-muted">{c.label}.</span>
-                <span class="text-faint text-label mt-1 block font-mono uppercase">Before Neurally</span>
-              </dd>
-            </div>
-          ))}
-        </dl>
-        <CareerNote class="mt-5" />
         <Button href="/about/" variant="secondary" class="mt-8">
           About Neurally and its founder
         </Button>
@@ -282,7 +237,7 @@ const career = [
   </Section>
 
   <!-- FAQ -->
-  <Section class="pt-0!" labelledby="faq-heading">
+  <Section class="py-0!" labelledby="faq-heading">
     <div class="grid gap-x-12 gap-y-8 lg:grid-cols-12">
       <div class="lg:col-span-4" data-reveal>
         <Beat id="faq-heading" first="Questions people ask first." />
