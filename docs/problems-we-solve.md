@@ -50,7 +50,21 @@ Leadership (3–6 months), AI Training for Leaders & Teams.
 
 ---
 
-## 4. Falling behind
+## 4. Out of control
+
+**The problem:** You have AI in the business, but it's out of control: confidential data and
+personal data going into tools, apps nobody approved, and spend nobody is tracking.
+
+**What Neurally does:** Neurally finds out where AI is really being used and what data goes
+into it, then agrees which tools are approved, what data they can use, who is accountable and
+how spend is kept in check. This is not legal advice.
+
+**Fits:** AI Advantage Diagnostic, or AI Transformation Deep Dive across several functions.
+See the "AI governance" use case.
+
+---
+
+## 5. Falling behind
 
 **The problem:** You're running a business, and you know AI is changing many things and
 moving fast, but you feel like you're falling behind. You know you need to build your
@@ -66,7 +80,9 @@ executives to keep you ahead of your team.
 
 ## How this compares with the site
 
-The homepage already frames four problems (`src/pages/index.astro`, the `stalls` list):
+The homepage now leads with these five problems (`src/pages/index.astro`, the `problems`
+list, rendered by `ProblemList`). The comparison below is with the four problems it showed
+before (the old `stalls` list):
 
 | Site problem               | Site promise          | Closest problem here |
 | -------------------------- | --------------------- | -------------------- |
@@ -76,12 +92,12 @@ The homepage already frames four problems (`src/pages/index.astro`, the `stalls`
 | Teams unsure how to use it | A team that runs it   | 3                    |
 
 - **The site starts later.** All four site problems assume AI activity is already under
-  way. Problems 1 and 4 are new ground and speak to leaders who haven't started yet.
+  way. Problems 1 and 5 are new ground and speak to leaders who haven't started yet.
 - **The site splits "change" three ways.** Ownership, habits and team skills are
   separate problems there. Problem 3 here folds them together.
 - **Problem 2 adds "it's making things more difficult".** The site talks about missing
   payback, not added complexity.
-- **Problem 4 now has an offer behind it:** Executive AI Coaching, added to
+- **Problem 5 now has an offer behind it:** Executive AI Coaching, added to
   `src/data/engagements.ts` as engagement 08.
 
 ## Open questions
@@ -89,5 +105,5 @@ The homepage already frames four problems (`src/pages/index.astro`, the `stalls`
 1. **Coaching format and fee.** Executive AI Coaching is published as one-to-one and
    quoted, with no session count. Add a length (for example, six sessions over three
    months) and a fee if you want it priced. Add a backing line to the Drive overview too.
-2. **Site copy.** Problems 1 and 4 could become homepage messages or part of
+2. **Site copy.** Problems 1 and 5 could become homepage messages or part of
    `src/content/teams/ceos-founders-boards.md`.
