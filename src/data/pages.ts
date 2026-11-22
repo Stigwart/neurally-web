@@ -25,5 +25,4 @@ export const staticOgPages: { slug: string; title: string; label: string }[] = [
   { slug: "industries", title: "The sector changes the answer.", label: "Industries" },
   { slug: "teams", title: "Same business, different desk. Different decisions.", label: "Teams" },
   { slug: "use-cases", title: "Four situations. One of them is probably yours.", label: "Use cases" },
-  { slug: "insights", title: "Insights. Written for people who have to decide.", label: "Insights" },
 ];
