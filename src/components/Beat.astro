@@ -1,14 +1,17 @@
 ---
 /**
- * The two-beat heading used across the site: a statement, then a quieter
- * second line that completes it.
+ * A section or page heading: a plain label that names what follows, with an
+ * optional supporting line beneath it. The supporting line is ordinary text,
+ * not part of the heading.
  */
 interface Props {
   as?: "h1" | "h2" | "h3";
+  /** The heading: a plain label, sentence case, no full stop. */
   first: string;
+  /** A supporting sentence shown under the heading. */
   second?: string | undefined;
   size?: "display" | "headline" | "title";
-  /** Animate the lines in on load (hero use only). */
+  /** Animate the heading in on load (hero use only). */
   rise?: boolean;
   class?: string;
   id?: string;
@@ -19,24 +22,20 @@ const sizes = {
   headline: "text-headline font-semibold",
   title: "text-title",
 };
+const support = "mt-4 max-w-3xl text-xl [.text-center_&]:mx-auto";
 ---
 
 <Tag id={id} class:list={[sizes[size], className]}>
   {rise ? (
-    <>
-      <span class="line-rise" style="--i:0">
-        <span>{first}</span>
-      </span>
-      {second && (
-        <span class="line-rise text-muted" style="--i:1">
-          <span>{second}</span>
-        </span>
-      )}
-    </>
+    <span class="line-rise" style="--i:0">
+      <span>{first}</span>
+    </span>
   ) : (
-    <>
-      <span class="block">{first}</span>
-      {second && <span class="text-muted block">{second}</span>}
-    </>
+    first
   )}
 </Tag>
+{second && (
+  <p class:list={[support, rise && "fade-up"]} style={rise ? "--i:2" : undefined}>
+    {second}
+  </p>
+)}

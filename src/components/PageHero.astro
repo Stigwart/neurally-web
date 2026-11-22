@@ -30,7 +30,7 @@ const { crumbs, first, second, lede, stage } = Astro.props;
     <div class="mt-10 max-w-5xl lg:mt-14">
       <Beat as="h1" id="page-heading" size="display" rise first={first} second={second} />
       {lede && (
-        <p class="fade-up text-muted mt-8 max-w-2xl text-xl" style="--i:3">
+        <p class:list={["fade-up text-muted max-w-2xl text-xl", second ? "mt-4" : "mt-8"]} style="--i:3">
           {lede}
         </p>
       )}

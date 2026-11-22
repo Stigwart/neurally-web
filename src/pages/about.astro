@@ -77,15 +77,15 @@ const triggers = [
       </div>
       <div class="mt-10 grid items-end gap-x-10 gap-y-12 md:grid-cols-12 lg:mt-14 lg:gap-x-12">
         <div class="md:col-span-8">
-          <h1 id="page-heading" class="text-display">
-            <span class="line-rise" style="--i:0">
-              <span>About Neurally.</span>
-            </span>
-            <span class="line-rise text-muted" style="--i:1">
-              <span>Built for the work after the pilot.</span>
-            </span>
-          </h1>
-          <p class="fade-up text-muted mt-8 max-w-2xl text-xl" style="--i:3">
+          <Beat
+            as="h1"
+            id="page-heading"
+            size="display"
+            rise
+            first="About Neurally"
+            second="Built for the work after the pilot."
+          />
+          <p class="fade-up text-muted mt-4 max-w-2xl text-xl" style="--i:3">
             We help leadership teams decide where AI is worth the investment, redesign the business around it
             and lead the change through to measured results.
           </p>
@@ -115,7 +115,7 @@ const triggers = [
       <div class="lg:col-span-5" data-reveal>
         <Beat
           id="why-heading"
-          first="Why Neurally exists."
+          first="Why Neurally exists"
           second="Experiments show what AI can do. They don't decide what your business should do with it."
         />
       </div>
@@ -153,7 +153,7 @@ const triggers = [
 
   <Section glow={{ side: "right", colours: ["deliver", "design"] }} tone="paper" labelledby="choices-heading">
     <div data-reveal>
-      <Beat id="choices-heading" first="How Neurally is set up." second="Four choices we made on purpose." />
+      <Beat id="choices-heading" first="How Neurally is set up" second="Four choices we made on purpose." />
     </div>
     <ul class="tiles mt-12 md:grid-cols-2">
       {choices.map((c, i) => (
@@ -168,7 +168,7 @@ const triggers = [
   <Section glow={{ side: "left", colours: ["lilac", "decide"] }} labelledby="help-heading">
     <div class="grid gap-x-12 gap-y-10 lg:grid-cols-12">
       <div class="lg:col-span-5" data-reveal>
-        <Beat id="help-heading" first="Who we help." second="And when they tend to call." />
+        <Beat id="help-heading" first="Who we help" second="And when they tend to call." />
         <p class="text-muted mt-6 max-w-md text-lg">
           CEOs, founders, and product and technology leaders of scaling and established businesses, roughly 50
           to 1,000 people. Boards and investors also bring us in for an independent view.
@@ -219,7 +219,7 @@ const triggers = [
         <div data-reveal>
           <Beat
             id="founder-heading"
-            first="Founded by Stuart Davis."
+            first="About Stuart Davis"
             second="Nineteen years running the change from the inside."
           />
           <p class="max-w-measure mt-6 text-lg">
@@ -238,5 +238,5 @@ const triggers = [
     </div>
   </Section>
 
-  <Cta first="Tell us what you're trying to decide." second="Thirty minutes, free." />
+  <Cta />
 </Base>

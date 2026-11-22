@@ -2,6 +2,7 @@
 import Base from "../layouts/Base.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import Glow from "../components/Glow.astro";
+import Beat from "../components/Beat.astro";
 import Button from "../components/Button.astro";
 import Field from "../components/Field.astro";
 import { site } from "../data/site";
@@ -29,15 +30,15 @@ const expect = [
       </div>
       <div class="mt-10 grid gap-x-16 gap-y-14 lg:mt-14 lg:grid-cols-12">
         <div class="relative z-10 lg:col-span-6">
-          <h1 id="page-heading" class="text-display">
-            <span class="line-rise" style="--i:0">
-              <span>Tell us what you're trying to decide.</span>
-            </span>
-            <span class="line-rise text-muted" style="--i:1">
-              <span>We'll tell you if we can help.</span>
-            </span>
-          </h1>
-          <p class="fade-up text-muted mt-8 max-w-xl text-xl" style="--i:3">
+          <Beat
+            as="h1"
+            id="page-heading"
+            size="display"
+            rise
+            first="Contact"
+            second="Tell us what you're trying to decide. We'll tell you if we can help."
+          />
+          <p class="fade-up text-muted mt-4 max-w-xl text-xl" style="--i:3">
             The quickest route is a free 30-minute call. We'll talk about the problem, whether we are a fit,
             and the right next step. Sometimes that is none of the engagements.
           </p>
@@ -75,7 +76,7 @@ const expect = [
             data-access-key={site.web3forms.accessKey}
             data-fallback={`mailto:${site.email}`}
           >
-            <h2 class="text-title sm:col-span-2">Or send a message</h2>
+            <h2 class="text-title sm:col-span-2">Send a message</h2>
             <input type="hidden" name="access_key" value={site.web3forms.accessKey} />
             <div class="sr-only" aria-hidden="true">
               <label for="botcheck">Leave this field empty</label>

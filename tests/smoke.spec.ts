@@ -60,7 +60,7 @@ test("security headers are served", async ({ request }) => {
 test("unknown URLs get the 404 page", async ({ page }) => {
   const response = await page.goto("/no-such-page/");
   expect(response?.status()).toBe(404);
-  await expect(page.locator("h1")).toContainText("That page isn't here");
+  await expect(page.locator("h1")).toContainText("Page not found");
 });
 
 test("sitemap, robots and RSS are published", async ({ request }) => {

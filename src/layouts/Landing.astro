@@ -34,10 +34,18 @@ const crumbs = [
   { name: family.label, href: family.base },
   { name: d.name, href: landingHref(collection, entry.id) },
 ];
+/**
+ * Section headings are the same plain labels on every landing page. The
+ * page's own heading is shown beneath as a supporting line, unless it only
+ * restates the label.
+ */
+const restates =
+  /^(The decisions |What tends to go wrong|How the four stages (apply|look)|Where this comes from)/;
+const sub = (heading: string) => (restates.test(heading) ? undefined : heading);
 ---
 
 <Base title={d.seoTitle} description={d.description} crumbs={crumbs} schema={[faqPage(d.faq)]}>
-  <PageHero crumbs={crumbs} first={d.headline} second={d.headlineSecond} lede={d.lede}>
+  <PageHero crumbs={crumbs} first={d.headline.replace(/\.$/, "")} second={d.headlineSecond} lede={d.lede}>
     <Button href={site.calendly} external size="lg" data-cta="calendly">
       Book a free discovery call
     </Button>
@@ -51,8 +59,9 @@ const crumbs = [
     <div class="grid gap-x-12 gap-y-10 lg:grid-cols-12">
       <div class="lg:col-span-4" data-reveal>
         <h2 id="situation-heading" class="text-headline">
-          {d.situation.heading}
+          What leaders are saying
         </h2>
+        <p class="mt-4 max-w-3xl text-xl">{d.situation.heading}</p>
       </div>
       <ul class="rows lg:col-span-8">
         {d.situation.quotes.map((q, i) => (
@@ -76,8 +85,9 @@ const crumbs = [
   <Section glow={{ side: "left", colours: ["lilac", "design"] }} labelledby="decisions-heading">
     <div class="max-w-3xl" data-reveal>
       <h2 id="decisions-heading" class="text-headline">
-        {d.decisions.heading}
+        Decisions to make
       </h2>
+      {sub(d.decisions.heading) && <p class="mt-4 max-w-3xl text-xl">{sub(d.decisions.heading)}</p>}
       {d.decisions.intro && <p class="text-muted mt-6 text-lg">{d.decisions.intro}</p>}
     </div>
     <ol class="rows mt-12">
@@ -96,8 +106,9 @@ const crumbs = [
     <div class="grid gap-x-12 gap-y-10 lg:grid-cols-12">
       <div class="lg:col-span-4" data-reveal>
         <h2 id="risks-heading" class="text-headline">
-          {d.risks.heading}
+          Common mistakes
         </h2>
+        {sub(d.risks.heading) && <p class="mt-4 max-w-3xl text-xl">{sub(d.risks.heading)}</p>}
       </div>
       <ul class="rows lg:col-span-8">
         {d.risks.items.map((item, i) => (
@@ -117,8 +128,9 @@ const crumbs = [
   <Section labelledby="path-heading">
     <div class="max-w-3xl" data-reveal>
       <h2 id="path-heading" class="text-headline">
-        {d.path.heading}
+        How the four stages apply
       </h2>
+      {sub(d.path.heading) && <p class="mt-4 max-w-3xl text-xl">{sub(d.path.heading)}</p>}
     </div>
     <ol class="tiles mt-12 md:grid-cols-2 lg:grid-cols-4">
       {d.path.steps.map((step, i) => {
@@ -148,8 +160,9 @@ const crumbs = [
     >
       <div class="max-w-3xl" data-reveal>
         <h2 id="evidence-heading" class="text-headline">
-          {d.evidence.heading}
+          Career evidence
         </h2>
+        {sub(d.evidence.heading) && <p class="mt-4 max-w-3xl text-xl">{sub(d.evidence.heading)}</p>}
       </div>
       <dl class="rows mt-10">
         {d.evidence.items.map((item, i) => (
@@ -187,8 +200,9 @@ const crumbs = [
     >
       <div class="lg:col-span-7">
         <h2 id="start-heading" class="text-headline">
-          {d.entry.heading}
+          Where to start
         </h2>
+        <p class="mt-4 max-w-3xl text-xl">{d.entry.heading}</p>
         <p class="text-muted mt-6 text-lg">{d.entry.body}</p>
         <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
           <Button href={site.calendly} external data-cta="calendly">
@@ -234,11 +248,7 @@ const crumbs = [
   <Section class="pt-0!" labelledby="faq-heading">
     <div class="grid gap-x-12 gap-y-8 lg:grid-cols-12">
       <div class="lg:col-span-4" data-reveal>
-        <Beat
-          id="faq-heading"
-          first="Questions we hear."
-          second={`From ${family.collection === "industries" ? "this sector" : family.collection === "teams" ? "this seat" : "people in this spot"}.`}
-        />
+        <Beat id="faq-heading" first="Common questions" />
       </div>
       <div class="lg:col-span-8">
         <Faq items={d.faq} />

@@ -114,8 +114,12 @@ const problems: Parameters<typeof ProblemPicker>[0]["problems"] = [
     labelledby="problem-heading"
   >
     <div class="text-center" data-rise>
-      <Beat id="problem-heading" first="AI isn't working for your business yet." />
-      <p class="text-muted mx-auto mt-6 max-w-2xl text-lg">
+      <Beat
+        id="problem-heading"
+        first="Common AI problems"
+        second="AI isn't working for your business yet."
+      />
+      <p class="text-muted mx-auto mt-3 max-w-2xl text-lg">
         Most leadership teams recognise at least one of these.
       </p>
     </div>
@@ -140,7 +144,7 @@ const problems: Parameters<typeof ProblemPicker>[0]["problems"] = [
   <!-- The path -->
   <Section class="pt-0!" labelledby="path-heading">
     <div class="text-center" data-rise>
-      <Beat id="path-heading" first="What working with us looks like." />
+      <Beat id="path-heading" first="How we work" />
       <p class="text-muted mx-auto mt-6 max-w-2xl text-lg">
         Every engagement starts with one question:{" "}
         <span class="text-fg">“What could this business do now that it couldn't two years ago?”</span>
@@ -159,7 +163,7 @@ const problems: Parameters<typeof ProblemPicker>[0]["problems"] = [
   <!-- Ways to work together -->
   <Section glow={{ side: "right", colours: ["lilac", "design"] }} class="pt-0!" labelledby="fees-heading">
     <div class="text-center" data-rise>
-      <Beat id="fees-heading" first="What we can do together." />
+      <Beat id="fees-heading" first="Engagements" />
       <p class="text-muted mx-auto mt-6 max-w-2xl text-lg">
         It starts with a conversation. From there, we can spend a day, a week or two weeks with you, depending
         on how much of the business you want to look at.
@@ -203,8 +207,8 @@ const problems: Parameters<typeof ProblemPicker>[0]["problems"] = [
         <Beat
           id="stuart-heading"
 
-          first="An operator's judgement."
-          second="From someone who has run the change in-house."
+          first="About the founder"
+          second="An operator's judgement, from someone who has run the change in-house."
         />
         <p class="max-w-measure mt-6 text-lg">
           Neurally is led by Stuart Davis. He has spent more than 19 years running product, technology and
@@ -231,8 +235,9 @@ const problems: Parameters<typeof ProblemPicker>[0]["problems"] = [
       <span class="problem-icon" set:html={icons["shield-check"]} />
       <div class="max-w-3xl">
         <h2 id="governance-heading" class="font-display text-title">
-          Governance runs through every engagement, from scoping.
+          Governance
         </h2>
+        <p class="mt-2">Governance runs through every engagement, from scoping.</p>
         <p class="text-muted mt-2">
           A named owner for every AI-assisted decision. Consumer Duty, UK GDPR and the EU AI Act dealt with
           while the design can still change.
@@ -250,8 +255,8 @@ const problems: Parameters<typeof ProblemPicker>[0]["problems"] = [
       <Beat
         id="assess-heading"
 
-        first="Not sure where you stand?"
-        second="Ten questions will tell you."
+        first="AI maturity assessment"
+        second="Not sure where you stand? Ten questions will tell you."
       />
       <p class="text-muted mx-auto mt-6 max-w-2xl text-lg">
         The AI maturity assessment takes about two minutes and places you in one of four scenarios, with your
@@ -267,7 +272,7 @@ const problems: Parameters<typeof ProblemPicker>[0]["problems"] = [
   <Section glow={{ side: "right", colours: ["deliver", "design"] }} class="pt-0!" labelledby="faq-heading">
     <div class="grid gap-x-12 gap-y-8 lg:grid-cols-12">
       <div class="lg:col-span-4" data-rise>
-        <Beat id="faq-heading" first="Questions people ask first." />
+        <Beat id="faq-heading" first="Common questions" />
       </div>
       <div class="lg:col-span-8" data-rise>
         <Faq items={homeFaq} />

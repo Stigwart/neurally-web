@@ -136,8 +136,8 @@ const governance = [
 >
   <PageHero
     crumbs={crumbs}
-    first="Three questions. Four stages."
-    second="One person accountable throughout."
+    first="Our approach"
+    second="Three questions, four stages, and one person accountable throughout."
     lede="AI is the catalyst. The work is on the business: where the advantage is, what has to change to reach it, and how the change is carried through until your own team runs it."
   >
     <Button href={site.calendly} external size="lg" data-cta="calendly">
@@ -150,7 +150,7 @@ const governance = [
 
   <Section glow={{ side: "left", colours: ["decide", "lilac"] }} tone="paper" labelledby="questions-heading">
     <div data-reveal>
-      <Beat id="questions-heading" first="Every engagement answers three questions." />
+      <Beat id="questions-heading" first="The three questions" />
     </div>
     <ol class="tiles mt-12 md:grid-cols-3">
       {questions.map((item, i) => (
@@ -169,16 +169,16 @@ const governance = [
   </Section>
 
   <Section labelledby="path-heading">
-    <h2 id="path-heading" class="sr-only">
-      Four stages: decide, design, deliver, embed
-    </h2>
+    <div class="mb-12" data-reveal>
+      <Beat id="path-heading" first="The four stages" />
+    </div>
     <StageRow />
   </Section>
 
   <Section glow={{ side: "right", colours: ["design", "deliver"] }} tone="paper" labelledby="sizing-heading">
     <div class="grid gap-x-12 gap-y-8 lg:grid-cols-12">
       <div class="lg:col-span-6" data-reveal>
-        <Beat id="sizing-heading" first="How an opportunity is sized." />
+        <Beat id="sizing-heading" first="Opportunity sizing" />
       </div>
       <div class="text-muted space-y-4 text-lg lg:col-span-6 lg:pt-3" data-reveal style="--i:1">
         <p>
@@ -206,7 +206,7 @@ const governance = [
       <div class="lg:col-span-5" data-reveal>
         <Beat
           id="allocation-heading"
-          first="Work is allocated on purpose."
+          first="Work allocation"
           second="Workflow by workflow, with a named owner."
         />
         <p class="text-muted mt-6 max-w-md text-lg">
@@ -230,8 +230,8 @@ const governance = [
     <div class="max-w-3xl" data-reveal>
       <Beat
         id="governance-heading"
-        first="Governance runs through every stage."
-        second="It starts before anything is built."
+        first="Governance"
+        second="It runs through every stage and starts before anything is built."
       />
       <p class="text-muted mt-6 text-lg">
         It runs through every engagement, because the cheapest time to deal with a regulatory or
@@ -255,7 +255,7 @@ const governance = [
 
   <Section glow={{ side: "left", colours: ["deliver", "design"] }} labelledby="principles-heading">
     <div data-reveal>
-      <Beat id="principles-heading" first="Five principles." second="Each one replaces a habit." />
+      <Beat id="principles-heading" first="Principles" second="Each one replaces a habit." />
     </div>
     <div class="mt-12">
       <Compare withoutLabel="The habit" withLabel="The principle" rows={principles} />
@@ -265,7 +265,7 @@ const governance = [
   <Section class="pt-0!" labelledby="faq-heading">
     <div class="grid gap-x-12 gap-y-8 lg:grid-cols-12">
       <div class="lg:col-span-4" data-reveal>
-        <Beat id="faq-heading" first="About the approach." second="Common questions." />
+        <Beat id="faq-heading" first="Common questions about the approach" />
       </div>
       <div class="lg:col-span-8">
         <Faq items={approachFaq} />

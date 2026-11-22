@@ -251,9 +251,22 @@ weight 600. Home section headings are centred; inner pages are left-aligned.
 
 Both are self-hosted. Archivo and Instrument Sans are preloaded.
 
-**Two-beat headings.** Most headings are a statement followed by a quieter
-second line that completes it ("Governance runs through every stage. / It starts before anything is built."). The `Beat` component renders the second beat in `muted`. Keep both
-beats short, and don't force a second beat where the first is enough.
+**Plain-label headings.** Every heading names what its section contains:
+"Our approach", "The four stages", "Common questions". The rules are:
+
+- Key words first, so the heading makes sense read on its own.
+- Sentence case and no full stop.
+- One heading per section. There is no second headline line. A supporting
+  sentence, where one helps, is ordinary text under the heading (the `second`
+  prop on `Beat`), and it does end with a full stop.
+- No heading that is only a count or a fragment, and no questions.
+- The same section gets the same label on every page. Landing pages all use
+  "What leaders are saying", "Decisions to make", "Common mistakes", "How the
+  four stages apply", "Career evidence", "Where to start" and "Common
+  questions". The page's own sentence sits beneath as the supporting line.
+
+The homepage title, "Take AI from pilot to payback.", is Stuart's own line
+and is the one exception. Article titles are editorial and are not covered.
 
 **Index numbers** appear only where order carries meaning: stages 01–04,
 engagements 00–08, numbered decisions. They are never decoration.
@@ -283,7 +296,7 @@ copy is held to a 42rem measure.
 | Component         | Use                                                                                                                                                                                         |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Section`         | A band of the page. `tone="paper"` switches tone                                                                                                                                            |
-| `Beat`            | Two-beat heading at display, headline or title size                                                                                                                                         |
+| `Beat`            | A plain-label heading with an optional supporting line                                                                                                                                      |
 | `PageHero`        | Breadcrumbs, H1, lede and actions for inner pages                                                                                                                                           |
 | `Button`          | `primary` (filled pill), `secondary` (outline pill), `text` (underlined). The arrow nudges on hover                                                                                         |
 | `AllocationBoard` | Approach page: seven tasks, three lanes, real radio controls. No longer on Home                                                                                                             |
