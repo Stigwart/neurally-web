@@ -765,7 +765,7 @@
   }
   @media (width >= 80rem) {
     .steps[data-count="5"] {
-      grid-template-columns: repeat(4, minmax(0, 1fr)) minmax(0, 1.35fr);
+      grid-template-columns: repeat(5, minmax(0, 1fr));
     }
     .step-ongoing {
       grid-column: auto;

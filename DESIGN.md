@@ -280,24 +280,24 @@ copy is held to a 42rem measure.
 
 ## Components
 
-| Component         | Use                                                                                                                                                                    |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Section`         | A band of the page. `tone="paper"` switches tone                                                                                                                       |
-| `Beat`            | Two-beat heading at display, headline or title size                                                                                                                    |
-| `PageHero`        | Breadcrumbs, H1, lede and actions for inner pages                                                                                                                      |
-| `Button`          | `primary` (filled pill), `secondary` (outline pill), `text` (underlined). The arrow nudges on hover                                                                    |
-| `AllocationBoard` | Approach page: seven tasks, three lanes, real radio controls. No longer on Home                                                                                        |
-| `ProblemPicker`   | Home: five problems with icons; one answer and a booking button on show at a time                                                                                      |
-| `StageRow`        | Home and Approach: the four stages as colour cards; one open, three collapsed to a spine; stacked on small screens                                                     |
-| `Steps`           | Home: engagements as lilac cards that step up in height with their length; the free call carries the button. A fifth, dark "Ongoing" step lists the longer engagements |
-| `Ladder`          | The engagement ladder on Services: expandable white rows with fees                                                                                                     |
-| `Compare`         | "Without / With" rows                                                                                                                                                  |
-| `Faq`             | Accordion. One answer open at a time; also emits FAQ structured data via the page                                                                                      |
-| `LinkCards`       | White rows linking to other pages                                                                                                                                      |
-| `CareerNote`      | The caveat that must accompany every career figure                                                                                                                     |
-| `Glow`            | A soft glow of two or three colours, at a section edge or behind a component                                                                                           |
-| `Cta`             | The closing call to action                                                                                                                                             |
-| `Field`           | Labelled input or textarea with an inline error                                                                                                                        |
+| Component         | Use                                                                                                                                                                                         |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Section`         | A band of the page. `tone="paper"` switches tone                                                                                                                                            |
+| `Beat`            | Two-beat heading at display, headline or title size                                                                                                                                         |
+| `PageHero`        | Breadcrumbs, H1, lede and actions for inner pages                                                                                                                                           |
+| `Button`          | `primary` (filled pill), `secondary` (outline pill), `text` (underlined). The arrow nudges on hover                                                                                         |
+| `AllocationBoard` | Approach page: seven tasks, three lanes, real radio controls. No longer on Home                                                                                                             |
+| `ProblemPicker`   | Home: five problems with icons; one answer and a booking button on show at a time                                                                                                           |
+| `StageRow`        | Home and Approach: the four stages as colour cards; one open, three collapsed to a spine; stacked on small screens                                                                          |
+| `Steps`           | Home: engagements as lilac cards that step up in height with their length; the free call carries the button. A fifth, dark "Ongoing" step in the same layout sums up the longer engagements |
+| `Ladder`          | The engagement ladder on Services: expandable white rows with fees                                                                                                                          |
+| `Compare`         | "Without / With" rows                                                                                                                                                                       |
+| `Faq`             | Accordion. One answer open at a time; also emits FAQ structured data via the page                                                                                                           |
+| `LinkCards`       | White rows linking to other pages                                                                                                                                                           |
+| `CareerNote`      | The caveat that must accompany every career figure                                                                                                                                          |
+| `Glow`            | A soft glow of two or three colours, at a section edge or behind a component                                                                                                                |
+| `Cta`             | The closing call to action                                                                                                                                                                  |
+| `Field`           | Labelled input or textarea with an inline error                                                                                                                                             |
 
 ## Motion
 
