@@ -166,7 +166,20 @@ const problems: Parameters<typeof ProblemPicker>[0]["problems"] = [
       </p>
     </div>
     <div class="mt-14">
-      <Steps ids={["discovery-call", "workshop", "diagnostic", "deep-dive"]} />
+      <Steps
+        ids={["discovery-call", "workshop", "diagnostic", "deep-dive"]}
+        ongoing={{
+          label: "Ongoing",
+          ids: [
+            "operating-model-design",
+            "implementation-support",
+            "transformation-leadership",
+            "training",
+            "executive-coaching",
+            "advisory",
+          ],
+        }}
+      />
     </div>
     <div class="mt-10 flex flex-wrap items-center justify-between gap-6" data-rise>
       <p class="text-muted max-w-xl">
@@ -174,7 +187,7 @@ const problems: Parameters<typeof ProblemPicker>[0]["problems"] = [
         and coach your leaders.
       </p>
       <Button href="/services/" variant="text">
-        All ten engagements
+        All engagements
       </Button>
     </div>
   </Section>

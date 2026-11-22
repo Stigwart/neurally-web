@@ -1,7 +1,8 @@
 ---
 /**
  * Engagements as cards that step up in height with their length:
- * thirty minutes, a day, a week, two weeks. Each card links to its entry
+ * thirty minutes, a day, a week, two weeks, and optionally a fifth step
+ * for the longer, ongoing engagements. Each card links to its entry
  * on the services page; the free call also carries the booking button.
  */
 import Button from "./Button.astro";
@@ -14,22 +15,26 @@ interface Props {
   ids: string[];
   /** The engagement that carries the booking button. */
   bookable?: string;
+  /** A fifth, tallest step that lists the longer engagements. */
+  ongoing?: { label: string; ids: string[] };
 }
-const { ids, bookable = "discovery-call" } = Astro.props;
+const { ids, bookable = "discovery-call", ongoing } = Astro.props;
 const rows = ids.map((id) => engagement(id));
+const longer = ongoing?.ids.map((id) => engagement(id)) ?? [];
+const figure = "font-display text-4xl font-semibold tracking-tight xl:text-3xl";
 ---
 
-<ol class="steps">
+<ol class="steps" data-count={rows.length + (ongoing ? 1 : 0)}>
   {rows.map((e, i) => (
     <li
-      class="step-card group relative flex flex-col gap-10 rounded-2xl p-6 transition-transform duration-base ease-out-expo hover:-translate-y-1 xl:p-8"
+      class="step-card group relative flex flex-col gap-10 rounded-2xl p-6 transition-transform duration-base ease-out-expo hover:-translate-y-1 xl:p-7"
       style={`--n:${i}`}
       data-wash={`lilac-${Math.min(i + 1, 4)}`}
       data-rise
     >
-      <p class="font-display text-4xl font-semibold tracking-tight">{e.length}</p>
+      <p class={figure}>{e.length}</p>
       <div class="mt-auto">
-        <h3 class="font-display text-title">
+        <h3 class="font-display text-title xl:text-xl">
           <a href={`/services/#${e.id}`} class="after:absolute after:inset-0 after:rounded-2xl">
             {e.name}
           </a>
@@ -47,4 +52,23 @@ const rows = ids.map((id) => engagement(id));
       </div>
     </li>
   ))}
+  {ongoing && (
+    <li
+      class="step-card step-ongoing flex flex-col gap-8 rounded-2xl p-6 xl:p-7"
+      style={`--n:${rows.length}`}
+      data-tone="ink"
+      data-rise
+    >
+      <h3 class={figure}>{ongoing.label}</h3>
+      <ul class="mt-auto grid gap-x-8 gap-y-2.5 text-sm sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-1">
+        {longer.map((e) => (
+          <li>
+            <a class="link" href={`/services/#${e.id}`}>
+              {e.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </li>
+  )}
 </ol>

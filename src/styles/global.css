@@ -743,7 +743,9 @@
     }
   }
 
-  /* Engagements: four cards that step up in height, shortest first. */
+  /* Engagements: cards that step up in height, shortest first. With a
+     fifth "ongoing" step, it sits in the row from 80rem and spans a full
+     row beneath the four below that. */
   .steps {
     display: grid;
     gap: 0.75rem;
@@ -754,6 +756,19 @@
       align-items: end;
     }
     .step-card {
+      min-height: calc(15rem + var(--n) * 2.75rem);
+    }
+    .step-ongoing {
+      grid-column: 1 / -1;
+      min-height: 0;
+    }
+  }
+  @media (width >= 80rem) {
+    .steps[data-count="5"] {
+      grid-template-columns: repeat(4, minmax(0, 1fr)) minmax(0, 1.35fr);
+    }
+    .step-ongoing {
+      grid-column: auto;
       min-height: calc(15rem + var(--n) * 2.75rem);
     }
   }
