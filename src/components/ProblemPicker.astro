@@ -44,35 +44,30 @@ const chip =
         </button>
       </h3>
       <div class="problem-panel" id={`problem-panel-${i}`} hidden={i !== 0} data-problem-panel>
-        <p class="text-muted text-xl" data-problem-line>
+        <p class="text-muted text-lg" data-problem-line>
           {p.description}
         </p>
-        <p class="text-muted mt-8 text-sm" data-problem-line>
-          What we do
-        </p>
-        <p class="mt-2 text-xl" data-problem-line>
+        <div class="bg-line my-7 h-px" data-problem-line />
+        <p class="text-xl" data-problem-line>
           {p.answer}
         </p>
+        <ul class="mt-7 flex flex-wrap gap-2" aria-label="Engagements that fit" data-problem-line>
+          {p.fits.map((id) => (
+            <li>
+              <a class={chip} href={`/services/#${id}`}>
+                {engagement(id).name}
+              </a>
+            </li>
+          ))}
+          {p.more && (
+            <li>
+              <a class={chip} href={p.more.href}>
+                {p.more.label}
+              </a>
+            </li>
+          )}
+        </ul>
         <div class="mt-8" data-problem-line>
-          <p class="text-muted text-sm">Fits</p>
-          <ul class="mt-2 flex flex-wrap gap-2">
-            {p.fits.map((id) => (
-              <li>
-                <a class={chip} href={`/services/#${id}`}>
-                  {engagement(id).name}
-                </a>
-              </li>
-            ))}
-            {p.more && (
-              <li>
-                <a class={chip} href={p.more.href}>
-                  {p.more.label}
-                </a>
-              </li>
-            )}
-          </ul>
-        </div>
-        <div class="mt-10" data-problem-line>
           <Button href={site.calendly} external data-cta="calendly">
             Book a free discovery call
           </Button>
