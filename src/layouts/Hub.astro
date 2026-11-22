@@ -29,7 +29,7 @@ const crumbs = [
 <Base title={title} description={description} crumbs={crumbs}>
   <PageHero crumbs={crumbs} first={first} second={second} lede={lede} />
 
-  <Section tone="paper" size="sm">
+  <Section glow={{ side: "right", colours: ["decide", "lilac"] }} tone="paper" size="sm">
     <LinkCards
       headingLevel="h2"
       items={entries.map((e) => ({
@@ -41,17 +41,14 @@ const crumbs = [
     <slot />
   </Section>
 
-  <Section size="sm" labelledby="other-heading">
+  <Section glow={{ side: "left", colours: ["design", "embed"] }} size="sm" labelledby="other-heading">
     <h2 id="other-heading" class="text-title">
-      Or start somewhere else
+      Other ways in
     </h2>
-    <ul class="mt-6 grid gap-6 md:grid-cols-2">
+    <ul class="tiles mt-6 md:grid-cols-2">
       {others.map((f) => (
         <li>
-          <a
-            href={f.base}
-            class="group border-line hover:border-fg flex items-center justify-between rounded-lg border p-6 transition-colors duration-fast"
-          >
+          <a href={f.base} class="group tile flex items-center justify-between">
             <span>
               <span class="font-display text-title block">{f.label}</span>
               <span class="text-muted">{f.blurb}</span>

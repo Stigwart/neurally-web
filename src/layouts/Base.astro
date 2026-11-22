@@ -20,6 +20,8 @@ interface Props {
   crumbs?: { name: string; href: string }[];
   /** Extra JSON-LD nodes for this page. */
   schema?: Record<string, unknown>[];
+  /** Page tone. "light" (Stage light) is the default for every page. */
+  tone?: "ink" | "light";
 }
 
 const {
@@ -30,6 +32,7 @@ const {
   ogType = "website",
   crumbs,
   schema = [],
+  tone = "light",
 } = Astro.props;
 
 const pathname = Astro.url.pathname;
@@ -56,7 +59,7 @@ const nodes = [
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex" />}
     {!noindex && <link rel="canonical" href={canonical} />}
-    <meta name="theme-color" content="#121211" />
+    <meta name="theme-color" content={tone === "light" ? "#FAF8F4" : "#121211"} />
 
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={site.name} />
@@ -83,14 +86,14 @@ const nodes = [
     <script type="application/ld+json" is:inline set:html={graph(nodes)} />
     <script data-goatcounter={site.goatcounter} async src="https://gc.zgo.at/count.js" is:inline></script>
   </head>
-  <body>
+  <body data-tone={tone}>
     <a
       href="#main"
       class="bg-fg text-bg sr-only z-[60] rounded-full px-4 py-2 text-sm font-medium focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
     >
       Skip to content
     </a>
-    <Header />
+    <Header tone={tone} />
     <main id="main">
       <slot />
     </main>

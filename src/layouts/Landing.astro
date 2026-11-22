@@ -34,10 +34,18 @@ const crumbs = [
   { name: family.label, href: family.base },
   { name: d.name, href: landingHref(collection, entry.id) },
 ];
+/**
+ * Section headings are the same plain labels on every landing page. The
+ * page's own heading is shown beneath as a supporting line, unless it only
+ * restates the label.
+ */
+const restates =
+  /^(The decisions |What tends to go wrong|How the four stages (apply|look)|Where this comes from)/;
+const sub = (heading: string) => (restates.test(heading) ? undefined : heading);
 ---
 
 <Base title={d.seoTitle} description={d.description} crumbs={crumbs} schema={[faqPage(d.faq)]}>
-  <PageHero crumbs={crumbs} first={d.headline} second={d.headlineSecond} lede={d.lede}>
+  <PageHero crumbs={crumbs} first={d.headline.replace(/\.$/, "")} second={d.headlineSecond} lede={d.lede}>
     <Button href={site.calendly} external size="lg" data-cta="calendly">
       Book a free discovery call
     </Button>
@@ -47,16 +55,17 @@ const crumbs = [
   </PageHero>
 
   <!-- The situation, in the reader's words -->
-  <Section tone="paper" labelledby="situation-heading">
+  <Section glow={{ side: "right", colours: ["decide", "lilac"] }} tone="paper" labelledby="situation-heading">
     <div class="grid gap-x-12 gap-y-10 lg:grid-cols-12">
       <div class="lg:col-span-4" data-reveal>
         <h2 id="situation-heading" class="text-headline">
-          {d.situation.heading}
+          What leaders are saying
         </h2>
+        <p class="mt-4 max-w-3xl text-xl">{d.situation.heading}</p>
       </div>
-      <ul class="border-line border-t lg:col-span-8">
+      <ul class="rows lg:col-span-8">
         {d.situation.quotes.map((q, i) => (
-          <li class="border-line font-display text-title border-b py-6" data-reveal style={`--i:${i}`}>
+          <li class="row font-display text-title" data-reveal style={`--i:${i}`}>
             “{q}”
           </li>
         ))}
@@ -73,21 +82,18 @@ const crumbs = [
   )}
 
   <!-- Decisions -->
-  <Section labelledby="decisions-heading">
+  <Section glow={{ side: "left", colours: ["lilac", "design"] }} labelledby="decisions-heading">
     <div class="max-w-3xl" data-reveal>
       <h2 id="decisions-heading" class="text-headline">
-        {d.decisions.heading}
+        Decisions to make
       </h2>
+      {sub(d.decisions.heading) && <p class="mt-4 max-w-3xl text-xl">{sub(d.decisions.heading)}</p>}
       {d.decisions.intro && <p class="text-muted mt-6 text-lg">{d.decisions.intro}</p>}
     </div>
-    <ol class="border-line mt-12 border-t">
+    <ol class="rows mt-12">
       {d.decisions.items.map((item, i) => (
-        <li
-          class="border-line grid gap-x-8 gap-y-2 border-b py-7 md:grid-cols-12"
-          data-reveal
-          style={`--i:${i % 4}`}
-        >
-          <span class="text-faint text-label pt-2 font-mono md:col-span-1">0{i + 1}</span>
+        <li class="row grid gap-x-8 gap-y-2 md:grid-cols-12" data-reveal style={`--i:${i % 4}`}>
+          <span class="text-faint text-sm pt-2 md:col-span-1">0{i + 1}</span>
           <h3 class="text-title md:col-span-4">{item.title}</h3>
           <p class="text-muted text-lg md:col-span-7">{item.body}</p>
         </li>
@@ -96,16 +102,17 @@ const crumbs = [
   </Section>
 
   <!-- Risks -->
-  <Section tone="paper" labelledby="risks-heading">
+  <Section glow={{ side: "right", colours: ["embed", "design"] }} tone="paper" labelledby="risks-heading">
     <div class="grid gap-x-12 gap-y-10 lg:grid-cols-12">
       <div class="lg:col-span-4" data-reveal>
         <h2 id="risks-heading" class="text-headline">
-          {d.risks.heading}
+          Common mistakes
         </h2>
+        {sub(d.risks.heading) && <p class="mt-4 max-w-3xl text-xl">{sub(d.risks.heading)}</p>}
       </div>
-      <ul class="border-line border-t lg:col-span-8">
+      <ul class="rows lg:col-span-8">
         {d.risks.items.map((item, i) => (
-          <li class="border-line flex gap-4 border-b py-6" data-reveal style={`--i:${i}`}>
+          <li class="row flex gap-4" data-reveal style={`--i:${i}`}>
             <Icon name="cross" class="text-faint mt-1.5" />
             <div>
               <h3 class="font-display text-xl">{item.title}</h3>
@@ -121,15 +128,16 @@ const crumbs = [
   <Section labelledby="path-heading">
     <div class="max-w-3xl" data-reveal>
       <h2 id="path-heading" class="text-headline">
-        {d.path.heading}
+        How the four stages apply
       </h2>
+      {sub(d.path.heading) && <p class="mt-4 max-w-3xl text-xl">{sub(d.path.heading)}</p>}
     </div>
-    <ol class="mt-12 grid gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-4">
+    <ol class="tiles mt-12 md:grid-cols-2 lg:grid-cols-4">
       {d.path.steps.map((step, i) => {
         const s = stages.find((x) => x.id === step.stage)!;
         return (
-          <li data-stage={s.id} class="border-stage border-t-2 pt-5" data-reveal style={`--i:${i}`}>
-            <p class="text-muted text-label font-mono uppercase">Stage {s.index}</p>
+          <li data-wash={s.id} class="tile" data-reveal style={`--i:${i}`}>
+            <p class="text-muted text-sm">Stage {s.index}</p>
             <h3 class="text-title mt-2">{s.name}</h3>
             <p class="text-muted mt-3">{step.body}</p>
           </li>
@@ -145,25 +153,24 @@ const crumbs = [
 
   <!-- Career evidence, where relevant -->
   {d.evidence && (
-    <Section tone="paper" labelledby="evidence-heading">
+    <Section
+      glow={{ side: "left", colours: ["deliver", "decide"] }}
+      tone="paper"
+      labelledby="evidence-heading"
+    >
       <div class="max-w-3xl" data-reveal>
         <h2 id="evidence-heading" class="text-headline">
-          {d.evidence.heading}
+          Career evidence
         </h2>
+        {sub(d.evidence.heading) && <p class="mt-4 max-w-3xl text-xl">{sub(d.evidence.heading)}</p>}
       </div>
-      <dl class="border-line mt-10 border-t">
+      <dl class="rows mt-10">
         {d.evidence.items.map((item, i) => (
-          <div
-            class="border-line grid gap-x-8 gap-y-1 border-b py-5 md:grid-cols-12"
-            data-reveal
-            style={`--i:${i}`}
-          >
+          <div class="row grid gap-x-8 gap-y-1 md:grid-cols-12" data-reveal style={`--i:${i}`}>
             <dt class="font-display text-figure tabular-nums md:col-span-4">{item.figure}</dt>
             <dd class="md:col-span-8 md:self-center">
               <span class="text-muted text-lg">{item.label}</span>
-              <span class="text-faint text-label mt-1 block font-mono uppercase">
-                {item.where}, before Neurally
-              </span>
+              <span class="text-faint text-sm mt-1 block">{item.where}, before Neurally</span>
             </dd>
           </div>
         ))}
@@ -180,16 +187,22 @@ const crumbs = [
   )}
 
   <!-- Entry engagement -->
-  <Section id="where-to-start" labelledby="start-heading" class="scroll-mt-16">
+  <Section
+    glow={{ side: "right", colours: ["lilac", "embed"] }}
+    id="where-to-start"
+    labelledby="start-heading"
+    class="scroll-mt-16"
+  >
     <div
-      class="border-line-strong grid gap-x-12 gap-y-8 rounded-lg border p-7 md:p-12 lg:grid-cols-12"
+      class="bg-surface grid gap-x-12 gap-y-8 rounded-2xl p-7 md:p-12 lg:grid-cols-12"
       data-stage={entryEngagement.stage === "any" ? undefined : entryEngagement.stage}
       data-reveal
     >
       <div class="lg:col-span-7">
         <h2 id="start-heading" class="text-headline">
-          {d.entry.heading}
+          Where to start
         </h2>
+        <p class="mt-4 max-w-3xl text-xl">{d.entry.heading}</p>
         <p class="text-muted mt-6 text-lg">{d.entry.body}</p>
         <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
           <Button href={site.calendly} external data-cta="calendly">
@@ -202,7 +215,7 @@ const crumbs = [
       </div>
       <div class="lg:col-span-5">
         <div class="border-line border-t pt-5">
-          <p class="text-faint text-label font-mono uppercase">Engagement {entryEngagement.index}</p>
+          <p class="text-faint text-sm">Engagement {entryEngagement.index}</p>
           <p class="font-display text-title mt-2">{entryEngagement.name}</p>
           <p class="mt-4 flex items-baseline gap-4">
             <span class="font-display text-figure tabular-nums">{entryEngagement.fee}</span>
@@ -235,11 +248,7 @@ const crumbs = [
   <Section class="pt-0!" labelledby="faq-heading">
     <div class="grid gap-x-12 gap-y-8 lg:grid-cols-12">
       <div class="lg:col-span-4" data-reveal>
-        <Beat
-          id="faq-heading"
-          first="Questions we hear."
-          second={`From ${family.collection === "industries" ? "this sector" : family.collection === "teams" ? "this seat" : "people in this spot"}.`}
-        />
+        <Beat id="faq-heading" first="Common questions" />
       </div>
       <div class="lg:col-span-8">
         <Faq items={d.faq} />

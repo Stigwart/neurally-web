@@ -1,0 +1,20 @@
+---
+/**
+ * A soft glow of two or three colours. Place it inside an element with the
+ * `has-glow` class (Section does this through its `glow` prop), or use
+ * side="behind" inside a `relative isolate` wrapper to sit behind a component.
+ */
+export type GlowColour = "decide" | "design" | "deliver" | "embed" | "lilac";
+interface Props {
+  side: "left" | "right" | "behind";
+  /** At least two colours. Stage colours and lilac only. */
+  colours: [GlowColour, GlowColour, ...GlowColour[]];
+}
+const { side, colours } = Astro.props;
+---
+
+<div class="glow" data-side={side} data-glow aria-hidden="true">
+  {colours.slice(0, 3).map((c) => (
+    <span data-wash={c} />
+  ))}
+</div>

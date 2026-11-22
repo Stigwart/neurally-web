@@ -57,8 +57,8 @@ const wont = [
 >
   <PageHero
     crumbs={crumbs}
-    first="Ten engagements."
-    second="The first four have the price on them."
+    first="Services and fees"
+    second="Ten engagements. The first four have the price on them."
     lede="Start with a free call. Take one fixed-fee step. Carry on only if it was worth it. Every engagement leaves you with outputs you keep, whether or not there is a next one."
   >
     <Button href={site.calendly} external size="lg" data-cta="calendly">
@@ -69,10 +69,16 @@ const wont = [
     </Button>
   </PageHero>
 
-  <Section tone="paper" id="ladder" labelledby="ladder-heading" class="scroll-mt-16">
+  <Section
+    glow={{ side: "right", colours: ["lilac", "decide"] }}
+    tone="paper"
+    id="ladder"
+    labelledby="ladder-heading"
+    class="scroll-mt-16"
+  >
     <div class="grid gap-x-12 gap-y-6 lg:grid-cols-12 lg:items-end">
       <div class="lg:col-span-7" data-reveal>
-        <Beat id="ladder-heading" first="The engagement ladder." second="Open any step for what you get." />
+        <Beat id="ladder-heading" first="The engagement ladder" second="Open any step for what you get." />
       </div>
       <p class="text-muted text-lg lg:col-span-5" data-reveal style="--i:1">
         Steps 01 to 03 have fixed fees agreed before work starts. The Workshop fee is credited in full against
@@ -84,28 +90,20 @@ const wont = [
     </div>
   </Section>
 
-  <Section labelledby="fit-heading">
+  <Section glow={{ side: "left", colours: ["design", "lilac"] }} labelledby="fit-heading">
     <div class="grid gap-x-12 gap-y-10 lg:grid-cols-12">
       <div class="lg:col-span-5" data-reveal>
-        <Beat
-          id="fit-heading"
-          first="Where this fits best."
-          second="And what an engagement needs from you."
-        />
+        <Beat id="fit-heading" first="Fit and requirements" />
         <p class="text-muted mt-6 max-w-md text-lg">
           We work with scaling and established businesses of roughly 50 to 1,000 people. An engagement needs
           an executive sponsor, access to evidence and people, a budget, and a willingness to change how the
           business operates. All of it is confirmed in scoping, before any fee.
         </p>
       </div>
-      <ul class="border-line border-t lg:col-span-7">
+      <ul class="rows lg:col-span-7">
         {fit.map((f, i) => (
-          <li
-            class="border-line font-display text-title flex gap-5 border-b py-6"
-            data-reveal
-            style={`--i:${i}`}
-          >
-            <span class="text-faint text-label mt-2 font-mono">0{i + 1}</span>
+          <li class="row font-display text-title flex gap-5" data-reveal style={`--i:${i}`}>
+            <span class="text-faint text-sm mt-2">0{i + 1}</span>
             {f}
           </li>
         ))}
@@ -113,9 +111,9 @@ const wont = [
     </div>
   </Section>
 
-  <Section tone="paper" labelledby="wont-heading">
+  <Section glow={{ side: "right", colours: ["embed", "design"] }} tone="paper" labelledby="wont-heading">
     <div data-reveal>
-      <Beat id="wont-heading" first="What we won't do." second="And what you get because of it." />
+      <Beat id="wont-heading" first="What we don't offer" second="And what you get because of it." />
     </div>
     <div class="mt-12">
       <Compare withoutLabel="Not offered" withLabel="What that means for you" rows={wont} />
@@ -125,10 +123,10 @@ const wont = [
     </p>
   </Section>
 
-  <Section labelledby="faq-heading">
+  <Section glow={{ side: "left", colours: ["deliver", "lilac"] }} labelledby="faq-heading">
     <div class="grid gap-x-12 gap-y-8 lg:grid-cols-12">
       <div class="lg:col-span-4" data-reveal>
-        <Beat id="faq-heading" first="Fees and scope." second="Common questions." />
+        <Beat id="faq-heading" first="Common questions about fees and scope" />
       </div>
       <div class="lg:col-span-8">
         <Faq items={servicesFaq} />

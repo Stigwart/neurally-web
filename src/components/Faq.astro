@@ -9,9 +9,9 @@ interface Props {
 const { items, group = "faq" } = Astro.props;
 ---
 
-<div class="border-line border-t">
+<div class="rows">
   {items.map((item, i) => (
-    <details class="disclosure group border-line border-b" name={group} open={i === 0}>
+    <details class="disclosure group bg-surface rounded-xl px-6 md:px-7" name={group} open={i === 0}>
       <summary class="hover:text-fg flex items-start justify-between gap-6 py-6 transition-colors duration-fast">
         <h3 class="text-title font-display">{item.q}</h3>
         <span class="border-line-strong mt-1 grid size-8 shrink-0 place-items-center rounded-full border transition-transform duration-base ease-out-expo group-open:rotate-45">

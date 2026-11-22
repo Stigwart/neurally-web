@@ -22,14 +22,14 @@ const lanes: { id: Lane; label: string; short: string }[] = [
 const count = (lane: Lane) => rows.filter((r) => r.lane === lane).length;
 ---
 
-<div class="board border-line bg-surface rounded-lg border" data-board>
+<div class="board border-line bg-surface rounded-2xl border" data-board>
   <div class="border-line flex items-baseline justify-between gap-4 border-b px-5 py-4">
     <p class="text-sm font-medium">Handling a customer complaint</p>
-    <p class="text-faint text-label font-mono uppercase">Illustrative</p>
+    <p class="text-faint text-sm">Illustrative</p>
   </div>
 
   <div class="px-5 pt-4 pb-2">
-    <div class="board-grid text-faint text-label font-mono uppercase" aria-hidden="true">
+    <div class="board-grid text-faint text-sm" aria-hidden="true">
       <span>Task</span>
       <div class="grid grid-cols-3 gap-1 text-center text-[0.625rem] sm:text-label">
         {lanes.map((l) => (

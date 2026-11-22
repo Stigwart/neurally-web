@@ -40,11 +40,9 @@ const crumbs = [
 
         <!-- Intro -->
         <div id="screen-intro">
-          <h1 class="text-display">
-            <span class="block">Where is your business on AI?</span>
-            <span class="text-muted block">Ten questions. About two minutes.</span>
-          </h1>
-          <p class="text-muted mt-8 max-w-2xl text-xl">
+          <h1 class="text-display">AI maturity assessment</h1>
+          <p class="mt-4 max-w-3xl text-xl">Ten questions. About two minutes.</p>
+          <p class="text-muted mt-4 max-w-2xl text-xl">
             Answer honestly about how your organisation uses AI today. You'll see where you sit on a
             four-stage scale, where the biggest gap is, and what a sensible next step looks like.
           </p>
@@ -54,7 +52,7 @@ const crumbs = [
           >
             {stages.map((s) => (
               <li data-stage={s.id} class="border-stage border-t-2 pt-3 pr-4">
-                <span class="text-faint text-label font-mono">{s.index}</span>
+                <span class="text-faint text-sm">{s.index}</span>
                 <span class="font-display block text-xl">{s.name}</span>
               </li>
             ))}
@@ -86,7 +84,7 @@ const crumbs = [
                 class="bg-stage h-full rounded-full transition-[width,background-color] duration-base ease-out-expo"
               ></div>
             </div>
-            <p id="progress-label" class="text-muted text-label font-mono uppercase" aria-live="polite">
+            <p id="progress-label" class="text-muted text-sm" aria-live="polite">
               Question 1 of 10
             </p>
           </div>
@@ -113,7 +111,7 @@ const crumbs = [
 
         <!-- Result -->
         <div id="screen-result" hidden>
-          <p class="text-muted text-label font-mono uppercase">
+          <p class="text-muted text-sm">
             Your result <span aria-hidden="true">·</span> <span id="r-stage"></span>
           </p>
           <h1 id="r-name" class="text-display mt-4 outline-none" tabindex="-1"></h1>
@@ -126,7 +124,7 @@ const crumbs = [
           <h2 class="text-title mt-14">Where you stand</h2>
           <div id="r-bars" class="mt-6 grid gap-6"></div>
 
-          <div id="r-gap" class="border-line bg-surface mt-10 rounded-lg border p-6">
+          <div id="r-gap" class="bg-surface mt-10 rounded-2xl p-6">
             <p id="r-gap-title" class="font-display flex items-center gap-3 text-xl"></p>
             <p id="r-gap-body" class="text-muted mt-2"></p>
           </div>
@@ -134,7 +132,7 @@ const crumbs = [
           <h2 class="text-title mt-14">How Neurally can help</h2>
           <p id="r-help" class="text-muted mt-4 text-lg"></p>
 
-          <div class="border-line-strong mt-10 rounded-lg border p-6 md:p-8">
+          <div class="bg-surface mt-10 rounded-2xl p-6 md:p-8">
             <h2 id="r-cta-title" class="text-title"></h2>
             <p class="text-muted mt-3">
               Free, no obligation. Book thirty minutes, or send us your results using the form below and
@@ -216,7 +214,7 @@ const crumbs = [
                 type="text"
                 id="r-share"
                 readonly
-                class="border-line-strong bg-surface text-muted min-w-0 flex-1 rounded-md border px-4 py-3 font-mono text-sm"
+                class="border-line-strong bg-surface text-muted min-w-0 flex-1 rounded-md border px-4 py-3 text-sm"
               />
               <Button id="copy-link" variant="secondary">
                 Copy link

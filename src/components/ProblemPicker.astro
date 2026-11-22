@@ -1,0 +1,78 @@
+---
+/**
+ * Five problems, one answer on show at a time. On large screens the
+ * statements sit beside the answer panel; on small screens each answer
+ * opens under its statement. Without scripting every answer is shown.
+ */
+import Button from "./Button.astro";
+import { engagement } from "../data/engagements";
+import { icons, type IconName } from "../lib/icons";
+import { site } from "../data/site";
+
+interface Props {
+  problems: {
+    name: string;
+    description: string;
+    answer: string;
+    icon: IconName;
+    /** Engagement ids that fit, in order. Names come from the engagement data. */
+    fits: string[];
+    /** An extra link after the engagements, such as a use-case page. */
+    more?: { label: string; href: string };
+  }[];
+}
+const { problems } = Astro.props;
+const chip =
+  "bg-paper-200 hover:bg-paper-300 text-fg inline-flex min-h-9 items-center rounded-full px-4 text-sm transition-colors duration-fast";
+---
+
+<div class="problems" data-problems>
+  <span class="problem-glider" aria-hidden="true" data-problem-glider></span>
+  {problems.map((p, i) => (
+    <>
+      <h3 class="font-display text-title" style={`--r:${i + 1}`}>
+        <button
+          type="button"
+          class="problem-tab"
+          id={`problem-tab-${i}`}
+          aria-expanded={i === 0 ? "true" : "false"}
+          aria-controls={`problem-panel-${i}`}
+          data-problem-tab
+        >
+          <span class="problem-icon" set:html={icons[p.icon]} />
+          <span>{p.name}</span>
+        </button>
+      </h3>
+      <div class="problem-panel" id={`problem-panel-${i}`} hidden={i !== 0} data-problem-panel>
+        <p class="text-muted text-xl" data-problem-line>
+          {p.description}
+        </p>
+        <div class="bg-line my-7 h-px" data-problem-line />
+        <p class="text-xl" data-problem-line>
+          {p.answer}
+        </p>
+        <ul class="mt-7 flex flex-wrap gap-2" aria-label="Engagements that fit" data-problem-line>
+          {p.fits.map((id) => (
+            <li>
+              <a class={chip} href={`/services/#${id}`}>
+                {engagement(id).name}
+              </a>
+            </li>
+          ))}
+          {p.more && (
+            <li>
+              <a class={chip} href={p.more.href}>
+                {p.more.label}
+              </a>
+            </li>
+          )}
+        </ul>
+        <div class="mt-8" data-problem-line>
+          <Button href={site.calendly} external data-cta="calendly">
+            Book a free discovery call
+          </Button>
+        </div>
+      </div>
+    </>
+  ))}
+</div>

@@ -1,0 +1,49 @@
+---
+/**
+ * The four stages as colour cards. On large screens with scripting, one
+ * card is open and the others collapse to a spine. Everywhere else they
+ * stack, with everything visible.
+ */
+import { stages } from "../data/stages";
+---
+
+<ol class="stage-row" data-stage-row>
+  {stages.map((s, i) => (
+    <li class="stage-card" data-wash={s.id} data-stage-card data-open={i === 0 ? "" : undefined} data-rise>
+      <button
+        type="button"
+        class="stage-spine font-display text-title"
+        aria-expanded={i === 0 ? "true" : "false"}
+        aria-controls={`stage-${s.id}`}
+        data-stage-toggle
+      >
+        <span aria-hidden="true">{s.index}</span>
+        <span class="stage-spine-name">{s.name}</span>
+      </button>
+      <div class="stage-body grid content-between gap-8" id={`stage-${s.id}`}>
+        <div class="grid gap-x-10 gap-y-6 xl:grid-cols-12">
+          <div class="xl:col-span-7">
+            <p class="text-muted text-sm">Stage {s.index}</p>
+            <h3 class="text-headline mt-1 font-semibold">{s.name}</h3>
+            <p class="font-display text-title mt-2">{s.question}</p>
+            <p class="mt-6 text-lg">{s.summary}</p>
+            <p class="text-muted mt-3">{s.detail}</p>
+          </div>
+          <ul class="flex flex-wrap content-start gap-2 xl:col-span-5 xl:flex-col xl:items-start xl:pt-8">
+            {s.outputs.map((o) => (
+              <li class="rounded-full bg-white/70 px-4 py-2 text-sm">{o}</li>
+            ))}
+          </ul>
+        </div>
+        <p class="text-muted text-sm">
+          <span class="sr-only">Engagements: </span>
+          {s.engagements}
+        </p>
+      </div>
+    </li>
+  ))}
+</ol>
+
+<script>
+  import "../scripts/stage-row.ts";
+</script>

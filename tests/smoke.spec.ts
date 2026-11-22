@@ -60,7 +60,7 @@ test("security headers are served", async ({ request }) => {
 test("unknown URLs get the 404 page", async ({ page }) => {
   const response = await page.goto("/no-such-page/");
   expect(response?.status()).toBe(404);
-  await expect(page.locator("h1")).toContainText("That page isn't here");
+  await expect(page.locator("h1")).toContainText("Page not found");
 });
 
 test("sitemap, robots and RSS are published", async ({ request }) => {
@@ -160,16 +160,32 @@ test("a shared assessment link reopens the result", async ({ page }) => {
   await expect(page.locator("#r-score")).toHaveText("24 of 24");
 });
 
-test("the hero allocation board can be changed", async ({ page }) => {
-  await watch(page);
+test("homepage problems show one answer at a time", async ({ page }) => {
+  const errors = await watch(page);
   await page.goto("/");
-  await expect(page.locator('[data-tally="person"]')).toHaveText("3");
-  await page
-    .getByRole("radiogroup", { name: "Draft the reply" })
-    .getByRole("radio", { name: "Stays with a person" })
-    .check({ force: true });
-  await expect(page.locator('[data-tally="person"]')).toHaveText("4");
-  await expect(page.locator('[data-tally="assist"]')).toHaveText("1");
+  await expect(page.locator("#problem-panel-0")).toBeVisible();
+  const tab = page.getByRole("button", { name: /You've run pilots/ });
+  await tab.click();
+  await expect(tab).toHaveAttribute("aria-expanded", "true");
+  await expect(page.locator("#problem-panel-1")).toBeVisible();
+  await expect(page.locator("#problem-panel-0")).toBeHidden();
+  await expect(
+    page.locator("#problem-panel-1").getByRole("link", { name: /Book a free discovery call/ }),
+  ).toHaveAttribute("href", "https://calendly.com/stuartdavis/30min");
+  expect(errors).toEqual([]);
+});
+
+test("homepage stage row opens the chosen stage", async ({ page, isMobile }) => {
+  test.skip(isMobile, "stages are stacked and all visible on small screens");
+  await watch(page);
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  const design = page.locator('[data-stage-card][data-wash="design"]');
+  await expect(design).not.toHaveAttribute("data-open");
+  await design.getByRole("button", { name: "Design" }).click();
+  await expect(design).toHaveAttribute("data-open");
+  await expect(design.getByText("What must change?")).toBeVisible();
+  await expect(page.locator('[data-stage-card][data-wash="decide"]')).not.toHaveAttribute("data-open");
 });
 
 test("content is visible with reduced motion", async ({ page }) => {
@@ -177,7 +193,7 @@ test("content is visible with reduced motion", async ({ page }) => {
   await watch(page);
   await page.goto("/");
   await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-  for (const el of await page.locator("[data-reveal]").all()) {
+  for (const el of await page.locator("[data-reveal], [data-rise]").all()) {
     expect(await el.evaluate((node) => getComputedStyle(node).opacity)).toBe("1");
   }
 });

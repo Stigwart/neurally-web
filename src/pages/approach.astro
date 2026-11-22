@@ -4,7 +4,7 @@ import PageHero from "../components/PageHero.astro";
 import Section from "../components/Section.astro";
 import Beat from "../components/Beat.astro";
 import Button from "../components/Button.astro";
-import StagePath from "../components/StagePath.astro";
+import StageRow from "../components/StageRow.astro";
 import Compare from "../components/Compare.astro";
 import Faq from "../components/Faq.astro";
 import Cta from "../components/Cta.astro";
@@ -136,8 +136,8 @@ const governance = [
 >
   <PageHero
     crumbs={crumbs}
-    first="Three questions. Four stages."
-    second="One person accountable throughout."
+    first="Our approach"
+    second="Three questions, four stages, and one person accountable throughout."
     lede="AI is the catalyst. The work is on the business: where the advantage is, what has to change to reach it, and how the change is carried through until your own team runs it."
   >
     <Button href={site.calendly} external size="lg" data-cta="calendly">
@@ -148,18 +148,19 @@ const governance = [
     </Button>
   </PageHero>
 
-  <Section tone="paper" labelledby="questions-heading">
+  <Section glow={{ side: "left", colours: ["decide", "lilac"] }} tone="paper" labelledby="questions-heading">
     <div data-reveal>
-      <Beat id="questions-heading" first="Every engagement answers three questions." />
+      <Beat id="questions-heading" first="The three questions" />
     </div>
-    <ol class="border-line mt-12 grid border-t md:grid-cols-3">
+    <ol class="tiles mt-12 md:grid-cols-3">
       {questions.map((item, i) => (
         <li
-          class="border-line border-b py-8 md:border-b-0 md:border-l md:px-8 md:first:border-l-0 md:first:pl-0"
+          class="tile"
+          data-wash={["decide-tint", "design-tint", "deliver-tint"][i]}
           data-reveal
           style={`--i:${i}`}
         >
-          <span class="text-faint text-label font-mono">0{i + 1}</span>
+          <span class="text-faint text-sm">0{i + 1}</span>
           <h3 class="text-title mt-3">{item.q}</h3>
           <p class="text-muted mt-3">{item.a}</p>
         </li>
@@ -168,13 +169,16 @@ const governance = [
   </Section>
 
   <Section labelledby="path-heading">
-    <StagePath />
+    <div class="mb-12" data-reveal>
+      <Beat id="path-heading" first="The four stages" />
+    </div>
+    <StageRow />
   </Section>
 
-  <Section tone="paper" labelledby="sizing-heading">
+  <Section glow={{ side: "right", colours: ["design", "deliver"] }} tone="paper" labelledby="sizing-heading">
     <div class="grid gap-x-12 gap-y-8 lg:grid-cols-12">
       <div class="lg:col-span-6" data-reveal>
-        <Beat id="sizing-heading" first="How an opportunity is sized." />
+        <Beat id="sizing-heading" first="Opportunity sizing" />
       </div>
       <div class="text-muted space-y-4 text-lg lg:col-span-6 lg:pt-3" data-reveal style="--i:1">
         <p>
@@ -187,9 +191,9 @@ const governance = [
         </p>
       </div>
     </div>
-    <dl class="border-line mt-12 grid border-t sm:grid-cols-2 lg:grid-cols-3">
+    <dl class="tiles mt-12 sm:grid-cols-2 lg:grid-cols-3">
       {sizing.map((s, i) => (
-        <div class="border-line border-b py-7 sm:pr-8" data-reveal style={`--i:${i % 3}`}>
+        <div class="tile" data-reveal style={`--i:${i % 3}`}>
           <dt class="font-display text-xl">{s.title}</dt>
           <dd class="text-muted mt-2">{s.body}</dd>
         </div>
@@ -197,12 +201,12 @@ const governance = [
     </dl>
   </Section>
 
-  <Section labelledby="allocation-heading">
+  <Section glow={{ side: "left", colours: ["lilac", "decide"] }} labelledby="allocation-heading">
     <div class="grid gap-x-12 gap-y-10 lg:grid-cols-12">
       <div class="lg:col-span-5" data-reveal>
         <Beat
           id="allocation-heading"
-          first="Work is allocated on purpose."
+          first="Work allocation"
           second="Workflow by workflow, with a named owner."
         />
         <p class="text-muted mt-6 max-w-md text-lg">
@@ -211,13 +215,9 @@ const governance = [
           the change lands.
         </p>
       </div>
-      <ol class="border-line border-t lg:col-span-7">
+      <ol class="rows lg:col-span-7">
         {allocation.map((a, i) => (
-          <li
-            class="border-line grid gap-x-8 gap-y-2 border-b py-6 md:grid-cols-5"
-            data-reveal
-            style={`--i:${i % 4}`}
-          >
+          <li class="row grid gap-x-8 gap-y-2 md:grid-cols-5" data-reveal style={`--i:${i % 4}`}>
             <h3 class="font-display text-xl md:col-span-2">{a.title}</h3>
             <p class="text-muted md:col-span-3">{a.body}</p>
           </li>
@@ -226,36 +226,36 @@ const governance = [
     </div>
   </Section>
 
-  <Section tone="paper" labelledby="governance-heading">
+  <Section glow={{ side: "right", colours: ["embed", "lilac"] }} tone="paper" labelledby="governance-heading">
     <div class="max-w-3xl" data-reveal>
       <Beat
         id="governance-heading"
-        first="Governance runs through every stage."
-        second="It starts before anything is built."
+        first="Governance"
+        second="It runs through every stage and starts before anything is built."
       />
       <p class="text-muted mt-6 text-lg">
         It runs through every engagement, because the cheapest time to deal with a regulatory or
         accountability problem is before anything has been built.
       </p>
     </div>
-    <ul class="border-line mt-12 grid border-t sm:grid-cols-2 lg:grid-cols-3">
+    <ul class="tiles mt-12 sm:grid-cols-2 lg:grid-cols-3">
       {governance.map((g, i) => (
-        <li class="border-line border-b py-7 sm:pr-8" data-reveal style={`--i:${i % 3}`}>
+        <li class="tile" data-reveal style={`--i:${i % 3}`}>
           <h3 class="font-display text-xl">{g.title}</h3>
           <p class="text-muted mt-2">{g.body}</p>
         </li>
       ))}
     </ul>
     <div class="mt-10">
-      <Button href="/use-cases/ai-governance/" variant="secondary">
+      <Button href="/use-cases/ai-governance/" variant="text">
         AI governance in practice
       </Button>
     </div>
   </Section>
 
-  <Section labelledby="principles-heading">
+  <Section glow={{ side: "left", colours: ["deliver", "design"] }} labelledby="principles-heading">
     <div data-reveal>
-      <Beat id="principles-heading" first="Five principles." second="Each one replaces a habit." />
+      <Beat id="principles-heading" first="Principles" second="Each one replaces a habit." />
     </div>
     <div class="mt-12">
       <Compare withoutLabel="The habit" withLabel="The principle" rows={principles} />
@@ -265,7 +265,7 @@ const governance = [
   <Section class="pt-0!" labelledby="faq-heading">
     <div class="grid gap-x-12 gap-y-8 lg:grid-cols-12">
       <div class="lg:col-span-4" data-reveal>
-        <Beat id="faq-heading" first="About the approach." second="Common questions." />
+        <Beat id="faq-heading" first="Common questions about the approach" />
       </div>
       <div class="lg:col-span-8">
         <Faq items={approachFaq} />

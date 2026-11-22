@@ -72,7 +72,7 @@ if (root) {
     q.options.forEach((text, i) => {
       const label = document.createElement("label");
       label.className =
-        "assess-option group border-line-strong hover:border-fg has-checked:border-stage has-checked:bg-surface flex cursor-pointer items-center gap-4 rounded-md border px-4 py-4 transition-colors duration-fast has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-accent";
+        "assess-option group border-line-strong hover:border-fg has-checked:border-stage has-checked:bg-surface flex cursor-pointer items-center gap-4 rounded-xl border px-4 py-4 transition-colors duration-fast has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-accent";
       const input = document.createElement("input");
       input.type = "radio";
       input.name = `q${current}`;
@@ -81,7 +81,7 @@ if (root) {
       input.checked = answers[current] === i;
       const key = document.createElement("span");
       key.className =
-        "border-line-strong text-muted group-has-checked:bg-stage group-has-checked:border-stage group-has-checked:text-bg grid size-7 shrink-0 place-items-center rounded-sm border font-mono text-label transition-colors duration-fast";
+        "border-line-strong text-muted group-has-checked:bg-stage group-has-checked:border-stage group-has-checked:text-bg grid size-7 shrink-0 place-items-center rounded-sm border text-sm transition-colors duration-fast";
       key.setAttribute("aria-hidden", "true");
       key.textContent = String(i + 1);
       const span = document.createElement("span");
@@ -190,7 +190,7 @@ if (root) {
       asks.className = "text-muted text-sm";
       asks.textContent = d.asks;
       const val = document.createElement("span");
-      val.className = "ml-auto font-mono text-sm tabular-nums";
+      val.className = "ml-auto text-sm tabular-nums";
       val.textContent = `${r.dims[i]} / 6`;
       head.append(name, asks, val);
       const track = document.createElement("div");

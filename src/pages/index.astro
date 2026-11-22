@@ -4,44 +4,51 @@ import Base from "../layouts/Base.astro";
 import Section from "../components/Section.astro";
 import Beat from "../components/Beat.astro";
 import Button from "../components/Button.astro";
-import AllocationBoard from "../components/AllocationBoard.astro";
-import ProblemList from "../components/ProblemList.astro";
-import StagePath from "../components/StagePath.astro";
-import Ladder from "../components/Ladder.astro";
+import ProblemPicker from "../components/ProblemPicker.astro";
+import StageRow from "../components/StageRow.astro";
+import Steps from "../components/Steps.astro";
 import Faq from "../components/Faq.astro";
 import Cta from "../components/Cta.astro";
+import Glow from "../components/Glow.astro";
 import { site } from "../data/site";
 import { homeFaq } from "../data/faqs";
 import { faqPage } from "../lib/schema";
+import { icons } from "../lib/icons";
+import { stages } from "../data/stages";
 import portrait from "../assets/stuart-davis.jpg";
 
-const problems = [
+const problems: Parameters<typeof ProblemPicker>[0]["problems"] = [
   {
     name: "You know AI matters, but not where to start.",
-    description: "Everyone has a view on it, and very little of it is about your business.",
+    icon: "compass",
+    description: "You know you should be doing more with AI, but don't know where to start.",
     answer:
       "We cut through the hype and show where AI could genuinely improve your business, and where it won't.",
     fits: ["workshop"],
   },
   {
     name: "You've run pilots, but they haven't lived up to the promise.",
-    description: "The results are hard to see, and some tools have made the work harder.",
+    icon: "flask",
+    description:
+      "You've done some pilots, or embedded some AI tools, but it isn't living up to expectations, or it's making things more difficult.",
     answer:
       "We find what's working and what isn't, remove the complexity that's crept in, and refocus on the outcomes that matter.",
     fits: ["diagnostic", "deep-dive"],
   },
   {
     name: "You've bought the tools, but the business hasn't changed.",
+    icon: "blocks",
     description:
-      "The licences are in place, but the work, the roles and the decisions are the same as before.",
+      "You've invested in AI and think you've got the right tools, but it's not landing in the business and things aren't changing as you'd hoped.",
     answer:
       "We bring people, process and technology together. That means redesigning the work, training your teams and leading the change with you.",
     fits: ["operating-model-design", "transformation-leadership", "training"],
   },
   {
     name: "AI is everywhere in the business, but no one is in control of it.",
+    icon: "shield-alert",
     description:
-      "People are using tools nobody approved. Confidential and personal data is going into them, and no one can say what it all costs.",
+      "You have AI in the business, but it's out of control: confidential and personal data going into tools, apps nobody approved, and spend nobody is tracking.",
     answer:
       "We find out where AI is really being used and what data goes into it. Then we agree which tools are approved, what data they can use, who is accountable, and how spend is kept in check.",
     fits: ["diagnostic", "deep-dive"],
@@ -49,8 +56,9 @@ const problems = [
   },
   {
     name: "AI is moving fast, and you feel you're falling behind.",
+    icon: "gauge",
     description:
-      "You're expected to lead the business through this, and you want to understand it well enough to do that with confidence.",
+      "You know AI is changing many things and moving fast, but you feel you're falling behind. You need to build your knowledge to lead your business through this period of change.",
     answer:
       "One-to-one coaching for executives, so you can judge AI for yourself and lead your team through it.",
     fits: ["executive-coaching"],
@@ -65,44 +73,61 @@ const problems = [
   schema={[faqPage(homeFaq)]}
 >
   <!-- Hero -->
-  <section class="relative overflow-clip pt-14 pb-20 lg:pt-20 lg:pb-28" aria-labelledby="hero-heading">
-    <div class="container-page grid items-center gap-x-12 gap-y-14 lg:grid-cols-12">
-      <div class="lg:col-span-7">
-        <p class="fade-up text-label text-muted mb-6 font-mono uppercase">
-          For leadership teams of 50 to 1,000-person businesses
-        </p>
-        <Beat as="h1" id="hero-heading" size="display" rise first="Take AI from pilot to payback." />
-        <p class="fade-up text-muted mt-8 max-w-xl text-xl" style="--i:3">
-          We help leadership teams decide where AI is worth the investment, redesign products, processes and
-          teams around it, and lead the change through to measured results.
-        </p>
-        <div class="fade-up mt-10 flex flex-wrap items-center gap-x-6 gap-y-4" style="--i:4">
-          <Button href={site.calendly} external size="lg" data-cta="calendly">
-            Book a free discovery call
-          </Button>
-          <Button href="/assessment/" variant="text">
-            Take the two-minute assessment
-          </Button>
-        </div>
-      </div>
-      <div class="fade-up lg:col-span-5" style="--i:2">
-        <AllocationBoard />
+  <section class="relative isolate overflow-clip" aria-labelledby="hero-heading" data-hero>
+    <div class="hero-shapes -z-10" aria-hidden="true" data-hero-shapes>
+      {stages.map((s, i) => (
+        <span class="hero-shape" style={`left:${-8 + i * 26}%`} data-hero-shape>
+          <span data-wash={s.id} style={`--i:${i}`} />
+        </span>
+      ))}
+    </div>
+    <div class="container-page pt-section-sm flex pb-40 min-h-[calc(100svh-4rem)] flex-col items-center justify-center text-center">
+      <p class="fade-up bg-paper-200 text-muted rounded-full px-4 py-1.5 text-sm">
+        For leadership teams of 50 to 1,000-person businesses
+      </p>
+      <h1 id="hero-heading" class="text-hero mt-8 font-semibold">
+        <span class="line-rise" style="--i:1">
+          <span>Take AI from pilot</span>
+        </span>{" "}
+        <span class="line-rise" style="--i:2">
+          <span>to payback.</span>
+        </span>
+      </h1>
+      <p class="fade-up text-muted mt-8 max-w-2xl text-xl" style="--i:4">
+        We help leadership teams decide where AI is worth the investment, redesign products, processes and
+        teams around it, and lead the change through to measured results.
+      </p>
+      <div class="fade-up mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-4" style="--i:5">
+        <Button href={site.calendly} external size="lg" data-cta="calendly">
+          Book a free discovery call
+        </Button>
+        <Button href="/assessment/" variant="text">
+          Take the two-minute assessment
+        </Button>
       </div>
     </div>
   </section>
 
   <!-- The problem -->
-  <Section tone="paper" labelledby="problem-heading">
-    <div data-reveal>
-      <Beat id="problem-heading" first="AI isn't working for your business yet." />
+  <Section
+    glow={{ side: "left", colours: ["decide", "lilac"] }}
+    class="pt-section-sm!"
+    labelledby="problem-heading"
+  >
+    <div class="text-center" data-rise>
+      <Beat
+        id="problem-heading"
+        first="Common AI problems"
+        second="AI isn't working for your business yet."
+      />
+      <p class="text-muted mx-auto mt-3 max-w-2xl text-lg">
+        Most leadership teams recognise at least one of these.
+      </p>
     </div>
-    <p class="text-muted mt-6 mb-12 max-w-2xl text-lg" data-reveal>
-      Most leadership teams recognise at least one of these.
-    </p>
-    <div>
-      <ProblemList problems={problems} />
+    <div class="mt-14" data-rise>
+      <ProblemPicker problems={problems} />
     </div>
-    <p class="text-muted max-w-measure mt-8 text-sm" data-reveal>
+    <p class="text-muted max-w-measure mx-auto mt-10 text-center text-sm" data-rise>
       You're not alone. In{" "}
       <a
         class="link"
@@ -118,135 +143,148 @@ const problems = [
   </Section>
 
   <!-- The path -->
-  <Section labelledby="path-heading">
-    <div data-reveal>
-      <Beat id="path-heading" first="What working with us looks like." />
+  <Section class="pt-0!" labelledby="path-heading">
+    <div class="text-center" data-rise>
+      <Beat id="path-heading" first="How we work" />
+      <p class="text-muted mx-auto mt-6 max-w-2xl text-lg">
+        Every engagement starts with one question:{" "}
+        <span class="text-fg">“What could this business do now that it couldn't two years ago?”</span>
+      </p>
     </div>
-    <p class="text-muted mt-6 mb-12 max-w-2xl text-lg" data-reveal>
-      Every engagement starts with one question:{" "}
-      <span class="text-fg">“What could this business do now that it couldn't two years ago?”</span>
-    </p>
-    <StagePath heading={false} />
-    <div class="mt-12">
-      <Button href="/approach/" variant="secondary">
+    <div class="mt-14">
+      <StageRow />
+    </div>
+    <div class="mt-10 text-center">
+      <Button href="/approach/" variant="text">
         How the approach works
       </Button>
     </div>
   </Section>
 
   <!-- Ways to work together -->
-  <Section tone="paper" labelledby="fees-heading">
-    <div data-reveal>
-      <Beat id="fees-heading" first="What we can do together." />
+  <Section glow={{ side: "right", colours: ["lilac", "design"] }} class="pt-0!" labelledby="fees-heading">
+    <div class="text-center" data-rise>
+      <Beat id="fees-heading" first="Engagements" />
+      <p class="text-muted mx-auto mt-6 max-w-2xl text-lg">
+        It starts with a conversation. From there, we can spend a day, a week or two weeks with you, depending
+        on how much of the business you want to look at.
+      </p>
     </div>
-    <p class="text-muted mt-6 max-w-2xl text-lg" data-reveal>
-      It starts with a conversation. From there, we can spend a day, a week or two weeks with you, depending
-      on how much of the business you want to look at.
-    </p>
-    <div class="mt-12" data-reveal>
-      <Ladder
+    <div class="mt-14">
+      <Steps
         ids={["discovery-call", "workshop", "diagnostic", "deep-dive"]}
-        expandable={false}
-        showFee={false}
+        ongoing={{
+          label: "Ongoing",
+          summary: "Advisory, Training, Implementation",
+          href: "/services/#operating-model-design",
+        }}
       />
     </div>
-    <div class="mt-10 flex flex-wrap items-center justify-between gap-6">
+    <div class="mt-10 flex flex-wrap items-center justify-between gap-6" data-rise>
       <p class="text-muted max-w-xl">
         After that, we can redesign how the work is done, support the build, lead the change, train your teams
         and coach your leaders.
       </p>
-      <Button href="/services/" variant="secondary">
-        All ten engagements
+      <Button href="/services/" variant="text">
+        All engagements
       </Button>
     </div>
   </Section>
 
   <!-- Stuart -->
-  <Section labelledby="stuart-heading">
-    <div class="grid gap-x-10 gap-y-12 md:grid-cols-12 lg:gap-x-12">
-      <div class="md:col-span-4" data-reveal>
+  <Section class="pt-0!" labelledby="stuart-heading">
+    <div class="grid items-center gap-x-10 gap-y-12 md:grid-cols-12 lg:gap-x-16">
+      <div class="relative isolate md:col-span-5" data-rise>
+        <Glow side="behind" colours={["deliver", "decide", "lilac"]} />
         <Image
           src={portrait}
           alt="Stuart Davis, founder of Neurally"
-          widths={[320, 480, 640]}
-          sizes="(min-width: 64rem) 21vw, 56vw"
-          class="aspect-[4/5] w-7/10 max-w-[16.8rem] rounded-lg object-cover grayscale"
+          widths={[320, 480, 640, 960]}
+          sizes="(min-width: 80rem) 30rem, (min-width: 48rem) 40vw, 90vw"
+          class="aspect-[4/5] w-full max-w-md rounded-2xl object-cover"
         />
       </div>
-      <div class="md:col-span-8">
-        <div data-reveal>
-          <Beat
-            id="stuart-heading"
-            first="An operator's judgement."
-            second="From someone who has run the change in-house."
-          />
-          <p class="max-w-measure mt-6 text-lg">
-            Neurally is led by Stuart Davis. He has spent more than 19 years running product, technology and
-            transformation inside consumer platforms, most recently as Head of Product for Data, AI, Apps and
-            Operations at Compare the Market, and before that leading banking and payments at Fresha.
-          </p>
-          <p class="text-muted max-w-measure mt-4 text-lg">
-            The judgement you hire is the judgement applied to your business, from the board decision through
-            to delivery.
-          </p>
-        </div>
-        <Button href="/about/" variant="secondary" class="mt-8">
+      <div class="relative md:col-span-7" data-rise>
+        <Beat
+          id="stuart-heading"
+
+          first="About the founder"
+          second="An operator's judgement, from someone who has run the change in-house."
+        />
+        <p class="max-w-measure mt-6 text-lg">
+          Neurally is led by Stuart Davis. He has spent more than 19 years running product, technology and
+          transformation inside consumer platforms, most recently as Head of Product for Data, AI, Apps and
+          Operations at Compare the Market, and before that leading banking and payments at Fresha.
+        </p>
+        <p class="text-muted max-w-measure mt-4 text-lg">
+          The judgement you hire is the judgement applied to your business, from the board decision through to
+          delivery.
+        </p>
+        <Button href="/about/" variant="text" class="mt-8">
           About Neurally and its founder
         </Button>
       </div>
     </div>
-  </Section>
 
-  <!-- Governance, in brief -->
-  <Section tone="paper" size="sm" labelledby="governance-heading">
-    <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between" data-reveal>
+    <!-- Governance, in brief -->
+    <div
+      class="bg-surface relative mt-14 flex flex-col gap-6 rounded-2xl p-6 md:p-8 lg:flex-row lg:items-center"
+      aria-labelledby="governance-heading"
+      role="group"
+      data-rise
+    >
+      <span class="problem-icon" set:html={icons["shield-check"]} />
       <div class="max-w-3xl">
         <h2 id="governance-heading" class="font-display text-title">
-          Governance runs through every engagement, from scoping.
+          Governance
         </h2>
-        <p class="text-muted mt-3">
+        <p class="mt-2">Governance runs through every engagement, from scoping.</p>
+        <p class="text-muted mt-2">
           A named owner for every AI-assisted decision. Consumer Duty, UK GDPR and the EU AI Act dealt with
           while the design can still change.
         </p>
       </div>
-      <Button href="/use-cases/ai-governance/" variant="secondary" class="shrink-0">
+      <Button href="/use-cases/ai-governance/" variant="text" class="shrink-0 lg:ml-auto">
         AI governance in practice
       </Button>
     </div>
   </Section>
 
   <!-- Assessment -->
-  <Section labelledby="assess-heading">
-    <div class="border-line bg-surface relative overflow-clip rounded-lg border p-8 md:p-14">
-      <div
-        class="hatch pointer-events-none absolute inset-y-0 right-0 hidden w-2/5 opacity-30 [mask-image:linear-gradient(to_left,black,transparent)] md:block"
-        aria-hidden="true"
-      ></div>
-      <div class="relative max-w-2xl" data-reveal>
-        <Beat id="assess-heading" first="Not sure where you stand?" second="Ten questions will tell you." />
-        <p class="text-muted mt-6 text-lg">
-          The AI maturity assessment takes about two minutes and places you in one of four scenarios, with
-          your biggest gap and a sensible next step. It is scored in your browser. No sign-up, and nothing is
-          stored.
-        </p>
-        <Button href="/assessment/" size="lg" class="mt-8">
-          Take the assessment
-        </Button>
-      </div>
+  <Section glow={{ side: "left", colours: ["embed", "lilac"] }} class="pt-0!" labelledby="assess-heading">
+    <div class="bg-surface rounded-2xl px-6 py-14 text-center md:p-20" data-rise>
+      <Beat
+        id="assess-heading"
+
+        first="AI maturity assessment"
+        second="Not sure where you stand? Ten questions will tell you."
+      />
+      <p class="text-muted mx-auto mt-6 max-w-2xl text-lg">
+        The AI maturity assessment takes about two minutes and places you in one of four scenarios, with your
+        biggest gap and a sensible next step. It is scored in your browser. No sign-up, and nothing is stored.
+      </p>
+      <Button href="/assessment/" variant="secondary" size="lg" class="mt-8">
+        Take the assessment
+      </Button>
     </div>
   </Section>
 
   <!-- FAQ -->
-  <Section class="py-0!" labelledby="faq-heading">
+  <Section glow={{ side: "right", colours: ["deliver", "design"] }} class="pt-0!" labelledby="faq-heading">
     <div class="grid gap-x-12 gap-y-8 lg:grid-cols-12">
-      <div class="lg:col-span-4" data-reveal>
-        <Beat id="faq-heading" first="Questions people ask first." />
+      <div class="lg:col-span-4" data-rise>
+        <Beat id="faq-heading" first="Common questions" />
       </div>
-      <div class="lg:col-span-8">
+      <div class="lg:col-span-8" data-rise>
         <Faq items={homeFaq} />
       </div>
     </div>
   </Section>
 
+  <!-- Close: the one dark band -->
   <Cta />
+
+  <script>
+    import "../scripts/home.ts";
+  </script>
 </Base>

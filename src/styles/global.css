@@ -4,7 +4,6 @@
 /* Self-hosted fonts (bundled by Vite, no third-party requests). */
 @import "@fontsource-variable/archivo/wght.css";
 @import "@fontsource-variable/instrument-sans/wght.css";
-@import "@fontsource/ibm-plex-mono/latin-400.css";
 
 /* ------------------------------------------------------------------
    Design tokens. This block is the single source of truth: change a
@@ -38,6 +37,18 @@
   --color-deliver-deep: #4c6638;
   --color-embed-deep: #9c4a3a;
 
+  /* Pale tints of the stage colours, for large stage-related fills. */
+  --color-decide-tint: #e4edf4;
+  --color-design-tint: #faf3dc;
+  --color-deliver-tint: #e7eee0;
+  --color-embed-tint: #f8e1dc;
+
+  /* Lilac: the one secondary colour, for everything that is not a stage. */
+  --color-lilac-100: #efeaf6;
+  --color-lilac-200: #ddd3ec;
+  --color-lilac-300: #c9bce0;
+  --color-lilac-400: #b3a2d3;
+
   --color-white: #fff;
   --color-black: #000;
   --color-transparent: transparent;
@@ -46,7 +57,7 @@
   /* Type */
   --font-display: "Archivo Variable", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-sans: "Instrument Sans Variable", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
 
   --text-label: 0.75rem;
   --text-label--line-height: 1.4;
@@ -68,6 +79,10 @@
   --text-display: clamp(2.5rem, 1.1rem + 4.6vw, 4.75rem);
   --text-display--line-height: 0.98;
   --text-display--letter-spacing: -0.04em;
+  /* Stage light hero: the largest size on the site. */
+  --text-hero: clamp(2.75rem, 0.9rem + 7.4vw, 6.5rem);
+  --text-hero--line-height: 0.95;
+  --text-hero--letter-spacing: -0.045em;
   --text-figure: clamp(2.25rem, 1.6rem + 2.6vw, 3.75rem);
   --text-figure--line-height: 1;
   --text-figure--letter-spacing: -0.04em;
@@ -84,6 +99,8 @@
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 14px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
   --radius-full: 999px;
 
   /* Motion */
@@ -129,12 +146,29 @@
 
   [data-tone="paper"] {
     --bg: var(--color-paper-200);
-    --surface: var(--color-paper);
+    --surface: var(--color-white);
     --raised: var(--color-white);
     --fg: var(--color-ink-900);
     --muted: var(--color-stone-600);
     --faint: var(--color-stone-600);
     --line: rgb(18 18 17 / 0.14);
+    --line-strong: rgb(18 18 17 / 0.4);
+    --accent: var(--color-decide-deep);
+    --stage: var(--color-ink-900);
+    --hatch: rgb(18 18 17 / 0.5);
+    color-scheme: light;
+  }
+
+  /* Stage light: a paper page with white panels. Stage colours are used
+     as full fills here (see [data-wash]), not as thin marks. */
+  [data-tone="light"] {
+    --bg: var(--color-paper);
+    --surface: var(--color-white);
+    --raised: var(--color-white);
+    --fg: var(--color-ink-900);
+    --muted: var(--color-stone-600);
+    --faint: var(--color-stone-600);
+    --line: rgb(18 18 17 / 0.12);
     --line-strong: rgb(18 18 17 / 0.4);
     --accent: var(--color-decide-deep);
     --stage: var(--color-ink-900);
@@ -154,17 +188,76 @@
   [data-stage="embed"] {
     --stage: var(--color-embed);
   }
-  [data-tone="paper"] [data-stage="decide"] {
+  [data-tone="paper"] [data-stage="decide"],
+  [data-tone="light"] [data-stage="decide"] {
     --stage: var(--color-decide-deep);
   }
-  [data-tone="paper"] [data-stage="design"] {
+  [data-tone="paper"] [data-stage="design"],
+  [data-tone="light"] [data-stage="design"] {
     --stage: var(--color-design-deep);
   }
-  [data-tone="paper"] [data-stage="deliver"] {
+  [data-tone="paper"] [data-stage="deliver"],
+  [data-tone="light"] [data-stage="deliver"] {
     --stage: var(--color-deliver-deep);
   }
-  [data-tone="paper"] [data-stage="embed"] {
+  [data-tone="paper"] [data-stage="embed"],
+  [data-tone="light"] [data-stage="embed"] {
     --stage: var(--color-embed-deep);
+  }
+
+  /* A panel filled with its stage colour. Text is ink, and muted text is
+     darkened so it keeps AA contrast on all four pastels. */
+  [data-wash] {
+    --fg: var(--color-ink-900);
+    --muted: var(--color-ink-600);
+    --faint: var(--color-ink-600);
+    --line: rgb(18 18 17 / 0.18);
+    --line-strong: rgb(18 18 17 / 0.45);
+    --accent: var(--color-ink-900);
+    background: var(--wash);
+    color: var(--fg);
+  }
+  [data-wash="decide"] {
+    --wash: var(--color-decide);
+  }
+  [data-wash="design"] {
+    --wash: var(--color-design);
+  }
+  [data-wash="deliver"] {
+    --wash: var(--color-deliver);
+  }
+  [data-wash="embed"] {
+    --wash: var(--color-embed);
+  }
+  [data-wash="decide-tint"] {
+    --wash: var(--color-decide-tint);
+  }
+  [data-wash="design-tint"] {
+    --wash: var(--color-design-tint);
+  }
+  [data-wash="deliver-tint"] {
+    --wash: var(--color-deliver-tint);
+  }
+  [data-wash="embed-tint"] {
+    --wash: var(--color-embed-tint);
+  }
+  [data-wash="lilac-1"] {
+    --wash: var(--color-lilac-100);
+  }
+  [data-wash="lilac-2"] {
+    --wash: var(--color-lilac-200);
+  }
+  [data-wash="lilac-3"],
+  [data-wash="lilac"] {
+    --wash: var(--color-lilac-300);
+  }
+  [data-wash="lilac-4"] {
+    --wash: var(--color-lilac-400);
+  }
+
+  html:has(body[data-tone="light"]) {
+    background: var(--color-paper);
+    scrollbar-color: var(--color-stone-400) var(--color-paper);
   }
 
   html {
@@ -282,6 +375,404 @@
     }
   }
 
+  /* ── Stage light (homepage) ──────────────────────────────────────── */
+
+  /* The logo artwork is light strokes; flip it on a light header. */
+  [data-tone="light"] .logo-mark {
+    filter: invert(1);
+  }
+  [data-tone="ink"] .logo-mark {
+    filter: none;
+  }
+
+  /* Hero: four soft stage-colour shapes, in stage order. */
+  .hero-shapes {
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 50%;
+    pointer-events: none;
+    mask-image: linear-gradient(to bottom, transparent, black 45%);
+  }
+  .hero-shape {
+    position: absolute;
+    bottom: -45%;
+    width: clamp(14rem, 34vw, 34rem);
+    aspect-ratio: 1;
+  }
+  .hero-shape > span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius-full);
+    background: var(--wash);
+    opacity: 0.8;
+    filter: blur(clamp(1.5rem, 4vw, 3.5rem));
+    animation: shape-in var(--duration-slower) var(--ease-out-expo) both;
+    animation-delay: calc(var(--i, 0) * 120ms + 350ms);
+  }
+  @keyframes shape-in {
+    from {
+      opacity: 0;
+      transform: translateY(30%) scale(0.6);
+    }
+  }
+
+  /* Glows may reach past the page edge; never let that scroll the page. */
+  main {
+    overflow-x: clip;
+  }
+
+  /* Glows: soft colour that follows the page down. Each glow mixes at
+     least two colours. It drifts on a CSS loop, and `glow.ts` moves it with
+     the scroll position and the mouse through --gx, --gy and --gmy. */
+  .has-glow {
+    position: relative;
+    isolation: isolate;
+    overflow-x: clip;
+  }
+  .glow {
+    --gx: 0px;
+    --gy: 0px;
+    --gmy: 0px;
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    width: clamp(18rem, 40vw, 40rem);
+    aspect-ratio: 1;
+    pointer-events: none;
+  }
+  .glow[data-side="left"] {
+    left: 0;
+    translate: -60% -50%;
+  }
+  .glow[data-side="right"] {
+    right: 0;
+    translate: 60% -50%;
+  }
+  /* A glow behind a component must stay behind its neighbours too: give
+     the neighbouring content `relative` so it paints above the glow. */
+  .glow[data-side="behind"] {
+    inset: -10%;
+    width: auto;
+    aspect-ratio: auto;
+  }
+  .glow > span {
+    --k: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 68%;
+    aspect-ratio: 1;
+    border-radius: var(--radius-full);
+    opacity: 0.66;
+    filter: blur(clamp(2rem, 5vw, 4.5rem));
+    translate: calc(var(--gx) * var(--k)) calc((var(--gy) + var(--gmy)) * var(--k));
+    animation: shape-drift 13s ease-in-out infinite alternate;
+  }
+  .glow > span:nth-child(2) {
+    --k: 1.7;
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    animation-duration: 17s;
+    animation-direction: alternate-reverse;
+  }
+  .glow > span:nth-child(3) {
+    --k: 0.5;
+    top: 26%;
+    left: 22%;
+    animation-duration: 21s;
+  }
+  @media (width >= 48rem) {
+    .glow > span {
+      opacity: 0.83;
+    }
+  }
+
+  /* Large headings are a step heavier than the rest. */
+  :is(h1, h2).text-display,
+  :is(h1, h2).text-headline {
+    font-weight: 600;
+  }
+
+  /* White panels. Tiles sit in a grid; rows stack as a list. They replace
+     hairline-separated lists across the site. */
+  .tiles {
+    display: grid;
+    gap: 0.75rem;
+  }
+  .tile {
+    border-radius: var(--radius-2xl);
+    background: var(--surface);
+    padding: clamp(1.5rem, 1.1rem + 1.4vw, 2.25rem);
+  }
+  [data-wash].tile {
+    background: var(--wash);
+  }
+  .rows {
+    display: grid;
+    gap: 0.5rem;
+  }
+  .row {
+    border-radius: var(--radius-xl);
+    background: var(--surface);
+    padding: 1.25rem 1.5rem;
+  }
+  @media (width >= 48rem) {
+    .row {
+      padding: 1.5rem 1.75rem;
+    }
+  }
+  a.row,
+  a.tile {
+    transition: transform var(--duration-base) var(--ease-out-expo);
+  }
+  a.row:hover,
+  a.tile:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Inner-page heroes: a quieter echo of the home hero. Four soft stage
+     shapes sit at the right edge and drift slowly (CSS only). */
+  .page-shapes {
+    position: absolute;
+    inset: 0 0 0 auto;
+    display: none;
+    width: 42%;
+    pointer-events: none;
+    mask-image: linear-gradient(to left, black 30%, transparent);
+  }
+  @media (width >= 64rem) {
+    .page-shapes {
+      display: block;
+    }
+  }
+  .page-shapes > span {
+    position: absolute;
+    top: calc(-22% + var(--i) * 26%);
+    right: calc(-6% + var(--i) * 9%);
+    width: clamp(10rem, 18vw, 18rem);
+    aspect-ratio: 1;
+    border-radius: var(--radius-full);
+    opacity: 0.7;
+    filter: blur(clamp(1.5rem, 3vw, 3rem));
+    animation: shape-drift calc(11s + var(--i) * 3s) ease-in-out calc(var(--i) * -4s) infinite alternate;
+  }
+  @keyframes shape-drift {
+    from {
+      transform: translate(-8%, -6%) scale(0.9);
+    }
+    to {
+      transform: translate(10%, 8%) scale(1.15);
+    }
+  }
+
+  /* Problems: pick one, read its answer. One column on small screens
+     (each answer opens under its statement), two on large. */
+  .problems {
+    position: relative;
+    display: grid;
+    gap: 0.5rem;
+  }
+  .problem-tab {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 1rem;
+    border-radius: var(--radius-xl);
+    padding: 1rem 1.25rem;
+    text-align: left;
+    color: var(--muted);
+    transition: color var(--duration-base) ease;
+  }
+  .problem-tab:hover,
+  .problem-tab[aria-expanded="true"] {
+    color: var(--fg);
+  }
+  .problems:not(.has-glider) .problem-tab[aria-expanded="true"] {
+    background: var(--surface);
+  }
+  .problem-icon {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: var(--radius-lg);
+    background: var(--color-paper-200);
+    color: var(--fg);
+    transition:
+      background-color var(--duration-base) ease,
+      color var(--duration-base) ease;
+  }
+  .problem-tab[aria-expanded="true"] .problem-icon {
+    background: var(--fg);
+    color: var(--bg);
+  }
+  .problem-icon svg {
+    width: 1.375rem;
+    height: 1.375rem;
+    stroke-width: 1.6;
+  }
+  .problem-glider {
+    display: none;
+  }
+  .problem-panel {
+    border-radius: var(--radius-2xl);
+    background: var(--color-lilac-100);
+    padding: clamp(1.5rem, 1rem + 2vw, 3rem);
+  }
+  @media (width >= 64rem) {
+    .problems {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+      grid-template-rows: repeat(5, auto) 1fr;
+      column-gap: 2rem;
+    }
+    .problems > h3 {
+      grid-column: 1;
+      grid-row: var(--r);
+    }
+    .problem-panel {
+      grid-column: 2;
+      grid-row: 1 / -1;
+      min-height: 26rem;
+    }
+    .problems.has-glider .problem-glider {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: calc((100% - 2rem) * 5 / 11);
+      border-radius: var(--radius-xl);
+      background: var(--surface);
+    }
+    .problems.has-glider .problem-tab {
+      position: relative;
+    }
+  }
+  /* Without scripting every answer is shown, one after another. */
+  @media (scripting: none) {
+    .problem-panel[hidden] {
+      display: block !important;
+      grid-column: 1 / -1;
+      grid-row: auto;
+    }
+    .problems {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  /* Stage row: four colour cards. On large screens with scripting one
+     is open and the rest collapse to a spine. Otherwise they stack. */
+  .stage-row {
+    display: grid;
+    gap: 0.75rem;
+  }
+  .stage-card {
+    position: relative;
+    overflow: clip;
+    border-radius: var(--radius-2xl);
+  }
+  .stage-body {
+    padding: clamp(1.5rem, 1rem + 2vw, 2.75rem);
+  }
+  .stage-spine {
+    display: none;
+  }
+  @media (width >= 64rem) {
+    .stage-row.is-live {
+      --spine: 5.5rem;
+      --gaps: calc(3 * 0.75rem);
+      display: flex;
+      height: 40rem;
+      container-type: inline-size;
+    }
+    .is-live .stage-card {
+      flex: 0 0 var(--spine);
+      min-width: 0;
+      cursor: pointer;
+      transition: flex-basis var(--duration-slow) var(--ease-out-expo);
+    }
+    .is-live .stage-card[data-open] {
+      flex-basis: calc(100% - 3 * var(--spine) - var(--gaps));
+      cursor: default;
+    }
+    .is-live .stage-body {
+      width: calc(100cqw - 4 * var(--spine) - var(--gaps));
+      height: 100%;
+      margin-left: var(--spine);
+      padding-left: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        opacity var(--duration-base) ease,
+        visibility 0s linear var(--duration-base);
+    }
+    .is-live .stage-card[data-open] .stage-body {
+      opacity: 1;
+      visibility: visible;
+      transition:
+        opacity var(--duration-slow) ease 180ms,
+        visibility 0s;
+    }
+    .is-live .stage-spine {
+      position: absolute;
+      inset: 0 auto 0 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      width: var(--spine);
+      padding-block: clamp(1.5rem, 1rem + 2vw, 2.75rem);
+      border-radius: var(--radius-2xl);
+    }
+    .stage-spine-name {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      transition: opacity var(--duration-base) ease;
+    }
+    .stage-card[data-open] .stage-spine-name {
+      opacity: 0;
+    }
+  }
+  @media (width >= 80rem) {
+    .stage-row.is-live {
+      --spine: 6.5rem;
+      height: 34rem;
+    }
+  }
+
+  /* Engagements: cards that step up in height, shortest first. With a
+     fifth "ongoing" step, it sits in the row from 80rem and spans a full
+     row beneath the four below that. */
+  .steps {
+    display: grid;
+    gap: 0.75rem;
+  }
+  @media (width >= 64rem) {
+    .steps {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      align-items: end;
+    }
+    .step-card {
+      min-height: calc(15rem + var(--n) * 2.75rem);
+    }
+    .step-ongoing {
+      grid-column: 1 / -1;
+      min-height: 0;
+    }
+  }
+  @media (width >= 80rem) {
+    .steps[data-count="5"] {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+    .step-ongoing {
+      grid-column: auto;
+      min-height: calc(15rem + var(--n) * 2.75rem);
+    }
+  }
+
   /* Form status line: colour follows the outcome. */
   .form-status[data-kind="success"] {
     color: var(--color-deliver);
@@ -289,9 +780,11 @@
   .form-status[data-kind="error"] {
     color: var(--color-embed);
   }
+  [data-tone="light"] .form-status[data-kind="success"],
   [data-tone="paper"] .form-status[data-kind="success"] {
     color: var(--color-deliver-deep);
   }
+  [data-tone="light"] .form-status[data-kind="error"],
   [data-tone="paper"] .form-status[data-kind="error"] {
     color: var(--color-embed-deep);
   }

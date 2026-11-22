@@ -18,17 +18,17 @@ const grid =
   "grid grid-cols-[2.25rem_minmax(0,1fr)_auto] items-baseline gap-x-4 md:grid-cols-[3rem_minmax(0,5fr)_minmax(0,3fr)_minmax(0,2fr)_2rem]";
 ---
 
-<div class="border-line border-t">
+<div class="rows">
   {rows.map((e) => {
     const head = (
       <>
-        <span class="text-faint text-label font-mono">{e.index}</span>
-        <span class="font-display text-title">{e.name}</span>
+        <span class="text-faint text-sm">{e.index}</span>
+        <span class="font-display md:text-title text-lg">{e.name}</span>
         <span class="text-muted col-start-2 row-start-2 text-sm md:col-start-3 md:row-start-1 md:text-base">
           {e.length}
         </span>
         {showFee && (
-          <span class="font-display text-title col-start-3 row-start-1 text-right tabular-nums md:col-start-4 md:text-left">
+          <span class="font-display md:text-title max-w-28 text-lg md:max-w-none col-start-3 row-start-1 text-right tabular-nums md:col-start-4 md:text-left">
             {e.fee}
           </span>
         )}
@@ -37,13 +37,11 @@ const grid =
     return expandable ? (
       <details
         id={e.id}
-        class="disclosure group border-line scroll-mt-24 border-b"
+        class="disclosure group bg-surface scroll-mt-24 rounded-xl px-5 md:px-7"
         data-stage={e.stage === "any" ? undefined : e.stage}
         open={open === e.id}
       >
-        <summary
-          class:list={[grid, "hover:bg-surface -mx-3 rounded-md px-3 py-6 transition-colors duration-fast"]}
-        >
+        <summary class:list={[grid, "py-6"]}>
           {head}
           <span class="border-line-strong hidden size-8 place-items-center self-center rounded-full border md:col-start-5 transition-transform duration-base ease-out-expo group-open:rotate-45 md:grid">
             <Icon name="plus" />
@@ -54,12 +52,12 @@ const grid =
             <p class="text-lg">{e.summary}</p>
             {e.feeNote && <p class="text-muted mt-3">{e.feeNote}</p>}
             <p class="text-muted mt-5 text-sm">
-              <span class="text-faint text-label block font-mono uppercase">Best for</span>
+              <span class="text-faint text-sm block">Best for</span>
               {e.bestFor}
             </p>
           </div>
           <div class="md:col-span-7">
-            <p class="text-faint text-label font-mono uppercase">What you get</p>
+            <p class="text-faint text-sm">What you get</p>
             <ul class="mt-3">
               {e.outputs.map((o) => (
                 <li class="border-line flex gap-3 border-t py-2.5 first:border-t-0">
@@ -72,13 +70,7 @@ const grid =
         </div>
       </details>
     ) : (
-      <a
-        href={`/services/#${e.id}`}
-        class:list={[
-          grid,
-          "group border-line hover:bg-surface -mx-3 rounded-md border-b px-3 py-6 transition-colors duration-fast",
-        ]}
-      >
+      <a href={`/services/#${e.id}`} class:list={[grid, "group row"]}>
         {head}
         <Icon
           name="arrow"

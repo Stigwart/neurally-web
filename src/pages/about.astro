@@ -4,6 +4,7 @@ import Base from "../layouts/Base.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import Section from "../components/Section.astro";
 import Beat from "../components/Beat.astro";
+import Glow from "../components/Glow.astro";
 import Button from "../components/Button.astro";
 import Cta from "../components/Cta.astro";
 import { site } from "../data/site";
@@ -76,15 +77,15 @@ const triggers = [
       </div>
       <div class="mt-10 grid items-end gap-x-10 gap-y-12 md:grid-cols-12 lg:mt-14 lg:gap-x-12">
         <div class="md:col-span-8">
-          <h1 id="page-heading" class="text-display">
-            <span class="line-rise" style="--i:0">
-              <span>About Neurally.</span>
-            </span>
-            <span class="line-rise text-muted" style="--i:1">
-              <span>Built for the work after the pilot.</span>
-            </span>
-          </h1>
-          <p class="fade-up text-muted mt-8 max-w-2xl text-xl" style="--i:3">
+          <Beat
+            as="h1"
+            id="page-heading"
+            size="display"
+            rise
+            first="About Neurally"
+            second="Built for the work after the pilot."
+          />
+          <p class="fade-up text-muted mt-4 max-w-2xl text-xl" style="--i:3">
             We help leadership teams decide where AI is worth the investment, redesign the business around it
             and lead the change through to measured results.
           </p>
@@ -97,10 +98,10 @@ const triggers = [
             </Button>
           </div>
         </div>
-        <dl class="fade-up border-line border-t md:col-span-4" style="--i:2">
+        <dl class="fade-up tile md:col-span-4" style="--i:2">
           {facts.map((f) => (
-            <div class="border-line border-b py-4">
-              <dt class="text-faint text-label font-mono uppercase">{f.term}</dt>
+            <div class="border-line border-b py-4 first:pt-0 last:border-b-0 last:pb-0">
+              <dt class="text-faint text-sm">{f.term}</dt>
               <dd class="mt-1">{f.detail}</dd>
             </div>
           ))}
@@ -109,21 +110,21 @@ const triggers = [
     </div>
   </section>
 
-  <Section tone="paper" labelledby="why-heading">
+  <Section glow={{ side: "right", colours: ["decide", "lilac"] }} tone="paper" labelledby="why-heading">
     <div class="grid gap-x-12 gap-y-8 lg:grid-cols-12">
       <div class="lg:col-span-5" data-reveal>
         <Beat
           id="why-heading"
-          first="Why Neurally exists."
+          first="Why Neurally exists"
           second="Experiments show what AI can do. They don't decide what your business should do with it."
         />
       </div>
       <div class="lg:col-span-7" data-reveal style="--i:1">
         <p class="text-lg">Trying AI is the easy part. What comes next tends to stall in three places.</p>
-        <ol class="border-line mt-8 border-t">
+        <ol class="rows mt-8">
           {gaps.map((g, i) => (
-            <li class="border-line grid gap-x-6 gap-y-2 border-b py-6 md:grid-cols-12">
-              <span class="text-faint text-label pt-1.5 font-mono md:col-span-1">0{i + 1}</span>
+            <li class="row grid gap-x-6 gap-y-2 md:grid-cols-12">
+              <span class="text-faint text-sm pt-1.5 md:col-span-1">0{i + 1}</span>
               <div class="md:col-span-11">
                 <h3 class="font-display text-xl">{g.title}</h3>
                 <p class="text-muted mt-2">{g.body}</p>
@@ -140,8 +141,8 @@ const triggers = [
     </div>
   </Section>
 
-  <Section labelledby="mission-heading">
-    <p class="text-faint text-label font-mono uppercase" data-reveal>
+  <Section glow={{ side: "left", colours: ["design", "embed"] }} labelledby="mission-heading">
+    <p class="text-faint text-sm" data-reveal>
       Our mission
     </p>
     <p id="mission-heading" class="font-display text-headline mt-6 max-w-5xl" data-reveal style="--i:1">
@@ -150,17 +151,13 @@ const triggers = [
     </p>
   </Section>
 
-  <Section tone="paper" labelledby="choices-heading">
+  <Section glow={{ side: "right", colours: ["deliver", "design"] }} tone="paper" labelledby="choices-heading">
     <div data-reveal>
-      <Beat id="choices-heading" first="How Neurally is set up." second="Four choices we made on purpose." />
+      <Beat id="choices-heading" first="How Neurally is set up" second="Four choices we made on purpose." />
     </div>
-    <ul class="border-line mt-12 grid border-t md:grid-cols-2">
+    <ul class="tiles mt-12 md:grid-cols-2">
       {choices.map((c, i) => (
-        <li
-          class="border-line border-b py-8 md:odd:pr-10 md:even:border-l md:even:pl-10"
-          data-reveal
-          style={`--i:${i % 2}`}
-        >
+        <li class="tile" data-reveal style={`--i:${i % 2}`}>
           <h3 class="text-title">{c.title}</h3>
           <p class="text-muted mt-3 text-lg">{c.body}</p>
         </li>
@@ -168,10 +165,10 @@ const triggers = [
     </ul>
   </Section>
 
-  <Section labelledby="help-heading">
+  <Section glow={{ side: "left", colours: ["lilac", "decide"] }} labelledby="help-heading">
     <div class="grid gap-x-12 gap-y-10 lg:grid-cols-12">
       <div class="lg:col-span-5" data-reveal>
-        <Beat id="help-heading" first="Who we help." second="And when they tend to call." />
+        <Beat id="help-heading" first="Who we help" second="And when they tend to call." />
         <p class="text-muted mt-6 max-w-md text-lg">
           CEOs, founders, and product and technology leaders of scaling and established businesses, roughly 50
           to 1,000 people. Boards and investors also bring us in for an independent view.
@@ -182,20 +179,16 @@ const triggers = [
         </p>
       </div>
       <div class="lg:col-span-7">
-        <ul class="border-line border-t">
+        <ul class="rows">
           {triggers.map((t, i) => (
-            <li
-              class="border-line font-display text-title flex gap-5 border-b py-6"
-              data-reveal
-              style={`--i:${i}`}
-            >
-              <span class="text-faint text-label mt-2 font-mono">0{i + 1}</span>
+            <li class="row font-display text-title flex gap-5" data-reveal style={`--i:${i}`}>
+              <span class="text-faint text-sm mt-2">0{i + 1}</span>
               {t}
             </li>
           ))}
         </ul>
         <div class="mt-10 flex flex-wrap gap-4" data-reveal>
-          <Button href="/approach/" variant="secondary">
+          <Button href="/approach/" variant="text">
             How the approach works
           </Button>
           <Button href="/services/" variant="text">
@@ -208,20 +201,25 @@ const triggers = [
 
   <Section tone="paper" labelledby="founder-heading" id="stuart-davis">
     <div class="grid gap-x-10 gap-y-12 md:grid-cols-12 lg:gap-x-12">
-      <div class="md:col-span-4" data-reveal>
-        <Image
-          src={portrait}
-          alt="Stuart Davis, founder of Neurally"
-          widths={[320, 480, 640]}
-          sizes="(min-width: 64rem) 30vw, 80vw"
-          class="aspect-[4/5] w-full max-w-sm rounded-lg object-cover grayscale"
-        />
+      <!-- The reveal sits on the image only: a revealed element is clipped
+           to its own box, which would cut the glow off. -->
+      <div class="relative isolate md:col-span-4">
+        <Glow side="behind" colours={["deliver", "decide", "lilac"]} />
+        <div data-reveal>
+          <Image
+            src={portrait}
+            alt="Stuart Davis, founder of Neurally"
+            widths={[320, 480, 640, 960]}
+            sizes="(min-width: 64rem) 30vw, 80vw"
+            class="aspect-[4/5] w-full max-w-sm rounded-2xl object-cover"
+          />
+        </div>
       </div>
-      <div class="md:col-span-8">
+      <div class="relative md:col-span-8">
         <div data-reveal>
           <Beat
             id="founder-heading"
-            first="Founded by Stuart Davis."
+            first="About Stuart Davis"
             second="Nineteen years running the change from the inside."
           />
           <p class="max-w-measure mt-6 text-lg">
@@ -240,5 +238,5 @@ const triggers = [
     </div>
   </Section>
 
-  <Cta first="Tell us what you're trying to decide." second="Thirty minutes, free." />
+  <Cta />
 </Base>

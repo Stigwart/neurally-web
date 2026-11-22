@@ -5,7 +5,7 @@ interface Props {
 const { crumbs } = Astro.props;
 ---
 
-<nav aria-label="Breadcrumb" class="text-label text-faint font-mono uppercase">
+<nav aria-label="Breadcrumb" class="text-sm text-faint">
   <ol class="flex flex-wrap items-center gap-x-2 gap-y-1">
     {crumbs.map((c, i) => (
       <li class="flex items-center gap-2">
