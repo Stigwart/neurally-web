@@ -7,7 +7,6 @@
         "http://localhost:8789/",
         "http://localhost:8789/services/",
         "http://localhost:8789/industries/financial-services-insurance/",
-        "http://localhost:8789/insights/why-ai-pilots-dont-pay-back/",
         "http://localhost:8789/assessment/"
       ],
       "numberOfRuns": 3

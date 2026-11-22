@@ -8,10 +8,7 @@ export const primaryNav: NavLink[] = [
   { label: "Services", href: "/services/" },
 ];
 
-export const secondaryNav: NavLink[] = [
-  { label: "Insights", href: "/insights/" },
-  { label: "About", href: "/about/" },
-];
+export const secondaryNav: NavLink[] = [{ label: "About", href: "/about/" }];
 
 /** The three landing-page families, in the order they appear in menus. */
 export const families = [

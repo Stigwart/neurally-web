@@ -7,7 +7,6 @@ export const corePages = [
   "/contact/",
   "/assessment/",
   "/privacy/",
-  "/insights/",
 ];
 
 export const landingPages = [
@@ -27,11 +26,7 @@ export const landingPages = [
   "/use-cases/ai-governance/",
 ];
 
-export const articlePages = [
-  "/insights/why-ai-pilots-dont-pay-back/",
-  "/insights/what-stays-with-people/",
-  "/insights/ai-governance-under-consumer-duty/",
-];
+export const articlePages = [];
 
 export const allPages = [...corePages, ...landingPages, ...articlePages];
 

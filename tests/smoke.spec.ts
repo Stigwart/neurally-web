@@ -63,12 +63,11 @@ test("unknown URLs get the 404 page", async ({ page }) => {
   await expect(page.locator("h1")).toContainText("Page not found");
 });
 
-test("sitemap, robots and RSS are published", async ({ request }) => {
+test("sitemap and robots are published", async ({ request }) => {
   expect((await request.get("/robots.txt")).ok()).toBeTruthy();
   const sitemap = await (await request.get("/sitemap-0.xml")).text();
   expect(sitemap).toContain("https://www.neurally.co.uk/use-cases/ai-governance/");
   expect(sitemap).not.toContain(".html");
-  expect(await (await request.get("/rss.xml")).text()).toContain("<item>");
 });
 
 test("analytics tag is on the page", async ({ page }) => {

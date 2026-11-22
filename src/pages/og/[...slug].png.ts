@@ -10,7 +10,7 @@ import { Resvg } from "@resvg/resvg-js";
 import sharp from "sharp";
 import { staticOgPages } from "../../data/pages";
 import { families } from "../../data/nav";
-import { getFamily, getInsights } from "../../lib/content";
+import { getFamily } from "../../lib/content";
 
 const require = createRequire(import.meta.url);
 const font = (pkg: string, file: string) => readFile(require.resolve(`${pkg}/files/${file}`));
@@ -41,12 +41,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
         props: { title: `${entry.data.headline} ${entry.data.headlineSecond}`, label: family.singular },
       });
     }
-  }
-  for (const post of await getInsights()) {
-    paths.push({
-      params: { slug: `insights/${post.id}` },
-      props: { title: post.data.title, label: "Insight" },
-    });
   }
   return paths;
 };
